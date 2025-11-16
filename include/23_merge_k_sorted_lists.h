@@ -1,0 +1,69 @@
+﻿/*
+* https://leetcode.com/problems/merge-k-sorted-lists/solutions/7316033/merge-k-sorted-lists-beats-10000-runtime-z9zg/
+*
+23. Merge k Sorted Lists algorithm
+
+You are given an array of k linked - lists lists, each linked - list is sorted in ascending order.
+Merge all the linked - lists into one sorted linked - list and return it.
+
+Example 1:
+Input: lists = [[1, 4, 5], [1, 3, 4], [2, 6]]
+Output: [1, 1, 2, 3, 4, 4, 5, 6]
+
+Explanation: The linked - lists are:
+[
+    1->4->5,
+    1->3->4,
+    2->6
+]
+
+merging them into one sorted linked list :
+1->1->2->3->4->4->5->6
+
+Example 2:
+    Input: lists = []
+    Output: []
+
+    Example 3:
+    Input: lists = [[]]
+    Output: []
+
+    Constraints:
+    k == lists.length
+    0 <= k <= 10^4
+    0 <= lists[i].length <= 500
+    -10^4 <= lists[i][j] <= 10^4
+    lists[i] is sorted in ascending order.
+    The sum of lists[i].length will not exceed 104.
+*/
+
+#ifndef _23_HEADER_FILE_h
+#define _23_HEADER_FILE_h
+
+#include "list_node.h"
+
+#include <vector>
+
+namespace _23_recursion {
+
+    class Solution {
+    public:
+        ListNode* mergeKLists(std::vector<ListNode*>& lists);
+
+    private:
+        ListNode* mergeSort(std::vector<ListNode*>& lists, int lowerBound, int upperBound);
+        ListNode* merge(ListNode* leftPtr, ListNode* rightPtr);
+    };
+
+}
+
+namespace _23_priority_queue {
+
+    class Solution {
+    public:
+        ListNode* mergeKLists(std::vector<ListNode*>& lists);
+    };
+
+}
+
+#endif
