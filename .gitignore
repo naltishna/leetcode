@@ -1,0 +1,9 @@
+x64*
+Debug
+Release
+.vs
+.vscode
+*.vcxproj
+*.vcxproj.user
+*.sln
+*.exe
