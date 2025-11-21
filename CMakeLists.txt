@@ -13,18 +13,20 @@ project ("leetcode")
 
 include_directories(
         ${PROJECT_SOURCE_DIR}/include
+        ${PROJECT_SOURCE_DIR}/test_data
         ${PROJECT_SOURCE_DIR}/tools)
 
 # Add source to this project's executable.
 add_executable (leetcode 
-"main.cpp"  
-"src/helper.cpp" 
+"main.cpp" 
+"src/list_node_helpers.cpp" 
 "src/18_4sum.cpp" 
 "src/2_add_two_numbers.cpp"
 "src/23_merge_k_sorted_lists.cpp" 
 "src/56_merge_intervals.cpp" 
 "src/120_triangle.cpp"
 "src/136_single_number.cpp"
+"src/373_find_k_pairs_with_smallest_sums.cpp"
 "src/374_guess_number_higher_or_lower.cpp" 
 "src/704_binary_search.cpp")
 

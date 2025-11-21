@@ -3,7 +3,8 @@
 
 #include <iostream>
 
-#include "helper.h"
+#include "data.h"
+#include "list_node_helpers.h"
 #include "utils.h"
 
 #include "2_add_two_numbers.h"
@@ -12,6 +13,7 @@
 #include "56_merge_intervals.h"
 #include "120_triangle.h"
 #include "136_single_number.h"
+#include "373_find_k_pairs_with_smallest_sums.h"
 #include "374_guess_number_higher_or_lower.h"
 #include "704_binary_search.h"
 
@@ -20,10 +22,10 @@ using namespace std;
 int main()
 {
     //////////////////////
-#if 1
     /**
      * 2. Add Two Numbers
      */
+#if 1
     {
         ListNode* l1_1 = ListNodeHelper::createList({ 2, 4, 3 });
         ListNode* l1_2 = ListNodeHelper::createList({ 5, 6, 4 });
@@ -52,10 +54,10 @@ int main()
     }
 #endif
     //////////////////////
-#if 1
     /**
      * 18. 4Sum
      */
+#if 1
     {
         std::vector<int> l0{ 1, 0, -1 };
         std::vector<int> l1{ 1, 0, -1, 0, -2, 2 }; // Output: [[-2,-1,1,2],[-2,0,0,2],[-1,0,0,1]]
@@ -74,10 +76,10 @@ int main()
     }
 #endif
     //////////////////////
-#if 1
     /**
      * 23. Merge k Sorted Lists algorithm
      */
+#if 1
     {
         ListNode* l1_1 = new ListNode(1, new ListNode(4, new ListNode(5)));
         ListNode* l1_2 = new ListNode(1, new ListNode(3, new ListNode(4)));
@@ -90,7 +92,7 @@ int main()
         // [[]]
         std::vector<ListNode*> lists3 = { nullptr };
 
-        {
+        { // recursion ver
             auto start_time = get_current_time();
             _23_recursion::Solution s{};
             ListNode* result = s.mergeKLists(lists1);
@@ -106,7 +108,6 @@ int main()
             ListNodeHelper::freeList(result);
         }
 
-        // priority_queue ver
         std::vector<int> data1{ 1, 4, 5 };
         std::vector<int> data2{ 1, 3, 4 };
         std::vector<int> data3 = { 2, 6 };
@@ -118,7 +119,7 @@ int main()
         // [[1,4,5],[1,3,4],[2,6]]
         std::vector<ListNode*> vecs = { list1, list2, list3 };
 
-        {
+        { // priority_queue ver
             auto start_time = get_current_time();
             _23_priority_queue::Solution s{};
             ListNode* result = s.mergeKLists(vecs);
@@ -140,10 +141,10 @@ int main()
     }
 #endif
     //////////////////////
-#if 1
     /**
      * 56. Merge Intervals
      */
+#if 1
     {
         std::vector<std::vector<int>> l0_in{ {1, 3}, {2, 6}, {8, 10}, {15, 18} };
         std::vector<std::vector<int>> l1_in{ {1, 4}, {4, 5} };
@@ -159,10 +160,10 @@ int main()
     }
 #endif
     //////////////////////
-#if 1
     /**
      * 120. Triangle
      */
+#if 1
     {
         std::vector<std::vector<int>> l0{ {2},
                                           {3, 4},
@@ -187,10 +188,10 @@ int main()
     }
 #endif
     //////////////////////
-#if 1
     /**
      * 136. Single Number
      */
+#if 1
     {
         std::vector<int> l1{ 2,2,1 };
         std::vector<int> l2{ 4,1,2,1,2 };
@@ -204,10 +205,56 @@ int main()
 
 #endif
     //////////////////////
+    /**
+     * 373. Find K Pairs with Smallest Sums
+     */
 #if 1
+    {
+        std::vector<int> l0_0{ 1, 7, 11 };
+        std::vector<int> l0_1{ 2, 4, 6 };
+        int k0 = 3;
+
+        std::vector<int> l1_0{ 1, 1, 2 };
+        std::vector<int> l1_1{ 1, 2, 3 };
+        int k1 = 2;
+
+        std::vector<int> l2_0{ 1, 1, 2 };
+        std::vector<int> l2_1{ 1, 2, 3 };
+        int k2 = 9;
+
+        std::vector<int> l3_0{ 1, 2, 3, 4, 5, 6 };
+        std::vector<int> l3_1{ 3, 5, 7, 9 };
+        int k3 = 3;
+        {
+            _373::Solution<v1> s{};
+            my_assert("{{1, 2}, {1, 4}, {1, 6}}" == vector_to_string(s.kSmallestPairs(l0_0, l0_1, k0)));
+            my_assert("{{1, 1}, {1, 1}}" == vector_to_string(s.kSmallestPairs(l1_0, l1_1, k1)));
+            my_assert("{{1, 1}, {1, 1}, {1, 2}, {1, 2}, {2, 1}, {1, 3}, {1, 3}, {2, 2}, {2, 3}}" == vector_to_string(s.kSmallestPairs(l2_0, l2_1, k2)));
+            my_assert("{{1, 3}, {2, 3}, {1, 5}}" == vector_to_string(s.kSmallestPairs(l3_0, l3_1, k3)));
+        }
+        {
+            _373::Solution<v2> s{};
+            my_assert("{{1, 2}, {1, 4}, {1, 6}}" == vector_to_string(s.kSmallestPairs(l0_0, l0_1, k0)));
+            my_assert("{{1, 1}, {1, 1}}" == vector_to_string(s.kSmallestPairs(l1_0, l1_1, k1)));
+            my_assert("{{1, 1}, {1, 1}, {1, 2}, {1, 2}, {2, 1}, {1, 3}, {1, 3}, {2, 2}, {2, 3}}" == vector_to_string(s.kSmallestPairs(l2_0, l2_1, k2)));
+            my_assert("{{1, 3}, {2, 3}, {1, 5}}" == vector_to_string(s.kSmallestPairs(l3_0, l3_1, k3)));
+        }
+        {
+            _373::Solution<v3> s{};
+            my_assert("{{1, 2}, {1, 4}, {1, 6}}" == vector_to_string(s.kSmallestPairs(l0_0, l0_1, k0)));
+            my_assert("{{1, 1}, {1, 1}}" == vector_to_string(s.kSmallestPairs(l1_0, l1_1, k1)));
+            my_assert("{{1, 1}, {1, 1}, {1, 2}, {1, 2}, {2, 1}, {1, 3}, {1, 3}, {2, 2}, {2, 3}}" == vector_to_string(s.kSmallestPairs(l2_0, l2_1, k2)));
+            my_assert("{{1, 3}, {2, 3}, {1, 5}}" == vector_to_string(s.kSmallestPairs(l3_0, l3_1, k3)));
+        }
+        //std::cout << vector_to_string(s.kSmallestPairs(ln_n_373, ln_n_373, 10000)); // to check throw std::bad_alloc{};
+        //std::cout << vector_to_string(s.kSmallestPairs(ln_n_373_1, ln_n_373_2, 9484)); // to check Time Limit Exceeded
+    }
+#endif
+    //////////////////////
     /**
      * 374. Guess Number Higher or Lower
      */
+#if 1
     {
         _374::Solution s{};
         s.setPick(6);
@@ -219,10 +266,10 @@ int main()
     }
 #endif
     //////////////////////
-#if 1
     /**
      * 704. Binary Search
      */
+#if 1
     {
         std::vector<int> nums1 = { -1,0,3,5,9,12 };
         std::vector<int> nums2 = { 5 };

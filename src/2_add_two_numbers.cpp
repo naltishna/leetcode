@@ -2,6 +2,13 @@
 
 namespace _2 {
 
+    /**
+    Time complexity:
+        O(max(N,M)) - The program must visit every node in the longer list once.
+
+    Space complexity:
+        O(max(N,M)) - The program creates a new result list whose length is proportional to the longer input list.
+    */
     ListNode* Solution::addTwoNumbers(ListNode* l1, ListNode* l2) {
         ListNode temp;
         ListNode* tail = &temp;
