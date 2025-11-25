@@ -28,7 +28,8 @@ add_executable (leetcode
 "src/136_single_number.cpp"
 "src/373_find_k_pairs_with_smallest_sums.cpp"
 "src/374_guess_number_higher_or_lower.cpp" 
-"src/704_binary_search.cpp")
+"src/704_binary_search.cpp"
+"src/480_sliding_window_median.cpp")
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)
   set_property(TARGET leetcode PROPERTY CXX_STANDARD 20)

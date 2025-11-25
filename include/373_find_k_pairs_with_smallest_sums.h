@@ -34,11 +34,13 @@ k <= nums1.length * nums2.length
 #include <vector>
 
 namespace _373 {
+
     template<typename Version>
     class Solution {
     public:
         std::vector<std::vector<int>> kSmallestPairs(std::vector<int>& nums1, std::vector<int>& nums2, int k);
     };
+
 }
 
 struct  v1 {};

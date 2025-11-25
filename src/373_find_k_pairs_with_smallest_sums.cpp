@@ -1,12 +1,7 @@
 ﻿#include "373_find_k_pairs_with_smallest_sums.h"
 
-
-#include <algorithm>
-#include <functional>
-#include <numeric>
 #include <queue>
 #include <tuple>
-
 
 namespace _373 {
 

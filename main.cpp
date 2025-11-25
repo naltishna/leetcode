@@ -15,6 +15,7 @@
 #include "136_single_number.h"
 #include "373_find_k_pairs_with_smallest_sums.h"
 #include "374_guess_number_higher_or_lower.h"
+#include "480_sliding_window_median.h"
 #include "704_binary_search.h"
 
 using namespace std;
@@ -227,24 +228,24 @@ int main()
         int k3 = 3;
         {
             _373::Solution<v1> s{};
-            my_assert("{{1, 2}, {1, 4}, {1, 6}}" == vector_to_string(s.kSmallestPairs(l0_0, l0_1, k0)));
-            my_assert("{{1, 1}, {1, 1}}" == vector_to_string(s.kSmallestPairs(l1_0, l1_1, k1)));
-            my_assert("{{1, 1}, {1, 1}, {1, 2}, {1, 2}, {2, 1}, {1, 3}, {1, 3}, {2, 2}, {2, 3}}" == vector_to_string(s.kSmallestPairs(l2_0, l2_1, k2)));
-            my_assert("{{1, 3}, {2, 3}, {1, 5}}" == vector_to_string(s.kSmallestPairs(l3_0, l3_1, k3)));
+            my_assert("{{1, 2}, {1, 4}, {1, 6}}" == vectors_to_string(s.kSmallestPairs(l0_0, l0_1, k0)));
+            my_assert("{{1, 1}, {1, 1}}" == vectors_to_string(s.kSmallestPairs(l1_0, l1_1, k1)));
+            my_assert("{{1, 1}, {1, 1}, {1, 2}, {1, 2}, {2, 1}, {1, 3}, {1, 3}, {2, 2}, {2, 3}}" == vectors_to_string(s.kSmallestPairs(l2_0, l2_1, k2)));
+            my_assert("{{1, 3}, {2, 3}, {1, 5}}" == vectors_to_string(s.kSmallestPairs(l3_0, l3_1, k3)));
         }
         {
             _373::Solution<v2> s{};
-            my_assert("{{1, 2}, {1, 4}, {1, 6}}" == vector_to_string(s.kSmallestPairs(l0_0, l0_1, k0)));
-            my_assert("{{1, 1}, {1, 1}}" == vector_to_string(s.kSmallestPairs(l1_0, l1_1, k1)));
-            my_assert("{{1, 1}, {1, 1}, {1, 2}, {1, 2}, {2, 1}, {1, 3}, {1, 3}, {2, 2}, {2, 3}}" == vector_to_string(s.kSmallestPairs(l2_0, l2_1, k2)));
-            my_assert("{{1, 3}, {2, 3}, {1, 5}}" == vector_to_string(s.kSmallestPairs(l3_0, l3_1, k3)));
+            my_assert("{{1, 2}, {1, 4}, {1, 6}}" == vectors_to_string(s.kSmallestPairs(l0_0, l0_1, k0)));
+            my_assert("{{1, 1}, {1, 1}}" == vectors_to_string(s.kSmallestPairs(l1_0, l1_1, k1)));
+            my_assert("{{1, 1}, {1, 1}, {1, 2}, {1, 2}, {2, 1}, {1, 3}, {1, 3}, {2, 2}, {2, 3}}" == vectors_to_string(s.kSmallestPairs(l2_0, l2_1, k2)));
+            my_assert("{{1, 3}, {2, 3}, {1, 5}}" == vectors_to_string(s.kSmallestPairs(l3_0, l3_1, k3)));
         }
         {
             _373::Solution<v3> s{};
-            my_assert("{{1, 2}, {1, 4}, {1, 6}}" == vector_to_string(s.kSmallestPairs(l0_0, l0_1, k0)));
-            my_assert("{{1, 1}, {1, 1}}" == vector_to_string(s.kSmallestPairs(l1_0, l1_1, k1)));
-            my_assert("{{1, 1}, {1, 1}, {1, 2}, {1, 2}, {2, 1}, {1, 3}, {1, 3}, {2, 2}, {2, 3}}" == vector_to_string(s.kSmallestPairs(l2_0, l2_1, k2)));
-            my_assert("{{1, 3}, {2, 3}, {1, 5}}" == vector_to_string(s.kSmallestPairs(l3_0, l3_1, k3)));
+            my_assert("{{1, 2}, {1, 4}, {1, 6}}" == vectors_to_string(s.kSmallestPairs(l0_0, l0_1, k0)));
+            my_assert("{{1, 1}, {1, 1}}" == vectors_to_string(s.kSmallestPairs(l1_0, l1_1, k1)));
+            my_assert("{{1, 1}, {1, 1}, {1, 2}, {1, 2}, {2, 1}, {1, 3}, {1, 3}, {2, 2}, {2, 3}}" == vectors_to_string(s.kSmallestPairs(l2_0, l2_1, k2)));
+            my_assert("{{1, 3}, {2, 3}, {1, 5}}" == vectors_to_string(s.kSmallestPairs(l3_0, l3_1, k3)));
         }
         //std::cout << vector_to_string(s.kSmallestPairs(ln_n_373, ln_n_373, 10000)); // to check throw std::bad_alloc{};
         //std::cout << vector_to_string(s.kSmallestPairs(ln_n_373_1, ln_n_373_2, 9484)); // to check Time Limit Exceeded
@@ -263,6 +264,67 @@ int main()
         my_assert(1 == s.guessNumber(1));
         s.setPick(1);
         my_assert(1 == s.guessNumber(1));
+    }
+#endif
+    //////////////////////
+    /**
+     * 480. Sliding Window Median
+     */
+#if 1
+    {
+        std::vector<int> nums_1 = { 1, 3, -1, -3, 5, 3, 6, 7 };
+        int k_1 = 3;
+        std::vector<int> nums_2 = { 1, 2, 3, 4, 2, 3, 1, 4, 2 };
+        int k_2 = 3;
+        std::vector<int> nums_3 = { 2147483647, 2147483647 };
+        int k_3 = 2;
+        std::vector<int> nums_4 = { 1, 4, 2, 3 };
+        int k_4 = 4;
+        std::vector<int> nums_5 = { -2147483648, -2147483648, 2147483647, 
+                                    -2147483648, -2147483648, -2147483648, 
+                                    2147483647, 2147483647, 2147483647, 
+                                    2147483647, -2147483648, 2147483647, -2147483648 };
+        int k_5 = 2;
+        std::vector<int> num_6 = { 7, 0, 3, 9, 9, 9, 1, 7, 2, 3 };
+        int k_6 = 6;
+
+        {
+            _480::Solution<_480_v1> s{};
+            auto start_time = get_current_time();
+            my_assert("{1.0, -1.0, -1.0, 3.0, 5.0, 6.0}" == vector_to_string(s.medianSlidingWindow(nums_1, k_1)));
+            my_assert("{2.0, 3.0, 3.0, 3.0, 2.0, 3.0, 2.0}" == vector_to_string(s.medianSlidingWindow(nums_2, k_2)));
+            my_assert("{2147483647.0}" == vector_to_string(s.medianSlidingWindow(nums_3, k_3)));
+            my_assert("{2.5}" == vector_to_string(s.medianSlidingWindow(nums_4, k_4)));
+            my_assert("{-2147483648.0, -0.5, -0.5, -2147483648.0, -2147483648.0, -0.5, 2147483647.0, 2147483647.0, 2147483647.0, -0.5, -0.5, -0.5}" == vector_to_string(s.medianSlidingWindow(nums_5, k_5)));
+            my_assert("{8.0, 6.0, 8.0, 8.0, 5.0}" == vector_to_string(s.medianSlidingWindow(num_6, k_6)));
+            auto end_time = get_current_time();
+            print_elapsed_time(start_time, end_time, "_480_v1");
+        }
+        {
+            _480::Solution<_480_v2> s{};
+            auto start_time = get_current_time();
+            my_assert("{1.0, -1.0, -1.0, 3.0, 5.0, 6.0}" == vector_to_string(s.medianSlidingWindow(nums_1, k_1)));
+            my_assert("{2.0, 3.0, 3.0, 3.0, 2.0, 3.0, 2.0}" == vector_to_string(s.medianSlidingWindow(nums_2, k_2)));
+            my_assert("{2147483647.0}" == vector_to_string(s.medianSlidingWindow(nums_3, k_3)));
+            my_assert("{2.5}" == vector_to_string(s.medianSlidingWindow(nums_4, k_4)));
+            my_assert("{-2147483648.0, -0.5, -0.5, -2147483648.0, -2147483648.0, -0.5, 2147483647.0, 2147483647.0, 2147483647.0, -0.5, -0.5, -0.5}" == vector_to_string(s.medianSlidingWindow(nums_5, k_5)));
+            my_assert("{8.0, 6.0, 8.0, 8.0, 5.0}" == vector_to_string(s.medianSlidingWindow(num_6, k_6)));
+            auto end_time = get_current_time();
+            print_elapsed_time(start_time, end_time, "_480_v2");
+        }
+
+        {
+            _480::Solution<_480_v3> s{};
+            auto start_time = get_current_time();
+            my_assert("{1.0, -1.0, -1.0, 3.0, 5.0, 6.0}" == vector_to_string(s.medianSlidingWindow(nums_1, k_1)));
+            my_assert("{2.0, 3.0, 3.0, 3.0, 2.0, 3.0, 2.0}" == vector_to_string(s.medianSlidingWindow(nums_2, k_2)));
+            my_assert("{2147483647.0}" == vector_to_string(s.medianSlidingWindow(nums_3, k_3)));
+            my_assert("{2.5}" == vector_to_string(s.medianSlidingWindow(nums_4, k_4)));
+            my_assert("{-2147483648.0, -0.5, -0.5, -2147483648.0, -2147483648.0, -0.5, 2147483647.0, 2147483647.0, 2147483647.0, -0.5, -0.5, -0.5}" == vector_to_string(s.medianSlidingWindow(nums_5, k_5)));
+            my_assert("{8.0, 6.0, 8.0, 8.0, 5.0}" == vector_to_string(s.medianSlidingWindow(num_6, k_6)));
+            auto end_time = get_current_time();
+            print_elapsed_time(start_time, end_time, "_480_v3");
+        }
     }
 #endif
     //////////////////////
