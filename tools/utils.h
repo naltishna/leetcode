@@ -25,6 +25,9 @@ void print_elapsed_time(const auto start_time, const auto end_time, const std::s
     std::cout << mesg << "=" << (end_time - start_time).count() << " sec." << std::endl;
 }
 
+/**
+ * Vector of vectors to string.
+ */
 std::string vectors_to_string(std::vector<std::vector<int>> vecs) {
     std::stringstream ss;
     ss << "{";
@@ -46,7 +49,27 @@ std::string vectors_to_string(std::vector<std::vector<int>> vecs) {
     return ss.str();
 }
 
+/**
+ * Vector of double to string.
+ */
 std::string vector_to_string(std::vector<double> vec) {
+    std::stringstream ss;
+    ss << "{";
+    for (int i = 0; i < vec.size(); ++i) {
+        ss << std::fixed << std::setprecision(1) << vec[i];
+        if (i < vec.size() - 1) {
+            ss << ", ";
+        }
+    }
+    ss << "}";
+
+    return ss.str();
+}
+
+/**
+ * Vector of string to string.
+ */
+std::string vector_to_string(std::vector<std::string> vec) {
     std::stringstream ss;
     ss << "{";
     for (int i = 0; i < vec.size(); ++i) {

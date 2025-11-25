@@ -16,6 +16,7 @@
 #include "373_find_k_pairs_with_smallest_sums.h"
 #include "374_guess_number_higher_or_lower.h"
 #include "480_sliding_window_median.h"
+#include "692_top_k_frequent_words.h"
 #include "704_binary_search.h"
 
 using namespace std;
@@ -280,9 +281,9 @@ int main()
         int k_3 = 2;
         std::vector<int> nums_4 = { 1, 4, 2, 3 };
         int k_4 = 4;
-        std::vector<int> nums_5 = { -2147483648, -2147483648, 2147483647, 
-                                    -2147483648, -2147483648, -2147483648, 
-                                    2147483647, 2147483647, 2147483647, 
+        std::vector<int> nums_5 = { -2147483648, -2147483648, 2147483647,
+                                    -2147483648, -2147483648, -2147483648,
+                                    2147483647, 2147483647, 2147483647,
                                     2147483647, -2147483648, 2147483647, -2147483648 };
         int k_5 = 2;
         std::vector<int> num_6 = { 7, 0, 3, 9, 9, 9, 1, 7, 2, 3 };
@@ -327,6 +328,26 @@ int main()
         }
     }
 #endif
+    //////////////////////
+    /**
+     * 692. Top K Frequent Words
+     */
+#if 1
+    {
+        std::vector<std::string> words_1 = { "i", "love", "leetcode", "i", "love", "coding" };
+        int k_1 = 2;
+
+        std::vector<std::string> words_2 = { "the", "day", "is", "sunny", "the", "the", "the", "sunny", "is", "is" };
+        int k_2 = 4;
+
+        _692::Solution s{};
+        my_assert("{i, love}" == vector_to_string(s.topKFrequent(words_1, k_1)));
+        my_assert("{the, is, sunny, day}" == vector_to_string(s.topKFrequent(words_2, k_2)));
+    }
+
+#endif
+
+
     //////////////////////
     /**
      * 704. Binary Search
