@@ -2,8 +2,9 @@
 #define LISTNODE_HEADER_FILE_h
 
 /**
- * Definition for singly-linked list. 
- * See Tasks 2, 23
+ * Definition for singly-linked list.
+ * 
+ * See tasks 2, 23.
  */
 struct ListNode {
     int val;

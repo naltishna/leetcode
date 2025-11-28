@@ -11,7 +11,9 @@
 #include "18_4sum.h"
 #include "23_merge_k_sorted_lists.h"
 #include "56_merge_intervals.h"
+#include "110_balanced_binary_tree.h"
 #include "120_triangle.h"
+#include "121_best_time_to_buy_and_sell_stock.h"
 #include "136_single_number.h"
 #include "373_find_k_pairs_with_smallest_sums.h"
 #include "374_guess_number_higher_or_lower.h"
@@ -163,6 +165,33 @@ int main()
 #endif
     //////////////////////
     /**
+     * 110. Balanced Binary Tree
+     */
+#if 1
+    {
+        // [3,9,20,null,null,15,7]
+        TreeNode* tn1 = new TreeNode(3, new TreeNode(9, nullptr, nullptr), 
+                                        new TreeNode(20, new TreeNode(15, nullptr, nullptr), 
+                                                         new TreeNode(7, nullptr, nullptr)));
+        // [1,2,2,3,3,null,null,4,4]
+        TreeNode* tn2 = new TreeNode(1, new TreeNode(2, nullptr, nullptr), 
+                                        new TreeNode(2, new TreeNode(3, nullptr, nullptr), 
+                                                        new TreeNode(3, new TreeNode(4, nullptr, nullptr), 
+                                                                        new TreeNode(4, nullptr, nullptr))));
+        // []
+        TreeNode* tn3 = nullptr;
+
+        _110::Solution s{};
+        my_assert(true == s.isBalanced(tn1));
+        s.destroy(tn1);
+        my_assert(false == s.isBalanced(tn2));
+        s.destroy(tn2);
+        my_assert(true == s.isBalanced(tn3));
+        s.destroy(tn3);
+    }
+#endif
+    //////////////////////
+    /**
      * 120. Triangle
      */
 #if 1
@@ -181,12 +210,31 @@ int main()
                                           {1, -1, -3} };
         std::vector<std::vector<int>> l4{ };
 
-        _120::Solution s;
+        _120::Solution s{};
         my_assert(11 == s.minimumTotal(l0));
         my_assert(-10 == s.minimumTotal(l1));
         my_assert(11 == s.minimumTotal(l2));
         my_assert(-1 == s.minimumTotal(l3));
         my_assert(0 == s.minimumTotal(l4));
+    }
+#endif
+    //////////////////////
+    /**
+     * 121. Best Time to Buy and Sell Stock
+     */
+#if 1
+    {
+        _121::Solution s{};
+        std::vector<int> prices_1{ 7, 1, 5, 3, 6, 4 };
+        my_assert(5 == s.maxProfit(prices_1));
+        std::vector<int> prices_2{ 7, 6, 4, 3, 1 };
+        my_assert(0 == s.maxProfit(prices_2));
+        std::vector<int> prices_3{ 1, 2 };
+        my_assert(1 == s.maxProfit(prices_3));
+        std::vector<int> prices_4{ 2, 9, 1, 7, 4 };
+        my_assert(7 == s.maxProfit(prices_4));
+        std::vector<int> prices_5{ 2 };
+        my_assert(0 == s.maxProfit(prices_5));
     }
 #endif
     //////////////////////

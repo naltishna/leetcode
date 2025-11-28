@@ -18,7 +18,6 @@ ListNode* ListNodeHelper::createList(const std::vector<int>& vals) {
 void ListNodeHelper::freeList(ListNode* head) {
     while (head) {
         ListNode* temp = head;
-        //std::cout << "Node deleted " << temp->val << std::endl;
         head = head->next;
         delete temp;
     }

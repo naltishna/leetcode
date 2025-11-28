@@ -1,5 +1,5 @@
-#ifndef HELPER_HEADER_FILE_h
-#define HELPER_HEADER_FILE_h
+#ifndef LIST_NODE_HELPER_HEADER_FILE_h
+#define LIST_NODE_HELPER_HEADER_FILE_h
 
 #include "list_node.h"
 
