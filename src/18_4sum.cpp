@@ -4,6 +4,20 @@
 
 namespace _18 {
 
+    /*
+    * Sort the array to be able to apply a two-pointers approach.
+    * Outer loops iterate through elements of the array selecting the first two points of our potential quadruple.
+    * Inner logic using two pointers: left pointer starts right after the second chosen point, the right one begins at the end of the array.
+    * Check the sum of currently selected elements. If it matches the target, add this solution to the final result and move both pointers further skipping duplicate numbers.
+    * If the sum is greater than the target, shift the right pointer backward; otherwise, we advance the left pointer forward.
+    * 
+    * Complexity
+    * Time complexity:
+    * O(N^3)
+    * 
+    * Space complexity:
+    * O(N)
+    */
     std::vector<std::vector<int>> Solution::fourSum(std::vector<int>& nums, int target) {
         std::vector<std::vector<int>> quadruplets;
         size_t end = nums.size();
@@ -41,5 +55,4 @@ namespace _18 {
         }
         return quadruplets;
     }
-
 }

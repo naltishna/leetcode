@@ -8,6 +8,7 @@
 #include "utils.h"
 
 #include "2_add_two_numbers.h"
+#include "11_container_with_most_water.h"
 #include "18_4sum.h"
 #include "23_merge_k_sorted_lists.h"
 #include "56_merge_intervals.h"
@@ -55,6 +56,19 @@ int main()
         ListNodeHelper::freeList(l3_1);
         ListNodeHelper::freeList(l3_2);
         ListNodeHelper::freeList(temp);
+    }
+#endif
+    //////////////////////
+    /**
+     * 11. Container With Most Water
+     */
+#if 1
+    {
+        _11::Solution s{};
+        std::vector<int> height_1{ 1, 8, 6, 2, 5, 4, 8, 3, 7 };
+        my_assert(49 == s.maxArea(height_1));
+        std::vector<int> height_2{ 1, 1 };
+        my_assert(1 == s.maxArea(height_2));
     }
 #endif
     //////////////////////
