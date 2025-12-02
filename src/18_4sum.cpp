@@ -55,4 +55,5 @@ namespace _18 {
         }
         return quadruplets;
     }
+
 }

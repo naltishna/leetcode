@@ -21,8 +21,7 @@
 #include "480_sliding_window_median.h"
 #include "692_top_k_frequent_words.h"
 #include "704_binary_search.h"
-
-using namespace std;
+#include "763_partition_labels.h"
 
 int main()
 {
@@ -184,14 +183,14 @@ int main()
 #if 1
     {
         // [3,9,20,null,null,15,7]
-        TreeNode* tn1 = new TreeNode(3, new TreeNode(9, nullptr, nullptr), 
-                                        new TreeNode(20, new TreeNode(15, nullptr, nullptr), 
-                                                         new TreeNode(7, nullptr, nullptr)));
+        TreeNode* tn1 = new TreeNode(3, new TreeNode(9, nullptr, nullptr),
+            new TreeNode(20, new TreeNode(15, nullptr, nullptr),
+                new TreeNode(7, nullptr, nullptr)));
         // [1,2,2,3,3,null,null,4,4]
-        TreeNode* tn2 = new TreeNode(1, new TreeNode(2, nullptr, nullptr), 
-                                        new TreeNode(2, new TreeNode(3, nullptr, nullptr), 
-                                                        new TreeNode(3, new TreeNode(4, nullptr, nullptr), 
-                                                                        new TreeNode(4, nullptr, nullptr))));
+        TreeNode* tn2 = new TreeNode(1, new TreeNode(2, nullptr, nullptr),
+            new TreeNode(2, new TreeNode(3, nullptr, nullptr),
+                new TreeNode(3, new TreeNode(4, nullptr, nullptr),
+                    new TreeNode(4, nullptr, nullptr))));
         // []
         TreeNode* tn3 = nullptr;
 
@@ -408,8 +407,6 @@ int main()
     }
 
 #endif
-
-
     //////////////////////
     /**
      * 704. Binary Search
@@ -479,6 +476,28 @@ int main()
             auto end_time = get_current_time();
             print_elapsed_time(start_time, end_time, "_704_linear_search_ver");
         }
+    }
+#endif
+    //////////////////////
+    /**
+     * 763. Partition Labels
+     */
+#if 1
+    {
+        std::string s_1 = "ababcbacadefegdehijhklij";
+        std::string s_2 = "eccbbbbdec";
+        std::string s_3 = "eeeeeeeeee";
+        std::string s_4 = "abcdefgh";
+        std::string s_5 = "a";
+        std::string s_6 = "eaaaabaaec";
+
+        _763::Solution s{};
+        my_assert(3 == (s.partitionLabels(s_1)).size());
+        my_assert(1 == (s.partitionLabels(s_2)).size());
+        my_assert(1 == (s.partitionLabels(s_3)).size());
+        my_assert(8 == (s.partitionLabels(s_4)).size());
+        my_assert(1 == (s.partitionLabels(s_5)).size());
+        my_assert(2 == (s.partitionLabels(s_6)).size());
     }
 #endif
     //////////////////////

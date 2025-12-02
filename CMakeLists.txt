@@ -33,7 +33,8 @@ add_executable (leetcode
 "src/374_guess_number_higher_or_lower.cpp"
 "src/480_sliding_window_median.cpp"
 "src/692_top_k_frequent_words.cpp"
-"src/704_binary_search.cpp")
+"src/704_binary_search.cpp"
+"src/763_partition_labels.cpp")
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)
   set_property(TARGET leetcode PROPERTY CXX_STANDARD 20)

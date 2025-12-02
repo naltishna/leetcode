@@ -4,6 +4,21 @@
 
 namespace _56 {
 
+    /*
+    * The incoming intervals are initially sorted in ascending order by their starting point.
+    * This simplifies the process of merging neighboring intervals, as adjacent intervals become neighboring elements in the sorted list.
+    * After sorting, a single pass is performed over the list, starting from the second interval.
+    * The algorithm checks whether the current interval overlaps with the previous one.
+    * If yes, it merges them by expanding the boundaries of the current interval.
+    * If not, a new interval is added to the resulting list.
+    * 
+    * Complexity
+    * Time complexity:
+    * O(NlogN)
+    * 
+    * Space complexity:
+    * O(N)
+    */
     std::vector<std::vector<int>> Solution::merge(std::vector<std::vector<int>>& intervals) {
         if (intervals.empty() || intervals.size() == 1) {
             return intervals;
