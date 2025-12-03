@@ -50,13 +50,14 @@ std::string vectors_to_string(std::vector<std::vector<int>> vecs) {
 }
 
 /**
- * Vector of double to string.
+ * Vector of T to string.
  */
-std::string vector_to_string(std::vector<double> vec) {
+template <typename T>
+std::string vector_to_string(std::vector<T> vec) {
     std::stringstream ss;
     ss << "{";
     for (int i = 0; i < vec.size(); ++i) {
-        ss << std::fixed << std::setprecision(1) << vec[i];
+        ss << vec[i];
         if (i < vec.size() - 1) {
             ss << ", ";
         }
@@ -67,9 +68,9 @@ std::string vector_to_string(std::vector<double> vec) {
 }
 
 /**
- * Vector of string to string.
+ * Vector of double to string.
  */
-std::string vector_to_string(std::vector<std::string> vec) {
+std::string vector_to_string(std::vector<double> vec) {
     std::stringstream ss;
     ss << "{";
     for (int i = 0; i < vec.size(); ++i) {

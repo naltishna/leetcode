@@ -16,6 +16,7 @@
 #include "120_triangle.h"
 #include "121_best_time_to_buy_and_sell_stock.h"
 #include "136_single_number.h"
+#include "347_top_k_frequent_elements.h"
 #include "373_find_k_pairs_with_smallest_sums.h"
 #include "374_guess_number_higher_or_lower.h"
 #include "480_sliding_window_median.h"
@@ -264,6 +265,26 @@ int main()
         my_assert(1 == s.singleNumber(l1));
         my_assert(4 == s.singleNumber(l2));
         my_assert(1 == s.singleNumber(l3));
+    }
+
+#endif
+    //////////////////////
+    /**
+     * 347. Top K Frequent Elements
+     */
+#if 1
+    {
+        std::vector<int> elements_1 = { 1, 1, 1, 2, 2, 3 };
+        int k_1 = 2;
+        std::vector<int> elements_2 = { 1 };
+        int k_2 = 1;
+        std::vector<int> elements_3 = { 1, 2, 1, 2, 1, 2, 3, 1, 3, 2 };
+        int k_3 = 2;
+
+        _347::Solution s{};
+        my_assert("{1, 2}" == vector_to_string(s.topKFrequent(elements_1, k_1)));
+        my_assert("{1}" == vector_to_string(s.topKFrequent(elements_2, k_2)));
+        my_assert("{1, 2}" == vector_to_string(s.topKFrequent(elements_3, k_3)));
     }
 
 #endif

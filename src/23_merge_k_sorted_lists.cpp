@@ -18,7 +18,9 @@ namespace _23_priority_queue {
         std::priority_queue<ListNode*, std::vector<ListNode*>, decltype(cmp)> pq(cmp);
 
         for (auto node : lists) {
-            if (node) pq.push(node);
+            if (node) {
+                pq.push(node);
+            }
         }
 
         ListNode temp;

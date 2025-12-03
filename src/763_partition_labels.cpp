@@ -6,11 +6,11 @@ namespace _763 {
 
     /*
     * The algorithm uses a greedy strategy.
-    * 
+    *
     * Complexity
     * Time complexity:
     * O(N)
-    * 
+    *
     * Space complexity:
     * O(1)
     */
@@ -34,4 +34,5 @@ namespace _763 {
 
         return result;
     }
+
 }
