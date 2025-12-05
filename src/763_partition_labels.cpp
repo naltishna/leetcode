@@ -7,7 +7,6 @@ namespace _763 {
     /*
     * The algorithm uses a greedy strategy.
     *
-    * Complexity
     * Time complexity:
     * O(N)
     *

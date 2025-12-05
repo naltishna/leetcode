@@ -1,5 +1,4 @@
-﻿// leetcode.cpp : Defines the entry point for the application.
-//
+﻿// main.cpp : Defines the entry point for the application.
 
 #include <iostream>
 
@@ -16,6 +15,7 @@
 #include "120_triangle.h"
 #include "121_best_time_to_buy_and_sell_stock.h"
 #include "136_single_number.h"
+#include "309_best_time_to_buy_and_sell_stock_with_cooldown.h"
 #include "347_top_k_frequent_elements.h"
 #include "373_find_k_pairs_with_smallest_sums.h"
 #include "374_guess_number_higher_or_lower.h"
@@ -266,7 +266,24 @@ int main()
         my_assert(4 == s.singleNumber(l2));
         my_assert(1 == s.singleNumber(l3));
     }
+#endif
+    //////////////////////
+    /**
+     * 309. Best Time to Buy and Sell Stock with Cooldown
+     */
+#if 1
+    {
+        std::vector<int> prices_1{ 1, 2, 3, 0, 2 };
+        std::vector<int> prices_2{ 1 };
+        std::vector<int> prices_3{ 4, 3, 2, 10, 11, 0, 11 };
+        std::vector<int> prices_4{ 6, 1, 3, 2, 4, 7 };
 
+        _309::Solution s{};
+        my_assert(3 == s.maxProfit(prices_1));
+        my_assert(0 == s.maxProfit(prices_2));
+        my_assert(19 == s.maxProfit(prices_3));
+        my_assert(6 == s.maxProfit(prices_4));
+    }
 #endif
     //////////////////////
     /**
@@ -286,7 +303,6 @@ int main()
         my_assert("{1}" == vector_to_string(s.topKFrequent(elements_2, k_2)));
         my_assert("{1, 2}" == vector_to_string(s.topKFrequent(elements_3, k_3)));
     }
-
 #endif
     //////////////////////
     /**
@@ -395,7 +411,6 @@ int main()
             auto end_time = get_current_time();
             print_elapsed_time(start_time, end_time, "_480_v2");
         }
-
         {
             _480::Solution<_480_v3> s{};
             auto start_time = get_current_time();
@@ -418,7 +433,6 @@ int main()
     {
         std::vector<std::string> words_1 = { "i", "love", "leetcode", "i", "love", "coding" };
         int k_1 = 2;
-
         std::vector<std::string> words_2 = { "the", "day", "is", "sunny", "the", "the", "the", "sunny", "is", "is" };
         int k_2 = 4;
 
@@ -426,7 +440,6 @@ int main()
         my_assert("{i, love}" == vector_to_string(s.topKFrequent(words_1, k_1)));
         my_assert("{the, is, sunny, day}" == vector_to_string(s.topKFrequent(words_2, k_2)));
     }
-
 #endif
     //////////////////////
     /**
@@ -437,7 +450,6 @@ int main()
         std::vector<int> nums1 = { -1,0,3,5,9,12 };
         std::vector<int> nums2 = { 5 };
         std::vector<int> nums3;
-
         {
             auto start_time = get_current_time();
             _704_recursion::Solution s{};
@@ -452,7 +464,6 @@ int main()
             auto end_time = get_current_time();
             print_elapsed_time(start_time, end_time, "_704_recursion_ver");
         }
-
         {
             auto start_time = get_current_time();
             _704_STL::Solution s{};
@@ -467,7 +478,6 @@ int main()
             auto end_time = get_current_time();
             print_elapsed_time(start_time, end_time, "_704_STL_ver");
         }
-
         {
             auto start_time = get_current_time();
             _704_binary_search::Solution s{};
@@ -482,7 +492,6 @@ int main()
             auto end_time = get_current_time();
             print_elapsed_time(start_time, end_time, "_704_binary_search_ver");
         }
-
         {
             auto start_time = get_current_time();
             _704_linear_search::Solution s{};
