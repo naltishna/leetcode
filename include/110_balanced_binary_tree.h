@@ -33,10 +33,10 @@ namespace _110 {
 
     class Solution {
     public:
-        bool isBalanced(TreeNode* root);
-        void destroy(TreeNode* node);
+        bool isBalanced(RawPointer::TreeNode* root);
+        void destroy(RawPointer::TreeNode* node);
     private:
-        int checkBalance(TreeNode* node);
+        int checkBalance(RawPointer::TreeNode* node);
     };
 
 }

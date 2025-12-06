@@ -34,6 +34,7 @@ add_executable (leetcode
 "src/373_find_k_pairs_with_smallest_sums.cpp"
 "src/374_guess_number_higher_or_lower.cpp"
 "src/480_sliding_window_median.cpp"
+"src/653_two_sum_IV_input_is_a_BST.cpp"
 "src/692_top_k_frequent_words.cpp"
 "src/704_binary_search.cpp"
 "src/763_partition_labels.cpp")

@@ -1,6 +1,7 @@
 ﻿// main.cpp : Defines the entry point for the application.
 
 #include <iostream>
+#include <memory>
 
 #include "data.h"
 #include "list_node_helpers.h"
@@ -20,6 +21,7 @@
 #include "373_find_k_pairs_with_smallest_sums.h"
 #include "374_guess_number_higher_or_lower.h"
 #include "480_sliding_window_median.h"
+#include "653_two_sum_IV_input_is_a_BST.h"
 #include "692_top_k_frequent_words.h"
 #include "704_binary_search.h"
 #include "763_partition_labels.h"
@@ -184,16 +186,16 @@ int main()
 #if 1
     {
         // [3,9,20,null,null,15,7]
-        TreeNode* tn1 = new TreeNode(3, new TreeNode(9, nullptr, nullptr),
-            new TreeNode(20, new TreeNode(15, nullptr, nullptr),
-                new TreeNode(7, nullptr, nullptr)));
+        RawPointer::TreeNode* tn1 = new RawPointer::TreeNode(3, new RawPointer::TreeNode(9, nullptr, nullptr),
+            new RawPointer::TreeNode(20, new RawPointer::TreeNode(15, nullptr, nullptr),
+                new RawPointer::TreeNode(7, nullptr, nullptr)));
         // [1,2,2,3,3,null,null,4,4]
-        TreeNode* tn2 = new TreeNode(1, new TreeNode(2, nullptr, nullptr),
-            new TreeNode(2, new TreeNode(3, nullptr, nullptr),
-                new TreeNode(3, new TreeNode(4, nullptr, nullptr),
-                    new TreeNode(4, nullptr, nullptr))));
+        RawPointer::TreeNode* tn2 = new RawPointer::TreeNode(1, new RawPointer::TreeNode(2, nullptr, nullptr),
+            new RawPointer::TreeNode(2, new RawPointer::TreeNode(3, nullptr, nullptr),
+                new RawPointer::TreeNode(3, new RawPointer::TreeNode(4, nullptr, nullptr),
+                    new RawPointer::TreeNode(4, nullptr, nullptr))));
         // []
-        TreeNode* tn3 = nullptr;
+        RawPointer::TreeNode* tn3 = nullptr;
 
         _110::Solution s{};
         my_assert(true == s.isBalanced(tn1));
@@ -422,6 +424,48 @@ int main()
             my_assert("{8.0, 6.0, 8.0, 8.0, 5.0}" == vector_to_string(s.medianSlidingWindow(num_6, k_6)));
             auto end_time = get_current_time();
             print_elapsed_time(start_time, end_time, "_480_v3");
+        }
+    }
+#endif
+    //////////////////////
+    /**
+     * 653. Two Sum IV - Input is a BST
+     */
+#if 1
+    {
+        //root = [5,3,6,2,4,null,7]
+        auto tn1 = std::make_unique<SmartPointer::TreeNode>(
+            5, 
+            std::make_unique<SmartPointer::TreeNode>(
+                3, 
+                std::make_unique<SmartPointer::TreeNode>(2),
+                std::make_unique<SmartPointer::TreeNode>(4)),
+            std::make_unique<SmartPointer::TreeNode>(
+                6, 
+                nullptr, 
+                std::make_unique<SmartPointer::TreeNode>(7)));
+
+        // root = [2,1,3]
+        auto tn2 = std::make_unique<SmartPointer::TreeNode>(
+            2,
+            std::make_unique<SmartPointer::TreeNode>(
+                1),
+            std::make_unique<SmartPointer::TreeNode>(
+                3));
+ 
+        {
+            _653_BFS::Solution s{};
+            my_assert(false == s.findTarget(tn1.get(), 28));
+            my_assert(true == s.findTarget(tn1.get(), 9));
+            my_assert(true == s.findTarget(tn1.get(), 11));
+            my_assert(true == s.findTarget(tn2.get(), 3));
+        }
+        {
+            _653_memory_optimal::Solution s{};
+            my_assert(false == s.findTarget(tn1.get(), 28));
+            my_assert(true == s.findTarget(tn1.get(), 9));
+            my_assert(true == s.findTarget(tn1.get(), 11));
+            my_assert(true == s.findTarget(tn2.get(), 3));
         }
     }
 #endif

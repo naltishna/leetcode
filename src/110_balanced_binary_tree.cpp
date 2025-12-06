@@ -18,14 +18,14 @@ namespace _110 {
     * O(H), height H is equal to the number of nodes N
     *
     */
-    bool Solution::isBalanced(TreeNode* root) {
+    bool Solution::isBalanced(RawPointer::TreeNode* root) {
         return checkBalance(root) >= 0;
     }
 
     /*
     * Returns a tree height.
     */
-    int Solution::checkBalance(TreeNode* node) {
+    int Solution::checkBalance(RawPointer::TreeNode* node) {
         if (!node) {
             return 0;
         }
@@ -44,7 +44,10 @@ namespace _110 {
         return 1 + std::max(leftHeight, rightHeight);
     }
 
-    void Solution::destroy(TreeNode* node) {
+    /*
+    * Recursively removes all nodes in a subtree.
+    */
+    void Solution::destroy(RawPointer::TreeNode* node) {
         if (node) {
             destroy(node->left);
             destroy(node->right);
