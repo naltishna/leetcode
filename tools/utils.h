@@ -55,14 +55,14 @@ std::string vectors_to_string(std::vector<std::vector<int>> vecs) {
 template <typename T>
 std::string vector_to_string(std::vector<T> vec) {
     std::stringstream ss;
-    ss << "{";
+    ss << "{ ";
     for (int i = 0; i < vec.size(); ++i) {
         ss << vec[i];
         if (i < vec.size() - 1) {
             ss << ", ";
         }
     }
-    ss << "}";
+    ss << " }";
 
     return ss.str();
 }

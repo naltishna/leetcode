@@ -23,9 +23,11 @@ root is guaranteed to be a valid binary search tree.
 #pragma once
 
 #include "tree_node.h"
+#include <vector>
 
-namespace _653_BFS {
+namespace _653 {
 
+    template<typename Version>
     class Solution {
     public:
         bool findTarget(SmartPointer::TreeNode* root, int k);
@@ -33,11 +35,17 @@ namespace _653_BFS {
 
 }
 
-namespace _653_memory_optimal {
+struct  _653_BFS_ver {};
+struct  _653_memory_optimal_ver {};
+
+namespace _653_two_ptr {
 
     class Solution {
     public:
         bool findTarget(SmartPointer::TreeNode* root, int k);
+
+    private:
+        void inorder(SmartPointer::TreeNode* node, std::vector<int>& sorted);
     };
 
 }

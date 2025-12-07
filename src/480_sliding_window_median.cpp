@@ -6,13 +6,13 @@
 namespace _480 {
 
     /**
-    * std::sort k elements approach
+    * std::sort k elements approach.
     *
     * Time complexity:
     * O(n × k log k), where n=nums.size()
     *
     * Space complexity:
-        O(K)
+    * O(K)
     */
     template<>
     std::vector<double> Solution<_480_v1>::medianSlidingWindow(std::vector<int>& nums, int k) {
@@ -40,13 +40,13 @@ namespace _480 {
     }
 
     /**
-    * std::nth_element approach
+    * std::nth_element approach.
     *
     * Time complexity:
     * O(n × k), where n=nums.size()
     *
     * Space complexity:
-        O(K)
+    * O(K)
     */
     template<>
     std::vector<double> Solution<_480_v2>::medianSlidingWindow(std::vector<int>& nums, int k) {

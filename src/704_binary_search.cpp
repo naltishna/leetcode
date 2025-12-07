@@ -1,7 +1,15 @@
 #include "704_binary_search.h"
 
 namespace _704_recursion {
-
+    /*
+    * It's the same as a regular binary search. It uses a little more memory due to the call stack, but it's just as simple, fast, and more readable.
+    *
+    * Time complexity:
+    * O(log n)
+    * 
+    * Space complexity:
+    * O(log n)
+    */
     int Solution::search(const std::vector<int>& nums, int target) {
         return recursiveSearch(nums, target, 0, nums.size() - 1);
     }
@@ -27,6 +35,15 @@ namespace _704_recursion {
 
 namespace _704_STL {
 
+    /*
+    * std::lower_bound performs a binary search under the hood.
+    * 
+    * Time complexity:
+    * O(Log n)
+    * 
+    * Space complexity:
+    * O(1)
+    */
     int Solution::search(const std::vector<int>& nums, int target) {
         auto it = std::lower_bound(nums.begin(), nums.end(), target);
         if (it != nums.end() && *it == target) return it - nums.begin();
@@ -37,6 +54,15 @@ namespace _704_STL {
 
 namespace _704_binary_search {
 
+    /*
+    * The regular binary search.
+    *
+    * Time complexity:
+    * O(Log N)
+    * 
+    * Space complexity:
+    * O(1)
+    */
     // const added to make possible using of {} in my_assert(-1 == s.search({}, 5));
     int Solution::search(const std::vector<int>& nums, int target) {
         int left = 0;

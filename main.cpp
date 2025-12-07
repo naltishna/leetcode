@@ -12,6 +12,7 @@
 #include "18_4sum.h"
 #include "23_merge_k_sorted_lists.h"
 #include "56_merge_intervals.h"
+#include "88_merge_sorted_array.h"
 #include "110_balanced_binary_tree.h"
 #include "120_triangle.h"
 #include "121_best_time_to_buy_and_sell_stock.h"
@@ -181,6 +182,28 @@ int main()
 #endif
     //////////////////////
     /**
+     * 88. Merge Sorted Array
+     */
+#if 1
+    {
+        std::vector<int> nums0_1{ 1, 2, 3, 0, 0, 0 };
+        std::vector<int> nums0_2{ 2, 5, 6 };
+        std::vector<int> nums1_1{ 1 };
+        std::vector<int> nums1_2{ };
+        std::vector<int> nums2_1{ 0 };
+        std::vector<int> nums2_2{ 1 };
+
+        _88::Solution s{};
+        s.merge(nums0_1, 3, nums0_2, 3); //Output: [1,2,2,3,5,6]
+        my_assert("{ 1, 2, 2, 3, 5, 6 }" == vector_to_string(nums0_1));
+        s.merge(nums1_1, 1, nums1_2, 0); //Output: [1]
+        my_assert("{ 1 }" == vector_to_string(nums1_1));
+        s.merge(nums2_1, 0, nums2_2, 1); //Output: [1]
+        my_assert("{ 1 }" == vector_to_string(nums2_1));
+    }
+#endif
+    //////////////////////
+    /**
      * 110. Balanced Binary Tree
      */
 #if 1
@@ -301,9 +324,9 @@ int main()
         int k_3 = 2;
 
         _347::Solution s{};
-        my_assert("{1, 2}" == vector_to_string(s.topKFrequent(elements_1, k_1)));
-        my_assert("{1}" == vector_to_string(s.topKFrequent(elements_2, k_2)));
-        my_assert("{1, 2}" == vector_to_string(s.topKFrequent(elements_3, k_3)));
+        my_assert("{ 1, 2 }" == vector_to_string(s.topKFrequent(elements_1, k_1)));
+        my_assert("{ 1 }" == vector_to_string(s.topKFrequent(elements_2, k_2)));
+        my_assert("{ 1, 2 }" == vector_to_string(s.topKFrequent(elements_3, k_3)));
     }
 #endif
     //////////////////////
@@ -435,14 +458,14 @@ int main()
     {
         //root = [5,3,6,2,4,null,7]
         auto tn1 = std::make_unique<SmartPointer::TreeNode>(
-            5, 
+            5,
             std::make_unique<SmartPointer::TreeNode>(
-                3, 
+                3,
                 std::make_unique<SmartPointer::TreeNode>(2),
                 std::make_unique<SmartPointer::TreeNode>(4)),
             std::make_unique<SmartPointer::TreeNode>(
-                6, 
-                nullptr, 
+                6,
+                nullptr,
                 std::make_unique<SmartPointer::TreeNode>(7)));
 
         // root = [2,1,3]
@@ -452,16 +475,23 @@ int main()
                 1),
             std::make_unique<SmartPointer::TreeNode>(
                 3));
- 
+
         {
-            _653_BFS::Solution s{};
+            _653_two_ptr::Solution s{};
+            my_assert(true == s.findTarget(tn1.get(), 9));
+            my_assert(true == s.findTarget(tn1.get(), 11));
+            my_assert(false == s.findTarget(tn1.get(), 28));
+            my_assert(true == s.findTarget(tn2.get(), 3));
+        }
+        {
+            _653::Solution<_653_BFS_ver> s{};
             my_assert(false == s.findTarget(tn1.get(), 28));
             my_assert(true == s.findTarget(tn1.get(), 9));
             my_assert(true == s.findTarget(tn1.get(), 11));
             my_assert(true == s.findTarget(tn2.get(), 3));
         }
         {
-            _653_memory_optimal::Solution s{};
+            _653::Solution<_653_memory_optimal_ver> s{};
             my_assert(false == s.findTarget(tn1.get(), 28));
             my_assert(true == s.findTarget(tn1.get(), 9));
             my_assert(true == s.findTarget(tn1.get(), 11));
@@ -481,8 +511,8 @@ int main()
         int k_2 = 4;
 
         _692::Solution s{};
-        my_assert("{i, love}" == vector_to_string(s.topKFrequent(words_1, k_1)));
-        my_assert("{the, is, sunny, day}" == vector_to_string(s.topKFrequent(words_2, k_2)));
+        my_assert("{ i, love }" == vector_to_string(s.topKFrequent(words_1, k_1)));
+        my_assert("{ the, is, sunny, day }" == vector_to_string(s.topKFrequent(words_2, k_2)));
     }
 #endif
     //////////////////////

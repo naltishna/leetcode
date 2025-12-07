@@ -67,11 +67,10 @@ namespace _374 {
         StubPredefinedAPI pdAPI;
     public:
         int guessNumber(int n);
-
         void setPick(int pick);
-
         int guess(int num);
     };
+
 }
 
 #endif

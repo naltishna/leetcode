@@ -4,6 +4,7 @@
 #include <queue>
 
 namespace _692 {
+
     /**
     * Utilizes a priority_queue for efficient retrieval of top elements.
     * Handles ties correctly via lexicographic comparison.
@@ -23,7 +24,7 @@ namespace _692 {
         }
 
         std::map<std::string, int> word_count;
-        for (auto word : words) {
+        for (auto& word : words) {
             word_count[word]++;
         }
 
@@ -38,7 +39,7 @@ namespace _692 {
                             std::vector<std::pair<std::string, int>>,
                             decltype(cmp)> pq(word_count.begin(), word_count.end());
         while (k-- > 0 && !pq.empty()) {
-            auto top = pq.top();
+            auto& top = pq.top();
             result.push_back(top.first);
             pq.pop();
         }

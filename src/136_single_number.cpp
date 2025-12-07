@@ -5,7 +5,15 @@
 namespace _136 {
 
 #ifdef O_N_136
-    //O(N)
+    /*
+    * XOR approach.
+    * 
+    * Time complexity:
+    * O(N)
+    * 
+    * Space complexity:
+    * O(1)
+    */
     int Solution::singleNumber(std::vector<int>& nums) {
         int result = 0;
         for (int num : nums) {
@@ -30,4 +38,5 @@ namespace _136 {
         return target;
     }
 #endif
+
 }

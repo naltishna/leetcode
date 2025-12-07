@@ -54,11 +54,11 @@ namespace _373 {
     /**
     * std::tuple<int, int, int>
     *
-    Time complexity:
-        O(klogk)), k is the number of pairs we are looking for
-
-    Space complexity:
-        O(min(k))
+    * Time complexity:
+    * O(klogk)), k is the number of pairs we are looking for
+    * 
+    * Space complexity:
+    * O(min(k))
     */
     template<>
     std::vector<std::vector<int>> Solution<v2>::kSmallestPairs(std::vector<int>& nums1, std::vector<int>& nums2, int k) {
@@ -91,11 +91,11 @@ namespace _373 {
     /**
     * std::pair<int, std::pair<int, int>>
     *
-    Time complexity:
-        O(klog min(k,n)), k is the number of pairs we are looking for; n - nums1 size
-
-    Space complexity:
-        O(min(k,n))
+    * Time complexity:
+    * O(klog min(k,n)), k is the number of pairs we are looking for; n - nums1 size
+    * 
+    * Space complexity:
+    * O(min(k,n))
     */
     template<>
     std::vector<std::vector<int>> Solution<v3>::kSmallestPairs(std::vector<int>& nums1, std::vector<int>& nums2, int k) {

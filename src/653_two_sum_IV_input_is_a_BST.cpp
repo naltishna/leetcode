@@ -4,20 +4,21 @@
 #include <unordered_set>
 #include <queue>
 
-namespace _653_BFS {
+namespace _653 {
 
     /*
     * Breadth-First Search (BFS) and HashSet — O(n) time, O(n) memory.
     * BFS guarantees that each node is processed efficiently without visiting it multiple times.
     * Best for general use — works for any binary tree.
-    * 
+    *
     * Time complexity:
     * O(N)
-    * 
+    *
     * Space complexity:
     * O(N)
     */
-    bool Solution::findTarget(SmartPointer::TreeNode* root, int k) {
+    template<>
+    bool Solution<_653_BFS_ver>::findTarget(SmartPointer::TreeNode* root, int k) {
         std::unordered_set<int> keep;
         std::queue<SmartPointer::TreeNode*> q;
 
@@ -39,20 +40,18 @@ namespace _653_BFS {
 
         return false;
     }
-}
-
-namespace _653_memory_optimal {
 
     /*
     * The most memory-optimal solution for BST.
-    * 
+    *
     * Time complexity:
     * O(N)
     *
     * Space complexity:
     * O(N)
     */
-    bool Solution::findTarget(SmartPointer::TreeNode* root, int k) {
+    template<>
+    bool Solution<_653_memory_optimal_ver>::findTarget(SmartPointer::TreeNode* root, int k) {
         if (!root) {
             return false;
         }
@@ -106,6 +105,46 @@ namespace _653_memory_optimal {
         }
 
         return false;
+    }
+
+}
+
+namespace _653_two_ptr {
+
+    /*
+    * Two pointers with in-order traversal (for BST) — O(n) time, O(n) memory.
+    * Best for BST — uses the sorted property.
+    */
+    bool Solution::findTarget(SmartPointer::TreeNode* root, int k) {
+        std::vector<int> sorted;
+        inorder(root, sorted);
+
+        int left = 0, right = sorted.size() - 1;
+
+        while (left < right) {
+            int sum = sorted[left] + sorted[right];
+            if (sum == k) {
+                return true;
+            }
+            if (sum < k) {
+                left++;
+            }
+            else {
+                right--;
+            }
+        }
+
+        return false;
+    }
+
+    void Solution::inorder(SmartPointer::TreeNode* node, std::vector<int>& sorted) {
+        if (!node) {
+            return;
+        }
+
+        inorder(node->left.get(), sorted);
+        sorted.push_back(node->val);
+        inorder(node->right.get(), sorted);
     }
 
 }
