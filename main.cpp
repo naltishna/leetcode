@@ -11,6 +11,7 @@
 #include "11_container_with_most_water.h"
 #include "18_4sum.h"
 #include "23_merge_k_sorted_lists.h"
+#include "27_remove_element.h"
 #include "56_merge_intervals.h"
 #include "88_merge_sorted_array.h"
 #include "110_balanced_binary_tree.h"
@@ -67,10 +68,11 @@ int main()
      */
 #if 1
     {
-        _11::Solution s{};
         std::vector<int> height_1{ 1, 8, 6, 2, 5, 4, 8, 3, 7 };
-        my_assert(49 == s.maxArea(height_1));
         std::vector<int> height_2{ 1, 1 };
+
+        _11::Solution s{};
+        my_assert(49 == s.maxArea(height_1));
         my_assert(1 == s.maxArea(height_2));
     }
 #endif
@@ -158,6 +160,29 @@ int main()
             std::vector<ListNode*> single_empty_list = { nullptr };
             result = s.mergeKLists(single_empty_list);
             ListNodeHelper::freeList(result);
+        }
+    }
+#endif
+    //////////////////////
+    /**
+     * 27. Remove Element
+     */
+#if 1
+    {
+        std::vector<int> nums_1{ 3, 2, 2, 3 };
+        int val_1 = 3;
+        std::vector<int> nums_2{ 0, 1, 2, 2, 3, 0, 4, 2 };
+        int val_2 = 2;
+
+        {
+            _27::Solution<_27_v1> s{};
+            my_assert(2 == s.removeElement(nums_1, val_1)); // Output: 2, nums = [2,2,_,_]
+            my_assert(5 == s.removeElement(nums_2, val_2)); // Output: 5, nums = [0,1,4,0,3,_,_,_]
+        }
+        {
+            _27::Solution<_27_v2> s{};
+            my_assert(2 == s.removeElement(nums_1, val_1)); // Output: 2, nums = [2,2,_,_]
+            my_assert(5 == s.removeElement(nums_2, val_2)); // Output: 5, nums = [0,1,4,0,3,_,_,_]
         }
     }
 #endif
