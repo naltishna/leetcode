@@ -6,7 +6,8 @@ public:
         stock_bought(INT_MIN), // INT_MIN, since the purchase requires costs
         stock_sold(0),         // 0, since without any trades the profit is 0
         stock_cooldown(0)      // 0, since we can simply do nothing
-    {}
+    {
+    }
 
     /* Update states based on the current price. */
     void set_state(int price) {

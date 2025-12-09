@@ -3,7 +3,7 @@
 
 /**
  * Definition for singly-linked list.
- * 
+ *
  * See tasks 2, 23.
  */
 struct ListNode {

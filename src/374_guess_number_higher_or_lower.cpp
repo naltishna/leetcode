@@ -6,13 +6,13 @@ namespace _374 {
     /*
     * Classical binary search using an iterative approach.
     * Instead of calling a function again and again (recursion), the algorithm gradually updates values within the cycle, moving step-by-step towards problem resolution.
-    * 
+    *
     * The operation of bitwise right shift by one position uses to get half the distance between the upper and lower bounds of the range.
     * It is equivalent to integer division by 2. Bit-shift operations execute much faster at the processor level compared to arithmetic division.
-    * 
+    *
     * Time complexity:
     * O(logN)
-    * 
+    *
     * Space complexity:
     * O(1)
     */

@@ -11,11 +11,11 @@ namespace _56 {
     * The algorithm checks whether the current interval overlaps with the previous one.
     * If yes, it merges them by expanding the boundaries of the current interval.
     * If not, a new interval is added to the resulting list.
-    * 
+    *
     * Complexity
     * Time complexity:
     * O(NlogN)
-    * 
+    *
     * Space complexity:
     * O(N)
     */

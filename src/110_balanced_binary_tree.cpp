@@ -6,7 +6,7 @@
 namespace _110 {
 
     /*
-    * The algorithm checks whether a binary tree is balanced by recursively passing each node. 
+    * The algorithm checks whether a binary tree is balanced by recursively passing each node.
     * For every node, it calculates the heights of its left and right subtrees and compares them.
     * If the difference in their heights exceeds one, the tree is considered unbalanced.
 

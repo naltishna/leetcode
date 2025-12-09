@@ -6,7 +6,7 @@ namespace _704_recursion {
     *
     * Time complexity:
     * O(log n)
-    * 
+    *
     * Space complexity:
     * O(log n)
     */
@@ -37,10 +37,10 @@ namespace _704_STL {
 
     /*
     * std::lower_bound performs a binary search under the hood.
-    * 
+    *
     * Time complexity:
     * O(Log n)
-    * 
+    *
     * Space complexity:
     * O(1)
     */
@@ -59,7 +59,7 @@ namespace _704_binary_search {
     *
     * Time complexity:
     * O(Log N)
-    * 
+    *
     * Space complexity:
     * O(1)
     */

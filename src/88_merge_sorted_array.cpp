@@ -7,10 +7,10 @@ namespace _88 {
     /*
     * The algorithm iterates through two sorted vectors, nums1 and nums2, starting from the end of each array, and selects the larger value, placing it at the end of nums1.
     * This allows for the efficient merging of two sorted arrays directly within the first array, without requiring additional memory.
-    * 
+    *
     * Time complexity:
     * O(M+N)
-    * 
+    *
     * Space complexity:
     * O(1)
     */

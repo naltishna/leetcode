@@ -1,8 +1,8 @@
 /**
 * https://leetcode.com/problems/balanced-binary-tree/
-* 
+*
 * 110. Balanced Binary Tree
-* 
+*
 * Given a binary tree, determine if it is height-balanced.
 A height-balanced binary tree is a binary tree in which the depth of the two subtrees of every node never differs by more than one.
 
@@ -21,7 +21,7 @@ Output: true
 Constraints:
 The number of nodes in the tree is in the range [0, 5000].
 -10^4 <= Node.val <= 10^4
-* 
+*
 */
 
 #ifndef _110_HEADER_FILE_h

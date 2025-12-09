@@ -11,6 +11,7 @@
 #include "11_container_with_most_water.h"
 #include "18_4sum.h"
 #include "23_merge_k_sorted_lists.h"
+#include "26_remove_duplicates_from_sorted_array.h"
 #include "27_remove_element.h"
 #include "56_merge_intervals.h"
 #include "88_merge_sorted_array.h"
@@ -160,6 +161,30 @@ int main()
             std::vector<ListNode*> single_empty_list = { nullptr };
             result = s.mergeKLists(single_empty_list);
             ListNodeHelper::freeList(result);
+        }
+    }
+#endif
+    //////////////////////
+    /**
+     * 26. Remove Duplicates from Sorted Array
+     */
+#if 1
+    {
+        {
+            std::vector<int> nums_1{ 1, 1, 2 };
+            std::vector<int> nums_2{ 0, 0, 1, 1, 1, 2, 2, 3, 3, 4 };
+
+            _26::Solution<_26_v1> s{};
+            my_assert(2 == s.removeDuplicates(nums_1)); // Output: 2, nums = [1,2,_]
+            my_assert(5 == s.removeDuplicates(nums_2)); // Output: 5, nums = [0,1,2,3,4,_,_,_,_,_]
+        }
+        {
+            std::vector<int> nums_1{ 1, 1, 2 };
+            std::vector<int> nums_2{ 0, 0, 1, 1, 1, 2, 2, 3, 3, 4 };
+
+            _26::Solution<_26_v2> s{};
+            my_assert(2 == s.removeDuplicates(nums_1)); // Output: 2, nums = [1,2,_]
+            my_assert(5 == s.removeDuplicates(nums_2)); // Output: 5, nums = [0,1,2,3,4,_,_,_,_,_]
         }
     }
 #endif

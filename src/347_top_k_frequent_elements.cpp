@@ -7,11 +7,11 @@ namespace _347 {
 
     /*
     * Solid and common approach to solve the problem.
-    * 
+    *
     * Complexity
     * Time complexity:
     * O(N + Ulog(U)), where N is the length of the input array, and U is the number of unique elements.
-    * 
+    *
     * Space complexity:
     * O(U + K)
     */

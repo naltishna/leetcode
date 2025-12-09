@@ -9,10 +9,10 @@ namespace _692 {
     * Utilizes a priority_queue for efficient retrieval of top elements.
     * Handles ties correctly via lexicographic comparison.
     * Performs well even for large datasets due to logarithmic operations (the map internally maintains a balanced binary search tree (Red-Black Tree).
-    * 
+    *
     * - Time complexity:
     * O(k log m), where m - is unique words
-    * 
+    *
     * - Space complexity:
     * O(m)
     */
@@ -36,8 +36,8 @@ namespace _692 {
             };
 
         std::priority_queue<std::pair<std::string, int>,
-                            std::vector<std::pair<std::string, int>>,
-                            decltype(cmp)> pq(word_count.begin(), word_count.end());
+            std::vector<std::pair<std::string, int>>,
+            decltype(cmp)> pq(word_count.begin(), word_count.end());
         while (k-- > 0 && !pq.empty()) {
             auto& top = pq.top();
             result.push_back(top.first);

@@ -56,7 +56,7 @@ namespace _373 {
     *
     * Time complexity:
     * O(klogk)), k is the number of pairs we are looking for
-    * 
+    *
     * Space complexity:
     * O(min(k))
     */
@@ -93,7 +93,7 @@ namespace _373 {
     *
     * Time complexity:
     * O(klog min(k,n)), k is the number of pairs we are looking for; n - nums1 size
-    * 
+    *
     * Space complexity:
     * O(min(k,n))
     */

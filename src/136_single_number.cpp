@@ -7,10 +7,10 @@ namespace _136 {
 #ifdef O_N_136
     /*
     * XOR approach.
-    * 
+    *
     * Time complexity:
     * O(N)
-    * 
+    *
     * Space complexity:
     * O(1)
     */

@@ -24,6 +24,7 @@ add_executable (leetcode
 "src/11_container_with_most_water.cpp"
 "src/18_4sum.cpp" 
 "src/23_merge_k_sorted_lists.cpp"
+"src/26_remove_duplicates_from_sorted_array.cpp"
 "src/27_remove_element.cpp"
 "src/56_merge_intervals.cpp"
 "src/88_merge_sorted_array.cpp"

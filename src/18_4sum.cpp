@@ -10,11 +10,11 @@ namespace _18 {
     * Inner logic using two pointers: left pointer starts right after the second chosen point, the right one begins at the end of the array.
     * Check the sum of currently selected elements. If it matches the target, add this solution to the final result and move both pointers further skipping duplicate numbers.
     * If the sum is greater than the target, shift the right pointer backward; otherwise, we advance the left pointer forward.
-    * 
+    *
     * Complexity
     * Time complexity:
     * O(N^3)
-    * 
+    *
     * Space complexity:
     * O(N)
     */
