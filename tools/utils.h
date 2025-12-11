@@ -7,7 +7,7 @@
 #include <stdexcept>
 #include <cassert>
 
-#define my_assert(expr) \
+#define custom_assert(expr) \
     do { \
         if (!(expr)) { \
             std::cerr << "Assertion failed: " << #expr << ", file " << __FILE__ << ", line " << __LINE__ << std::endl; \
