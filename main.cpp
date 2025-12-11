@@ -237,13 +237,19 @@ int main()
     /**
      * 80. Remove Duplicates from Sorted Array II
      */
-#if 0
+#if 1
     {
-        std::vector<int> nums_1{ 1, 1, 1, 2, 2, 3 };
-        std::vector<int> nums_2{ 0, 0, 1, 1, 1, 1, 2, 3, 3 };
-
         {
-            _80::Solution s{};
+            std::vector<int> nums_1{ 1, 1, 1, 2, 2, 3 };
+            std::vector<int> nums_2{ 0, 0, 1, 1, 1, 1, 2, 3, 3 };
+            _80::Solution<_80_v1> s{};
+            custom_assert(5 == s.removeDuplicates(nums_1)); // Output: 5, nums = [1,1,2,2,3,_]
+            custom_assert(7 == s.removeDuplicates(nums_2)); // Output: 7, nums = [0,0,1,1,2,3,3,_,_]
+        }
+        {
+            std::vector<int> nums_1{ 1, 1, 1, 2, 2, 3 };
+            std::vector<int> nums_2{ 0, 0, 1, 1, 1, 1, 2, 3, 3 };
+            _80::Solution<_80_v2> s{};
             custom_assert(5 == s.removeDuplicates(nums_1)); // Output: 5, nums = [1,1,2,2,3,_]
             custom_assert(7 == s.removeDuplicates(nums_2)); // Output: 7, nums = [0,0,1,1,2,3,3,_,_]
         }
@@ -449,7 +455,7 @@ int main()
             s.rotate(nums1, k1);
             custom_assert("{ 5, 6, 7, 1, 2, 3, 4 }" == vector_to_string(nums1));
             s.rotate(nums2, k2);
-            //custom_assert("{ 3, 99, -1, -100 }" == vector_to_string(nums2));
+            custom_assert("{ 3, 99, -1, -100 }" == vector_to_string(nums2));
         }
     }
 #endif

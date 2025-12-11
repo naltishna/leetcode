@@ -50,9 +50,13 @@ nums is sorted in non-decreasing order.
 
 namespace _80 {
 
+    template<class V>
     class Solution {
     public:
         int removeDuplicates(std::vector<int>& nums);
     };
 
 }
+
+struct _80_v1 {};
+struct _80_v2 {};
