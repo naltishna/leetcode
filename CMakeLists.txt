@@ -32,6 +32,7 @@ add_executable (leetcode
 "src/110_balanced_binary_tree.cpp"
 "src/120_triangle.cpp"
 "src/121_best_time_to_buy_and_sell_stock.cpp"
+"src/122_best_time_to_buy_and_sell_stock_II.cpp"
 "src/136_single_number.cpp"
 "src/169_majority_element.cpp"
 "src/189_rotate_array.cpp"

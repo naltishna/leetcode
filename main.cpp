@@ -19,6 +19,7 @@
 #include "110_balanced_binary_tree.h"
 #include "120_triangle.h"
 #include "121_best_time_to_buy_and_sell_stock.h"
+#include "122_best_time_to_buy_and_sell_stock_II.h"
 #include "136_single_number.h"
 #include "169_majority_element.h"
 #include "189_rotate_array.h"
@@ -349,6 +350,22 @@ int main()
         custom_assert(7 == s.maxProfit(prices_4));
         std::vector<int> prices_5{ 2 };
         custom_assert(0 == s.maxProfit(prices_5));
+    }
+#endif
+    //////////////////////
+    /**
+     * 122. Best Time to Buy and Sell Stock II
+     */
+#if 1
+    {
+        std::vector<int> prices_1{ 7, 1, 5, 3, 6, 4 };
+        std::vector<int> prices_2{ 1, 2, 3, 4, 5 };
+        std::vector<int> prices_3{ 7, 6, 4, 3, 1 };
+
+        _122::Solution s{};
+        custom_assert(7 == s.maxProfit(prices_1));
+        custom_assert(4 == s.maxProfit(prices_2));
+        custom_assert(0 == s.maxProfit(prices_3));
     }
 #endif
     //////////////////////
