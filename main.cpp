@@ -13,6 +13,7 @@
 #include "23_merge_k_sorted_lists.h"
 #include "26_remove_duplicates_from_sorted_array.h"
 #include "27_remove_element.h"
+#include "55_jump_game.h"
 #include "56_merge_intervals.h"
 #include "80_remove_duplicates_from_sorted_array_II.h"
 #include "88_merge_sorted_array.h"
@@ -213,6 +214,26 @@ int main()
             _27::Solution<_27_v2> s{};
             custom_assert(2 == s.removeElement(nums_1, val_1)); // Output: 2, nums = [2,2,_,_]
             custom_assert(5 == s.removeElement(nums_2, val_2)); // Output: 5, nums = [0,1,4,0,3,_,_,_]
+        }
+    }
+#endif
+    //////////////////////
+    /**
+     * 55. Jump Game
+     */
+#if 1
+    {
+        std::vector<int> nums_1{ 2, 3, 1, 1, 4 };
+        std::vector<int> nums_2{ 3, 2, 1, 0, 4 };
+        std::vector<int> nums_3{ 1 };
+        std::vector<int> nums_4{ 1, 2 };
+
+        {
+            _55::Solution s{};
+            custom_assert(true == s.canJump(nums_1));
+            custom_assert(false == s.canJump(nums_2));
+            custom_assert(true == s.canJump(nums_3));
+            custom_assert(true == s.canJump(nums_4));
         }
     }
 #endif

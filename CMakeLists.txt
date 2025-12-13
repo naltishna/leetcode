@@ -26,6 +26,7 @@ add_executable (leetcode
 "src/23_merge_k_sorted_lists.cpp"
 "src/26_remove_duplicates_from_sorted_array.cpp"
 "src/27_remove_element.cpp"
+"src/55_jump_game.cpp"
 "src/56_merge_intervals.cpp"
 "src/80_remove_duplicates_from_sorted_array_II.cpp"
 "src/88_merge_sorted_array.cpp"
@@ -45,7 +46,8 @@ add_executable (leetcode
 "src/653_two_sum_IV_input_is_a_BST.cpp"
 "src/692_top_k_frequent_words.cpp"
 "src/704_binary_search.cpp"
-"src/763_partition_labels.cpp")
+"src/763_partition_labels.cpp"
+"src/1114_print_in_order.cpp")
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)
   set_property(TARGET leetcode PROPERTY CXX_STANDARD 20)
