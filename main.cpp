@@ -16,6 +16,7 @@
 #include "56_merge_intervals.h"
 #include "80_remove_duplicates_from_sorted_array_II.h"
 #include "88_merge_sorted_array.h"
+#include "101_symmetric_tree.h"
 #include "110_balanced_binary_tree.h"
 #include "120_triangle.h"
 #include "121_best_time_to_buy_and_sell_stock.h"
@@ -276,6 +277,61 @@ int main()
         custom_assert("{ 1 }" == vector_to_string(nums1_1));
         s.merge(nums2_1, 0, nums2_2, 1); //Output: [1]
         custom_assert("{ 1 }" == vector_to_string(nums2_1));
+    }
+#endif
+    //////////////////////
+    /**
+     * 101. Symmetric Tree
+     */
+#if 1
+    {
+        //root = [1,2,2,3,4,4,3]
+        auto tn1 = std::make_unique<SmartPointer::TreeNode>(
+            1,
+            std::make_unique<SmartPointer::TreeNode>(
+                2,
+                std::make_unique<SmartPointer::TreeNode>(3),
+                std::make_unique<SmartPointer::TreeNode>(4)),
+            std::make_unique<SmartPointer::TreeNode>(
+                2,
+                std::make_unique<SmartPointer::TreeNode>(4),
+                std::make_unique<SmartPointer::TreeNode>(3)));
+
+        // root = [1,2,2,null,3,null,3]
+        auto tn2 = std::make_unique<SmartPointer::TreeNode>(
+            1,
+            std::make_unique<SmartPointer::TreeNode>(
+                2,
+                nullptr,
+                std::make_unique<SmartPointer::TreeNode>(3)),
+            std::make_unique<SmartPointer::TreeNode>(
+                2,
+                nullptr,
+                std::make_unique<SmartPointer::TreeNode>(3)));
+        // root = [1,2,2,2,null,2]
+        auto tn3 = std::make_unique<SmartPointer::TreeNode>(
+            1,
+            std::make_unique<SmartPointer::TreeNode>(
+                2,
+                std::make_unique<SmartPointer::TreeNode>(2),
+                nullptr),
+            std::make_unique<SmartPointer::TreeNode>(
+                2,
+                std::make_unique<SmartPointer::TreeNode>(2),
+                nullptr));
+
+        {
+            _101::Solution<_101_v1> s{};
+            custom_assert(true == s.isSymmetric(tn1.get()));
+            custom_assert(false == s.isSymmetric(tn2.get()));
+            custom_assert(false == s.isSymmetric(tn3.get()));
+        }
+        {
+            _101::Solution<_101_v2> s{};
+            custom_assert(true == s.isSymmetric(tn1.get()));
+            custom_assert(false == s.isSymmetric(tn2.get()));
+            custom_assert(false == s.isSymmetric(tn3.get()));
+        }
     }
 #endif
     //////////////////////

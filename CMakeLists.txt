@@ -29,6 +29,7 @@ add_executable (leetcode
 "src/56_merge_intervals.cpp"
 "src/80_remove_duplicates_from_sorted_array_II.cpp"
 "src/88_merge_sorted_array.cpp"
+"src/101_symmetric_tree.cpp"
 "src/110_balanced_binary_tree.cpp"
 "src/120_triangle.cpp"
 "src/121_best_time_to_buy_and_sell_stock.cpp"
