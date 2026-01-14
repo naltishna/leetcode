@@ -6,15 +6,23 @@
 #include "data.h"
 #include "list_node_helpers.h"
 #include "utils.h"
+#include "class_version.h"
 
 #include "2_add_two_numbers.h"
+#include "9_palindrome_number.h"
 #include "11_container_with_most_water.h"
+#include "12_integer_to_roman.h"
+#include "13_roman_to_integer.h"
+#include "14_longest_common_prefix.h"
 #include "18_4sum.h"
 #include "23_merge_k_sorted_lists.h"
 #include "26_remove_duplicates_from_sorted_array.h"
 #include "27_remove_element.h"
+#include "28_find_the_index_of_the_first_occurrence_in_a_string.h"
+#include "45_jump_game_II.h"
 #include "55_jump_game.h"
 #include "56_merge_intervals.h"
+#include "58_length_of_last_word.h"
 #include "80_remove_duplicates_from_sorted_array_II.h"
 #include "88_merge_sorted_array.h"
 #include "101_symmetric_tree.h"
@@ -22,13 +30,17 @@
 #include "120_triangle.h"
 #include "121_best_time_to_buy_and_sell_stock.h"
 #include "122_best_time_to_buy_and_sell_stock_II.h"
+#include "125_valid_palindrome.h"
 #include "136_single_number.h"
 #include "169_majority_element.h"
 #include "189_rotate_array.h"
+#include "200_number_of_islands.h"
+#include "242_valid_anagram.h"
 #include "309_best_time_to_buy_and_sell_stock_with_cooldown.h"
 #include "347_top_k_frequent_elements.h"
 #include "373_find_k_pairs_with_smallest_sums.h"
 #include "374_guess_number_higher_or_lower.h"
+#include "392_is_subsequence.h"
 #include "480_sliding_window_median.h"
 #include "653_two_sum_IV_input_is_a_BST.h"
 #include "692_top_k_frequent_words.h"
@@ -71,6 +83,22 @@ int main()
 #endif
     //////////////////////
     /**
+     * 9. Palindrome Number
+     */
+#if 1
+    {
+        int x1 = 121;
+        int x2 = -121;
+        int x3 = 10;
+
+        _9::Solution s{};
+        custom_assert(true == s.isPalindrome(x1));
+        custom_assert(false == s.isPalindrome(x2));
+        custom_assert(false == s.isPalindrome(x3));
+    }
+#endif
+    //////////////////////
+    /**
      * 11. Container With Most Water
      */
 #if 1
@@ -81,6 +109,62 @@ int main()
         _11::Solution s{};
         custom_assert(49 == s.maxArea(height_1));
         custom_assert(1 == s.maxArea(height_2));
+    }
+#endif
+    //////////////////////
+    /**
+     * 12. Integer to Roman
+     */
+#if 1
+    {
+        int num1 = 3749;
+        int num2 = 58;
+        int num3 = 1994;
+
+        {
+            _12::Solution<v1> s{};
+            custom_assert("MMMDCCXLIX" == s.intToRoman(num1));
+            custom_assert("LVIII" == s.intToRoman(num2));
+            custom_assert("MCMXCIV" == s.intToRoman(num3));
+        }
+        {
+            _12::Solution<v2> s{};
+            custom_assert("MMMDCCXLIX" == s.intToRoman(num1));
+            custom_assert("LVIII" == s.intToRoman(num2));
+            custom_assert("MCMXCIV" == s.intToRoman(num3));
+        }
+    }
+#endif
+    //////////////////////
+    /**
+     * 13. Roman to Integer
+     */
+#if 1
+    {
+        std::string s1{ "III" };
+        std::string s2{ "LVIII" };
+        std::string s3{ "MCMXCIV" };
+
+        _13::Solution s{};
+        custom_assert(3 == s.romanToInt(s1));
+        custom_assert(58 == s.romanToInt(s2));
+        custom_assert(1994 == s.romanToInt(s3));
+    }
+#endif
+    //////////////////////
+    /**
+     * 14. Longest Common Prefix
+     */
+#if 1
+    {
+        std::vector<std::string> strs_1{ "flower", "flow", "flight" };
+        std::vector<std::string> strs_2{ "dog", "racecar", "car" };
+        std::vector<std::string> strs_3{ "a" };
+
+        _14::Solution s{};
+        custom_assert("fl" == s.longestCommonPrefix(strs_1));
+        custom_assert("" == s.longestCommonPrefix(strs_2));
+        custom_assert("a" == s.longestCommonPrefix(strs_3));
     }
 #endif
     //////////////////////
@@ -180,7 +264,7 @@ int main()
             std::vector<int> nums_1{ 1, 1, 2 };
             std::vector<int> nums_2{ 0, 0, 1, 1, 1, 2, 2, 3, 3, 4 };
 
-            _26::Solution<_26_v1> s{};
+            _26::Solution<v1> s{};
             custom_assert(2 == s.removeDuplicates(nums_1)); // Output: 2, nums = [1,2,_]
             custom_assert(5 == s.removeDuplicates(nums_2)); // Output: 5, nums = [0,1,2,3,4,_,_,_,_,_]
         }
@@ -188,7 +272,7 @@ int main()
             std::vector<int> nums_1{ 1, 1, 2 };
             std::vector<int> nums_2{ 0, 0, 1, 1, 1, 2, 2, 3, 3, 4 };
 
-            _26::Solution<_26_v2> s{};
+            _26::Solution<v2> s{};
             custom_assert(2 == s.removeDuplicates(nums_1)); // Output: 2, nums = [1,2,_]
             custom_assert(5 == s.removeDuplicates(nums_2)); // Output: 5, nums = [0,1,2,3,4,_,_,_,_,_]
         }
@@ -206,14 +290,101 @@ int main()
         int val_2 = 2;
 
         {
-            _27::Solution<_27_v1> s{};
+            _27::Solution<v1> s{};
             custom_assert(2 == s.removeElement(nums_1, val_1)); // Output: 2, nums = [2,2,_,_]
             custom_assert(5 == s.removeElement(nums_2, val_2)); // Output: 5, nums = [0,1,4,0,3,_,_,_]
         }
         {
-            _27::Solution<_27_v2> s{};
+            _27::Solution<v2> s{};
             custom_assert(2 == s.removeElement(nums_1, val_1)); // Output: 2, nums = [2,2,_,_]
             custom_assert(5 == s.removeElement(nums_2, val_2)); // Output: 5, nums = [0,1,4,0,3,_,_,_]
+        }
+    }
+#endif
+    //////////////////////
+    /**
+     * 28. Find the Index of the First Occurrence in a String
+     */
+#if 1
+    {
+        std::string haystack_1 = "sadbutsad";
+        std::string needle_1 = "sad";
+        std::string haystack_2 = "ltcode";
+        std::string needle_2 = "lto";
+        std::string haystack_3 = "hello";
+        std::string needle_3 = "ll";
+        std::string haystack_4 = "mississippi";
+        std::string needle_4 = "issip";
+        std::string haystack_5 = "mississippi";
+        std::string needle_5 = "issipi";
+        std::string haystack_6 = "mississippi";
+        std::string needle_6 = "";
+
+        {
+            _28::Solution<v1> s{};
+            custom_assert(0 == s.strStr(haystack_1, needle_1));
+            custom_assert(-1 == s.strStr(haystack_2, needle_2));
+            custom_assert(2 == s.strStr(haystack_3, needle_3));
+            custom_assert(4 == s.strStr(haystack_4, needle_4));
+            custom_assert(-1 == s.strStr(haystack_5, needle_5));
+            custom_assert(0 == s.strStr(haystack_6, needle_6));
+        }
+        {
+            _28::Solution<v2> s{};
+            custom_assert(0 == s.strStr(haystack_1, needle_1));
+            custom_assert(-1 == s.strStr(haystack_2, needle_2));
+            custom_assert(2 == s.strStr(haystack_3, needle_3));
+            custom_assert(4 == s.strStr(haystack_4, needle_4));
+            custom_assert(-1 == s.strStr(haystack_5, needle_5));
+            custom_assert(0 == s.strStr(haystack_6, needle_6));
+        }
+        {
+            _28::Solution<v3> s{};
+            custom_assert(0 == s.strStr(haystack_1, needle_1));
+            custom_assert(-1 == s.strStr(haystack_2, needle_2));
+            custom_assert(2 == s.strStr(haystack_3, needle_3));
+            custom_assert(4 == s.strStr(haystack_4, needle_4));
+            custom_assert(-1 == s.strStr(haystack_5, needle_5));
+            custom_assert(0 == s.strStr(haystack_6, needle_6));
+        }
+        {
+            _28::Solution<v4> s{};
+            custom_assert(0 == s.strStr(haystack_1, needle_1));
+            custom_assert(-1 == s.strStr(haystack_2, needle_2));
+            custom_assert(2 == s.strStr(haystack_3, needle_3));
+            custom_assert(4 == s.strStr(haystack_4, needle_4));
+            custom_assert(-1 == s.strStr(haystack_5, needle_5));
+            custom_assert(0 == s.strStr(haystack_6, needle_6));
+        }
+    }
+#endif
+    //////////////////////
+    /**
+     * 45. Jump Game II
+     */
+#if 1
+    {
+        std::vector<int> nums_1{ 2, 3, 1, 1, 4 };
+        std::vector<int> nums_2{ 2, 3, 0, 1, 4 };
+        std::vector<int> nums_3{ 1 };
+
+        {
+            _45::Solution<v1> s{};
+            custom_assert(2 == s.jump(nums_1));
+            custom_assert(2 == s.jump(nums_2));
+            custom_assert(0 == s.jump(nums_3));
+        }
+        {
+            _45::Solution<v2> s{};
+            custom_assert(2 == s.jump(nums_1));
+            custom_assert(2 == s.jump(nums_2));
+            custom_assert(0 == s.jump(nums_3));
+        }
+        {
+            _45::Solution<v3> s{};
+            custom_assert(2 == s.jump(nums_1));
+            custom_assert(2 == s.jump(nums_2));
+            custom_assert(0 == s.jump(nums_3));
         }
     }
 #endif
@@ -228,13 +399,11 @@ int main()
         std::vector<int> nums_3{ 1 };
         std::vector<int> nums_4{ 1, 2 };
 
-        {
-            _55::Solution s{};
-            custom_assert(true == s.canJump(nums_1));
-            custom_assert(false == s.canJump(nums_2));
-            custom_assert(true == s.canJump(nums_3));
-            custom_assert(true == s.canJump(nums_4));
-        }
+        _55::Solution s{};
+        custom_assert(true == s.canJump(nums_1));
+        custom_assert(false == s.canJump(nums_2));
+        custom_assert(true == s.canJump(nums_3));
+        custom_assert(true == s.canJump(nums_4));
     }
 #endif
     //////////////////////
@@ -258,6 +427,22 @@ int main()
 #endif
     //////////////////////
     /**
+     * 58. Length of Last Word
+     */
+#if 1
+    {
+        std::string s_1 = "Hello World";
+        std::string s_2 = "   fly me   to   the moon  ";
+        std::string s_3 = "luffy is still joyboy";
+
+        _58::Solution s{};
+        custom_assert(5 == s.lengthOfLastWord(s_1));
+        custom_assert(4 == s.lengthOfLastWord(s_2));
+        custom_assert(6 == s.lengthOfLastWord(s_3));
+    }
+#endif
+    //////////////////////
+    /**
      * 80. Remove Duplicates from Sorted Array II
      */
 #if 1
@@ -265,14 +450,14 @@ int main()
         {
             std::vector<int> nums_1{ 1, 1, 1, 2, 2, 3 };
             std::vector<int> nums_2{ 0, 0, 1, 1, 1, 1, 2, 3, 3 };
-            _80::Solution<_80_v1> s{};
+            _80::Solution<v1> s{};
             custom_assert(5 == s.removeDuplicates(nums_1)); // Output: 5, nums = [1,1,2,2,3,_]
             custom_assert(7 == s.removeDuplicates(nums_2)); // Output: 7, nums = [0,0,1,1,2,3,3,_,_]
         }
         {
             std::vector<int> nums_1{ 1, 1, 1, 2, 2, 3 };
             std::vector<int> nums_2{ 0, 0, 1, 1, 1, 1, 2, 3, 3 };
-            _80::Solution<_80_v2> s{};
+            _80::Solution<v2> s{};
             custom_assert(5 == s.removeDuplicates(nums_1)); // Output: 5, nums = [1,1,2,2,3,_]
             custom_assert(7 == s.removeDuplicates(nums_2)); // Output: 7, nums = [0,0,1,1,2,3,3,_,_]
         }
@@ -342,13 +527,13 @@ int main()
                 nullptr));
 
         {
-            _101::Solution<_101_v1> s{};
+            _101::Solution<v1> s{};
             custom_assert(true == s.isSymmetric(tn1.get()));
             custom_assert(false == s.isSymmetric(tn2.get()));
             custom_assert(false == s.isSymmetric(tn3.get()));
         }
         {
-            _101::Solution<_101_v2> s{};
+            _101::Solution<v2> s{};
             custom_assert(true == s.isSymmetric(tn1.get()));
             custom_assert(false == s.isSymmetric(tn2.get()));
             custom_assert(false == s.isSymmetric(tn3.get()));
@@ -447,6 +632,22 @@ int main()
 #endif
     //////////////////////
     /**
+     * 125. Valid Palindrome
+     */
+#if 1
+    {
+        std::string s_1 = "A man, a plan, a canal: Panama";
+        std::string s_2 = "race a car";
+        std::string s_3 = " ";
+
+        _125::Solution s{};
+        custom_assert(true == s.isPalindrome(s_1));
+        custom_assert(false == s.isPalindrome(s_2));
+        custom_assert(true == s.isPalindrome(s_3));
+    }
+#endif
+    //////////////////////
+    /**
      * 136. Single Number
      */
 #if 1
@@ -472,13 +673,13 @@ int main()
         std::vector<int> nums3{ 3, 3, 4 };
 
         {
-            _169::Solution<_169_v1> s{};
+            _169::Solution<v1> s{};
             custom_assert(3 == s.majorityElement(nums1));
             custom_assert(2 == s.majorityElement(nums2));
             custom_assert(3 == s.majorityElement(nums3));
         }
         {
-            _169::Solution<_169_v2> s{};
+            _169::Solution<v2> s{};
             custom_assert(3 == s.majorityElement(nums1));
             custom_assert(2 == s.majorityElement(nums2));
             custom_assert(3 == s.majorityElement(nums3));
@@ -497,7 +698,7 @@ int main()
             std::vector<int> nums2{ -1, -100, 3, 99 };
             int k2 = 2;
 
-            _189::Solution<_189_v1> s{};
+            _189::Solution<v1> s{};
             s.rotate(nums1, k1);
             custom_assert("{ 5, 6, 7, 1, 2, 3, 4 }" == vector_to_string(nums1));
             s.rotate(nums2, k2);
@@ -509,7 +710,7 @@ int main()
             std::vector<int> nums2{ -1, -100, 3, 99 };
             int k2 = 2;
 
-            _189::Solution<_189_v2> s{};
+            _189::Solution<v2> s{};
             s.rotate(nums1, k1);
             custom_assert("{ 5, 6, 7, 1, 2, 3, 4 }" == vector_to_string(nums1));
             s.rotate(nums2, k2);
@@ -521,7 +722,7 @@ int main()
             std::vector<int> nums2{ -1, -100, 3, 99 };
             int k2 = 2;
 
-            _189::Solution<_189_v3> s{};
+            _189::Solution<v3> s{};
             s.rotate(nums1, k1);
             custom_assert("{ 5, 6, 7, 1, 2, 3, 4 }" == vector_to_string(nums1));
             s.rotate(nums2, k2);
@@ -533,7 +734,7 @@ int main()
             std::vector<int> nums2{ -1, -100, 3, 99 };
             int k2 = 2;
 
-            _189::Solution<_189_v4> s{};
+            _189::Solution<v4> s{};
             s.rotate(nums1, k1);
             custom_assert("{ 5, 6, 7, 1, 2, 3, 4 }" == vector_to_string(nums1));
             s.rotate(nums2, k2);
@@ -545,11 +746,67 @@ int main()
             std::vector<int> nums2{ -1, -100, 3, 99 };
             int k2 = 2;
 
-            _189::Solution<_189_v5> s{};
+            _189::Solution<v5> s{};
             s.rotate(nums1, k1);
             custom_assert("{ 5, 6, 7, 1, 2, 3, 4 }" == vector_to_string(nums1));
             s.rotate(nums2, k2);
             custom_assert("{ 3, 99, -1, -100 }" == vector_to_string(nums2));
+        }
+    }
+#endif
+    //////////////////////
+    /**
+     * 200. Number of Islands
+     */
+#if 1
+    {
+        std::vector<std::vector<char>> grid1{ {'1', '1', '1', '1', '0'},
+                                              {'1', '1', '0', '1', '0'},
+                                              {'1', '1', '0', '0', '0'},
+                                              {'0', '0', '0', '0', '0'} };
+        std::vector<std::vector<char>> grid2{ {'1', '1', '0', '0', '0'},
+                                              {'1', '1', '0', '0', '0'},
+                                              {'0', '0', '1', '0', '0'},
+                                              {'0', '0', '0', '1', '1'} };
+
+        _200::Solution<v1> s{};
+        custom_assert(1 == s.numIslands(grid1));
+        custom_assert(3 == s.numIslands(grid2));
+    }
+    {
+        std::vector<std::vector<char>> grid1{ {'1', '1', '1', '1', '0'},
+                                              {'1', '1', '0', '1', '0'},
+                                              {'1', '1', '0', '0', '0'},
+                                              {'0', '0', '0', '0', '0'} };
+        std::vector<std::vector<char>> grid2{ {'1', '1', '0', '0', '0'},
+                                              {'1', '1', '0', '0', '0'},
+                                              {'0', '0', '1', '0', '0'},
+                                              {'0', '0', '0', '1', '1'} };
+
+        _200::Solution<v2> s{};
+        custom_assert(1 == s.numIslands(grid1));
+        custom_assert(3 == s.numIslands(grid2));
+    }
+#endif
+    //////////////////////
+    /**
+     * 242. Valid Anagram
+     */
+#if 1
+    {
+        std::string s1_1 = "anagram";
+        std::string s1_2 = "nagaram";
+        std::string s2_1 = "rat";
+        std::string s2_2 = "car";
+        {
+            _242::Solution<v1> s{};
+            custom_assert(true == s.isAnagram(s1_1, s1_2));
+            custom_assert(false == s.isAnagram(s2_1, s2_2));
+        }
+        {
+            _242::Solution<v2> s{};
+            custom_assert(true == s.isAnagram(s1_1, s1_2));
+            custom_assert(false == s.isAnagram(s2_1, s2_2));
         }
     }
 #endif
@@ -653,6 +910,41 @@ int main()
 #endif
     //////////////////////
     /**
+     * 392. Is Subsequence
+     */
+#if 1
+    {
+        std::string s1_1 = "abc";
+        std::string t1_2 = "ahbgdc";
+        std::string s2_1 = "axc";
+        std::string t2_2 = "ahbgdc";
+        std::string s3_1 = "acb";
+        std::string t3_2 = "ahbgdc";
+        std::string s4_1 = "aaaaaa";
+        std::string t4_2 = "bbaaaa";
+        std::string s5_1 = "ahbgdcc";
+        std::string t5_2 = "ahbgdc";
+
+        {
+            _392::Solution<v1> s{};
+            custom_assert(true == s.isSubsequence(s1_1, t1_2));
+            custom_assert(false == s.isSubsequence(s2_1, t2_2));
+            custom_assert(false == s.isSubsequence(s3_1, t3_2));
+            custom_assert(false == s.isSubsequence(s4_1, t4_2));
+            custom_assert(false == s.isSubsequence(s5_1, t5_2));
+        }
+        {
+            _392::Solution<v2> s{};
+            custom_assert(true == s.isSubsequence(s1_1, t1_2));
+            custom_assert(false == s.isSubsequence(s2_1, t2_2));
+            custom_assert(false == s.isSubsequence(s3_1, t3_2));
+            custom_assert(false == s.isSubsequence(s4_1, t4_2));
+            custom_assert(false == s.isSubsequence(s5_1, t5_2));
+        }
+    }
+#endif
+    //////////////////////
+    /**
      * 480. Sliding Window Median
      */
 #if 1
@@ -674,7 +966,7 @@ int main()
         int k_6 = 6;
 
         {
-            _480::Solution<_480_v1> s{};
+            _480::Solution<v1> s{};
             auto start_time = get_current_time();
             custom_assert("{1.0, -1.0, -1.0, 3.0, 5.0, 6.0}" == vector_to_string(s.medianSlidingWindow(nums_1, k_1)));
             custom_assert("{2.0, 3.0, 3.0, 3.0, 2.0, 3.0, 2.0}" == vector_to_string(s.medianSlidingWindow(nums_2, k_2)));
@@ -686,7 +978,7 @@ int main()
             print_elapsed_time(start_time, end_time, "_480_v1");
         }
         {
-            _480::Solution<_480_v2> s{};
+            _480::Solution<v2> s{};
             auto start_time = get_current_time();
             custom_assert("{1.0, -1.0, -1.0, 3.0, 5.0, 6.0}" == vector_to_string(s.medianSlidingWindow(nums_1, k_1)));
             custom_assert("{2.0, 3.0, 3.0, 3.0, 2.0, 3.0, 2.0}" == vector_to_string(s.medianSlidingWindow(nums_2, k_2)));
@@ -698,7 +990,7 @@ int main()
             print_elapsed_time(start_time, end_time, "_480_v2");
         }
         {
-            _480::Solution<_480_v3> s{};
+            _480::Solution<v3> s{};
             auto start_time = get_current_time();
             custom_assert("{1.0, -1.0, -1.0, 3.0, 5.0, 6.0}" == vector_to_string(s.medianSlidingWindow(nums_1, k_1)));
             custom_assert("{2.0, 3.0, 3.0, 3.0, 2.0, 3.0, 2.0}" == vector_to_string(s.medianSlidingWindow(nums_2, k_2)));

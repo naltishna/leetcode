@@ -57,6 +57,3 @@ namespace _80 {
     };
 
 }
-
-struct _80_v1 {};
-struct _80_v2 {};

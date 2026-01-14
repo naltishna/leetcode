@@ -55,6 +55,3 @@ namespace _26 {
     };
 
 }
-
-struct  _26_v1 {};
-struct  _26_v2 {};

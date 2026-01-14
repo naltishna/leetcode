@@ -60,6 +60,3 @@ namespace _27 {
     };
 
 }
-
-struct  _27_v1 {};
-struct  _27_v2 {};

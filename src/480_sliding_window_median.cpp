@@ -1,4 +1,5 @@
 #include "480_sliding_window_median.h"
+#include "class_version.h"
 
 #include <algorithm>
 #include <set>
@@ -14,8 +15,7 @@ namespace _480 {
     * Space complexity:
     * O(K)
     */
-    template<>
-    std::vector<double> Solution<_480_v1>::medianSlidingWindow(std::vector<int>& nums, int k) {
+    std::vector<double> Solution<v1>::medianSlidingWindow(std::vector<int>& nums, int k) {
         std::vector<double> result;
         if (nums.empty() || nums.size() < k) {
             return result;
@@ -48,8 +48,7 @@ namespace _480 {
     * Space complexity:
     * O(K)
     */
-    template<>
-    std::vector<double> Solution<_480_v2>::medianSlidingWindow(std::vector<int>& nums, int k) {
+    std::vector<double> Solution<v2>::medianSlidingWindow(std::vector<int>& nums, int k) {
         std::vector<double> result;
         if (nums.empty() || nums.size() < k) {
             return result;
@@ -90,10 +89,9 @@ namespace _480 {
     * O(n × log k) - best asymptotic behavior for big data
     *
     * Space complexity:
-        O(K)
+    * O(K)
     */
-    template<>
-    std::vector<double> Solution<_480_v3>::medianSlidingWindow(std::vector<int>& nums, int k) {
+    std::vector<double> Solution<v3>::medianSlidingWindow(std::vector<int>& nums, int k) {
         std::vector<double> result;
         if (nums.empty() || nums.size() < k) {
             return result;

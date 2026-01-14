@@ -11,7 +11,6 @@ namespace _18 {
     * Check the sum of currently selected elements. If it matches the target, add this solution to the final result and move both pointers further skipping duplicate numbers.
     * If the sum is greater than the target, shift the right pointer backward; otherwise, we advance the left pointer forward.
     *
-    * Complexity
     * Time complexity:
     * O(N^3)
     *

@@ -1,4 +1,5 @@
 #include "80_remove_duplicates_from_sorted_array_II.h"
+#include "class_version.h"
 
 #include <unordered_map>
 
@@ -13,8 +14,7 @@ namespace _80 {
     * Space complexity:
     * O(n)
     */
-    template<>
-    int Solution<_80_v1>::removeDuplicates(std::vector<int>& nums) {
+    int Solution<v1>::removeDuplicates(std::vector<int>& nums) {
         if (nums.empty()) {
             return 0;
         }
@@ -43,8 +43,7 @@ namespace _80 {
     * Space complexity:
     * O(1)
     */
-    template<>
-    int Solution<_80_v2>::removeDuplicates(std::vector<int>& nums) {
+    int Solution<v2>::removeDuplicates(std::vector<int>& nums) {
         const size_t n = nums.size();
         if (n <= 2) {
             return n;

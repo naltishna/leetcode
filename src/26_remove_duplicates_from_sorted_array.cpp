@@ -1,4 +1,5 @@
 ﻿#include "26_remove_duplicates_from_sorted_array.h"
+#include "class_version.h"
 
 #include <algorithm>
 
@@ -14,8 +15,7 @@ namespace _26 {
     * Space complexity:
     * O(1)
     */
-    template<>
-    int Solution<_26_v1>::removeDuplicates(std::vector<int>& nums) {
+    int Solution<v1>::removeDuplicates(std::vector<int>& nums) {
         auto it = std::unique(nums.begin(), nums.end());
         return (it - nums.begin());
     }
@@ -30,8 +30,7 @@ namespace _26 {
     * - Space complexity:
     * O(1)
     */
-    template<>
-    int Solution<_26_v2>::removeDuplicates(std::vector<int>& nums) {
+    int Solution<v2>::removeDuplicates(std::vector<int>& nums) {
         if (nums.empty()) return 0;
 
         for (int i = 0, j = 1; j < nums.size();) {

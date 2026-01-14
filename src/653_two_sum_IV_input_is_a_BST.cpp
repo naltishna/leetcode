@@ -17,7 +17,6 @@ namespace _653 {
     * Space complexity:
     * O(N)
     */
-    template<>
     bool Solution<_653_BFS_ver>::findTarget(SmartPointer::TreeNode* root, int k) {
         std::unordered_set<int> keep;
         std::queue<SmartPointer::TreeNode*> q;
@@ -50,7 +49,6 @@ namespace _653 {
     * Space complexity:
     * O(N)
     */
-    template<>
     bool Solution<_653_memory_optimal_ver>::findTarget(SmartPointer::TreeNode* root, int k) {
         if (!root) {
             return false;

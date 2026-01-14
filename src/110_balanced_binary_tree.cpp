@@ -40,7 +40,7 @@ namespace _110 {
             return -1;
         }
 
-        // The height of the current subtree is equal to the max depth of child nodes plus one.
+        // the height of the current subtree is equal to the max depth of child nodes plus one
         return 1 + std::max(leftHeight, rightHeight);
     }
 

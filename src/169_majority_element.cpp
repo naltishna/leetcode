@@ -1,4 +1,5 @@
 ﻿#include "169_majority_element.h"
+#include "class_version.h"
 
 #include <queue>
 #include <unordered_map>
@@ -18,8 +19,7 @@ namespace _169 {
     * Space complexity:
     * O(k), where k is the number of unique elements.
     */
-    template<>
-    int Solution<_169_v1>::majorityElement(std::vector<int>& nums) {
+    int Solution<v1>::majorityElement(std::vector<int>& nums) {
         if (nums.empty()) {
             return 0;
         }
@@ -49,8 +49,7 @@ namespace _169 {
     * Space complexity:
     * O(1)
     */
-    template<>
-    int Solution<_169_v2>::majorityElement(std::vector<int>& nums) {
+    int Solution<v2>::majorityElement(std::vector<int>& nums) {
         if (nums.empty()) {
             return 0;
         }

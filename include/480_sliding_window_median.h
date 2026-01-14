@@ -50,8 +50,4 @@ namespace _480 {
 
 }
 
-struct  _480_v1 {};
-struct  _480_v2 {};
-struct  _480_v3 {};
-
 #endif

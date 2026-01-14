@@ -3,6 +3,11 @@
 namespace _2 {
 
     /**
+    * At each step, it sums:
+    * The current digit from l1 (if l1 is not nullptr).
+    * The current digit from l2 (if l2 is not nullptr).
+    * The current value of num, which represented the carry from the previous step.
+    * 
     Time complexity:
         O(max(N,M)) - The program must visit every node in the longer list once.
 

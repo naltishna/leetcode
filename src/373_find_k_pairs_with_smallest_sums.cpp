@@ -1,4 +1,5 @@
 ﻿#include "373_find_k_pairs_with_smallest_sums.h"
+#include "class_version.h"
 
 #include <queue>
 #include <tuple>
@@ -15,7 +16,6 @@ namespace _373 {
     Space complexity:
         O(K)
     */
-    template<>
     std::vector<std::vector<int>> Solution<v1>::kSmallestPairs(std::vector<int>& nums1, std::vector<int>& nums2, int k) {
         std::vector<std::vector<int>> result;
         if (nums1.empty() || nums2.empty() || k == 0) {
@@ -60,7 +60,6 @@ namespace _373 {
     * Space complexity:
     * O(min(k))
     */
-    template<>
     std::vector<std::vector<int>> Solution<v2>::kSmallestPairs(std::vector<int>& nums1, std::vector<int>& nums2, int k) {
         std::vector<std::vector<int>> result;
         if (nums1.empty() || nums2.empty() || k == 0) {
@@ -97,7 +96,6 @@ namespace _373 {
     * Space complexity:
     * O(min(k,n))
     */
-    template<>
     std::vector<std::vector<int>> Solution<v3>::kSmallestPairs(std::vector<int>& nums1, std::vector<int>& nums2, int k) {
         std::vector<std::vector<int>> result;
         if (nums1.empty() || nums2.empty() || k == 0) {

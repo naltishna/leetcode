@@ -1,6 +1,6 @@
 ﻿/*
-* https://leetcode.com/problems/merge-k-sorted-lists/solutions/7316033/merge-k-sorted-lists-beats-10000-runtime-z9zg/
-*
+https://leetcode.com/problems/merge-k-sorted-lists/solutions/7316033/merge-k-sorted-lists-beats-10000-runtime-z9zg/
+
 23. Merge k Sorted Lists algorithm
 
 You are given an array of k linked - lists lists, each linked - list is sorted in ascending order.

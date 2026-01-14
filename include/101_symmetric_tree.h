@@ -36,6 +36,3 @@ namespace _101 {
     };
 
 }
-
-struct _101_v1 {};
-struct _101_v2 {};

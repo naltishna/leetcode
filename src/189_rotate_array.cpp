@@ -1,4 +1,5 @@
 ﻿#include "189_rotate_array.h"
+#include "class_version.h"
 
 namespace _189 {
 
@@ -13,8 +14,7 @@ namespace _189 {
     * Space complexity:
     * O(1)
     */
-    template<>
-    void Solution<_189_v1>::rotate(std::vector<int>& nums, int k) {
+     void Solution<v1>::rotate(std::vector<int>& nums, int k) {
         int n = nums.size();
         if (n == 0) {
             return;
@@ -39,8 +39,7 @@ namespace _189 {
     * Space complexity:
     * O(1)
     */
-    template<>
-    void Solution<_189_v2>::rotate(std::vector<int>& nums, int k) {
+    void Solution<v2>::rotate(std::vector<int>& nums, int k) {
         size_t n = nums.size();
         if (n == 0) {
             return;
@@ -69,8 +68,7 @@ namespace _189 {
     * Space complexity:
     * O(n)
     */
-    template<>
-    void Solution<_189_v3>::rotate(std::vector<int>& nums, int k) {
+    void Solution<v3>::rotate(std::vector<int>& nums, int k) {
         int n = nums.size();
         if (n == 0) return;
         k = k % n;
@@ -94,8 +92,7 @@ namespace _189 {
     * Space complexity:
     * O(1)
     */
-    template<>
-    void Solution<_189_v4>::rotate(std::vector<int>& nums, int k) {
+    void Solution<v4>::rotate(std::vector<int>& nums, int k) {
         int n = nums.size();
         if (n == 0) return;
         k = k % n;
@@ -125,8 +122,7 @@ namespace _189 {
     * Space complexity:
     * O(1)
     */
-    template<>
-    void Solution<_189_v5>::rotate(std::vector<int>& nums, int k) {
+    void Solution<v5>::rotate(std::vector<int>& nums, int k) {
         int n = nums.size();
         if (n == 0) return;
         k = k % n;

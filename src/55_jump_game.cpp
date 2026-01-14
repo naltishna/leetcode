@@ -12,7 +12,7 @@ namespace _55 {
     * O(1)
     */
     bool Solution::canJump(std::vector<int>& nums) {
-        int n = nums.size();
+        size_t n = nums.size();
         if (n <= 1) {
             return true;
         }

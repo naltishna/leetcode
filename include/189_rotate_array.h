@@ -42,9 +42,3 @@ namespace _189 {
     };
 
 }
-
-struct  _189_v1 {};
-struct  _189_v2 {};
-struct  _189_v3 {};
-struct  _189_v4 {};
-struct  _189_v5 {};

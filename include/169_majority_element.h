@@ -38,6 +38,3 @@ namespace _169 {
     };
 
 }
-
-struct  _169_v1 {};
-struct  _169_v2 {};

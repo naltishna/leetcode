@@ -1,4 +1,5 @@
 ﻿#include "27_remove_element.h"
+#include "class_version.h"
 
 namespace _27 {
 
@@ -14,8 +15,7 @@ namespace _27 {
     * - Space complexity:
     * O(1)
     */
-    template<>
-    int Solution<_27_v1>::removeElement(std::vector<int>& nums, int val) {
+    int Solution<v1>::removeElement(std::vector<int>& nums, int val) {
         nums.erase(std::remove_if(nums.begin(), nums.end(), [val](int x) { return x == val; }), nums.end());
         return nums.size();
     }
@@ -34,8 +34,7 @@ namespace _27 {
     * - Space complexity:
     * O(1)
     */
-    template<>
-    int Solution<_27_v2>::removeElement(std::vector<int>& nums, int val) {
+    int Solution<v2>::removeElement(std::vector<int>& nums, int val) {
         std::vector<int>::iterator it;
         while (true) {
             it = std::find(nums.begin(), nums.end(), val);

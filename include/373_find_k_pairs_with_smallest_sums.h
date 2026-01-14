@@ -43,8 +43,4 @@ namespace _373 {
 
 }
 
-struct  v1 {};
-struct  v2 {};
-struct  v3 {};
-
 #endif
