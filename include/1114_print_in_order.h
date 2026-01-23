@@ -31,31 +31,51 @@ nums is a permutation of [1, 2, 3].
 
 #pragma once
 
+#include <atomic>
+#include <mutex>
 #include <functional>
+#include <condition_variable>
 
-namespace _1114 {
+namespace _1114_cv {
 
     class Foo {
     public:
-        Foo() {}
+        Foo() = default;
 
-        void first(std::function<void()> printFirst) {
+        void first(std::function<void()> printFirst);
 
-            // printFirst() outputs "first". Do not change or remove this line.
-            printFirst();
-        }
+        void second(std::function<void()> printSecond);
 
-        void second(std::function<void()> printSecond) {
+        void third(std::function<void()> printThird);
 
-            // printSecond() outputs "second". Do not change or remove this line.
-            printSecond();
-        }
+        std::string getOutput();
 
-        void third(std::function<void()> printThird) {
+    private:
+        int state_ = 0;
+        std::mutex mtx_;
+        std::condition_variable cv_;
+        std::string output = "";
+    };
 
-            // printThird() outputs "third". Do not change or remove this line.
-            printThird();
-        }
+}
+
+namespace _1114_atomic {
+
+    class Foo {
+    public:
+        Foo() = default;
+
+        void first(std::function<void()> printFirst);
+
+        void second(std::function<void()> printSecond);
+
+        void third(std::function<void()> printThird);
+
+        std::string getOutput();
+
+    private:
+        std::atomic<int> state_{ 0 };
+        std::string output = "";
     };
 
 }

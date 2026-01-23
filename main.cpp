@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <memory>
+#include <thread>
 
 #include "data.h"
 #include "list_node_helpers.h"
@@ -46,6 +47,7 @@
 #include "692_top_k_frequent_words.h"
 #include "704_binary_search.h"
 #include "763_partition_labels.h"
+#include "1114_print_in_order.h"
 
 int main()
 {
@@ -1155,6 +1157,46 @@ int main()
         custom_assert(8 == (s.partitionLabels(s_4)).size());
         custom_assert(1 == (s.partitionLabels(s_5)).size());
         custom_assert(2 == (s.partitionLabels(s_6)).size());
+    }
+#endif
+    //////////////////////
+    /**
+     * 1114. Print in Order
+     */
+#if 1
+    {
+        _1114_cv::Foo foo;
+
+        auto printFirst = []() { std::cout << "first"; };
+        auto printSecond = []() { std::cout << "second"; };
+        auto printThird = []() { std::cout << "third"; };
+
+        std::thread t1([&foo, &printFirst]() { foo.first(printFirst); });
+        std::thread t2([&foo, &printSecond]() { foo.second(printSecond); });
+        std::thread t3([&foo, &printThird]() { foo.third(printThird); });
+
+        t1.join();
+        t2.join();
+        t3.join();
+
+        custom_assert("firstsecondthird" == foo.getOutput());
+    }
+    {
+        _1114_atomic::Foo foo;
+
+        auto printFirst = []() { std::cout << "first"; };
+        auto printSecond = []() { std::cout << "second"; };
+        auto printThird = []() { std::cout << "third"; };
+
+        std::thread t1([&foo, &printFirst]() { foo.first(printFirst); });
+        std::thread t2([&foo, &printSecond]() { foo.second(printSecond); });
+        std::thread t3([&foo, &printThird]() { foo.third(printThird); });
+
+        t1.join();
+        t2.join();
+        t3.join();
+
+        custom_assert("firstsecondthird" == foo.getOutput());
     }
 #endif
     //////////////////////
