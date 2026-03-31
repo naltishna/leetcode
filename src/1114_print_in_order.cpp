@@ -15,26 +15,26 @@ namespace _1114_cv {
     */
     void Foo::first(std::function<void()> printFirst) {
         std::unique_lock<std::mutex> lock(mtx_);
-        cv_.wait(lock, [&] { return state_ == 0; });
+        cv_.wait(lock, [this] { return state_ == 0; });
 
         // printFirst() outputs "first". Do not change or remove this line.
         printFirst();
 
         state_ = 1;
         output += "first";
-        cv_.notify_one();
+        cv_.notify_all();
     }
 
     void Foo::second(std::function<void()> printSecond) {
         std::unique_lock<std::mutex> lock(mtx_);
-        cv_.wait(lock, [this] {return state_ == 1; });
+        cv_.wait(lock, [this] { return state_ == 1; });
 
         // printSecond() outputs "second". Do not change or remove this line.
         printSecond();
 
         state_ = 2;
         output += "second";
-        cv_.notify_one();
+        cv_.notify_all();
     }
 
     void Foo::third(std::function<void()> printThird) {

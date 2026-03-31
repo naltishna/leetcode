@@ -11,7 +11,7 @@ namespace _763 {
     * O(N)
     *
     * Space complexity:
-    * O(1)
+    * O(N)
     */
     std::vector<int> Solution::partitionLabels(std::string s) {
         std::unordered_map<char, int> last_occurrence;

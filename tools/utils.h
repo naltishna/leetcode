@@ -53,7 +53,7 @@ std::string vectors_to_string(std::vector<std::vector<int>> vecs) {
  * Vector of T to string.
  */
 template <typename T>
-std::string vector_to_string(std::vector<T> vec) {
+std::string vector_to_string(const std::vector<T>& vec) {
     std::stringstream ss;
     ss << "{ ";
     for (int i = 0; i < vec.size(); ++i) {
@@ -70,7 +70,7 @@ std::string vector_to_string(std::vector<T> vec) {
 /**
  * Vector of double to string.
  */
-std::string vector_to_string(std::vector<double> vec) {
+std::string vector_to_string(const std::vector<double>& vec) {
     std::stringstream ss;
     ss << "{";
     for (int i = 0; i < vec.size(); ++i) {

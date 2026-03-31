@@ -16,6 +16,7 @@
 #include "13_roman_to_integer.h"
 #include "14_longest_common_prefix.h"
 #include "18_4sum.h"
+#include "20_valid_parentheses.h"
 #include "23_merge_k_sorted_lists.h"
 #include "26_remove_duplicates_from_sorted_array.h"
 #include "27_remove_element.h"
@@ -24,6 +25,7 @@
 #include "55_jump_game.h"
 #include "56_merge_intervals.h"
 #include "58_length_of_last_word.h"
+#include "74_search_2D_matrix.h"
 #include "80_remove_duplicates_from_sorted_array_II.h"
 #include "88_merge_sorted_array.h"
 #include "101_symmetric_tree.h"
@@ -36,11 +38,13 @@
 #include "169_majority_element.h"
 #include "189_rotate_array.h"
 #include "200_number_of_islands.h"
+#include "239_sliding_window_maximum.h"
 #include "242_valid_anagram.h"
 #include "309_best_time_to_buy_and_sell_stock_with_cooldown.h"
 #include "347_top_k_frequent_elements.h"
 #include "373_find_k_pairs_with_smallest_sums.h"
 #include "374_guess_number_higher_or_lower.h"
+#include "383_ransom_note.h"
 #include "392_is_subsequence.h"
 #include "480_sliding_window_median.h"
 #include "653_two_sum_IV_input_is_a_BST.h"
@@ -189,6 +193,26 @@ int main()
         custom_assert(8 == s.fourSum(l3, 0).size());
         custom_assert(0 == s.fourSum(l4, 0).size());
         custom_assert(2 == s.fourSum(l5, 0).size());
+    }
+#endif
+    //////////////////////
+    /**
+     * 20. Valid Parentheses
+     */
+#if 1
+    {
+        std::string s_1 = "()";
+        std::string s_2 = "()[]{}";
+        std::string s_3 = "(]";
+        std::string s_4 = "([])";
+        std::string s_5 = "([)]";
+
+        _20::Solution s{};
+        custom_assert(true == s.isValid(s_1));
+        custom_assert(true == s.isValid(s_2));
+        custom_assert(false == s.isValid(s_3));
+        custom_assert(true == s.isValid(s_4));
+        custom_assert(false == s.isValid(s_5));
     }
 #endif
     //////////////////////
@@ -441,6 +465,37 @@ int main()
         custom_assert(5 == s.lengthOfLastWord(s_1));
         custom_assert(4 == s.lengthOfLastWord(s_2));
         custom_assert(6 == s.lengthOfLastWord(s_3));
+    }
+#endif
+    //////////////////////
+    /**
+     * 74. Search a 2D Matrix
+     */
+#if 1
+    {
+        std::vector<std::vector<int>> matrix0{ {1,3,5,7}, {10,11,16,20}, {23,30,34,60} };
+        std::vector<std::vector<int>> matrix1{ {1} };
+        std::vector<std::vector<int>> matrix2{ {1, 3} };
+        {
+            _74::Solution<v1> s{};
+            custom_assert(true == s.searchMatrix(matrix0, 3));
+            custom_assert(false == s.searchMatrix(matrix0, 13));
+            custom_assert(true == s.searchMatrix(matrix1, 1));
+            custom_assert(false == s.searchMatrix(matrix1, 0));
+            custom_assert(true == s.searchMatrix(matrix2, 3));
+            custom_assert(true == s.searchMatrix(matrix2, 1));
+            custom_assert(false == s.searchMatrix(matrix2, 0));
+        }
+        {
+            _74::Solution<v2> s{};
+            custom_assert(true == s.searchMatrix(matrix0, 3));
+            custom_assert(false == s.searchMatrix(matrix0, 13));
+            custom_assert(true == s.searchMatrix(matrix1, 1));
+            custom_assert(false == s.searchMatrix(matrix1, 0));
+            custom_assert(true == s.searchMatrix(matrix2, 3));
+            custom_assert(true == s.searchMatrix(matrix2, 1));
+            custom_assert(false == s.searchMatrix(matrix2, 0));
+        }
     }
 #endif
     //////////////////////
@@ -766,6 +821,7 @@ int main()
                                               {'1', '1', '0', '1', '0'},
                                               {'1', '1', '0', '0', '0'},
                                               {'0', '0', '0', '0', '0'} };
+
         std::vector<std::vector<char>> grid2{ {'1', '1', '0', '0', '0'},
                                               {'1', '1', '0', '0', '0'},
                                               {'0', '0', '1', '0', '0'},
@@ -780,6 +836,7 @@ int main()
                                               {'1', '1', '0', '1', '0'},
                                               {'1', '1', '0', '0', '0'},
                                               {'0', '0', '0', '0', '0'} };
+
         std::vector<std::vector<char>> grid2{ {'1', '1', '0', '0', '0'},
                                               {'1', '1', '0', '0', '0'},
                                               {'0', '0', '1', '0', '0'},
@@ -788,6 +845,36 @@ int main()
         _200::Solution<v2> s{};
         custom_assert(1 == s.numIslands(grid1));
         custom_assert(3 == s.numIslands(grid2));
+    }
+#endif
+    //////////////////////
+    /**
+     * 239. Sliding Window Maximum
+     */
+#if 1
+    {
+        std::vector<int> nums1{ 1, 3, -1, -3, 5, 3, 6, 7 };
+        std::vector<int> nums2{ 1 };
+        std::vector<int> nums3{ 1, 4, 2, 3 };
+
+        {
+            _239::Solution<v1> s{};
+            auto output1 = s.maxSlidingWindow(nums1, 3);
+            custom_assert("{ 3, 3, 5, 5, 6, 7 }" == vector_to_string(output1));
+            auto output2 = s.maxSlidingWindow(nums2, 1);
+            custom_assert("{ 1 }" == vector_to_string(output2));
+            auto output3 = s.maxSlidingWindow(nums3, 4);
+            custom_assert("{ 4 }" == vector_to_string(output3));
+        }
+        {
+            _239::Solution<v2> s{};
+            auto output1 = s.maxSlidingWindow(nums1, 3);
+            custom_assert("{ 3, 3, 5, 5, 6, 7 }" == vector_to_string(output1));
+            auto output2 = s.maxSlidingWindow(nums2, 1);
+            custom_assert("{ 1 }" == vector_to_string(output2));
+            auto output3 = s.maxSlidingWindow(nums3, 4);
+            custom_assert("{ 4 }" == vector_to_string(output3));
+        }
     }
 #endif
     //////////////////////
@@ -942,6 +1029,28 @@ int main()
             custom_assert(false == s.isSubsequence(s3_1, t3_2));
             custom_assert(false == s.isSubsequence(s4_1, t4_2));
             custom_assert(false == s.isSubsequence(s5_1, t5_2));
+        }
+    }
+#endif
+    //////////////////////
+    /**
+     * 383. Ransom Note
+     */
+#if 1
+    {
+        {
+            _383::Solution <v1> s{};
+            custom_assert(true == s.canConstruct("aa", "aab"));
+            custom_assert(true == s.canConstruct("aa", "aba"));
+            custom_assert(false == s.canConstruct("a", "b"));
+            custom_assert(false == s.canConstruct("aa", "ab"));
+        }
+        {
+            _383::Solution <v2> s{};
+            custom_assert(true == s.canConstruct("aa", "aab"));
+            custom_assert(true == s.canConstruct("aa", "aba"));
+            custom_assert(false == s.canConstruct("a", "b"));
+            custom_assert(false == s.canConstruct("aa", "ab"));
         }
     }
 #endif
@@ -1172,8 +1281,8 @@ int main()
         auto printThird = []() { std::cout << "third"; };
 
         std::thread t1([&foo, &printFirst]() { foo.first(printFirst); });
-        std::thread t2([&foo, &printSecond]() { foo.second(printSecond); });
         std::thread t3([&foo, &printThird]() { foo.third(printThird); });
+        std::thread t2([&foo, &printSecond]() { foo.second(printSecond); });
 
         t1.join();
         t2.join();
