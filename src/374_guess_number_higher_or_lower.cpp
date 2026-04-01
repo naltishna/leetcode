@@ -1,6 +1,5 @@
 #include "374_guess_number_higher_or_lower.h"
 
-
 namespace _374 {
 
     /*

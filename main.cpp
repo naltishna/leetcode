@@ -15,6 +15,7 @@
 #include "12_integer_to_roman.h"
 #include "13_roman_to_integer.h"
 #include "14_longest_common_prefix.h"
+#include "15_3sum.h"
 #include "18_4sum.h"
 #include "20_valid_parentheses.h"
 #include "23_merge_k_sorted_lists.h"
@@ -171,6 +172,33 @@ int main()
         custom_assert("fl" == s.longestCommonPrefix(strs_1));
         custom_assert("" == s.longestCommonPrefix(strs_2));
         custom_assert("a" == s.longestCommonPrefix(strs_3));
+    }
+#endif
+    //////////////////////
+    /**
+     * 15. 3Sum
+     */
+#if 1
+    {
+        std::vector<int> l0{ -1, 0, 1, 2, -1, -4 }; // Output: [[-1,-1,2],[-1,0,1]]
+        std::vector<int> l1{ 0, 1 ,1 };             // Output: []
+        std::vector<int> l2{ 0, 0, 0 };             // Output: [[0,0,0]]
+        std::vector<int> l3{ 0, 0 };                // Output: []
+
+        {
+            _15::Solution<v1> s;
+            custom_assert(2 == s.threeSum(l0).size());
+            custom_assert(0 == s.threeSum(l1).size());
+            custom_assert(1 == s.threeSum(l2).size());
+            custom_assert(0 == s.threeSum(l3).size());
+        }
+        {
+            _15::Solution<v2> s;
+            custom_assert(2 == s.threeSum(l0).size());
+            custom_assert(0 == s.threeSum(l1).size());
+            custom_assert(1 == s.threeSum(l2).size());
+            custom_assert(0 == s.threeSum(l3).size());
+        }
     }
 #endif
     //////////////////////
