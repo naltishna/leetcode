@@ -71,6 +71,7 @@ namespace _189 {
     void Solution<v3>::rotate(std::vector<int>& nums, int k) {
         int n = nums.size();
         if (n == 0) return;
+        
         k = k % n;
 
         std::vector<int> result(n);
@@ -95,6 +96,7 @@ namespace _189 {
     void Solution<v4>::rotate(std::vector<int>& nums, int k) {
         int n = nums.size();
         if (n == 0) return;
+
         k = k % n;
 
         // Idea: reverse(all) -> reverse(first k) -> reverse(n-k)
@@ -125,6 +127,7 @@ namespace _189 {
     void Solution<v5>::rotate(std::vector<int>& nums, int k) {
         int n = nums.size();
         if (n == 0) return;
+
         k = k % n;
         if (k == 0) return;
 

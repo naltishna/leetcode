@@ -20,6 +20,7 @@ include_directories(
 add_executable (leetcode 
 "main.cpp"
 "src/list_node_helpers.cpp"
+"src/1_two_sum.cpp"
 "src/2_add_two_numbers.cpp"
 "src/9_palindrome_number.cpp"
 "src/11_container_with_most_water.cpp"
@@ -33,12 +34,16 @@ add_executable (leetcode
 "src/26_remove_duplicates_from_sorted_array.cpp"
 "src/27_remove_element.cpp"
 "src/28_find_the_index_of_the_first_occurrence_in_a_string.cpp"
+"src/33_search_in_rotated_sorted_array.cpp"
 "src/45_jump_game_II.cpp"
 "src/55_jump_game.cpp"
 "src/56_merge_intervals.cpp"
 "src/58_length_of_last_word.cpp"
+"src/66_plus_one.cpp"
+"src/69_sqrt_x.cpp"
 "src/74_search_2D_matrix.cpp"
 "src/80_remove_duplicates_from_sorted_array_II.cpp"
+"src/81_search_in_rotated_sorted_arrayII.cpp"
 "src/88_merge_sorted_array.cpp"
 "src/101_symmetric_tree.cpp"
 "src/110_balanced_binary_tree.cpp"
@@ -47,23 +52,29 @@ add_executable (leetcode
 "src/122_best_time_to_buy_and_sell_stock_II.cpp"
 "src/125_valid_palindrome.cpp"
 "src/136_single_number.cpp"
+"src/153_find_minimum_in_rotated_sorted_array.cpp"
+"src/167_two_sumII_input_array_is_sorted.cpp"
 "src/169_majority_element.cpp"
 "src/189_rotate_array.cpp"
 "src/200_number_of_islands.cpp"
+"src/205_isomorphic_strings.cpp"
 "src/239_sliding_window_maximum.cpp"
 "src/242_valid_anagram.cpp"
+"src/301_remove_invalid_parentheses.cpp"
 "src/309_best_time_to_buy_and_sell_stock_with_cooldown.cpp"
 "src/347_top_k_frequent_elements.cpp"
 "src/373_find_k_pairs_with_smallest_sums.cpp"
 "src/374_guess_number_higher_or_lower.cpp"
 "src/383_ransom_note.cpp"
 "src/392_is_subsequence.cpp"
+"src/424_longest_repeating_character_replacement.cpp"
 "src/480_sliding_window_median.cpp"
 "src/653_two_sum_IV_input_is_a_BST.cpp"
 "src/692_top_k_frequent_words.cpp"
 "src/704_binary_search.cpp"
 "src/763_partition_labels.cpp"
-"src/1114_print_in_order.cpp")
+"src/1114_print_in_order.cpp"
+"src/1117_building_H2O.cpp")
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)
   set_property(TARGET leetcode PROPERTY CXX_STANDARD 20)
@@ -73,3 +84,6 @@ option(USE_O_N_136 "Set ON to enable O(N) version in 136_single_number task or O
 if (USE_O_N_136)
   target_compile_definitions(${PROJECT_NAME} PRIVATE O_N_136)
 endif()
+
+option(PRINT_ENABLED "Enable printing" OFF)
+add_compile_definitions(PRINT_ENABLED=${PRINT_ENABLED})

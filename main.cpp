@@ -1,5 +1,6 @@
 ﻿// main.cpp : Defines the entry point for the application.
 
+#include <algorithm>
 #include <iostream>
 #include <memory>
 #include <thread>
@@ -9,6 +10,7 @@
 #include "utils.h"
 #include "class_version.h"
 
+#include "1_two_sum.h"
 #include "2_add_two_numbers.h"
 #include "9_palindrome_number.h"
 #include "11_container_with_most_water.h"
@@ -22,12 +24,16 @@
 #include "26_remove_duplicates_from_sorted_array.h"
 #include "27_remove_element.h"
 #include "28_find_the_index_of_the_first_occurrence_in_a_string.h"
+#include "33_search_in_rotated_sorted_array.h"
 #include "45_jump_game_II.h"
 #include "55_jump_game.h"
 #include "56_merge_intervals.h"
 #include "58_length_of_last_word.h"
+#include "66_plus_one.h"
+#include "69_sqrt_x.h"
 #include "74_search_2D_matrix.h"
 #include "80_remove_duplicates_from_sorted_array_II.h"
+#include "81_search_in_rotated_sorted_arrayII.h"
 #include "88_merge_sorted_array.h"
 #include "101_symmetric_tree.h"
 #include "110_balanced_binary_tree.h"
@@ -36,26 +42,63 @@
 #include "122_best_time_to_buy_and_sell_stock_II.h"
 #include "125_valid_palindrome.h"
 #include "136_single_number.h"
+#include "153_find_minimum_in_rotated_sorted_array.h"
+#include "167_two_sumII_input_array_is_sorted.h"
 #include "169_majority_element.h"
 #include "189_rotate_array.h"
 #include "200_number_of_islands.h"
+#include "205_isomorphic_strings.h"
 #include "239_sliding_window_maximum.h"
 #include "242_valid_anagram.h"
+#include "301_remove_invalid_parentheses.h"
 #include "309_best_time_to_buy_and_sell_stock_with_cooldown.h"
 #include "347_top_k_frequent_elements.h"
 #include "373_find_k_pairs_with_smallest_sums.h"
 #include "374_guess_number_higher_or_lower.h"
 #include "383_ransom_note.h"
 #include "392_is_subsequence.h"
+#include "424_longest_repeating_character_replacement.h"
 #include "480_sliding_window_median.h"
 #include "653_two_sum_IV_input_is_a_BST.h"
 #include "692_top_k_frequent_words.h"
 #include "704_binary_search.h"
 #include "763_partition_labels.h"
 #include "1114_print_in_order.h"
+#include "1117_building_H2O.h"
+
 
 int main()
 {
+    //////////////////////
+    /**
+     * 1. Two Sum
+     */
+#if 1
+    {
+        std::vector<int> nums1{ 2, 7, 11, 15 };
+        std::vector<int> nums2{ 3, 2, 4 };
+        std::vector<int> nums3{ 3, 3 };
+
+        {
+            _1::Solution<v1> s{};
+            auto output1 = s.twoSum(nums1, 9);
+            custom_assert("{ 0, 1 }" == vector_to_string(output1));
+            auto output2 = s.twoSum(nums2, 6);
+            custom_assert("{ 1, 2 }" == vector_to_string(output2));
+            auto output3 = s.twoSum(nums3, 6);
+            custom_assert("{ 0, 1 }" == vector_to_string(output3));
+        }
+        {
+            _1::Solution<v2> s{};
+            auto output1 = s.twoSum(nums1, 9);
+            custom_assert("{ 0, 1 }" == vector_to_string(output1));
+            auto output2 = s.twoSum(nums2, 6);
+            custom_assert("{ 1, 2 }" == vector_to_string(output2));
+            auto output3 = s.twoSum(nums3, 6);
+            custom_assert("{ 0, 1 }" == vector_to_string(output3));
+        }
+    }
+#endif
     //////////////////////
     /**
      * 2. Add Two Numbers
@@ -414,6 +457,24 @@ int main()
 #endif
     //////////////////////
     /**
+     * 33. Search in Rotated Sorted Array
+     */
+#if 1
+    {
+        std::vector<int> nums_1{ 4, 5, 6, 7, 0, 1, 2 };
+        std::vector<int> nums_2{ 4, 5, 6, 7, 0, 1, 2 };
+        std::vector<int> nums_3{ 1 };
+        std::vector<int> nums_4{ };
+
+        _33::Solution s{};
+        custom_assert(4 == s.search(nums_1, 0));
+        custom_assert(-1 == s.search(nums_2, 3));
+        custom_assert(-1 == s.search(nums_3, 0));
+        custom_assert(-1 == s.search(nums_4, 0));
+    }
+#endif
+    //////////////////////
+    /**
      * 45. Jump Game II
      */
 #if 1
@@ -497,6 +558,60 @@ int main()
 #endif
     //////////////////////
     /**
+     * 66. Plus One
+     */
+#if 1
+    {
+        std::vector<int> nums1{ 1, 2, 3 };
+        std::vector<int> nums2{ 4, 3, 2, 1 };
+        std::vector<int> nums3{ 9 };
+        std::vector<int> nums4{ 9, 8, 7, 6, 5, 4, 3, 2, 1, 0 };
+        std::vector<int> nums5{ 9, 9, 9 };
+
+        {
+            _66::Solution<v1> s{};
+            auto output1 = s.plusOne(nums1);
+            custom_assert("{ 1, 2, 4 }" == vector_to_string(output1));
+            auto output2 = s.plusOne(nums2);
+            custom_assert("{ 4, 3, 2, 2 }" == vector_to_string(output2));
+            auto output3 = s.plusOne(nums3);
+            custom_assert("{ 1, 0 }" == vector_to_string(output3));
+            auto output4 = s.plusOne(nums4);
+            custom_assert("{ 9, 8, 7, 6, 5, 4, 3, 2, 1, 1 }" == vector_to_string(output4));
+            auto output5 = s.plusOne(nums5);
+            custom_assert("{ 1, 0, 0, 0 }" == vector_to_string(output5));
+        }
+        {
+            _66::Solution<v2> s{};
+            auto output1 = s.plusOne(nums1);
+            custom_assert("{ 1, 2, 4 }" == vector_to_string(output1));
+            auto output2 = s.plusOne(nums2);
+            custom_assert("{ 4, 3, 2, 2 }" == vector_to_string(output2));
+            auto output3 = s.plusOne(nums3);
+            custom_assert("{ 1, 0 }" == vector_to_string(output3));
+            auto output4 = s.plusOne(nums4);
+            custom_assert("{ 9, 8, 7, 6, 5, 4, 3, 2, 1, 1 }" == vector_to_string(output4));
+            auto output5 = s.plusOne(nums5);
+            custom_assert("{ 1, 0, 0, 0 }" == vector_to_string(output5));
+        }
+    }
+#endif
+    //////////////////////
+    /**
+     * 69. Sqrt(x)
+     */
+#if 1
+    {
+        int x1 = 4;
+        int x2 = 8;
+
+        _69::Solution s{};
+        custom_assert(2 == s.mySqrt(x1));
+        custom_assert(2 == s.mySqrt(x2));
+    }
+#endif
+    //////////////////////
+    /**
      * 74. Search a 2D Matrix
      */
 #if 1
@@ -546,6 +661,22 @@ int main()
             custom_assert(5 == s.removeDuplicates(nums_1)); // Output: 5, nums = [1,1,2,2,3,_]
             custom_assert(7 == s.removeDuplicates(nums_2)); // Output: 7, nums = [0,0,1,1,2,3,3,_,_]
         }
+    }
+#endif
+    //////////////////////
+    /**
+     * 81. Search in Rotated Sorted Array II
+     */
+#if 1
+    {
+        std::vector<int> nums_1{ 2, 5, 6, 0, 0, 1, 2 };
+        std::vector<int> nums_2{ 2, 5, 6, 0, 0, 1, 2 };
+        std::vector<int> nums_3{ };
+
+        _81::Solution s{};
+        custom_assert(true == s.search(nums_1, 0));
+        custom_assert(false == s.search(nums_2, 3));
+        custom_assert(false == s.search(nums_3, 0));
     }
 #endif
     //////////////////////
@@ -749,6 +880,41 @@ int main()
 #endif
     //////////////////////
     /**
+     * 153. Find Minimum in Rotated Sorted Array
+     */
+#if 1
+    {
+        std::vector<int> nums_1{ 3, 4, 5, 1, 2 };
+        std::vector<int> nums_2{ 4, 5, 6, 7, 0, 1, 2 };
+        std::vector<int> nums_3{ 11, 13, 15, 17 };
+
+        _153::Solution s{};
+        custom_assert(1 == s.findMin(nums_1));
+        custom_assert(0 == s.findMin(nums_2));
+        custom_assert(11 == s.findMin(nums_3));
+    }
+#endif
+    //////////////////////
+    /**
+     * 167. Two Sum II - Input Array Is Sorted
+     */
+#if 1
+    {
+        std::vector<int> nums1{ 2, 7, 11, 15 };
+        std::vector<int> nums2{ 2, 3, 4 };
+        std::vector<int> nums3{ -1, 0 };
+
+        _167::Solution s{};
+        auto output1 = s.twoSum(nums1, 9);
+        custom_assert("{ 1, 2 }" == vector_to_string(output1));
+        auto output2 = s.twoSum(nums2, 6);
+        custom_assert("{ 1, 3 }" == vector_to_string(output2));
+        auto output3 = s.twoSum(nums3, -1);
+        custom_assert("{ 1, 2 }" == vector_to_string(output3));
+    }
+#endif
+    //////////////////////
+    /**
      * 169. Majority Element
      */
 #if 1
@@ -877,6 +1043,38 @@ int main()
 #endif
     //////////////////////
     /**
+     * 205. Isomorphic Strings
+     */
+#if 1
+    {
+        {
+            _205::Solution<v1> s{};
+            custom_assert(false == s.isIsomorphic("f11", "b23"));
+            custom_assert(true == s.isIsomorphic("egg", "add"));
+            custom_assert(false == s.isIsomorphic("bbbaaaba", "aaabbbba"));
+            custom_assert(false == s.isIsomorphic("abc", "dee"));
+            custom_assert(true == s.isIsomorphic("paper", "title"));
+        }
+        {
+            _205::Solution<v2> s{};
+            custom_assert(true == s.isIsomorphic("egg", "add"));
+            custom_assert(false == s.isIsomorphic("f11", "b23"));
+            custom_assert(false == s.isIsomorphic("bbbaaaba", "aaabbbba"));
+            custom_assert(false == s.isIsomorphic("abc", "dee"));
+            custom_assert(true == s.isIsomorphic("paper", "title"));
+        }
+        {
+            _205::Solution<v3> s{};
+            custom_assert(true == s.isIsomorphic("egg", "add"));
+            custom_assert(false == s.isIsomorphic("abc", "dee"));
+            custom_assert(false == s.isIsomorphic("f11", "b23"));
+            custom_assert(false == s.isIsomorphic("bbbaaaba", "aaabbbba"));
+            custom_assert(true == s.isIsomorphic("paper", "title"));
+        }
+    }
+#endif
+    //////////////////////
+    /**
      * 239. Sliding Window Maximum
      */
 #if 1
@@ -924,6 +1122,33 @@ int main()
             _242::Solution<v2> s{};
             custom_assert(true == s.isAnagram(s1_1, s1_2));
             custom_assert(false == s.isAnagram(s2_1, s2_2));
+        }
+    }
+#endif
+    //////////////////////
+    /**
+     * 301. Remove Invalid Parentheses
+     */
+#if 1
+    {
+        std::string s_1 = "()())()";
+        std::string s_2 = "(a)())()";
+        std::string s_3 = ")(";
+        std::string s_4 = ")(f";
+
+        {
+            _301::Solution<v1> s{};
+            custom_assert(std::vector<std::string>({ "(())()", "()()()" }) == s.removeInvalidParentheses(s_1));
+            custom_assert(std::vector<std::string>({ "(a())()", "(a)()()" }) == s.removeInvalidParentheses(s_2));
+            custom_assert(std::vector<std::string>({ "" }) == s.removeInvalidParentheses(s_3));
+            custom_assert(std::vector<std::string>({ "f" }) == s.removeInvalidParentheses(s_4));
+        }
+        {
+            _301::Solution<v2> s{};
+            custom_assert(std::vector<std::string>({ "(())()", "()()()" }) == s.removeInvalidParentheses(s_1));
+            custom_assert(std::vector<std::string>({ "(a())()", "(a)()()" }) == s.removeInvalidParentheses(s_2));
+            custom_assert(std::vector<std::string>({ "" }) == s.removeInvalidParentheses(s_3));
+            custom_assert(std::vector<std::string>({ "f" }) == s.removeInvalidParentheses(s_4));
         }
     }
 #endif
@@ -1079,6 +1304,27 @@ int main()
             custom_assert(true == s.canConstruct("aa", "aba"));
             custom_assert(false == s.canConstruct("a", "b"));
             custom_assert(false == s.canConstruct("aa", "ab"));
+        }
+    }
+#endif
+    //////////////////////
+    /**
+     * 424. Longest Repeating Character Replacement
+     */
+#if 1
+    {
+        std::string s_1 = "ABAB";
+        std::string s_2 = "AABABBA";
+
+        {
+            _424::Solution<v1> s{};
+            custom_assert(4 == s.characterReplacement(s_1, 2));
+            custom_assert(4 == s.characterReplacement(s_2, 1));
+        }
+        {
+            _424::Solution<v2> s{};
+            //custom_assert(4 == s.characterReplacement(s_1, 2));
+            custom_assert(4 == s.characterReplacement(s_2, 1));
         }
     }
 #endif
@@ -1337,5 +1583,99 @@ int main()
     }
 #endif
     //////////////////////
+    /**
+     * 1117. Building H2O
+     */
+#if 1
+    {
+        _1117::H2O h2o;
+
+        std::cout << std::endl;
+
+        auto printHydrogen = []() { std::cout << "H"; };
+        auto printOxygen = []() { std::cout << "O"; };
+
+        std::thread hydrogen1([&h2o, &printHydrogen]() { h2o.hydrogen(printHydrogen); });
+        std::thread hydrogen2([&h2o, &printHydrogen]() { h2o.hydrogen(printHydrogen); });
+        std::thread oxygen([&h2o, &printOxygen]() { h2o.oxygen(printOxygen); });
+
+        hydrogen1.join();
+        hydrogen2.join();
+        oxygen.join();
+
+        custom_assert("HHO" == h2o.getOutput());
+    }
+    {
+        _1117::H2O h2o;
+
+        std::cout << std::endl;
+
+        auto printHydrogen = []() { std::cout << "H"; };
+        auto printOxygen = []() { std::cout << "O"; };
+
+        std::thread h1([&]() { h2o.hydrogen(printHydrogen); });
+        std::thread h2([&]() { h2o.hydrogen(printHydrogen); });
+        std::thread h3([&]() { h2o.hydrogen(printHydrogen); });
+        std::thread h4([&]() { h2o.hydrogen(printHydrogen); });
+        std::thread o1([&]() { h2o.oxygen(printOxygen); });
+        std::thread o2([&]() { h2o.oxygen(printOxygen); });
+
+        h1.join(); h2.join(); h3.join(); h4.join();
+        o1.join(); o2.join();
+
+        std::string out = h2o.getOutput();
+        custom_assert(6 == out.size());
+
+        auto isValidH2O = [](const std::string& s) {
+            for (int i = 0; i < s.size(); i += 3) {
+                std::string molecule = s.substr(i, 3);
+                int h = std::count(molecule.begin(), molecule.end(), 'H');
+                int o = std::count(molecule.begin(), molecule.end(), 'O');
+
+                if (h != 2 || o != 1) 
+                    return false;
+            }
+            return true;
+            };
+
+        custom_assert(isValidH2O(out));
+    }
+    {
+        _1117::H2O h2o;
+
+        std::cout << std::endl;
+
+        auto printHydrogen = []() { std::cout << "H"; };
+        auto printOxygen = []() { std::cout << "O"; };
+
+        std::vector<std::thread> threads;
+        
+        std::string water = "OOHHHHHHO"; //Input
+        for (char c : water) {
+            if (c == 'H')
+                threads.emplace_back([&]() { h2o.hydrogen(printHydrogen); });
+            else
+                threads.emplace_back([&]() { h2o.oxygen(printOxygen); });
+        }
+
+        for (auto& t : threads) t.join();
+
+        std::string out = h2o.getOutput();
+        custom_assert(out.size() == water.size());
+
+        auto isValidH2O = [](const std::string& s) {
+            for (int i = 0; i < s.size(); i += 3) {
+                std::string molecule = s.substr(i, 3);
+                int h = std::count(molecule.begin(), molecule.end(), 'H');
+                int o = std::count(molecule.begin(), molecule.end(), 'O');
+                if (h != 2 || o != 1) return false;
+            }
+            return true;
+            };
+
+        custom_assert(isValidH2O(out));
+    }
+#endif
+
     return 0;
 }

@@ -22,7 +22,9 @@ auto get_current_time() {
 }
 
 void print_elapsed_time(const auto start_time, const auto end_time, const std::string& mesg) {
+#if PRINT_ENABLED
     std::cout << mesg << "=" << (end_time - start_time).count() << " sec." << std::endl;
+#endif // 0
 }
 
 /**
