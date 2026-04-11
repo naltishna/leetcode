@@ -57,7 +57,6 @@ namespace _1117 {
             std::mutex mtx_;
             std::condition_variable cv_;
             std::string output_ = "";
-            
             int count_hydrogen_ = 0;
     };
 

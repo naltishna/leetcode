@@ -26,6 +26,7 @@
 #include "28_find_the_index_of_the_first_occurrence_in_a_string.h"
 #include "33_search_in_rotated_sorted_array.h"
 #include "45_jump_game_II.h"
+#include "49_group_anagrams.h"
 #include "55_jump_game.h"
 #include "56_merge_intervals.h"
 #include "58_length_of_last_word.h"
@@ -48,6 +49,7 @@
 #include "189_rotate_array.h"
 #include "200_number_of_islands.h"
 #include "205_isomorphic_strings.h"
+#include "206_reverse_linked_list.h"
 #include "239_sliding_window_maximum.h"
 #include "242_valid_anagram.h"
 #include "301_remove_invalid_parentheses.h"
@@ -55,15 +57,19 @@
 #include "347_top_k_frequent_elements.h"
 #include "373_find_k_pairs_with_smallest_sums.h"
 #include "374_guess_number_higher_or_lower.h"
+#include "380_insert_delete_get_random_O_1.h"
 #include "383_ransom_note.h"
 #include "392_is_subsequence.h"
 #include "424_longest_repeating_character_replacement.h"
+#include "438_find_all_anagrams_in_a_string.h"
 #include "480_sliding_window_median.h"
 #include "653_two_sum_IV_input_is_a_BST.h"
 #include "692_top_k_frequent_words.h"
 #include "704_binary_search.h"
 #include "763_partition_labels.h"
 #include "1114_print_in_order.h"
+#include "1115_print_foobar_alternately.h"
+#include "1116_print_zero_even_odd.h"
 #include "1117_building_H2O.h"
 
 
@@ -109,7 +115,7 @@ int main()
         ListNode* l1_2 = ListNodeHelper::createList({ 5, 6, 4 });
         _2::Solution s{};
         ListNode* temp = s.addTwoNumbers(l1_1, l1_2);
-        custom_assert("708" == ListNodeHelper::convertListNodeToString(temp));
+        custom_assert("{ 7, 0, 8 }" == ListNodeHelper::convertListNodeToString(temp));
         ListNodeHelper::freeList(l1_1);
         ListNodeHelper::freeList(l1_2);
         ListNodeHelper::freeList(temp);
@@ -117,15 +123,15 @@ int main()
         ListNode* l2_1 = ListNodeHelper::createList({ 0 });
         ListNode* l2_2 = ListNodeHelper::createList({ 0 });
         temp = s.addTwoNumbers(l2_1, l2_2);
-        custom_assert("0" == ListNodeHelper::convertListNodeToString(temp));
+        custom_assert("{ 0 }" == ListNodeHelper::convertListNodeToString(temp));
         ListNodeHelper::freeList(l2_1);
         ListNodeHelper::freeList(l2_2);
         ListNodeHelper::freeList(temp);
 
-        ListNode* l3_1 = ListNodeHelper::createList({ 9,9,9,9,9,9,9 });
-        ListNode* l3_2 = ListNodeHelper::createList({ 9,9,9,9 });
+        ListNode* l3_1 = ListNodeHelper::createList({ 9, 9, 9, 9, 9, 9, 9 });
+        ListNode* l3_2 = ListNodeHelper::createList({ 9, 9, 9, 9 });
         temp = s.addTwoNumbers(l3_1, l3_2);
-        custom_assert("89990001" == ListNodeHelper::convertListNodeToString(temp));
+        custom_assert("{ 8, 9, 9, 9, 0, 0, 0, 1 }" == ListNodeHelper::convertListNodeToString(temp));
         ListNodeHelper::freeList(l3_1);
         ListNodeHelper::freeList(l3_2);
         ListNodeHelper::freeList(temp);
@@ -292,18 +298,18 @@ int main()
      */
 #if 1
     {
-        ListNode* l1_1 = new ListNode(1, new ListNode(4, new ListNode(5)));
-        ListNode* l1_2 = new ListNode(1, new ListNode(3, new ListNode(4)));
-        ListNode* l1_3 = new ListNode(2, new ListNode(6));
-
-        // [[1,4,5],[1,3,4],[2,6]]
-        std::vector<ListNode*> lists1 = { l1_1, l1_2, l1_3 };
-        // []
-        std::vector<ListNode*> lists2;
-        // [[]]
-        std::vector<ListNode*> lists3 = { nullptr };
-
         { // recursion ver
+            ListNode* l1_1 = new ListNode(1, new ListNode(4, new ListNode(5)));
+            ListNode* l1_2 = new ListNode(1, new ListNode(3, new ListNode(4)));
+            ListNode* l1_3 = new ListNode(2, new ListNode(6));
+
+            // [[1,4,5],[1,3,4],[2,6]]
+            std::vector<ListNode*> lists1 = { l1_1, l1_2, l1_3 };
+            // []
+            std::vector<ListNode*> lists2;
+            // [[]]
+            std::vector<ListNode*> lists3 = { nullptr };
+
             auto start_time = get_current_time();
             _23_recursion::Solution s{};
             ListNode* result = s.mergeKLists(lists1);
@@ -319,18 +325,18 @@ int main()
             ListNodeHelper::freeList(result);
         }
 
-        std::vector<int> data1{ 1, 4, 5 };
-        std::vector<int> data2{ 1, 3, 4 };
-        std::vector<int> data3 = { 2, 6 };
-
-        ListNode* list1 = ListNodeHelper::createList(data1);
-        ListNode* list2 = ListNodeHelper::createList(data2);
-        ListNode* list3 = ListNodeHelper::createList(data3);
-
-        // [[1,4,5],[1,3,4],[2,6]]
-        std::vector<ListNode*> vecs = { list1, list2, list3 };
-
         { // priority_queue ver
+            std::vector<int> data1{ 1, 4, 5 };
+            std::vector<int> data2{ 1, 3, 4 };
+            std::vector<int> data3 = { 2, 6 };
+
+            ListNode* list1 = ListNodeHelper::createList(data1);
+            ListNode* list2 = ListNodeHelper::createList(data2);
+            ListNode* list3 = ListNodeHelper::createList(data3);
+
+            // [[1,4,5],[1,3,4],[2,6]]
+            std::vector<ListNode*> vecs = { list1, list2, list3 };
+
             auto start_time = get_current_time();
             _23_priority_queue::Solution s{};
             ListNode* result = s.mergeKLists(vecs);
@@ -501,6 +507,38 @@ int main()
             custom_assert(2 == s.jump(nums_2));
             custom_assert(0 == s.jump(nums_3));
         }
+    }
+#endif
+    //////////////////////
+    /**
+     * 49. Group Anagrams
+     */
+#if 1
+    {
+        std::vector<std::string> str_1 = { "a" };
+        std::vector<std::string> str_2 = { "" };
+        std::vector<std::string> str_3 = { "eat", "tea", "tan", "ate", "nat", "bat" };
+
+
+        _49::Solution s{};
+
+        custom_assert("{ {a} }" == vectors_to_string(s.groupAnagrams(str_1)));
+        custom_assert("{ {} }" == vectors_to_string(s.groupAnagrams(str_2)));
+
+        std::vector<std::vector<std::string>> res = s.groupAnagrams(str_3);
+        // 1. First, need to sort the words within each nested vector alphabetically.
+        for (auto& group : res) {
+            std::sort(group.begin(), group.end());
+        }
+        // 2. Then need to sort the main vector by the number of elements, and if the number is equal, by the alphabet of the first word
+        std::sort(res.begin(), res.end(), [](const std::vector<std::string>& a, const std::vector<std::string>& b) {
+            if (a.size() != b.size()) {
+                return a.size() < b.size();
+            }
+            return a < b;
+            });
+        custom_assert("{ {bat}, {nat, tan}, {ate, eat, tea} }" == vectors_to_string(res));
+
     }
 #endif
     //////////////////////
@@ -1075,6 +1113,39 @@ int main()
 #endif
     //////////////////////
     /**
+     * 206. Reverse Linked List
+     */
+#if 1
+    {
+        {
+            std::vector<int> data1{ 1, 2, 3, 4, 5 };
+            std::vector<int> data2{ 1, 2 };
+            std::vector<int> data3 = { };
+
+            ListNode* list1 = ListNodeHelper::createList(data1);
+            ListNode* list2 = ListNodeHelper::createList(data2);
+            ListNode* list3 = ListNodeHelper::createList(data3);
+
+            _206::Solution s{};
+            // [1, 2, 3, 4, 5]
+            ListNode* result1 = s.reverseList(list1);
+            custom_assert("{ 5, 4, 3, 2, 1 }" == ListNodeHelper::convertListNodeToString(result1));
+            ListNodeHelper::freeList(result1);
+
+            // [1, 2]
+            ListNode* result2 = s.reverseList(list2);
+            custom_assert("{ 2, 1 }" == ListNodeHelper::convertListNodeToString(result2));
+            ListNodeHelper::freeList(result2);
+
+            // []
+            ListNode* result3 = s.reverseList(list3);
+            custom_assert("{ }" == ListNodeHelper::convertListNodeToString(result3));
+            ListNodeHelper::freeList(result3);
+        }
+    }
+#endif
+    //////////////////////
+    /**
      * 239. Sliding Window Maximum
      */
 #if 1
@@ -1212,24 +1283,24 @@ int main()
         int k3 = 3;
         {
             _373::Solution<v1> s{};
-            custom_assert("{{1, 2}, {1, 4}, {1, 6}}" == vectors_to_string(s.kSmallestPairs(l0_0, l0_1, k0)));
-            custom_assert("{{1, 1}, {1, 1}}" == vectors_to_string(s.kSmallestPairs(l1_0, l1_1, k1)));
-            custom_assert("{{1, 1}, {1, 1}, {1, 2}, {1, 2}, {2, 1}, {1, 3}, {1, 3}, {2, 2}, {2, 3}}" == vectors_to_string(s.kSmallestPairs(l2_0, l2_1, k2)));
-            custom_assert("{{1, 3}, {2, 3}, {1, 5}}" == vectors_to_string(s.kSmallestPairs(l3_0, l3_1, k3)));
+            custom_assert("{ {1, 2}, {1, 4}, {1, 6} }" == vectors_to_string(s.kSmallestPairs(l0_0, l0_1, k0)));
+            custom_assert("{ {1, 1}, {1, 1} }" == vectors_to_string(s.kSmallestPairs(l1_0, l1_1, k1)));
+            custom_assert("{ {1, 1}, {1, 1}, {1, 2}, {1, 2}, {2, 1}, {1, 3}, {1, 3}, {2, 2}, {2, 3} }" == vectors_to_string(s.kSmallestPairs(l2_0, l2_1, k2)));
+            custom_assert("{ {1, 3}, {2, 3}, {1, 5} }" == vectors_to_string(s.kSmallestPairs(l3_0, l3_1, k3)));
         }
         {
             _373::Solution<v2> s{};
-            custom_assert("{{1, 2}, {1, 4}, {1, 6}}" == vectors_to_string(s.kSmallestPairs(l0_0, l0_1, k0)));
-            custom_assert("{{1, 1}, {1, 1}}" == vectors_to_string(s.kSmallestPairs(l1_0, l1_1, k1)));
-            custom_assert("{{1, 1}, {1, 1}, {1, 2}, {1, 2}, {2, 1}, {1, 3}, {1, 3}, {2, 2}, {2, 3}}" == vectors_to_string(s.kSmallestPairs(l2_0, l2_1, k2)));
-            custom_assert("{{1, 3}, {2, 3}, {1, 5}}" == vectors_to_string(s.kSmallestPairs(l3_0, l3_1, k3)));
+            custom_assert("{ {1, 2}, {1, 4}, {1, 6} }" == vectors_to_string(s.kSmallestPairs(l0_0, l0_1, k0)));
+            custom_assert("{ {1, 1}, {1, 1} }" == vectors_to_string(s.kSmallestPairs(l1_0, l1_1, k1)));
+            custom_assert("{ {1, 1}, {1, 1}, {1, 2}, {1, 2}, {2, 1}, {1, 3}, {1, 3}, {2, 2}, {2, 3} }" == vectors_to_string(s.kSmallestPairs(l2_0, l2_1, k2)));
+            custom_assert("{ {1, 3}, {2, 3}, {1, 5} }" == vectors_to_string(s.kSmallestPairs(l3_0, l3_1, k3)));
         }
         {
             _373::Solution<v3> s{};
-            custom_assert("{{1, 2}, {1, 4}, {1, 6}}" == vectors_to_string(s.kSmallestPairs(l0_0, l0_1, k0)));
-            custom_assert("{{1, 1}, {1, 1}}" == vectors_to_string(s.kSmallestPairs(l1_0, l1_1, k1)));
-            custom_assert("{{1, 1}, {1, 1}, {1, 2}, {1, 2}, {2, 1}, {1, 3}, {1, 3}, {2, 2}, {2, 3}}" == vectors_to_string(s.kSmallestPairs(l2_0, l2_1, k2)));
-            custom_assert("{{1, 3}, {2, 3}, {1, 5}}" == vectors_to_string(s.kSmallestPairs(l3_0, l3_1, k3)));
+            custom_assert("{ {1, 2}, {1, 4}, {1, 6} }" == vectors_to_string(s.kSmallestPairs(l0_0, l0_1, k0)));
+            custom_assert("{ {1, 1}, {1, 1} }" == vectors_to_string(s.kSmallestPairs(l1_0, l1_1, k1)));
+            custom_assert("{ {1, 1}, {1, 1}, {1, 2}, {1, 2}, {2, 1}, {1, 3}, {1, 3}, {2, 2}, {2, 3} }" == vectors_to_string(s.kSmallestPairs(l2_0, l2_1, k2)));
+            custom_assert("{ {1, 3}, {2, 3}, {1, 5} }" == vectors_to_string(s.kSmallestPairs(l3_0, l3_1, k3)));
         }
         //std::cout << vector_to_string(s.kSmallestPairs(ln_n_373, ln_n_373, 10000)); // to check throw std::bad_alloc{};
         //std::cout << vector_to_string(s.kSmallestPairs(ln_n_373_1, ln_n_373_2, 9484)); // to check Time Limit Exceeded
@@ -1248,6 +1319,25 @@ int main()
         custom_assert(1 == s.guessNumber(1));
         s.setPick(1);
         custom_assert(1 == s.guessNumber(1));
+    }
+#endif
+    //////////////////////
+    /**
+     * 380. Insert Delete GetRandom O(1)
+     */
+#if 1
+    {
+        _380::RandomizedSet randomizedSet;
+        custom_assert(true == randomizedSet.insert(1));
+        custom_assert(false == randomizedSet.remove(2));
+        custom_assert(true == randomizedSet.insert(2));
+        int val = randomizedSet.getRandom();
+        custom_assert(val == 1 || val == 2);
+        custom_assert(true == randomizedSet.remove(1));
+        custom_assert(false == randomizedSet.insert(2));
+        custom_assert(2 == randomizedSet.getRandom());
+        custom_assert(true == randomizedSet.remove(2));
+        custom_assert(false == randomizedSet.remove(2));
     }
 #endif
     //////////////////////
@@ -1330,6 +1420,22 @@ int main()
 #endif
     //////////////////////
     /**
+     * 438. Find All Anagrams in a String
+     */
+#if 1
+    {
+        std::string s1_1 = "cbaebabacd";
+        std::string s1_2 = "abc";
+        std::string s2_1 = "abab";
+        std::string s2_2 = "ab";
+
+        _438::Solution s{};
+        custom_assert("{ 0, 6 }" == vector_to_string(s.findAnagrams(s1_1, s1_2)));
+        custom_assert("{ 0, 1, 2 }" == vector_to_string(s.findAnagrams(s2_1, s2_2)));
+    }
+#endif
+    //////////////////////
+    /**
      * 480. Sliding Window Median
      */
 #if 1
@@ -1353,36 +1459,36 @@ int main()
         {
             _480::Solution<v1> s{};
             auto start_time = get_current_time();
-            custom_assert("{1.0, -1.0, -1.0, 3.0, 5.0, 6.0}" == vector_to_string(s.medianSlidingWindow(nums_1, k_1)));
-            custom_assert("{2.0, 3.0, 3.0, 3.0, 2.0, 3.0, 2.0}" == vector_to_string(s.medianSlidingWindow(nums_2, k_2)));
-            custom_assert("{2147483647.0}" == vector_to_string(s.medianSlidingWindow(nums_3, k_3)));
-            custom_assert("{2.5}" == vector_to_string(s.medianSlidingWindow(nums_4, k_4)));
-            custom_assert("{-2147483648.0, -0.5, -0.5, -2147483648.0, -2147483648.0, -0.5, 2147483647.0, 2147483647.0, 2147483647.0, -0.5, -0.5, -0.5}" == vector_to_string(s.medianSlidingWindow(nums_5, k_5)));
-            custom_assert("{8.0, 6.0, 8.0, 8.0, 5.0}" == vector_to_string(s.medianSlidingWindow(num_6, k_6)));
+            custom_assert("{ 1.0, -1.0, -1.0, 3.0, 5.0, 6.0 }" == vector_to_string(s.medianSlidingWindow(nums_1, k_1)));
+            custom_assert("{ 2.0, 3.0, 3.0, 3.0, 2.0, 3.0, 2.0 }" == vector_to_string(s.medianSlidingWindow(nums_2, k_2)));
+            custom_assert("{ 2147483647.0 }" == vector_to_string(s.medianSlidingWindow(nums_3, k_3)));
+            custom_assert("{ 2.5 }" == vector_to_string(s.medianSlidingWindow(nums_4, k_4)));
+            custom_assert("{ -2147483648.0, -0.5, -0.5, -2147483648.0, -2147483648.0, -0.5, 2147483647.0, 2147483647.0, 2147483647.0, -0.5, -0.5, -0.5 }" == vector_to_string(s.medianSlidingWindow(nums_5, k_5)));
+            custom_assert("{ 8.0, 6.0, 8.0, 8.0, 5.0 }" == vector_to_string(s.medianSlidingWindow(num_6, k_6)));
             auto end_time = get_current_time();
             print_elapsed_time(start_time, end_time, "_480_v1");
         }
         {
             _480::Solution<v2> s{};
             auto start_time = get_current_time();
-            custom_assert("{1.0, -1.0, -1.0, 3.0, 5.0, 6.0}" == vector_to_string(s.medianSlidingWindow(nums_1, k_1)));
-            custom_assert("{2.0, 3.0, 3.0, 3.0, 2.0, 3.0, 2.0}" == vector_to_string(s.medianSlidingWindow(nums_2, k_2)));
-            custom_assert("{2147483647.0}" == vector_to_string(s.medianSlidingWindow(nums_3, k_3)));
-            custom_assert("{2.5}" == vector_to_string(s.medianSlidingWindow(nums_4, k_4)));
-            custom_assert("{-2147483648.0, -0.5, -0.5, -2147483648.0, -2147483648.0, -0.5, 2147483647.0, 2147483647.0, 2147483647.0, -0.5, -0.5, -0.5}" == vector_to_string(s.medianSlidingWindow(nums_5, k_5)));
-            custom_assert("{8.0, 6.0, 8.0, 8.0, 5.0}" == vector_to_string(s.medianSlidingWindow(num_6, k_6)));
+            custom_assert("{ 1.0, -1.0, -1.0, 3.0, 5.0, 6.0 }" == vector_to_string(s.medianSlidingWindow(nums_1, k_1)));
+            custom_assert("{ 2.0, 3.0, 3.0, 3.0, 2.0, 3.0, 2.0 }" == vector_to_string(s.medianSlidingWindow(nums_2, k_2)));
+            custom_assert("{ 2147483647.0 }" == vector_to_string(s.medianSlidingWindow(nums_3, k_3)));
+            custom_assert("{ 2.5 }" == vector_to_string(s.medianSlidingWindow(nums_4, k_4)));
+            custom_assert("{ -2147483648.0, -0.5, -0.5, -2147483648.0, -2147483648.0, -0.5, 2147483647.0, 2147483647.0, 2147483647.0, -0.5, -0.5, -0.5 }" == vector_to_string(s.medianSlidingWindow(nums_5, k_5)));
+            custom_assert("{ 8.0, 6.0, 8.0, 8.0, 5.0 }" == vector_to_string(s.medianSlidingWindow(num_6, k_6)));
             auto end_time = get_current_time();
             print_elapsed_time(start_time, end_time, "_480_v2");
         }
         {
             _480::Solution<v3> s{};
             auto start_time = get_current_time();
-            custom_assert("{1.0, -1.0, -1.0, 3.0, 5.0, 6.0}" == vector_to_string(s.medianSlidingWindow(nums_1, k_1)));
-            custom_assert("{2.0, 3.0, 3.0, 3.0, 2.0, 3.0, 2.0}" == vector_to_string(s.medianSlidingWindow(nums_2, k_2)));
-            custom_assert("{2147483647.0}" == vector_to_string(s.medianSlidingWindow(nums_3, k_3)));
-            custom_assert("{2.5}" == vector_to_string(s.medianSlidingWindow(nums_4, k_4)));
-            custom_assert("{-2147483648.0, -0.5, -0.5, -2147483648.0, -2147483648.0, -0.5, 2147483647.0, 2147483647.0, 2147483647.0, -0.5, -0.5, -0.5}" == vector_to_string(s.medianSlidingWindow(nums_5, k_5)));
-            custom_assert("{8.0, 6.0, 8.0, 8.0, 5.0}" == vector_to_string(s.medianSlidingWindow(num_6, k_6)));
+            custom_assert("{ 1.0, -1.0, -1.0, 3.0, 5.0, 6.0 }" == vector_to_string(s.medianSlidingWindow(nums_1, k_1)));
+            custom_assert("{ 2.0, 3.0, 3.0, 3.0, 2.0, 3.0, 2.0 }" == vector_to_string(s.medianSlidingWindow(nums_2, k_2)));
+            custom_assert("{ 2147483647.0 }" == vector_to_string(s.medianSlidingWindow(nums_3, k_3)));
+            custom_assert("{ 2.5 }" == vector_to_string(s.medianSlidingWindow(nums_4, k_4)));
+            custom_assert("{ -2147483648.0, -0.5, -0.5, -2147483648.0, -2147483648.0, -0.5, 2147483647.0, 2147483647.0, 2147483647.0, -0.5, -0.5, -0.5 }" == vector_to_string(s.medianSlidingWindow(nums_5, k_5)));
+            custom_assert("{ 8.0, 6.0, 8.0, 8.0, 5.0 }" == vector_to_string(s.medianSlidingWindow(num_6, k_6)));
             auto end_time = get_current_time();
             print_elapsed_time(start_time, end_time, "_480_v3");
         }
@@ -1584,6 +1690,84 @@ int main()
 #endif
     //////////////////////
     /**
+     * 1115. Print FooBar Alternately
+     */
+#if 1
+    {
+        _1115::FooBar foobar(1);
+
+        std::cout << std::endl;
+
+        auto printFoo = []() { std::cout << "foo"; };
+        auto printBar = []() { std::cout << "bar"; };
+
+        std::thread t1([&]() { foobar.foo(printFoo); });
+        std::thread t2([&]() { foobar.bar(printBar); });
+
+        t1.join();
+        t2.join();
+
+        custom_assert("foobar" == foobar.getOutput());
+    }
+    {
+        _1115::FooBar foobar(2);
+
+        std::cout << std::endl;
+
+        auto printFoo = []() { std::cout << "foo"; };
+        auto printBar = []() { std::cout << "bar"; };
+
+        std::thread t1([&]() { foobar.foo(printFoo); });
+        std::thread t2([&]() { foobar.bar(printBar); });
+
+        t1.join();
+        t2.join();
+
+        custom_assert("foobarfoobar" == foobar.getOutput());
+    }
+#endif
+    //////////////////////
+    /**
+     * 1116. Print Zero Even Odd
+     */
+#if 1
+    {
+        _1116::ZeroEvenOdd zeroEvenOdd(2);
+
+        std::cout << std::endl;
+
+        std::function<void(int)> printNumber = [](int x) { std::cout << x; };
+
+        std::thread a([&]() { zeroEvenOdd.zero(printNumber); });
+        std::thread b([&]() { zeroEvenOdd.even(printNumber); });
+        std::thread c([&]() { zeroEvenOdd.odd(printNumber); });
+
+        a.join();
+        b.join();
+        c.join();
+
+        custom_assert("0102" == zeroEvenOdd.getOutput());
+    }
+    {
+        _1116::ZeroEvenOdd zeroEvenOdd(5);
+
+        std::cout << std::endl;
+
+        std::function<void(int)> printNumber = [](int x) { std::cout << x; };
+
+        std::thread a([&]() { zeroEvenOdd.zero(printNumber); });
+        std::thread b([&]() { zeroEvenOdd.even(printNumber); });
+        std::thread c([&]() { zeroEvenOdd.odd(printNumber); });
+
+        a.join();
+        b.join();
+        c.join();
+
+        custom_assert("0102030405" == zeroEvenOdd.getOutput());
+    }
+#endif
+    //////////////////////
+    /**
      * 1117. Building H2O
      */
 #if 1
@@ -1632,7 +1816,7 @@ int main()
                 int h = std::count(molecule.begin(), molecule.end(), 'H');
                 int o = std::count(molecule.begin(), molecule.end(), 'O');
 
-                if (h != 2 || o != 1) 
+                if (h != 2 || o != 1)
                     return false;
             }
             return true;
@@ -1649,7 +1833,7 @@ int main()
         auto printOxygen = []() { std::cout << "O"; };
 
         std::vector<std::thread> threads;
-        
+
         std::string water = "OOHHHHHHO"; //Input
         for (char c : water) {
             if (c == 'H')

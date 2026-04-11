@@ -4,11 +4,12 @@
 /**
  * Definition for singly-linked list.
  *
- * See tasks 2, 23.
+ * See tasks 2, 23, 206.
  */
 struct ListNode {
     int val;
     ListNode* next;
+
     ListNode() : val(0), next(nullptr) {}
     ListNode(int x) : val(x), next(nullptr) {}
     ListNode(int x, ListNode* next) : val(x), next(next) {}

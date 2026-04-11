@@ -2,45 +2,6 @@
 
 #include <queue>
 
-namespace _23_priority_queue {
-
-    /*
-     * Time complexity:
-     * O(N Log K), where N is the total number of nodes in all lists
-     *
-     * Space complexity:
-     * O(K), where K - number non empty elements
-     */
-    ListNode* Solution::mergeKLists(std::vector<ListNode*>& lists) {
-        auto cmp = [](ListNode* a, ListNode* b) {
-            return a->val > b->val;
-            };
-        std::priority_queue<ListNode*, std::vector<ListNode*>, decltype(cmp)> pq(cmp);
-
-        for (auto node : lists) {
-            if (node) {
-                pq.push(node);
-            }
-        }
-
-        ListNode temp;
-        ListNode* tail = &temp;
-
-        while (!pq.empty()) {
-            ListNode* node = pq.top();
-            pq.pop();
-            tail->next = node;
-            tail = node;
-            if (node->next) {
-                pq.push(node->next);
-            }
-        }
-
-        return temp.next;
-    }
-
-}
-
 /**
 * Each level of recursion splits the lists in half (≈ log K levels). At each level, a total of O(N) elements are merged.
 *
@@ -76,6 +37,7 @@ namespace _23_recursion {
         }
         return mergeSort(lists, 0, lists.size() - 1);
     }
+
     ListNode* Solution::mergeSort(std::vector<ListNode*>& lists, int lowerBound, int upperBound) {
         if (lowerBound == upperBound) {
             return lists[lowerBound];
@@ -104,6 +66,46 @@ namespace _23_recursion {
             tail = tail->next;
         }
         tail->next = leftPtr ? leftPtr : rightPtr;
+
+        return temp.next;
+    }
+
+}
+
+namespace _23_priority_queue {
+
+    /*
+     * Time complexity:
+     * O(N Log K), where N is the total number of nodes in all lists
+     *
+     * Space complexity:
+     * O(K), where K - number non empty elements
+     */
+    ListNode* Solution::mergeKLists(std::vector<ListNode*>& lists) {
+        auto cmp = [](ListNode* a, ListNode* b) {
+            return a->val > b->val;
+            };
+        std::priority_queue<ListNode*, std::vector<ListNode*>, decltype(cmp)> pq(cmp);
+
+        for (auto node : lists) {
+            if (node) {
+                pq.push(node);
+            }
+        }
+
+        ListNode temp;
+        ListNode* tail = &temp;
+
+        while (!pq.empty()) {
+            ListNode* node = pq.top();
+            pq.pop();
+            tail->next = node;
+            tail = node;
+
+            if (node->next) {
+                pq.push(node->next);
+            }
+        }
 
         return temp.next;
     }

@@ -24,11 +24,24 @@ void ListNodeHelper::freeList(ListNode* head) {
 }
 
 std::string ListNodeHelper::convertListNodeToString(ListNode* head) {
-    std::string ss;
+    std::string ss = "{ ";
+
+    if (!head) {
+        ss.append("}");
+        return ss;
+    }
+
     while (head) {
         ss.append(std::to_string(head->val));
         head = head->next;
+
+        if (head) {
+            ss.append(", ");
+        }
     }
+
+    ss.append(" }");
+
     return ss;
 }
 

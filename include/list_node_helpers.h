@@ -12,7 +12,6 @@ public:
     static void freeList(ListNode* head);
     static std::string convertListNodeToString(ListNode* head);
     static void printList(ListNode* head);
-
 };
 
 #endif

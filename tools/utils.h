@@ -1,11 +1,12 @@
 #pragma once
 
-#include <iostream>
 #include <chrono>
-#include <string>
+#include <iomanip> // for std::setprecision
+#include <iostream>
 #include <sstream>
 #include <stdexcept>
 #include <cassert>
+#include <type_traits>
 
 #define custom_assert(expr) \
     do { \
@@ -15,7 +16,7 @@
             throw std::runtime_error("Assertion failed"); \
         } \
     } while (0) \
-//#define my_assert assert
+
 
 auto get_current_time() {
     return std::chrono::high_resolution_clock::now();
@@ -27,12 +28,17 @@ void print_elapsed_time(const auto start_time, const auto end_time, const std::s
 #endif // 0
 }
 
+
 /**
  * Vector of vectors to string.
+ * 
+ * For example output: "{ {1, 2}, {1, 4}, {1, 6} }"
  */
-std::string vectors_to_string(std::vector<std::vector<int>> vecs) {
-    std::stringstream ss;
-    ss << "{";
+template <typename T>
+std::string vectors_to_string(std::vector<std::vector<T>> vecs) {
+    std::ostringstream ss;
+    ss << "{ ";
+
     for (int i = 0; i < vecs.size(); ++i) {
         ss << "{";
         for (int j = 0; j < vecs[i].size(); ++j) {
@@ -42,46 +48,44 @@ std::string vectors_to_string(std::vector<std::vector<int>> vecs) {
             }
         }
         ss << "}";
+
         if (i < vecs.size() - 1) {
             ss << ", ";
         }
     }
-    ss << "}";
 
-    return ss.str();
-}
-
-/**
- * Vector of T to string.
- */
-template <typename T>
-std::string vector_to_string(const std::vector<T>& vec) {
-    std::stringstream ss;
-    ss << "{ ";
-    for (int i = 0; i < vec.size(); ++i) {
-        ss << vec[i];
-        if (i < vec.size() - 1) {
-            ss << ", ";
-        }
-    }
     ss << " }";
 
     return ss.str();
 }
 
 /**
- * Vector of double to string.
+ * Vector of T to string.
+ * 
+ * For example output: "{ 1, 2, 4 }" or "{ 8.0, 6.0, 8.0, 8.0, 5.0 }"
  */
-std::string vector_to_string(const std::vector<double>& vec) {
-    std::stringstream ss;
-    ss << "{";
+template <typename T>
+std::string vector_to_string(const std::vector<T>& vec) {
+    std::ostringstream ss;
+    ss << "{ ";
+
     for (int i = 0; i < vec.size(); ++i) {
-        ss << std::fixed << std::setprecision(1) << vec[i];
+        if constexpr (std::is_arithmetic_v<T>) {  // (c++11) if constexpr (std::is_arithmetic<T>::value) {
+            ss << std::fixed << std::setprecision(1) << vec[i];
+        }
+        else if constexpr (std::is_convertible_v<T, std::string>) {
+            ss << static_cast<std::string>(vec[i]);
+        }
+        else {
+            ss << "[unsupported type]";
+        }
+
         if (i < vec.size() - 1) {
             ss << ", ";
         }
     }
-    ss << "}";
+
+    ss << " }";
 
     return ss.str();
 }
