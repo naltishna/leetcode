@@ -43,6 +43,7 @@
 #include "122_best_time_to_buy_and_sell_stock_II.h"
 #include "125_valid_palindrome.h"
 #include "136_single_number.h"
+#include "141_linked_list_cycle.h"
 #include "153_find_minimum_in_rotated_sorted_array.h"
 #include "167_two_sumII_input_array_is_sorted.h"
 #include "169_majority_element.h"
@@ -918,6 +919,44 @@ int main()
 #endif
     //////////////////////
     /**
+     * 141. Linked List Cycle
+     */
+#if 1
+    {
+        {
+            // [3, 2, 0, -4]
+            auto node_4 = new ListNode(-4);
+            auto node_0 = new ListNode(0, node_4);
+            auto node_2 = new ListNode(2, node_0);
+            auto head = new ListNode(3, node_2);
+            node_4->next = node_2;
+
+            _141::Solution s{};
+            custom_assert(true == s.hasCycle(head));
+            ListNodeHelper::freeList(head);
+        }
+        {
+            // [1, 2]
+            auto node_2 = new ListNode(2);
+            auto head = new ListNode(0, node_2);
+            node_2->next = head;
+
+            _141::Solution s{};
+            custom_assert(true == s.hasCycle(head));
+            ListNodeHelper::freeList(head);
+        }
+        {
+            // [1]
+            auto node_1 = new ListNode(1);
+
+            _141::Solution s{};
+            custom_assert(false == s.hasCycle(node_1));
+            ListNodeHelper::freeList(node_1);
+        }
+    }
+#endif
+    //////////////////////
+    /**
      * 153. Find Minimum in Rotated Sorted Array
      */
 #if 1
@@ -1117,31 +1156,29 @@ int main()
      */
 #if 1
     {
-        {
-            std::vector<int> data1{ 1, 2, 3, 4, 5 };
-            std::vector<int> data2{ 1, 2 };
-            std::vector<int> data3 = { };
+        std::vector<int> data1{ 1, 2, 3, 4, 5 };
+        std::vector<int> data2{ 1, 2 };
+        std::vector<int> data3{ };
 
-            ListNode* list1 = ListNodeHelper::createList(data1);
-            ListNode* list2 = ListNodeHelper::createList(data2);
-            ListNode* list3 = ListNodeHelper::createList(data3);
+        ListNode* list1 = ListNodeHelper::createList(data1);
+        ListNode* list2 = ListNodeHelper::createList(data2);
+        ListNode* list3 = ListNodeHelper::createList(data3);
 
-            _206::Solution s{};
-            // [1, 2, 3, 4, 5]
-            ListNode* result1 = s.reverseList(list1);
-            custom_assert("{ 5, 4, 3, 2, 1 }" == ListNodeHelper::convertListNodeToString(result1));
-            ListNodeHelper::freeList(result1);
+        _206::Solution s{};
+        // [1, 2, 3, 4, 5]
+        ListNode* result1 = s.reverseList(list1);
+        custom_assert("{ 5, 4, 3, 2, 1 }" == ListNodeHelper::convertListNodeToString(result1));
+        ListNodeHelper::freeList(result1);
 
-            // [1, 2]
-            ListNode* result2 = s.reverseList(list2);
-            custom_assert("{ 2, 1 }" == ListNodeHelper::convertListNodeToString(result2));
-            ListNodeHelper::freeList(result2);
+        // [1, 2]
+        ListNode* result2 = s.reverseList(list2);
+        custom_assert("{ 2, 1 }" == ListNodeHelper::convertListNodeToString(result2));
+        ListNodeHelper::freeList(result2);
 
-            // []
-            ListNode* result3 = s.reverseList(list3);
-            custom_assert("{ }" == ListNodeHelper::convertListNodeToString(result3));
-            ListNodeHelper::freeList(result3);
-        }
+        // []
+        ListNode* result3 = s.reverseList(list3);
+        custom_assert("{ }" == ListNodeHelper::convertListNodeToString(result3));
+        ListNodeHelper::freeList(result3);
     }
 #endif
     //////////////////////

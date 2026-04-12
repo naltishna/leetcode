@@ -53,6 +53,7 @@ add_executable (leetcode
 "src/122_best_time_to_buy_and_sell_stock_II.cpp"
 "src/125_valid_palindrome.cpp"
 "src/136_single_number.cpp"
+"src/141_linked_list_cycle.cpp"
 "src/153_find_minimum_in_rotated_sorted_array.cpp"
 "src/167_two_sumII_input_array_is_sorted.cpp"
 "src/169_majority_element.cpp"

@@ -1,6 +1,7 @@
 #include "list_node_helpers.h"
 
 #include <iostream>
+#include <unordered_set>
 
 ListNode* ListNodeHelper::createList(const std::vector<int>& vals) {
     if (vals.empty()) return nullptr;
@@ -16,7 +17,15 @@ ListNode* ListNodeHelper::createList(const std::vector<int>& vals) {
 }
 
 void ListNodeHelper::freeList(ListNode* head) {
+    std::unordered_set<ListNode*> visited;
+
     while (head) {
+        // We've already visited this node, so the loop is closed.
+        if (visited.find(head) != visited.end()) {
+            break;
+        }
+
+        visited.insert(head);
         ListNode* temp = head;
         head = head->next;
         delete temp;
