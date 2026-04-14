@@ -20,6 +20,7 @@
 #include "15_3sum.h"
 #include "18_4sum.h"
 #include "20_valid_parentheses.h"
+#include "21_merge_two_sorted_lists.h"
 #include "23_merge_k_sorted_lists.h"
 #include "26_remove_duplicates_from_sorted_array.h"
 #include "27_remove_element.h"
@@ -56,6 +57,7 @@
 #include "301_remove_invalid_parentheses.h"
 #include "309_best_time_to_buy_and_sell_stock_with_cooldown.h"
 #include "347_top_k_frequent_elements.h"
+#include "349_intersection_of_two_arrays.h"
 #include "373_find_k_pairs_with_smallest_sums.h"
 #include "374_guess_number_higher_or_lower.h"
 #include "380_insert_delete_get_random_O_1.h"
@@ -72,6 +74,7 @@
 #include "1115_print_foobar_alternately.h"
 #include "1116_print_zero_even_odd.h"
 #include "1117_building_H2O.h"
+#include "1195_fizz_buzz_multithreaded.h"
 
 
 int main()
@@ -291,6 +294,41 @@ int main()
         custom_assert(false == s.isValid(s_3));
         custom_assert(true == s.isValid(s_4));
         custom_assert(false == s.isValid(s_5));
+    }
+#endif
+    //////////////////////
+    /**
+     * 21. Merge Two Sorted Lists
+     */
+#if 1
+    {
+        {
+            _21::Solution s{};
+
+            std::vector<int> data0_1{ 1, 2, 4 };
+            std::vector<int> data0_2{ 1, 3, 4 };
+            ListNode* list0_1 = ListNodeHelper::createList(data0_1);
+            ListNode* list0_2 = ListNodeHelper::createList(data0_2);
+            ListNode* result = s.mergeTwoLists(list0_1, list0_2);
+            custom_assert("{ 1, 1, 2, 3, 4, 4 }" == ListNodeHelper::convertListNodeToString(result));
+            ListNodeHelper::freeList(result);
+
+            std::vector<int> data1_1{ };
+            std::vector<int> data1_2{ };
+            ListNode* list1_1 = ListNodeHelper::createList(data1_1);
+            ListNode* list1_2 = ListNodeHelper::createList(data1_2);
+            result = s.mergeTwoLists(list1_1, list1_2);
+            custom_assert("{ }" == ListNodeHelper::convertListNodeToString(result));
+            ListNodeHelper::freeList(result);
+
+            std::vector<int> data2_1{ };
+            std::vector<int> data2_2{ 0 };
+            ListNode* list2_1 = ListNodeHelper::createList(data2_1);
+            ListNode* list2_2 = ListNodeHelper::createList(data2_2);
+            result = s.mergeTwoLists(list2_1, list2_2);
+            custom_assert("{ 0 }" == ListNodeHelper::convertListNodeToString(result));
+            ListNodeHelper::freeList(result);
+        }
     }
 #endif
     //////////////////////
@@ -1299,6 +1337,24 @@ int main()
 #endif
     //////////////////////
     /**
+     * 349. Intersection of Two Arrays
+     */
+#if 1
+    {
+        std::vector<int> nums0_1{ 1, 2, 2, 1 };
+        std::vector<int> nums0_2{ 2, 2 };
+        std::vector<int> nums1_1{ 4, 9, 5 };
+        std::vector<int> nums1_2{ 9, 4, 9, 8, 4 };
+
+        _349::Solution s{};
+        auto output1 = s.intersection(nums0_1, nums0_2);
+        custom_assert("{ 2 }" == vector_to_string(output1));
+        auto output2 = s.intersection(nums1_1, nums1_2);
+        custom_assert("{ 4, 9 }" == vector_to_string(output2));
+    }
+#endif
+    //////////////////////
+    /**
      * 373. Find K Pairs with Smallest Sums
      */
 #if 1
@@ -1895,6 +1951,35 @@ int main()
             };
 
         custom_assert(isValidH2O(out));
+    }
+#endif
+    //////////////////////
+    /**
+     * 1195. Fizz Buzz Multithreaded
+     */
+#if 1
+    {
+        _1195::FizzBuzz fizzbuzz(15);
+
+        std::cout << std::endl;
+
+        auto printFizz = []() { std::cout << "fizz"; };
+        auto printBuzz = []() { std::cout << "buzz"; };
+        auto printFizzBuzz = []() { std::cout << "fizzbuzz"; };
+        std::function<void(int)> printNumber = [](int x) { std::cout << x; };
+
+        std::thread a([&]() { fizzbuzz.fizz(printFizz); });
+        std::thread b([&]() { fizzbuzz.buzz(printBuzz); });
+        std::thread c([&]() { fizzbuzz.fizzbuzz(printFizzBuzz); });
+        std::thread d([&]() { fizzbuzz.number(printNumber); });
+
+        a.join();
+        b.join();
+        c.join();
+        d.join();
+
+        auto res = fizzbuzz.getOutput();
+        custom_assert("12fizz4buzzfizz78fizzbuzz11fizz1314fizzbuzz" == fizzbuzz.getOutput());
     }
 #endif
 

@@ -20,7 +20,7 @@ namespace _1117 {
         std::unique_lock<std::mutex> lock(mtx_);
         cv_.wait(lock, [this] { return count_hydrogen_ < 2; });
 
-        //while (count_hydrogen_ == 2) { // the same
+        //while (count_hydrogen_ == 2) { // the same as above
         //    cv_.wait(lock);
         //}
 

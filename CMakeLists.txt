@@ -30,6 +30,7 @@ add_executable (leetcode
 "src/15_3sum.cpp"
 "src/18_4sum.cpp"
 "src/20_valid_parentheses.cpp"
+"src/21_merge_two_sorted_lists.cpp"
 "src/23_merge_k_sorted_lists.cpp"
 "src/26_remove_duplicates_from_sorted_array.cpp"
 "src/27_remove_element.cpp"
@@ -66,6 +67,7 @@ add_executable (leetcode
 "src/301_remove_invalid_parentheses.cpp"
 "src/309_best_time_to_buy_and_sell_stock_with_cooldown.cpp"
 "src/347_top_k_frequent_elements.cpp"
+"src/349_intersection_of_two_arrays.cpp"
 "src/373_find_k_pairs_with_smallest_sums.cpp"
 "src/374_guess_number_higher_or_lower.cpp"
 "src/380_insert_delete_get_random_O_1.cpp"
@@ -81,7 +83,8 @@ add_executable (leetcode
 "src/1114_print_in_order.cpp"
 "src/1115_print_foobar_alternately.cpp"
 "src/1116_print_zero_even_odd.cpp"
-"src/1117_building_H2O.cpp")
+"src/1117_building_H2O.cpp"
+"src/1195_fizz_buzz_multithreaded.cpp")
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)
   set_property(TARGET leetcode PROPERTY CXX_STANDARD 20)
