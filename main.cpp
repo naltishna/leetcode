@@ -63,6 +63,7 @@
 #include "380_insert_delete_get_random_O_1.h"
 #include "383_ransom_note.h"
 #include "392_is_subsequence.h"
+#include "412_fizz_buzz.h"
 #include "424_longest_repeating_character_replacement.h"
 #include "438_find_all_anagrams_in_a_string.h"
 #include "480_sliding_window_median.h"
@@ -1492,6 +1493,19 @@ int main()
 #endif
     //////////////////////
     /**
+     * 412. Fizz Buzz
+     */
+#if 1
+    {
+        _412::Solution s{};
+        custom_assert("{ 1, 2, Fizz }" == vector_to_string(s.fizzBuzz(3)));
+        custom_assert("{ 1, 2, Fizz, 4, Buzz }" == vector_to_string(s.fizzBuzz(5)));
+        std::string output = "{ 1, 2, Fizz, 4, Buzz, Fizz, 7, 8, Fizz, Buzz, 11, Fizz, 13, 14, FizzBuzz }";
+        custom_assert(output == vector_to_string(s.fizzBuzz(15)));
+    }
+#endif
+    //////////////////////
+    /**
      * 424. Longest Repeating Character Replacement
      */
 #if 1
@@ -1506,7 +1520,7 @@ int main()
         }
         {
             _424::Solution<v2> s{};
-            //custom_assert(4 == s.characterReplacement(s_1, 2));
+            custom_assert(4 == s.characterReplacement(s_1, 2));
             custom_assert(4 == s.characterReplacement(s_2, 1));
         }
     }
@@ -1978,8 +1992,29 @@ int main()
         c.join();
         d.join();
 
-        auto res = fizzbuzz.getOutput();
         custom_assert("12fizz4buzzfizz78fizzbuzz11fizz1314fizzbuzz" == fizzbuzz.getOutput());
+    }
+    {
+        _1195::FizzBuzz fizzbuzz(5);
+
+        std::cout << std::endl;
+
+        auto printFizz = []() { std::cout << "fizz"; };
+        auto printBuzz = []() { std::cout << "buzz"; };
+        auto printFizzBuzz = []() { std::cout << "fizzbuzz"; };
+        std::function<void(int)> printNumber = [](int x) { std::cout << x; };
+
+        std::thread a([&]() { fizzbuzz.fizz(printFizz); });
+        std::thread b([&]() { fizzbuzz.buzz(printBuzz); });
+        std::thread c([&]() { fizzbuzz.fizzbuzz(printFizzBuzz); });
+        std::thread d([&]() { fizzbuzz.number(printNumber); });
+
+        a.join();
+        b.join();
+        c.join();
+        d.join();
+
+        custom_assert("12fizz4buzz" == fizzbuzz.getOutput());
     }
 #endif
 
