@@ -43,6 +43,7 @@ add_executable (leetcode
 "src/58_length_of_last_word.cpp"
 "src/66_plus_one.cpp"
 "src/69_sqrt_x.cpp"
+"src/71_simplify_path.cpp"
 "src/74_search_2D_matrix.cpp"
 "src/80_remove_duplicates_from_sorted_array_II.cpp"
 "src/81_search_in_rotated_sorted_arrayII.cpp"

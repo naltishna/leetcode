@@ -33,6 +33,7 @@
 #include "58_length_of_last_word.h"
 #include "66_plus_one.h"
 #include "69_sqrt_x.h"
+#include "71_simplify_path.h"
 #include "74_search_2D_matrix.h"
 #include "80_remove_duplicates_from_sorted_array_II.h"
 #include "81_search_in_rotated_sorted_arrayII.h"
@@ -674,6 +675,30 @@ int main()
         _69::Solution s{};
         custom_assert(2 == s.mySqrt(x1));
         custom_assert(2 == s.mySqrt(x2));
+    }
+#endif
+    //////////////////////
+    /**
+     * 71. Simplify Path
+     */
+#if 1
+    {
+        {
+            _71::Solution<v1> s{};
+            custom_assert("/home" == s.simplifyPath("/home/"));
+            custom_assert("/home/foo" == s.simplifyPath("/home//foo/"));
+            custom_assert("/home/user/Pictures" == s.simplifyPath("/home/user/Documents/../Pictures"));
+            custom_assert("/" == s.simplifyPath("/../"));
+            custom_assert("/.../b/d" == s.simplifyPath("/.../a/../b/c/../d/./"));
+        }
+        {
+            _71::Solution<v2> s{};
+            custom_assert("/home" == s.simplifyPath("/home/"));
+            custom_assert("/home/foo" == s.simplifyPath("/home//foo/"));
+            custom_assert("/home/user/Pictures" == s.simplifyPath("/home/user/Documents/../Pictures"));
+            custom_assert("/" == s.simplifyPath("/../"));
+            custom_assert("/.../b/d" == s.simplifyPath("/.../a/../b/c/../d/./"));
+        }
     }
 #endif
     //////////////////////
