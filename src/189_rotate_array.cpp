@@ -14,7 +14,7 @@ namespace _189 {
     * Space complexity:
     * O(1)
     */
-     void Solution<v1>::rotate(std::vector<int>& nums, int k) {
+    void Solution<v1>::rotate(std::vector<int>& nums, int k) {
         int n = nums.size();
         if (n == 0) {
             return;
@@ -71,7 +71,7 @@ namespace _189 {
     void Solution<v3>::rotate(std::vector<int>& nums, int k) {
         int n = nums.size();
         if (n == 0) return;
-        
+
         k = k % n;
 
         std::vector<int> result(n);

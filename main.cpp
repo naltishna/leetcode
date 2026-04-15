@@ -37,6 +37,7 @@
 #include "80_remove_duplicates_from_sorted_array_II.h"
 #include "81_search_in_rotated_sorted_arrayII.h"
 #include "88_merge_sorted_array.h"
+#include "92_reverse_linked_list_II.h"
 #include "101_symmetric_tree.h"
 #include "110_balanced_binary_tree.h"
 #include "120_triangle.h"
@@ -45,6 +46,7 @@
 #include "125_valid_palindrome.h"
 #include "136_single_number.h"
 #include "141_linked_list_cycle.h"
+#include "151_reverse_words_in_a_string.h"
 #include "153_find_minimum_in_rotated_sorted_array.h"
 #include "167_two_sumII_input_array_is_sorted.h"
 #include "169_majority_element.h"
@@ -116,30 +118,22 @@ int main()
      */
 #if 1
     {
-        ListNode* l1_1 = ListNodeHelper::createList({ 2, 4, 3 });
-        ListNode* l1_2 = ListNodeHelper::createList({ 5, 6, 4 });
         _2::Solution s{};
-        ListNode* temp = s.addTwoNumbers(l1_1, l1_2);
-        custom_assert("{ 7, 0, 8 }" == ListNodeHelper::convertListNodeToString(temp));
-        ListNodeHelper::freeList(l1_1);
-        ListNodeHelper::freeList(l1_2);
-        ListNodeHelper::freeList(temp);
 
-        ListNode* l2_1 = ListNodeHelper::createList({ 0 });
-        ListNode* l2_2 = ListNodeHelper::createList({ 0 });
-        temp = s.addTwoNumbers(l2_1, l2_2);
-        custom_assert("{ 0 }" == ListNodeHelper::convertListNodeToString(temp));
-        ListNodeHelper::freeList(l2_1);
-        ListNodeHelper::freeList(l2_2);
-        ListNodeHelper::freeList(temp);
+        UniqueListNode l1_1(ListNodeHelper::createList({ 2, 4, 3 }));
+        UniqueListNode l1_2(ListNodeHelper::createList({ 5, 6, 4 }));
+        UniqueListNode temp1(s.addTwoNumbers(l1_1.get(), l1_2.get()));
+        custom_assert("{ 7, 0, 8 }" == ListNodeHelper::convertListNodeToString(temp1.get()));
 
-        ListNode* l3_1 = ListNodeHelper::createList({ 9, 9, 9, 9, 9, 9, 9 });
-        ListNode* l3_2 = ListNodeHelper::createList({ 9, 9, 9, 9 });
-        temp = s.addTwoNumbers(l3_1, l3_2);
-        custom_assert("{ 8, 9, 9, 9, 0, 0, 0, 1 }" == ListNodeHelper::convertListNodeToString(temp));
-        ListNodeHelper::freeList(l3_1);
-        ListNodeHelper::freeList(l3_2);
-        ListNodeHelper::freeList(temp);
+        UniqueListNode l2_1(ListNodeHelper::createList({ 0 }));
+        UniqueListNode l2_2(ListNodeHelper::createList({ 0 }));
+        UniqueListNode temp2(s.addTwoNumbers(l2_1.get(), l2_2.get()));
+        custom_assert("{ 0 }" == ListNodeHelper::convertListNodeToString(temp2.get()));
+
+        UniqueListNode l3_1(ListNodeHelper::createList({ 9, 9, 9, 9, 9, 9, 9 }));
+        UniqueListNode l3_2(ListNodeHelper::createList({ 9, 9, 9, 9 }));
+        UniqueListNode temp3(s.addTwoNumbers(l3_1.get(), l3_2.get()));
+        custom_assert("{ 8, 9, 9, 9, 0, 0, 0, 1 }" == ListNodeHelper::convertListNodeToString(temp3.get()));
     }
 #endif
     //////////////////////
@@ -303,33 +297,27 @@ int main()
      */
 #if 1
     {
-        {
-            _21::Solution s{};
+        _21::Solution s{};
 
-            std::vector<int> data0_1{ 1, 2, 4 };
-            std::vector<int> data0_2{ 1, 3, 4 };
-            ListNode* list0_1 = ListNodeHelper::createList(data0_1);
-            ListNode* list0_2 = ListNodeHelper::createList(data0_2);
-            ListNode* result = s.mergeTwoLists(list0_1, list0_2);
-            custom_assert("{ 1, 1, 2, 3, 4, 4 }" == ListNodeHelper::convertListNodeToString(result));
-            ListNodeHelper::freeList(result);
+        std::vector<int> data0_1{ 1, 2, 4 };
+        std::vector<int> data0_2{ 1, 3, 4 };
+        UniqueListNode list0_1(ListNodeHelper::createList(data0_1));
+        UniqueListNode list0_2(ListNodeHelper::createList(data0_2));
+        UniqueListNode result(s.mergeTwoLists(list0_1.release(), list0_2.release()));
+        custom_assert("{ 1, 1, 2, 3, 4, 4 }" == ListNodeHelper::convertListNodeToString(result.get()));
 
-            std::vector<int> data1_1{ };
-            std::vector<int> data1_2{ };
-            ListNode* list1_1 = ListNodeHelper::createList(data1_1);
-            ListNode* list1_2 = ListNodeHelper::createList(data1_2);
-            result = s.mergeTwoLists(list1_1, list1_2);
-            custom_assert("{ }" == ListNodeHelper::convertListNodeToString(result));
-            ListNodeHelper::freeList(result);
+        std::vector<int> data1_1{ };
+        std::vector<int> data1_2{ };
+        UniqueListNode list1_1(ListNodeHelper::createList(data1_1));
+        UniqueListNode list1_2(ListNodeHelper::createList(data1_2));
+        UniqueListNode result2(s.mergeTwoLists(list1_1.release(), list1_2.release()));
+        custom_assert("{ }" == ListNodeHelper::convertListNodeToString(result2.get()));
 
-            std::vector<int> data2_1{ };
-            std::vector<int> data2_2{ 0 };
-            ListNode* list2_1 = ListNodeHelper::createList(data2_1);
-            ListNode* list2_2 = ListNodeHelper::createList(data2_2);
-            result = s.mergeTwoLists(list2_1, list2_2);
-            custom_assert("{ 0 }" == ListNodeHelper::convertListNodeToString(result));
-            ListNodeHelper::freeList(result);
-        }
+        std::vector<int> data2_1{ };
+        std::vector<int> data2_2{ 0 };
+        UniqueListNode list2_1(ListNodeHelper::createList(data2_1));
+        UniqueListNode list2_2(ListNodeHelper::createList(data2_2));
+        UniqueListNode result3(s.mergeTwoLists(list2_1.release(), list2_2.release()));
     }
 #endif
     //////////////////////
@@ -781,6 +769,19 @@ int main()
 #endif
     //////////////////////
     /**
+     * 92. Reverse Linked List II
+     */
+#if 1
+    {
+        _92::Solution s{};
+
+        UniqueListNode l1(ListNodeHelper::createList({1, 2, 3, 4, 5}));
+        UniqueListNode temp(s.reverseBetween(l1.release(), 2, 4));
+        custom_assert("{ 1, 4, 3, 2, 5 }" == ListNodeHelper::convertListNodeToString(temp.get()));
+    }
+#endif
+    //////////////////////
+    /**
      * 101. Symmetric Tree
      */
 #if 1
@@ -991,6 +992,26 @@ int main()
             _141::Solution s{};
             custom_assert(false == s.hasCycle(node_1));
             ListNodeHelper::freeList(node_1);
+        }
+    }
+#endif
+    //////////////////////
+    /**
+     * 151. Reverse Words in a String
+     */
+#if 1
+    {
+        {
+            _151::Solution<v1> s{};
+            custom_assert("world hello" == s.reverseWords("  hello world  "));
+            custom_assert("blue is sky the" == s.reverseWords("the sky is blue"));
+            custom_assert("example good a" == s.reverseWords("a good   example"));
+        }
+        {
+            _151::Solution<v2> s{};
+            custom_assert("world hello" == s.reverseWords("  hello world  "));
+            custom_assert("blue is sky the" == s.reverseWords("the sky is blue"));
+            custom_assert("example good a" == s.reverseWords("a good   example"));
         }
     }
 #endif

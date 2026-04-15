@@ -3,6 +3,7 @@
 
 #include "list_node.h"
 
+#include <memory>
 #include <string>
 #include <vector>
 
@@ -13,5 +14,12 @@ public:
     static std::string convertListNodeToString(ListNode* head);
     static void printList(ListNode* head);
 };
+
+struct ListNodeDeleter {
+    void operator()(ListNode* head) const {
+        ListNodeHelper::freeList(head);
+    }
+};
+using UniqueListNode = std::unique_ptr<ListNode, ListNodeDeleter>;
 
 #endif
