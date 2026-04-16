@@ -48,6 +48,7 @@
 #include "125_valid_palindrome.h"
 #include "136_single_number.h"
 #include "141_linked_list_cycle.h"
+#include "150_evaluate_reverse_polish_notation.h"
 #include "151_reverse_words_in_a_string.h"
 #include "153_find_minimum_in_rotated_sorted_array.h"
 #include "155_min_stack.h"
@@ -1031,6 +1032,22 @@ int main()
             custom_assert(false == s.hasCycle(node_1));
             ListNodeHelper::freeList(node_1);
         }
+    }
+#endif
+    //////////////////////
+    /**
+     * 150. Evaluate Reverse Polish Notation
+     */
+#if 1
+    {
+        std::vector<std::string> tokens_1 = { "2", "1", "+", "3", "*" };
+        std::vector<std::string> tokens_2 = { "4", "13", "5", "/", "+" };
+        std::vector<std::string> tokens_3 = { "10", "6", "9", "3", "+", "-11", "*", "/", "*", "17", "+", "5", "+" };
+
+        _150::Solution s{};
+        custom_assert(9 == s.evalRPN(tokens_1));
+        custom_assert(6 == s.evalRPN(tokens_2));
+        custom_assert(22 == s.evalRPN(tokens_3));
     }
 #endif
     //////////////////////

@@ -58,6 +58,7 @@ add_executable (leetcode
 "src/125_valid_palindrome.cpp"
 "src/136_single_number.cpp"
 "src/141_linked_list_cycle.cpp"
+"src/150_evaluate_reverse_polish_notation.cpp"
 "src/151_reverse_words_in_a_string.cpp"
 "src/153_find_minimum_in_rotated_sorted_array.cpp"
 "src/155_min_stack.cpp"

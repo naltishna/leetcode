@@ -69,6 +69,9 @@ namespace _155_O_N {
         MinStack(const MinStack&) = delete;
         MinStack& operator=(const MinStack&) = delete;
 
+        MinStack(MinStack&&) = delete;
+        MinStack& operator=(MinStack&&) = delete;
+
         void push(int val);
 
         void pop();
@@ -102,6 +105,9 @@ namespace _155_O_1 {
 
         MinStack(const MinStack&) = delete;
         MinStack& operator=(const MinStack& other) = delete;
+
+        MinStack(MinStack&&) noexcept = default;
+        MinStack& operator=(MinStack&&) noexcept = default;
 
         void push(int val);
 
