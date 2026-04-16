@@ -31,6 +31,7 @@
 #include "55_jump_game.h"
 #include "56_merge_intervals.h"
 #include "58_length_of_last_word.h"
+#include "62_unique_paths.h"
 #include "66_plus_one.h"
 #include "69_sqrt_x.h"
 #include "71_simplify_path.h"
@@ -621,6 +622,17 @@ int main()
         custom_assert(5 == s.lengthOfLastWord(s_1));
         custom_assert(4 == s.lengthOfLastWord(s_2));
         custom_assert(6 == s.lengthOfLastWord(s_3));
+    }
+#endif
+    //////////////////////
+    /**
+     * 62. Unique Paths
+     */
+#if 1
+    {
+        _62::Solution s{};
+        custom_assert(28 == s.uniquePaths(3, 7));
+        custom_assert(3 == s.uniquePaths(3, 2));
     }
 #endif
     //////////////////////

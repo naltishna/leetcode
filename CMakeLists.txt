@@ -41,6 +41,7 @@ add_executable (leetcode
 "src/55_jump_game.cpp"
 "src/56_merge_intervals.cpp"
 "src/58_length_of_last_word.cpp"
+"src/62_unique_paths.cpp"
 "src/66_plus_one.cpp"
 "src/69_sqrt_x.cpp"
 "src/71_simplify_path.cpp"

@@ -5,6 +5,7 @@
 #include <sstream>
 
 namespace _71 {
+
     /*
      * Time complexity:
      * O(N)
