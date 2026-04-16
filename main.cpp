@@ -50,6 +50,7 @@
 #include "141_linked_list_cycle.h"
 #include "151_reverse_words_in_a_string.h"
 #include "153_find_minimum_in_rotated_sorted_array.h"
+#include "155_min_stack.h"
 #include "167_two_sumII_input_array_is_sorted.h"
 #include "169_majority_element.h"
 #include "189_rotate_array.h"
@@ -1066,6 +1067,34 @@ int main()
         custom_assert(1 == s.findMin(nums_1));
         custom_assert(0 == s.findMin(nums_2));
         custom_assert(11 == s.findMin(nums_3));
+    }
+#endif
+    //////////////////////
+    /**
+     * 155. Min Stack
+     */
+#if 1
+    {
+        {
+            _155_O_N::MinStack minStack;
+            minStack.push(-2);
+            minStack.push(0);
+            minStack.push(-3);
+            custom_assert(-3 == minStack.getMin());
+            minStack.pop();
+            custom_assert(0 == minStack.top());
+            custom_assert(-2 == minStack.getMin());
+        }
+        {
+            _155_O_1::MinStack minStack;
+            minStack.push(-2);
+            minStack.push(0);
+            minStack.push(-3);
+            custom_assert(-3 == minStack.getMin());
+            minStack.pop();
+            custom_assert(0 == minStack.top());
+            custom_assert(-2 == minStack.getMin());
+        }
     }
 #endif
     //////////////////////

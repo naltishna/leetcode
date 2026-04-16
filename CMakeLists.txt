@@ -60,6 +60,7 @@ add_executable (leetcode
 "src/141_linked_list_cycle.cpp"
 "src/151_reverse_words_in_a_string.cpp"
 "src/153_find_minimum_in_rotated_sorted_array.cpp"
+"src/155_min_stack.cpp"
 "src/167_two_sumII_input_array_is_sorted.cpp"
 "src/169_majority_element.cpp"
 "src/189_rotate_array.cpp"
