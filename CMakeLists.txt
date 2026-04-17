@@ -68,6 +68,7 @@ add_executable (leetcode
 "src/200_number_of_islands.cpp"
 "src/205_isomorphic_strings.cpp"
 "src/206_reverse_linked_list.cpp"
+"src/224_basic_calculator.cpp"
 "src/239_sliding_window_maximum.cpp"
 "src/242_valid_anagram.cpp"
 "src/301_remove_invalid_parentheses.cpp"

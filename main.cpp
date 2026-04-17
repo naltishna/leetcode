@@ -58,6 +58,7 @@
 #include "200_number_of_islands.h"
 #include "205_isomorphic_strings.h"
 #include "206_reverse_linked_list.h"
+#include "224_basic_calculator.h"
 #include "239_sliding_window_maximum.h"
 #include "242_valid_anagram.h"
 #include "301_remove_invalid_parentheses.h"
@@ -1351,6 +1352,27 @@ int main()
             custom_assert("{ 1 }" == vector_to_string(output2));
             auto output3 = s.maxSlidingWindow(nums3, 4);
             custom_assert("{ 4 }" == vector_to_string(output3));
+        }
+    }
+#endif
+    //////////////////////
+    /**
+     * 224. Basic Calculator
+     */
+#if 1
+    {
+        {
+            _224_basic_calculator::Solution s{}; // does not parse correctly a case: "-2 + 1"
+            custom_assert(14 == s.calculate("12 + 2"));
+            custom_assert(3 == s.calculate(" 2-1 + 2 "));
+            custom_assert(23 == s.calculate("(1+(4+5+2)-3)+(6+8)"));
+        }
+        {
+            _224_unary_minus::Solution s{};
+            //custom_assert(-1 == s.calculate("-2 + 1"));
+            //custom_assert(14 == s.calculate("12 + 2"));
+            //custom_assert(3 == s.calculate(" 2-1 + 2 "));
+            custom_assert(23 == s.calculate("(1+(4+5+2)-3)+(6+8)"));
         }
     }
 #endif
