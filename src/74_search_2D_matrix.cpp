@@ -27,7 +27,7 @@ namespace _74 {
     * O(M+logN)
     */
     template<>
-    bool Solution<v1>::searchMatrix(std::vector<std::vector<int>>& matrix, int target) {
+    bool Solution<ver1>::searchMatrix(std::vector<std::vector<int>>& matrix, int target) {
         if (matrix.empty() || matrix[0].empty()) return false;
 
         int size = matrix.size();
@@ -58,7 +58,7 @@ namespace _74 {
     * O(1)
     */
     template<>
-    bool Solution<v2>::searchMatrix(std::vector<std::vector<int>>& matrix, int target) {
+    bool Solution<ver2>::searchMatrix(std::vector<std::vector<int>>& matrix, int target) {
         if (matrix.empty() || matrix[0].empty()) return false;
 
         int rows = matrix.size();

@@ -14,7 +14,7 @@ namespace _45 {
     * Space complexity:
     * O(1)
     */
-    int Solution<v1>::jump(std::vector<int>& nums) {
+    int Solution<ver1>::jump(std::vector<int>& nums) {
         int n = nums.size();
         if (n <= 1) {
             return 0;
@@ -51,7 +51,7 @@ namespace _45 {
     * Space complexity:
     * O(1)
     */
-    int Solution<v2>::jump(std::vector<int>& nums) {
+    int Solution<ver2>::jump(std::vector<int>& nums) {
         size_t n = nums.size();
         if (n <= 1) {
             return 0;
@@ -88,7 +88,7 @@ namespace _45 {
     * Space complexity:
     * O(n)
     */
-    int Solution<v3>::jump(std::vector<int>& nums) {
+    int Solution<ver3>::jump(std::vector<int>& nums) {
         size_t n = nums.size();
         if (n <= 1) {
             return 0;

@@ -14,7 +14,7 @@ namespace _189 {
     * Space complexity:
     * O(1)
     */
-    void Solution<v1>::rotate(std::vector<int>& nums, int k) {
+    void Solution<ver1>::rotate(std::vector<int>& nums, int k) {
         int n = nums.size();
         if (n == 0) {
             return;
@@ -39,7 +39,7 @@ namespace _189 {
     * Space complexity:
     * O(1)
     */
-    void Solution<v2>::rotate(std::vector<int>& nums, int k) {
+    void Solution<ver2>::rotate(std::vector<int>& nums, int k) {
         size_t n = nums.size();
         if (n == 0) {
             return;
@@ -68,7 +68,7 @@ namespace _189 {
     * Space complexity:
     * O(n)
     */
-    void Solution<v3>::rotate(std::vector<int>& nums, int k) {
+    void Solution<ver3>::rotate(std::vector<int>& nums, int k) {
         int n = nums.size();
         if (n == 0) return;
 
@@ -93,7 +93,7 @@ namespace _189 {
     * Space complexity:
     * O(1)
     */
-    void Solution<v4>::rotate(std::vector<int>& nums, int k) {
+    void Solution<ver4>::rotate(std::vector<int>& nums, int k) {
         int n = nums.size();
         if (n == 0) return;
 
@@ -124,7 +124,7 @@ namespace _189 {
     * Space complexity:
     * O(1)
     */
-    void Solution<v5>::rotate(std::vector<int>& nums, int k) {
+    void Solution<ver5>::rotate(std::vector<int>& nums, int k) {
         int n = nums.size();
         if (n == 0) return;
 

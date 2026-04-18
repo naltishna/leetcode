@@ -15,7 +15,7 @@ namespace _26 {
     * Space complexity:
     * O(1)
     */
-    int Solution<v1>::removeDuplicates(std::vector<int>& nums) {
+    int Solution<ver1>::removeDuplicates(std::vector<int>& nums) {
         auto it = std::unique(nums.begin(), nums.end());
         return (it - nums.begin());
     }
@@ -30,7 +30,7 @@ namespace _26 {
     * - Space complexity:
     * O(1)
     */
-    int Solution<v2>::removeDuplicates(std::vector<int>& nums) {
+    int Solution<ver2>::removeDuplicates(std::vector<int>& nums) {
         if (nums.empty()) return 0;
 
         for (int i = 0, j = 1; j < nums.size();) {

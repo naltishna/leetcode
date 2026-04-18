@@ -18,7 +18,7 @@ namespace _200 {
     * Space complexity:
     * O(R*C)
     */
-    int Solution<v1>::numIslands(std::vector<std::vector<char>>& grid) {
+    int Solution<ver1>::numIslands(std::vector<std::vector<char>>& grid) {
         if (grid.empty() || grid[0].empty()) return 0;
 
         const size_t ROW_S = grid.size();
@@ -37,7 +37,7 @@ namespace _200 {
     }
 
     template<>
-    void Solution<v1>::bfs(std::vector<std::vector<char>>& grid, int row, int col) {
+    void Solution<ver1>::bfs(std::vector<std::vector<char>>& grid, int row, int col) {
         const size_t ROW_S = grid.size();
         const size_t COL_S = grid[0].size();
 
@@ -74,7 +74,7 @@ namespace _200 {
     * Space complexity:
     * O(R*C)
     */
-    int Solution<v2>::numIslands(std::vector<std::vector<char>>& grid) {
+    int Solution<ver2>::numIslands(std::vector<std::vector<char>>& grid) {
         if (grid.empty() || grid[0].empty()) return 0;
 
         const size_t ROW_S = grid.size();
@@ -93,7 +93,7 @@ namespace _200 {
     }
 
     template<>
-    void Solution<v2>::dfs(std::vector<std::vector<char>>& grid, int  row, int  col) {
+    void Solution<ver2>::dfs(std::vector<std::vector<char>>& grid, int  row, int  col) {
         if (row < 0 || col < 0 || row >= grid.size() || col >= grid[0].size() || grid[row][col] == '0') {
             return;
         }

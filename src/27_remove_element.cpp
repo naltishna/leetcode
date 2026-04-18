@@ -15,7 +15,7 @@ namespace _27 {
     * - Space complexity:
     * O(1)
     */
-    int Solution<v1>::removeElement(std::vector<int>& nums, int val) {
+    int Solution<ver1>::removeElement(std::vector<int>& nums, int val) {
         nums.erase(std::remove_if(nums.begin(), nums.end(), [val](int x) { return x == val; }), nums.end());
         return nums.size();
     }
@@ -34,7 +34,7 @@ namespace _27 {
     * - Space complexity:
     * O(1)
     */
-    int Solution<v2>::removeElement(std::vector<int>& nums, int val) {
+    int Solution<ver2>::removeElement(std::vector<int>& nums, int val) {
         std::vector<int>::iterator it;
         while (true) {
             it = std::find(nums.begin(), nums.end(), val);

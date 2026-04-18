@@ -14,7 +14,7 @@ namespace _15 {
     */
 
     template<>
-    std::vector<std::vector<int>> Solution<v1>::threeSum(std::vector<int>& nums) {
+    std::vector<std::vector<int>> Solution<ver1>::threeSum(std::vector<int>& nums) {
         std::vector<std::vector<int>> triplets;
         size_t end = nums.size();
         if (end < 3) return triplets;
@@ -52,7 +52,7 @@ namespace _15 {
     * O(logN)
     */
     template<>
-    std::vector<std::vector<int>> Solution<v2>::threeSum(std::vector<int>& nums) {
+    std::vector<std::vector<int>> Solution<ver2>::threeSum(std::vector<int>& nums) {
         std::vector<std::vector<int>> triplets;
         size_t end = nums.size();
         if (end < 3) return triplets;

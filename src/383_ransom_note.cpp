@@ -21,7 +21,7 @@ namespace _383 {
     * O(m)
     */
     template<>
-    bool Solution<v1>::canConstruct(std::string ransomNote, std::string magazine) {
+    bool Solution<ver1>::canConstruct(std::string ransomNote, std::string magazine) {
         if (ransomNote.size() > magazine.size()
             && onlyLowerAlpha(ransomNote) && onlyLowerAlpha(magazine)) {
             return false;
@@ -53,7 +53,7 @@ namespace _383 {
     * O(1)
     */
     template<>
-    bool Solution<v2>::canConstruct(std::string ransomNote, std::string magazine) {
+    bool Solution<ver2>::canConstruct(std::string ransomNote, std::string magazine) {
         if (ransomNote.size() > magazine.size()) return false;
 
         std::array<int, 26> freq{}; // int freq[26] = {};

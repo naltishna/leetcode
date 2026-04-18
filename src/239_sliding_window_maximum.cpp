@@ -14,7 +14,7 @@ namespace _239 {
     * 𝑂(𝑛𝑘)
     */
     template<>
-    std::vector<int> Solution<v1>::maxSlidingWindow(std::vector<int>& nums, int k) {
+    std::vector<int> Solution<ver1>::maxSlidingWindow(std::vector<int>& nums, int k) {
         std::vector<int> res;
         if (nums.empty() || nums.size() < k) return res;
 
@@ -35,7 +35,7 @@ namespace _239 {
     * 𝑂(𝑛)
     */
     template<>
-    std::vector<int> Solution<v2>::maxSlidingWindow(std::vector<int>& nums, int k) {
+    std::vector<int> Solution<ver2>::maxSlidingWindow(std::vector<int>& nums, int k) {
         std::vector<int> res;
         if (nums.empty() || nums.size() < k) return res;
 

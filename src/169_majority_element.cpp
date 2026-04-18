@@ -19,7 +19,7 @@ namespace _169 {
     * Space complexity:
     * O(k), where k is the number of unique elements.
     */
-    int Solution<v1>::majorityElement(std::vector<int>& nums) {
+    int Solution<ver1>::majorityElement(std::vector<int>& nums) {
         if (nums.empty()) {
             return 0;
         }
@@ -49,7 +49,7 @@ namespace _169 {
     * Space complexity:
     * O(1)
     */
-    int Solution<v2>::majorityElement(std::vector<int>& nums) {
+    int Solution<ver2>::majorityElement(std::vector<int>& nums) {
         if (nums.empty()) {
             return 0;
         }

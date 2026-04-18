@@ -1,7 +1,7 @@
 #pragma once
 
-struct v1 {};
-struct v2 {};
-struct v3 {};
-struct v4 {};
-struct v5 {};
+struct ver1 {};
+struct ver2 {};
+struct ver3 {};
+struct ver4 {};
+struct ver5 {};

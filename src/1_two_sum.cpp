@@ -15,7 +15,7 @@ namespace _1 {
     * O(1)
     */
     template<>
-    std::vector<int> Solution<v1>::twoSum(std::vector<int>& nums, int target) {
+    std::vector<int> Solution<ver1>::twoSum(std::vector<int>& nums, int target) {
         int n = nums.size();
         for (int index1 = 0; index1 < n; ++index1) {
             for (int index2 = index1 + 1; index2 < n; ++index2) {
@@ -39,7 +39,7 @@ namespace _1 {
     * O(N)
     */
     template<>
-    std::vector<int> Solution<v2>::twoSum(std::vector<int>& nums, int target) {
+    std::vector<int> Solution<ver2>::twoSum(std::vector<int>& nums, int target) {
         std::unordered_map<int, int> num_map;
 
         for (int i = 0; i < nums.size(); ++i) {

@@ -92,7 +92,8 @@ add_executable (leetcode
 "src/1115_print_foobar_alternately.cpp"
 "src/1116_print_zero_even_odd.cpp"
 "src/1117_building_H2O.cpp"
-"src/1195_fizz_buzz_multithreaded.cpp")
+"src/1195_fizz_buzz_multithreaded.cpp"
+"src/3531_count_covered_buildings.cpp")
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)
   set_property(TARGET leetcode PROPERTY CXX_STANDARD 20)

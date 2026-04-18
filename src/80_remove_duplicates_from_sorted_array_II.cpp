@@ -14,7 +14,7 @@ namespace _80 {
     * Space complexity:
     * O(n)
     */
-    int Solution<v1>::removeDuplicates(std::vector<int>& nums) {
+    int Solution<ver1>::removeDuplicates(std::vector<int>& nums) {
         if (nums.empty()) {
             return 0;
         }
@@ -43,7 +43,7 @@ namespace _80 {
     * Space complexity:
     * O(1)
     */
-    int Solution<v2>::removeDuplicates(std::vector<int>& nums) {
+    int Solution<ver2>::removeDuplicates(std::vector<int>& nums) {
         const size_t n = nums.size();
         if (n <= 2) {
             return n;

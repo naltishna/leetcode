@@ -18,7 +18,7 @@ namespace _12 {
     * Space complexity:
     * O(1)
     */
-    std::string Solution<v1>::intToRoman(int num) {
+    std::string Solution<ver1>::intToRoman(int num) {
         std::map<int, char, std::greater<int>> int_to_roman{
             {1000, 'M'},
             {500, 'D'},
@@ -68,7 +68,7 @@ namespace _12 {
     * Space complexity:
     * O(1)
     */
-    std::string Solution<v2>::intToRoman(int num) {
+    std::string Solution<ver2>::intToRoman(int num) {
         static const std::pair<int, std::string> int_to_roman[] = {
             {1000, "M"},
             {900, "CM"},

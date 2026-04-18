@@ -12,7 +12,7 @@ namespace _66 {
     * Space complexity:
     * O(N)
     */
-    std::vector<int> Solution<v1>::plusOne(std::vector<int>& digits) {
+    std::vector<int> Solution<ver1>::plusOne(std::vector<int>& digits) {
         int n = digits.size();
         unsigned long long number = 0LL;
 
@@ -43,7 +43,7 @@ namespace _66 {
     * O(1)
     */
     template<>
-    std::vector<int> Solution<v2>::plusOne(std::vector<int>& digits) {
+    std::vector<int> Solution<ver2>::plusOne(std::vector<int>& digits) {
         int n = digits.size();
 
         for (int i = n - 1; i >= 0; --i) {

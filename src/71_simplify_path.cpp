@@ -14,7 +14,7 @@ namespace _71 {
      * O(N)
      */
     template<>
-    std::string Solution<v1>::simplifyPath(std::string path) {
+    std::string Solution<ver1>::simplifyPath(std::string path) {
         std::vector<std::string> stack;
         int n = path.size();
         size_t i = 0;
@@ -72,7 +72,7 @@ namespace _71 {
      * O(N)
      */
     template<>
-    std::string Solution<v2>::simplifyPath(std::string path) {
+    std::string Solution<ver2>::simplifyPath(std::string path) {
         std::vector<std::string> stack;
         std::stringstream ss(path);
         std::string part;

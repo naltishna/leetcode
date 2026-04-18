@@ -16,7 +16,7 @@ namespace _424 {
     * O(1)
     */
     template<>
-    int Solution<v1>::characterReplacement(std::string s, int k) {
+    int Solution<ver1>::characterReplacement(std::string s, int k) {
         std::array<int, 26> freq{};
 
         int left = 0;
@@ -39,7 +39,7 @@ namespace _424 {
     }
 
     template<>
-    int Solution<v2>::characterReplacement(std::string s, int k) {
+    int Solution<ver2>::characterReplacement(std::string s, int k) {
         std::array<int, 26> freq{};
         int left = 0;
         int maxLen = 0;

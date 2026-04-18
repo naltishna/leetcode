@@ -16,7 +16,7 @@ namespace _373 {
     Space complexity:
         O(K)
     */
-    std::vector<std::vector<int>> Solution<v1>::kSmallestPairs(std::vector<int>& nums1, std::vector<int>& nums2, int k) {
+    std::vector<std::vector<int>> Solution<ver1>::kSmallestPairs(std::vector<int>& nums1, std::vector<int>& nums2, int k) {
         std::vector<std::vector<int>> result;
         if (nums1.empty() || nums2.empty() || k == 0) {
             return result;
@@ -60,7 +60,7 @@ namespace _373 {
     * Space complexity:
     * O(min(k))
     */
-    std::vector<std::vector<int>> Solution<v2>::kSmallestPairs(std::vector<int>& nums1, std::vector<int>& nums2, int k) {
+    std::vector<std::vector<int>> Solution<ver2>::kSmallestPairs(std::vector<int>& nums1, std::vector<int>& nums2, int k) {
         std::vector<std::vector<int>> result;
         if (nums1.empty() || nums2.empty() || k == 0) {
             return result;
@@ -96,7 +96,7 @@ namespace _373 {
     * Space complexity:
     * O(min(k,n))
     */
-    std::vector<std::vector<int>> Solution<v3>::kSmallestPairs(std::vector<int>& nums1, std::vector<int>& nums2, int k) {
+    std::vector<std::vector<int>> Solution<ver3>::kSmallestPairs(std::vector<int>& nums1, std::vector<int>& nums2, int k) {
         std::vector<std::vector<int>> result;
         if (nums1.empty() || nums2.empty() || k == 0) {
             return result;

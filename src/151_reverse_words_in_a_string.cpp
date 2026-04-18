@@ -14,7 +14,7 @@ namespace _151 {
     * O(N)
     */
     template<>
-    std::string Solution<v1>::reverseWords(std::string s) {
+    std::string Solution<ver1>::reverseWords(std::string s) {
         std::deque<std::string> dq;
         std::string word;
         std::istringstream stream(s);
@@ -43,7 +43,7 @@ namespace _151 {
     * O(1)
     */
     template<>
-    std::string Solution<v2>::reverseWords(std::string s) {
+    std::string Solution<ver2>::reverseWords(std::string s) {
         // reverse the entire line
         reverse(s.begin(), s.end());
 

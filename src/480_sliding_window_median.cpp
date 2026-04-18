@@ -15,7 +15,7 @@ namespace _480 {
     * Space complexity:
     * O(K)
     */
-    std::vector<double> Solution<v1>::medianSlidingWindow(std::vector<int>& nums, int k) {
+    std::vector<double> Solution<ver1>::medianSlidingWindow(std::vector<int>& nums, int k) {
         std::vector<double> result;
         if (nums.empty() || nums.size() < k) {
             return result;
@@ -48,7 +48,7 @@ namespace _480 {
     * Space complexity:
     * O(K)
     */
-    std::vector<double> Solution<v2>::medianSlidingWindow(std::vector<int>& nums, int k) {
+    std::vector<double> Solution<ver2>::medianSlidingWindow(std::vector<int>& nums, int k) {
         std::vector<double> result;
         if (nums.empty() || nums.size() < k) {
             return result;
@@ -91,7 +91,7 @@ namespace _480 {
     * Space complexity:
     * O(K)
     */
-    std::vector<double> Solution<v3>::medianSlidingWindow(std::vector<int>& nums, int k) {
+    std::vector<double> Solution<ver3>::medianSlidingWindow(std::vector<int>& nums, int k) {
         std::vector<double> result;
         if (nums.empty() || nums.size() < k) {
             return result;

@@ -17,7 +17,7 @@ namespace _205 {
     * O(1)
     */
     template<>
-    bool Solution<v1>::isIsomorphic(std::string s, std::string t) {
+    bool Solution<ver1>::isIsomorphic(std::string s, std::string t) {
         if (s.size() != t.size()) 
             return false;
 
@@ -45,7 +45,7 @@ namespace _205 {
     * O(N)
     */
     template<>
-    bool Solution<v2>::isIsomorphic(std::string s, std::string t) {
+    bool Solution<ver2>::isIsomorphic(std::string s, std::string t) {
         if (s.size() != t.size()) 
             return false;
 
@@ -84,7 +84,7 @@ namespace _205 {
     * O(N)
     */
     template<>
-    bool Solution<v3>::isIsomorphic(std::string s, std::string t) {
+    bool Solution<ver3>::isIsomorphic(std::string s, std::string t) {
         if (s.size() != t.size())
             return false;
 

@@ -18,7 +18,7 @@ namespace _101 {
     * Space complexity:
     * O(n)
     */
-    bool Solution<v1>::isSymmetric(SmartPointer::TreeNode* root) {
+    bool Solution<ver1>::isSymmetric(SmartPointer::TreeNode* root) {
         std::queue<SmartPointer::TreeNode*> q;
 
         q.push(root->left.get());
@@ -56,12 +56,12 @@ namespace _101 {
     * Space complexity:
     * O(N)
     */
-    bool Solution<v2>::isSymmetric(SmartPointer::TreeNode* root) {
+    bool Solution<ver2>::isSymmetric(SmartPointer::TreeNode* root) {
         return checkSymmetric(root->left.get(), root->right.get());
     }
 
     template<>
-    bool Solution<v2>::checkSymmetric(SmartPointer::TreeNode* left, SmartPointer::TreeNode* right) {
+    bool Solution<ver2>::checkSymmetric(SmartPointer::TreeNode* left, SmartPointer::TreeNode* right) {
         if (left == right) { // both are nullptr
             return true;
         }
@@ -71,8 +71,8 @@ namespace _101 {
         }
 
         return left->val == right->val
-            && Solution<v2>::checkSymmetric(left->left.get(), right->right.get())
-            && Solution<v2>::checkSymmetric(left->right.get(), right->left.get());
+            && Solution<ver2>::checkSymmetric(left->left.get(), right->right.get())
+            && Solution<ver2>::checkSymmetric(left->right.get(), right->left.get());
     }
 
 }

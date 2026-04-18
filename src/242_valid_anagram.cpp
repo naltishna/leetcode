@@ -15,7 +15,7 @@ namespace _242 {
     * Space complexity:
     * O(1)
     */
-    bool Solution<v1>::isAnagram(std::string s, std::string t) {
+    bool Solution<ver1>::isAnagram(std::string s, std::string t) {
         if (s.size() != t.size()) {
             return false;
         }
@@ -37,7 +37,7 @@ namespace _242 {
     * Space complexity:
     * O(1)
     */
-    bool Solution<v2>::isAnagram(std::string s, std::string t) {
+    bool Solution<ver2>::isAnagram(std::string s, std::string t) {
         if (s.size() != t.size()) return false;
 
         // The English alphabet consists of 26 letters

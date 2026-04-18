@@ -33,7 +33,7 @@ namespace _301 {
     * O(2^N)
     */
     template<>
-    std::vector<std::string> Solution<v1>::removeInvalidParentheses(std::string s) {
+    std::vector<std::string> Solution<ver1>::removeInvalidParentheses(std::string s) {
         std::vector<std::string> res;
         std::unordered_set<std::string> visited;
         std::queue <std::string> q;
@@ -113,7 +113,7 @@ namespace _301 {
     * O(2^N)
     */
     template<>
-    std::vector<std::string> Solution<v2>::removeInvalidParentheses(std::string s) {
+    std::vector<std::string> Solution<ver2>::removeInvalidParentheses(std::string s) {
         int left_to_remove = 0;
         int right_to_remove = 0;
 

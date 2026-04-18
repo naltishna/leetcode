@@ -83,6 +83,7 @@
 #include "1116_print_zero_even_odd.h"
 #include "1117_building_H2O.h"
 #include "1195_fizz_buzz_multithreaded.h"
+#include "3531_count_covered_buildings.h"
 
 
 int main()
@@ -98,7 +99,7 @@ int main()
         std::vector<int> nums3{ 3, 3 };
 
         {
-            _1::Solution<v1> s{};
+            _1::Solution<ver1> s{};
             auto output1 = s.twoSum(nums1, 9);
             custom_assert("{ 0, 1 }" == vector_to_string(output1));
             auto output2 = s.twoSum(nums2, 6);
@@ -107,7 +108,7 @@ int main()
             custom_assert("{ 0, 1 }" == vector_to_string(output3));
         }
         {
-            _1::Solution<v2> s{};
+            _1::Solution<ver2> s{};
             auto output1 = s.twoSum(nums1, 9);
             custom_assert("{ 0, 1 }" == vector_to_string(output1));
             auto output2 = s.twoSum(nums2, 6);
@@ -182,13 +183,13 @@ int main()
         int num3 = 1994;
 
         {
-            _12::Solution<v1> s{};
+            _12::Solution<ver1> s{};
             custom_assert("MMMDCCXLIX" == s.intToRoman(num1));
             custom_assert("LVIII" == s.intToRoman(num2));
             custom_assert("MCMXCIV" == s.intToRoman(num3));
         }
         {
-            _12::Solution<v2> s{};
+            _12::Solution<ver2> s{};
             custom_assert("MMMDCCXLIX" == s.intToRoman(num1));
             custom_assert("LVIII" == s.intToRoman(num2));
             custom_assert("MCMXCIV" == s.intToRoman(num3));
@@ -239,14 +240,14 @@ int main()
         std::vector<int> l3{ 0, 0 };                // Output: []
 
         {
-            _15::Solution<v1> s;
+            _15::Solution<ver1> s;
             custom_assert(2 == s.threeSum(l0).size());
             custom_assert(0 == s.threeSum(l1).size());
             custom_assert(1 == s.threeSum(l2).size());
             custom_assert(0 == s.threeSum(l3).size());
         }
         {
-            _15::Solution<v2> s;
+            _15::Solution<ver2> s;
             custom_assert(2 == s.threeSum(l0).size());
             custom_assert(0 == s.threeSum(l1).size());
             custom_assert(1 == s.threeSum(l2).size());
@@ -400,7 +401,7 @@ int main()
             std::vector<int> nums_1{ 1, 1, 2 };
             std::vector<int> nums_2{ 0, 0, 1, 1, 1, 2, 2, 3, 3, 4 };
 
-            _26::Solution<v1> s{};
+            _26::Solution<ver1> s{};
             custom_assert(2 == s.removeDuplicates(nums_1)); // Output: 2, nums = [1,2,_]
             custom_assert(5 == s.removeDuplicates(nums_2)); // Output: 5, nums = [0,1,2,3,4,_,_,_,_,_]
         }
@@ -408,7 +409,7 @@ int main()
             std::vector<int> nums_1{ 1, 1, 2 };
             std::vector<int> nums_2{ 0, 0, 1, 1, 1, 2, 2, 3, 3, 4 };
 
-            _26::Solution<v2> s{};
+            _26::Solution<ver2> s{};
             custom_assert(2 == s.removeDuplicates(nums_1)); // Output: 2, nums = [1,2,_]
             custom_assert(5 == s.removeDuplicates(nums_2)); // Output: 5, nums = [0,1,2,3,4,_,_,_,_,_]
         }
@@ -426,12 +427,12 @@ int main()
         int val_2 = 2;
 
         {
-            _27::Solution<v1> s{};
+            _27::Solution<ver1> s{};
             custom_assert(2 == s.removeElement(nums_1, val_1)); // Output: 2, nums = [2,2,_,_]
             custom_assert(5 == s.removeElement(nums_2, val_2)); // Output: 5, nums = [0,1,4,0,3,_,_,_]
         }
         {
-            _27::Solution<v2> s{};
+            _27::Solution<ver2> s{};
             custom_assert(2 == s.removeElement(nums_1, val_1)); // Output: 2, nums = [2,2,_,_]
             custom_assert(5 == s.removeElement(nums_2, val_2)); // Output: 5, nums = [0,1,4,0,3,_,_,_]
         }
@@ -457,7 +458,7 @@ int main()
         std::string needle_6 = "";
 
         {
-            _28::Solution<v1> s{};
+            _28::Solution<ver1> s{};
             custom_assert(0 == s.strStr(haystack_1, needle_1));
             custom_assert(-1 == s.strStr(haystack_2, needle_2));
             custom_assert(2 == s.strStr(haystack_3, needle_3));
@@ -466,7 +467,7 @@ int main()
             custom_assert(0 == s.strStr(haystack_6, needle_6));
         }
         {
-            _28::Solution<v2> s{};
+            _28::Solution<ver2> s{};
             custom_assert(0 == s.strStr(haystack_1, needle_1));
             custom_assert(-1 == s.strStr(haystack_2, needle_2));
             custom_assert(2 == s.strStr(haystack_3, needle_3));
@@ -475,7 +476,7 @@ int main()
             custom_assert(0 == s.strStr(haystack_6, needle_6));
         }
         {
-            _28::Solution<v3> s{};
+            _28::Solution<ver3> s{};
             custom_assert(0 == s.strStr(haystack_1, needle_1));
             custom_assert(-1 == s.strStr(haystack_2, needle_2));
             custom_assert(2 == s.strStr(haystack_3, needle_3));
@@ -484,7 +485,7 @@ int main()
             custom_assert(0 == s.strStr(haystack_6, needle_6));
         }
         {
-            _28::Solution<v4> s{};
+            _28::Solution<ver4> s{};
             custom_assert(0 == s.strStr(haystack_1, needle_1));
             custom_assert(-1 == s.strStr(haystack_2, needle_2));
             custom_assert(2 == s.strStr(haystack_3, needle_3));
@@ -523,19 +524,19 @@ int main()
         std::vector<int> nums_3{ 1 };
 
         {
-            _45::Solution<v1> s{};
+            _45::Solution<ver1> s{};
             custom_assert(2 == s.jump(nums_1));
             custom_assert(2 == s.jump(nums_2));
             custom_assert(0 == s.jump(nums_3));
         }
         {
-            _45::Solution<v2> s{};
+            _45::Solution<ver2> s{};
             custom_assert(2 == s.jump(nums_1));
             custom_assert(2 == s.jump(nums_2));
             custom_assert(0 == s.jump(nums_3));
         }
         {
-            _45::Solution<v3> s{};
+            _45::Solution<ver3> s{};
             custom_assert(2 == s.jump(nums_1));
             custom_assert(2 == s.jump(nums_2));
             custom_assert(0 == s.jump(nums_3));
@@ -651,7 +652,7 @@ int main()
         std::vector<int> nums5{ 9, 9, 9 };
 
         {
-            _66::Solution<v1> s{};
+            _66::Solution<ver1> s{};
             auto output1 = s.plusOne(nums1);
             custom_assert("{ 1, 2, 4 }" == vector_to_string(output1));
             auto output2 = s.plusOne(nums2);
@@ -664,7 +665,7 @@ int main()
             custom_assert("{ 1, 0, 0, 0 }" == vector_to_string(output5));
         }
         {
-            _66::Solution<v2> s{};
+            _66::Solution<ver2> s{};
             auto output1 = s.plusOne(nums1);
             custom_assert("{ 1, 2, 4 }" == vector_to_string(output1));
             auto output2 = s.plusOne(nums2);
@@ -699,7 +700,7 @@ int main()
 #if 1
     {
         {
-            _71::Solution<v1> s{};
+            _71::Solution<ver1> s{};
             custom_assert("/home" == s.simplifyPath("/home/"));
             custom_assert("/home/foo" == s.simplifyPath("/home//foo/"));
             custom_assert("/home/user/Pictures" == s.simplifyPath("/home/user/Documents/../Pictures"));
@@ -707,7 +708,7 @@ int main()
             custom_assert("/.../b/d" == s.simplifyPath("/.../a/../b/c/../d/./"));
         }
         {
-            _71::Solution<v2> s{};
+            _71::Solution<ver2> s{};
             custom_assert("/home" == s.simplifyPath("/home/"));
             custom_assert("/home/foo" == s.simplifyPath("/home//foo/"));
             custom_assert("/home/user/Pictures" == s.simplifyPath("/home/user/Documents/../Pictures"));
@@ -726,7 +727,7 @@ int main()
         std::vector<std::vector<int>> matrix1{ {1} };
         std::vector<std::vector<int>> matrix2{ {1, 3} };
         {
-            _74::Solution<v1> s{};
+            _74::Solution<ver1> s{};
             custom_assert(true == s.searchMatrix(matrix0, 3));
             custom_assert(false == s.searchMatrix(matrix0, 13));
             custom_assert(true == s.searchMatrix(matrix1, 1));
@@ -736,7 +737,7 @@ int main()
             custom_assert(false == s.searchMatrix(matrix2, 0));
         }
         {
-            _74::Solution<v2> s{};
+            _74::Solution<ver2> s{};
             custom_assert(true == s.searchMatrix(matrix0, 3));
             custom_assert(false == s.searchMatrix(matrix0, 13));
             custom_assert(true == s.searchMatrix(matrix1, 1));
@@ -756,14 +757,14 @@ int main()
         {
             std::vector<int> nums_1{ 1, 1, 1, 2, 2, 3 };
             std::vector<int> nums_2{ 0, 0, 1, 1, 1, 1, 2, 3, 3 };
-            _80::Solution<v1> s{};
+            _80::Solution<ver1> s{};
             custom_assert(5 == s.removeDuplicates(nums_1)); // Output: 5, nums = [1,1,2,2,3,_]
             custom_assert(7 == s.removeDuplicates(nums_2)); // Output: 7, nums = [0,0,1,1,2,3,3,_,_]
         }
         {
             std::vector<int> nums_1{ 1, 1, 1, 2, 2, 3 };
             std::vector<int> nums_2{ 0, 0, 1, 1, 1, 1, 2, 3, 3 };
-            _80::Solution<v2> s{};
+            _80::Solution<ver2> s{};
             custom_assert(5 == s.removeDuplicates(nums_1)); // Output: 5, nums = [1,1,2,2,3,_]
             custom_assert(7 == s.removeDuplicates(nums_2)); // Output: 7, nums = [0,0,1,1,2,3,3,_,_]
         }
@@ -862,13 +863,13 @@ int main()
                 nullptr));
 
         {
-            _101::Solution<v1> s{};
+            _101::Solution<ver1> s{};
             custom_assert(true == s.isSymmetric(tn1.get()));
             custom_assert(false == s.isSymmetric(tn2.get()));
             custom_assert(false == s.isSymmetric(tn3.get()));
         }
         {
-            _101::Solution<v2> s{};
+            _101::Solution<ver2> s{};
             custom_assert(true == s.isSymmetric(tn1.get()));
             custom_assert(false == s.isSymmetric(tn2.get()));
             custom_assert(false == s.isSymmetric(tn3.get()));
@@ -1058,13 +1059,13 @@ int main()
 #if 1
     {
         {
-            _151::Solution<v1> s{};
+            _151::Solution<ver1> s{};
             custom_assert("world hello" == s.reverseWords("  hello world  "));
             custom_assert("blue is sky the" == s.reverseWords("the sky is blue"));
             custom_assert("example good a" == s.reverseWords("a good   example"));
         }
         {
-            _151::Solution<v2> s{};
+            _151::Solution<ver2> s{};
             custom_assert("world hello" == s.reverseWords("  hello world  "));
             custom_assert("blue is sky the" == s.reverseWords("the sky is blue"));
             custom_assert("example good a" == s.reverseWords("a good   example"));
@@ -1145,13 +1146,13 @@ int main()
         std::vector<int> nums3{ 3, 3, 4 };
 
         {
-            _169::Solution<v1> s{};
+            _169::Solution<ver1> s{};
             custom_assert(3 == s.majorityElement(nums1));
             custom_assert(2 == s.majorityElement(nums2));
             custom_assert(3 == s.majorityElement(nums3));
         }
         {
-            _169::Solution<v2> s{};
+            _169::Solution<ver2> s{};
             custom_assert(3 == s.majorityElement(nums1));
             custom_assert(2 == s.majorityElement(nums2));
             custom_assert(3 == s.majorityElement(nums3));
@@ -1170,7 +1171,7 @@ int main()
             std::vector<int> nums2{ -1, -100, 3, 99 };
             int k2 = 2;
 
-            _189::Solution<v1> s{};
+            _189::Solution<ver1> s{};
             s.rotate(nums1, k1);
             custom_assert("{ 5, 6, 7, 1, 2, 3, 4 }" == vector_to_string(nums1));
             s.rotate(nums2, k2);
@@ -1182,7 +1183,7 @@ int main()
             std::vector<int> nums2{ -1, -100, 3, 99 };
             int k2 = 2;
 
-            _189::Solution<v2> s{};
+            _189::Solution<ver2> s{};
             s.rotate(nums1, k1);
             custom_assert("{ 5, 6, 7, 1, 2, 3, 4 }" == vector_to_string(nums1));
             s.rotate(nums2, k2);
@@ -1194,7 +1195,7 @@ int main()
             std::vector<int> nums2{ -1, -100, 3, 99 };
             int k2 = 2;
 
-            _189::Solution<v3> s{};
+            _189::Solution<ver3> s{};
             s.rotate(nums1, k1);
             custom_assert("{ 5, 6, 7, 1, 2, 3, 4 }" == vector_to_string(nums1));
             s.rotate(nums2, k2);
@@ -1206,7 +1207,7 @@ int main()
             std::vector<int> nums2{ -1, -100, 3, 99 };
             int k2 = 2;
 
-            _189::Solution<v4> s{};
+            _189::Solution<ver4> s{};
             s.rotate(nums1, k1);
             custom_assert("{ 5, 6, 7, 1, 2, 3, 4 }" == vector_to_string(nums1));
             s.rotate(nums2, k2);
@@ -1218,7 +1219,7 @@ int main()
             std::vector<int> nums2{ -1, -100, 3, 99 };
             int k2 = 2;
 
-            _189::Solution<v5> s{};
+            _189::Solution<ver5> s{};
             s.rotate(nums1, k1);
             custom_assert("{ 5, 6, 7, 1, 2, 3, 4 }" == vector_to_string(nums1));
             s.rotate(nums2, k2);
@@ -1242,7 +1243,7 @@ int main()
                                               {'0', '0', '1', '0', '0'},
                                               {'0', '0', '0', '1', '1'} };
 
-        _200::Solution<v1> s{};
+        _200::Solution<ver1> s{};
         custom_assert(1 == s.numIslands(grid1));
         custom_assert(3 == s.numIslands(grid2));
     }
@@ -1257,7 +1258,7 @@ int main()
                                               {'0', '0', '1', '0', '0'},
                                               {'0', '0', '0', '1', '1'} };
 
-        _200::Solution<v2> s{};
+        _200::Solution<ver2> s{};
         custom_assert(1 == s.numIslands(grid1));
         custom_assert(3 == s.numIslands(grid2));
     }
@@ -1269,7 +1270,7 @@ int main()
 #if 1
     {
         {
-            _205::Solution<v1> s{};
+            _205::Solution<ver1> s{};
             custom_assert(false == s.isIsomorphic("f11", "b23"));
             custom_assert(true == s.isIsomorphic("egg", "add"));
             custom_assert(false == s.isIsomorphic("bbbaaaba", "aaabbbba"));
@@ -1277,7 +1278,7 @@ int main()
             custom_assert(true == s.isIsomorphic("paper", "title"));
         }
         {
-            _205::Solution<v2> s{};
+            _205::Solution<ver2> s{};
             custom_assert(true == s.isIsomorphic("egg", "add"));
             custom_assert(false == s.isIsomorphic("f11", "b23"));
             custom_assert(false == s.isIsomorphic("bbbaaaba", "aaabbbba"));
@@ -1285,7 +1286,7 @@ int main()
             custom_assert(true == s.isIsomorphic("paper", "title"));
         }
         {
-            _205::Solution<v3> s{};
+            _205::Solution<ver3> s{};
             custom_assert(true == s.isIsomorphic("egg", "add"));
             custom_assert(false == s.isIsomorphic("abc", "dee"));
             custom_assert(false == s.isIsomorphic("f11", "b23"));
@@ -1336,7 +1337,7 @@ int main()
         std::vector<int> nums3{ 1, 4, 2, 3 };
 
         {
-            _239::Solution<v1> s{};
+            _239::Solution<ver1> s{};
             auto output1 = s.maxSlidingWindow(nums1, 3);
             custom_assert("{ 3, 3, 5, 5, 6, 7 }" == vector_to_string(output1));
             auto output2 = s.maxSlidingWindow(nums2, 1);
@@ -1345,7 +1346,7 @@ int main()
             custom_assert("{ 4 }" == vector_to_string(output3));
         }
         {
-            _239::Solution<v2> s{};
+            _239::Solution<ver2> s{};
             auto output1 = s.maxSlidingWindow(nums1, 3);
             custom_assert("{ 3, 3, 5, 5, 6, 7 }" == vector_to_string(output1));
             auto output2 = s.maxSlidingWindow(nums2, 1);
@@ -1387,12 +1388,12 @@ int main()
         std::string s2_1 = "rat";
         std::string s2_2 = "car";
         {
-            _242::Solution<v1> s{};
+            _242::Solution<ver1> s{};
             custom_assert(true == s.isAnagram(s1_1, s1_2));
             custom_assert(false == s.isAnagram(s2_1, s2_2));
         }
         {
-            _242::Solution<v2> s{};
+            _242::Solution<ver2> s{};
             custom_assert(true == s.isAnagram(s1_1, s1_2));
             custom_assert(false == s.isAnagram(s2_1, s2_2));
         }
@@ -1410,14 +1411,14 @@ int main()
         std::string s_4 = ")(f";
 
         {
-            _301::Solution<v1> s{};
+            _301::Solution<ver1> s{};
             custom_assert(std::vector<std::string>({ "(())()", "()()()" }) == s.removeInvalidParentheses(s_1));
             custom_assert(std::vector<std::string>({ "(a())()", "(a)()()" }) == s.removeInvalidParentheses(s_2));
             custom_assert(std::vector<std::string>({ "" }) == s.removeInvalidParentheses(s_3));
             custom_assert(std::vector<std::string>({ "f" }) == s.removeInvalidParentheses(s_4));
         }
         {
-            _301::Solution<v2> s{};
+            _301::Solution<ver2> s{};
             custom_assert(std::vector<std::string>({ "(())()", "()()()" }) == s.removeInvalidParentheses(s_1));
             custom_assert(std::vector<std::string>({ "(a())()", "(a)()()" }) == s.removeInvalidParentheses(s_2));
             custom_assert(std::vector<std::string>({ "" }) == s.removeInvalidParentheses(s_3));
@@ -1502,21 +1503,21 @@ int main()
         std::vector<int> l3_1{ 3, 5, 7, 9 };
         int k3 = 3;
         {
-            _373::Solution<v1> s{};
+            _373::Solution<ver1> s{};
             custom_assert("{ {1, 2}, {1, 4}, {1, 6} }" == vectors_to_string(s.kSmallestPairs(l0_0, l0_1, k0)));
             custom_assert("{ {1, 1}, {1, 1} }" == vectors_to_string(s.kSmallestPairs(l1_0, l1_1, k1)));
             custom_assert("{ {1, 1}, {1, 1}, {1, 2}, {1, 2}, {2, 1}, {1, 3}, {1, 3}, {2, 2}, {2, 3} }" == vectors_to_string(s.kSmallestPairs(l2_0, l2_1, k2)));
             custom_assert("{ {1, 3}, {2, 3}, {1, 5} }" == vectors_to_string(s.kSmallestPairs(l3_0, l3_1, k3)));
         }
         {
-            _373::Solution<v2> s{};
+            _373::Solution<ver2> s{};
             custom_assert("{ {1, 2}, {1, 4}, {1, 6} }" == vectors_to_string(s.kSmallestPairs(l0_0, l0_1, k0)));
             custom_assert("{ {1, 1}, {1, 1} }" == vectors_to_string(s.kSmallestPairs(l1_0, l1_1, k1)));
             custom_assert("{ {1, 1}, {1, 1}, {1, 2}, {1, 2}, {2, 1}, {1, 3}, {1, 3}, {2, 2}, {2, 3} }" == vectors_to_string(s.kSmallestPairs(l2_0, l2_1, k2)));
             custom_assert("{ {1, 3}, {2, 3}, {1, 5} }" == vectors_to_string(s.kSmallestPairs(l3_0, l3_1, k3)));
         }
         {
-            _373::Solution<v3> s{};
+            _373::Solution<ver3> s{};
             custom_assert("{ {1, 2}, {1, 4}, {1, 6} }" == vectors_to_string(s.kSmallestPairs(l0_0, l0_1, k0)));
             custom_assert("{ {1, 1}, {1, 1} }" == vectors_to_string(s.kSmallestPairs(l1_0, l1_1, k1)));
             custom_assert("{ {1, 1}, {1, 1}, {1, 2}, {1, 2}, {2, 1}, {1, 3}, {1, 3}, {2, 2}, {2, 3} }" == vectors_to_string(s.kSmallestPairs(l2_0, l2_1, k2)));
@@ -1578,7 +1579,7 @@ int main()
         std::string t5_2 = "ahbgdc";
 
         {
-            _392::Solution<v1> s{};
+            _392::Solution<ver1> s{};
             custom_assert(true == s.isSubsequence(s1_1, t1_2));
             custom_assert(false == s.isSubsequence(s2_1, t2_2));
             custom_assert(false == s.isSubsequence(s3_1, t3_2));
@@ -1586,7 +1587,7 @@ int main()
             custom_assert(false == s.isSubsequence(s5_1, t5_2));
         }
         {
-            _392::Solution<v2> s{};
+            _392::Solution<ver2> s{};
             custom_assert(true == s.isSubsequence(s1_1, t1_2));
             custom_assert(false == s.isSubsequence(s2_1, t2_2));
             custom_assert(false == s.isSubsequence(s3_1, t3_2));
@@ -1602,14 +1603,14 @@ int main()
 #if 1
     {
         {
-            _383::Solution <v1> s{};
+            _383::Solution <ver1> s{};
             custom_assert(true == s.canConstruct("aa", "aab"));
             custom_assert(true == s.canConstruct("aa", "aba"));
             custom_assert(false == s.canConstruct("a", "b"));
             custom_assert(false == s.canConstruct("aa", "ab"));
         }
         {
-            _383::Solution <v2> s{};
+            _383::Solution <ver2> s{};
             custom_assert(true == s.canConstruct("aa", "aab"));
             custom_assert(true == s.canConstruct("aa", "aba"));
             custom_assert(false == s.canConstruct("a", "b"));
@@ -1640,12 +1641,12 @@ int main()
         std::string s_2 = "AABABBA";
 
         {
-            _424::Solution<v1> s{};
+            _424::Solution<ver1> s{};
             custom_assert(4 == s.characterReplacement(s_1, 2));
             custom_assert(4 == s.characterReplacement(s_2, 1));
         }
         {
-            _424::Solution<v2> s{};
+            _424::Solution<ver2> s{};
             custom_assert(4 == s.characterReplacement(s_1, 2));
             custom_assert(4 == s.characterReplacement(s_2, 1));
         }
@@ -1690,7 +1691,7 @@ int main()
         int k_6 = 6;
 
         {
-            _480::Solution<v1> s{};
+            _480::Solution<ver1> s{};
             auto start_time = get_current_time();
             custom_assert("{ 1.0, -1.0, -1.0, 3.0, 5.0, 6.0 }" == vector_to_string(s.medianSlidingWindow(nums_1, k_1)));
             custom_assert("{ 2.0, 3.0, 3.0, 3.0, 2.0, 3.0, 2.0 }" == vector_to_string(s.medianSlidingWindow(nums_2, k_2)));
@@ -1702,7 +1703,7 @@ int main()
             print_elapsed_time(start_time, end_time, "_480_v1");
         }
         {
-            _480::Solution<v2> s{};
+            _480::Solution<ver2> s{};
             auto start_time = get_current_time();
             custom_assert("{ 1.0, -1.0, -1.0, 3.0, 5.0, 6.0 }" == vector_to_string(s.medianSlidingWindow(nums_1, k_1)));
             custom_assert("{ 2.0, 3.0, 3.0, 3.0, 2.0, 3.0, 2.0 }" == vector_to_string(s.medianSlidingWindow(nums_2, k_2)));
@@ -1714,7 +1715,7 @@ int main()
             print_elapsed_time(start_time, end_time, "_480_v2");
         }
         {
-            _480::Solution<v3> s{};
+            _480::Solution<ver3> s{};
             auto start_time = get_current_time();
             custom_assert("{ 1.0, -1.0, -1.0, 3.0, 5.0, 6.0 }" == vector_to_string(s.medianSlidingWindow(nums_1, k_1)));
             custom_assert("{ 2.0, 3.0, 3.0, 3.0, 2.0, 3.0, 2.0 }" == vector_to_string(s.medianSlidingWindow(nums_2, k_2)));
@@ -2141,6 +2142,26 @@ int main()
         d.join();
 
         custom_assert("12fizz4buzz" == fizzbuzz.getOutput());
+    }
+#endif
+    //////////////////////
+    /**
+     * 3531. Count Covered Buildings
+     */
+#if 1
+    {
+        {
+            _3531::Solution<ver1> s{};
+            custom_assert(1 == s.countCoveredBuildings(3, { {1, 2}, {2, 2}, {3, 2}, {2, 1}, {2, 3} }));
+            custom_assert(0 == s.countCoveredBuildings(3, { {1, 1}, {1, 2}, {2, 1}, {2, 2} }));
+            custom_assert(1 == s.countCoveredBuildings(5, { {1, 3}, {3, 2}, {3, 3}, {3, 5}, {5, 3} }));
+        }
+        {
+            _3531::Solution<ver2> s{};
+            custom_assert(1 == s.countCoveredBuildings(3, { {1, 2}, {2, 2}, {3, 2}, {2, 1}, {2, 3} }));
+            custom_assert(0 == s.countCoveredBuildings(3, { {1, 1}, {1, 2}, {2, 1}, {2, 2} }));
+            custom_assert(1 == s.countCoveredBuildings(5, { {1, 3}, {3, 2}, {3, 3}, {3, 5}, {5, 3} }));
+        }
     }
 #endif
 

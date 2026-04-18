@@ -14,7 +14,7 @@ namespace _28 {
     * Space complexity:
     * O(1)
     */
-    int Solution<v1>::strStr(std::string haystack, std::string needle) {
+    int Solution<ver1>::strStr(std::string haystack, std::string needle) {
         if (needle.empty()) return 0;
 
         int pos = -1;
@@ -56,7 +56,7 @@ namespace _28 {
     * Space complexity:
     * O(1)
     */
-    int Solution<v2>::strStr(std::string haystack, std::string needle) {
+    int Solution<ver2>::strStr(std::string haystack, std::string needle) {
         if (needle.empty()) return 0;
         if (needle.size() > haystack.size()) return -1;
 
@@ -82,7 +82,7 @@ namespace _28 {
     * Space complexity:
     * O(m), where m is the length of the string needle.
     */
-    int Solution<v3>::strStr(std::string haystack, std::string needle) {
+    int Solution<ver3>::strStr(std::string haystack, std::string needle) {
         if (needle.empty()) return 0;
         if (needle.size() > haystack.size()) return -1;
 
@@ -130,7 +130,7 @@ namespace _28 {
     * Space complexity:
     * O(N)
     */
-    int Solution<v4>::strStr(std::string haystack, std::string needle) {
+    int Solution<ver4>::strStr(std::string haystack, std::string needle) {
         if (needle.empty()) return 0;
 
         size_t pos = haystack.find(needle);

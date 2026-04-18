@@ -14,7 +14,7 @@ namespace _392 {
     * Space complexity:
     * O(1)
     */
-    bool Solution<v1>::isSubsequence(std::string s, std::string t) {
+    bool Solution<ver1>::isSubsequence(std::string s, std::string t) {
         if (s.size() > t.size()) return false;
 
         int i = 0;
@@ -36,7 +36,7 @@ namespace _392 {
     * Space complexity:
     * O(1)
     */
-    bool Solution<v2>::isSubsequence(std::string s, std::string t) {
+    bool Solution<ver2>::isSubsequence(std::string s, std::string t) {
         if (s.size() > t.size()) return false;
 
         std::string_view sv = s, tv = t;
