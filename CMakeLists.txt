@@ -70,6 +70,7 @@ add_executable (leetcode
 "src/205_isomorphic_strings.cpp"
 "src/206_reverse_linked_list.cpp"
 "src/224_basic_calculator.cpp"
+"src/238_product_of_array_except_self.cpp"
 "src/239_sliding_window_maximum.cpp"
 "src/242_valid_anagram.cpp"
 "src/274_h_index.cpp"

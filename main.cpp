@@ -60,6 +60,7 @@
 #include "205_isomorphic_strings.h"
 #include "206_reverse_linked_list.h"
 #include "224_basic_calculator.h"
+#include "238_product_of_array_except_self.h"
 #include "239_sliding_window_maximum.h"
 #include "242_valid_anagram.h"
 #include "274_h_index.h"
@@ -1342,6 +1343,47 @@ int main()
 #endif
     //////////////////////
     /**
+     * 224. Basic Calculator
+     */
+#if 1
+    {
+        {
+            _224_basic_calculator::Solution s{}; // does not parse correctly a case: "-2 + 1"
+            custom_assert(14 == s.calculate("12 + 2"));
+            custom_assert(3 == s.calculate(" 2-1 + 2 "));
+            custom_assert(23 == s.calculate("(1+(4+5+2)-3)+(6+8)"));
+        }
+        {
+            _224_unary_minus::Solution s{};
+            //custom_assert(-1 == s.calculate("-2 + 1"));
+            //custom_assert(14 == s.calculate("12 + 2"));
+            //custom_assert(3 == s.calculate(" 2-1 + 2 "));
+            custom_assert(23 == s.calculate("(1+(4+5+2)-3)+(6+8)"));
+        }
+    }
+#endif
+    //////////////////////
+    /**
+     * 238. Product of Array Except Self
+     */
+#if 1
+    {
+        std::vector<int> nums1{ 1, 2, 3, 4 };
+        std::vector<int> nums2{ -1, 1, 0, -3, 3 };
+        {
+            _238::Solution<ver1> s{};
+            custom_assert("{ 24, 12, 8, 6 }" == vector_to_string(s.productExceptSelf(nums1)));
+            custom_assert("{ 0, 0, 9, 0, 0 }" == vector_to_string(s.productExceptSelf(nums2)));
+        }
+        {
+            _238::Solution<ver2> s{};
+            custom_assert("{ 24, 12, 8, 6 }" == vector_to_string(s.productExceptSelf(nums1)));
+            custom_assert("{ 0, 0, 9, 0, 0 }" == vector_to_string(s.productExceptSelf(nums2)));
+        }
+    }
+#endif
+    //////////////////////
+    /**
      * 239. Sliding Window Maximum
      */
 #if 1
@@ -1367,27 +1409,6 @@ int main()
             custom_assert("{ 1 }" == vector_to_string(output2));
             auto output3 = s.maxSlidingWindow(nums3, 4);
             custom_assert("{ 4 }" == vector_to_string(output3));
-        }
-    }
-#endif
-    //////////////////////
-    /**
-     * 224. Basic Calculator
-     */
-#if 1
-    {
-        {
-            _224_basic_calculator::Solution s{}; // does not parse correctly a case: "-2 + 1"
-            custom_assert(14 == s.calculate("12 + 2"));
-            custom_assert(3 == s.calculate(" 2-1 + 2 "));
-            custom_assert(23 == s.calculate("(1+(4+5+2)-3)+(6+8)"));
-        }
-        {
-            _224_unary_minus::Solution s{};
-            //custom_assert(-1 == s.calculate("-2 + 1"));
-            //custom_assert(14 == s.calculate("12 + 2"));
-            //custom_assert(3 == s.calculate(" 2-1 + 2 "));
-            custom_assert(23 == s.calculate("(1+(4+5+2)-3)+(6+8)"));
         }
     }
 #endif
