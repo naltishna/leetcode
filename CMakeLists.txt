@@ -22,6 +22,7 @@ add_executable (leetcode
 "src/list_node_helpers.cpp"
 "src/1_two_sum.cpp"
 "src/2_add_two_numbers.cpp"
+"src/6_zigzag_conversion.cpp"
 "src/9_palindrome_number.cpp"
 "src/11_container_with_most_water.cpp"
 "src/12_integer_to_roman.cpp"

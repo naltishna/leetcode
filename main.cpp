@@ -12,6 +12,7 @@
 
 #include "1_two_sum.h"
 #include "2_add_two_numbers.h"
+#include "6_zigzag_conversion.h"
 #include "9_palindrome_number.h"
 #include "11_container_with_most_water.h"
 #include "12_integer_to_roman.h"
@@ -140,6 +141,20 @@ int main()
         UniqueListNode l3_2(ListNodeHelper::createList({ 9, 9, 9, 9 }));
         UniqueListNode temp3(s.addTwoNumbers(l3_1.get(), l3_2.get()));
         custom_assert("{ 8, 9, 9, 9, 0, 0, 0, 1 }" == ListNodeHelper::convertListNodeToString(temp3.get()));
+    }
+#endif
+    //////////////////////
+    /**
+     * 6. Zigzag Conversion
+     */
+#if 1
+    {
+        std::string str = "PAHNAPLSIIGYIR";
+
+        _6::Solution s{};
+        custom_assert("PAHNAPLSIIGYIR" == s.convert(str, 3));
+        custom_assert("PINALSIGYAHRPI" == s.convert(str, 4));
+        custom_assert("A" == s.convert(str, 1));
     }
 #endif
     //////////////////////

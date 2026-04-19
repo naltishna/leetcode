@@ -9,7 +9,7 @@ namespace _3531 {
 
     /*
     * Time complexity:
-    * O(N x logN)
+    * O(NlogN)
     * 
     * Space complexity:
     * O(N)
