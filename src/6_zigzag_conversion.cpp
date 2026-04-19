@@ -21,21 +21,20 @@ namespace _6 {
 
         std::vector<std::string> rows(numRows);
         int currentRow = 0;
-        bool goingDown = false;
+        bool goDown = false;
 
         for (char c : s) {
             rows[currentRow] += c;
-            if (currentRow == 0 || currentRow == numRows - 1) {
-                goingDown = !goingDown; // Change direction at the top and bottom rows
-            }
 
-            currentRow += goingDown ? 1 : -1; // Move down or up
+            if (currentRow == 0 || currentRow == numRows - 1) goDown = !goDown;
+
+            currentRow += goDown ? 1 : -1; // Move down or up
         }
 
         std::string result;
 
         for (const std::string& row : rows) {
-            result += row; // Concatenate all rows to get the final string
+            result += row;
         }
 
         return result;

@@ -72,6 +72,7 @@ add_executable (leetcode
 "src/224_basic_calculator.cpp"
 "src/239_sliding_window_maximum.cpp"
 "src/242_valid_anagram.cpp"
+"src/274_h_index.cpp"
 "src/301_remove_invalid_parentheses.cpp"
 "src/309_best_time_to_buy_and_sell_stock_with_cooldown.cpp"
 "src/347_top_k_frequent_elements.cpp"

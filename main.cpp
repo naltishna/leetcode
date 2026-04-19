@@ -62,6 +62,7 @@
 #include "224_basic_calculator.h"
 #include "239_sliding_window_maximum.h"
 #include "242_valid_anagram.h"
+#include "274_h_index.h"
 #include "301_remove_invalid_parentheses.h"
 #include "309_best_time_to_buy_and_sell_stock_with_cooldown.h"
 #include "347_top_k_frequent_elements.h"
@@ -149,12 +150,10 @@ int main()
      */
 #if 1
     {
-        std::string str = "PAHNAPLSIIGYIR";
-
         _6::Solution s{};
-        custom_assert("PAHNAPLSIIGYIR" == s.convert(str, 3));
-        custom_assert("PINALSIGYAHRPI" == s.convert(str, 4));
-        custom_assert("A" == s.convert(str, 1));
+        custom_assert("PAHNAPLSIIGYIR" == s.convert("PAYPALISHIRING", 3));
+        custom_assert("PINALSIGYAHRPI" == s.convert("PAYPALISHIRING", 4));
+        custom_assert("A" == s.convert("A", 1));
     }
 #endif
     //////////////////////
@@ -831,7 +830,7 @@ int main()
     {
         _92::Solution s{};
 
-        UniqueListNode l1(ListNodeHelper::createList({1, 2, 3, 4, 5}));
+        UniqueListNode l1(ListNodeHelper::createList({ 1, 2, 3, 4, 5 }));
         UniqueListNode temp(s.reverseBetween(l1.release(), 2, 4));
         custom_assert("{ 1, 4, 3, 2, 5 }" == ListNodeHelper::convertListNodeToString(temp.get()));
     }
@@ -1412,6 +1411,20 @@ int main()
             custom_assert(true == s.isAnagram(s1_1, s1_2));
             custom_assert(false == s.isAnagram(s2_1, s2_2));
         }
+    }
+#endif
+    //////////////////////
+    /**
+     * 274. H-Index
+     */
+#if 1
+    {
+        std::vector<int> citations1{ 3, 0, 6, 1, 5 };
+        std::vector<int> citations2{ 1, 3, 1 };
+
+        _274::Solution s{};
+        custom_assert(3 == s.hIndex(citations1));
+        custom_assert(1 == s.hIndex(citations2));
     }
 #endif
     //////////////////////
