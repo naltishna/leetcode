@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #include <chrono>
 #include <iomanip> // for std::setprecision
@@ -89,3 +89,35 @@ std::string vector_to_string(const std::vector<T>& vec) {
 
     return ss.str();
 }
+
+//////////////////////
+struct Action {
+    int idPhil;
+    int fork;
+    int operation;
+};
+
+void verify_logic(const std::vector<Action>& actions) {
+    // 1. Check the total number of actions (5 actions * 5 philosophers)
+    if (actions.size() != 25) {
+        throw std::runtime_error("Missing actions!");
+    }
+
+    for (int p = 0; p < 5; ++p) {
+        std::vector<Action> p_actions;
+        // Select only the actions of a specific philosopher
+        for (auto& a : actions) {
+            if (a.idPhil == p) {
+                p_actions.push_back(a);
+            }
+        }
+
+        // 2. Check the order eating for each philosopher
+        // Expect: [1,1], [2,1], [0,3], [1,2], [2,2] (or 2,1 then 1,1)
+        bool has_eat = (p_actions[2].operation == 3);
+        if (!has_eat) {
+            throw std::runtime_error("Philosopher didn't eat in order!");
+        }
+    }
+}
+//////////////////////

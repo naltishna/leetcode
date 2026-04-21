@@ -1,6 +1,7 @@
 ﻿// main.cpp : Defines the entry point for the application.
 
 #include <algorithm>
+#include <array>
 #include <iostream>
 #include <memory>
 #include <thread>
@@ -47,6 +48,7 @@
 #include "121_best_time_to_buy_and_sell_stock.h"
 #include "122_best_time_to_buy_and_sell_stock_II.h"
 #include "125_valid_palindrome.h"
+#include "134_gas_station.h"
 #include "136_single_number.h"
 #include "141_linked_list_cycle.h"
 #include "150_evaluate_reverse_polish_notation.h"
@@ -86,6 +88,8 @@
 #include "1116_print_zero_even_odd.h"
 #include "1117_building_H2O.h"
 #include "1195_fizz_buzz_multithreaded.h"
+#include "1226_the_dining_philosophers.h"
+#include "1279_traffic_light_controlled_intersection.h"
 #include "3531_count_covered_buildings.h"
 
 
@@ -995,6 +999,29 @@ int main()
         custom_assert(true == s.isPalindrome(s_1));
         custom_assert(false == s.isPalindrome(s_2));
         custom_assert(true == s.isPalindrome(s_3));
+    }
+#endif
+    //////////////////////
+    /**
+     * 134. Gas Station
+     */
+#if 1
+    {
+        std::vector<int> gas_0{ 1, 2, 3, 4, 5 };
+        std::vector<int> cost_0{ 3, 4, 5, 1, 2 };
+        std::vector<int> gas_1{ 2, 3, 4 };
+        std::vector<int> cost_1{ 3, 4, 3 };
+
+        {
+            _134::Solution<ver1> s{};
+            custom_assert(3 == s.canCompleteCircuit(gas_0, cost_0));
+            custom_assert(-1 == s.canCompleteCircuit(gas_1, cost_1));
+        }
+        {
+            _134::Solution<ver2> s{};
+            custom_assert(3 == s.canCompleteCircuit(gas_0, cost_0));
+            custom_assert(-1 == s.canCompleteCircuit(gas_1, cost_1));
+        }
     }
 #endif
     //////////////////////
@@ -1981,8 +2008,8 @@ int main()
 
         std::cout << std::endl;
 
-        auto printFoo = []() { std::cout << "foo"; };
-        auto printBar = []() { std::cout << "bar"; };
+        std::function<void()> printFoo = []() { std::cout << "foo"; };
+        std::function<void()> printBar = []() { std::cout << "bar"; };
 
         std::thread t1([&]() { foobar.foo(printFoo); });
         std::thread t2([&]() { foobar.bar(printBar); });
@@ -2191,6 +2218,134 @@ int main()
         d.join();
 
         custom_assert("12fizz4buzz" == fizzbuzz.getOutput());
+    }
+#endif
+    //////////////////////
+    /**
+     * 1226. The Dining Philosophers
+     */
+#if 1
+    {
+        std::cout << std::endl;
+
+        _1226::DiningPhilosophers diningPhilosophers;
+        std::ostringstream output;
+        std::vector<Action> log_verify;
+        std::mutex log_mtx;
+        std::mutex out_mtx;
+        bool first = true;
+
+        auto record = [&](int idPhilosopher, int fork, int operation) {
+            std::lock_guard<std::mutex> lock(log_mtx);
+            log_verify.push_back({ idPhilosopher, fork, operation });
+            };
+
+        auto log = [&](int idPhilosopher, int fork, int operation, const std::string& msg) {
+            std::lock_guard<std::mutex> lock(out_mtx);
+            if (!first)
+                output << ", ";
+            output << "[" << idPhilosopher << "," << fork << "," << operation << "]";
+            first = false;
+            std::cout << msg << "\n";
+
+            record(idPhilosopher, fork, operation);
+            };
+
+        output << '[';
+
+        std::vector<std::thread> threads;
+
+        for (int i = 0; i < 5; ++i) {
+            threads.emplace_back([&, i]() {
+                diningPhilosophers.wantsToEat(i,
+                    [&, i]() { log(i, 2, 1, std::to_string(i) + " philosopher pick right fork"); }, // pick right
+                    [&, i]() { log(i, 1, 1, std::to_string(i) + " philosopher pick left fork"); },  // pick left
+                    [&, i]() { log(i, 0, 3, std::to_string(i) + " philosopher eat"); },             // eat
+                    [&, i]() { log(i, 1, 2, std::to_string(i) + " philosopher put left fork"); },   // put left
+                    [&, i]() { log(i, 2, 2, std::to_string(i) + " philosopher put right fork"); }   // put right 
+                    );
+                std::cout << std::endl;
+                }
+            );
+        }
+
+        for (auto& t : threads) {
+            t.join();
+        }
+
+        output << ']';
+        std::cout << output.str() << std::endl;
+
+        verify_logic(log_verify);
+    }
+#endif
+    //////////////////////
+    /**
+     * 1279. Traffic Light Controlled Intersection
+     */
+#if 1
+    {
+        enum class Road : char { A = 'A', B = 'B' };
+        auto roadName = [](int road) { return (road == 1) ? static_cast<char>(Road::A) : static_cast<char>(Road::B); };
+
+        {
+            std::cout << std::endl;
+
+            _1279::TrafficLight trafficLight;
+            std::vector<std::thread> threads;
+            std::vector<std::pair<int, char>> cars = { {1, 1}, {3, 1}, {5, 1}, {2, 2}, {4, 2} };
+            std::array<int, 5> directions = { 2, 1, 2, 4, 3 };
+            std::array<int, 5> arrivalTimes = { 10, 20, 30, 40, 50 };
+
+            for (int i = 0; i < 5; ++i) {
+                int car = cars[i].first;
+                int road = cars[i].second;
+                int direction = directions[i];
+                int arrival = arrivalTimes[i];
+
+                threads.emplace_back([=, &trafficLight]() {
+                    std::this_thread::sleep_for(std::chrono::milliseconds(arrival));
+
+                    auto crossCar = [=]() { std::cout << "Car " << car << " Has Passed Road " << roadName(road) << " In Direction " << direction << std::endl; };
+                    auto turnGreen = [=]() { std::cout << "Traffic Light On Road " << roadName(road) << " Is Green" << std::endl; };
+
+                    trafficLight.carArrived(car, road, direction, turnGreen, crossCar); 
+                    }
+                );
+            }
+
+            for (auto& t : threads) 
+                t.join();
+        }
+        {
+            std::cout << std::endl;
+
+            _1279::TrafficLight trafficLight;
+            std::vector<std::thread> threads;
+            std::vector<std::pair<int, char>> cars = { {1, 1}, {2, 2}, {3, 1}, {4, 2}, {5, 1} };
+            int directions[] = { 2, 4, 3, 3, 1 };
+            int arrivalTimes[] = { 10, 20, 30, 40, 40 };
+
+            for (int i = 0; i < cars.size(); ++i) {
+                int car = cars[i].first;
+                int road = cars[i].second;
+                int direction = directions[i];
+                int arrival = arrivalTimes[i];
+
+                threads.emplace_back([=, &trafficLight]() {
+                    std::this_thread::sleep_for(std::chrono::milliseconds(arrival));
+
+                    auto crossCar = [=]() { std::cout << "Car " << car << " Has Passed Road " << roadName(road) << " In Direction " << direction << std::endl; };
+                    auto turnGreen = [=]() { std::cout << "Traffic Light On Road " << roadName(road) << " Is Green" << std::endl; };
+
+                    trafficLight.carArrived(car, road, direction, turnGreen, crossCar); 
+                    }
+                );
+            }
+
+            for (auto& t : threads) 
+                t.join();
+        }
     }
 #endif
     //////////////////////

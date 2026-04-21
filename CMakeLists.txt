@@ -57,6 +57,7 @@ add_executable (leetcode
 "src/121_best_time_to_buy_and_sell_stock.cpp"
 "src/122_best_time_to_buy_and_sell_stock_II.cpp"
 "src/125_valid_palindrome.cpp"
+"src/134_gas_station.cpp"
 "src/136_single_number.cpp"
 "src/141_linked_list_cycle.cpp"
 "src/150_evaluate_reverse_polish_notation.cpp"
@@ -96,6 +97,8 @@ add_executable (leetcode
 "src/1116_print_zero_even_odd.cpp"
 "src/1117_building_H2O.cpp"
 "src/1195_fizz_buzz_multithreaded.cpp"
+"src/1226_the_dining_philosophers.cpp"
+"src/1279_traffic_light_controlled_intersection.cpp"
 "src/3531_count_covered_buildings.cpp")
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)
