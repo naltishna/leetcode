@@ -28,6 +28,7 @@
 #include "27_remove_element.h"
 #include "28_find_the_index_of_the_first_occurrence_in_a_string.h"
 #include "33_search_in_rotated_sorted_array.h"
+#include "42_trapping_rain_water.h"
 #include "45_jump_game_II.h"
 #include "49_group_anagrams.h"
 #include "55_jump_game.h"
@@ -49,6 +50,7 @@
 #include "122_best_time_to_buy_and_sell_stock_II.h"
 #include "125_valid_palindrome.h"
 #include "134_gas_station.h"
+#include "135_candy.h"
 #include "136_single_number.h"
 #include "141_linked_list_cycle.h"
 #include "150_evaluate_reverse_polish_notation.h"
@@ -530,6 +532,30 @@ int main()
         custom_assert(-1 == s.search(nums_2, 3));
         custom_assert(-1 == s.search(nums_3, 0));
         custom_assert(-1 == s.search(nums_4, 0));
+    }
+#endif
+    //////////////////////
+    /**
+     * 42. Trapping Rain Water
+     */
+#if 1
+    {
+        std::vector<int> height_0 = { 0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1 };
+        std::vector<int> height_1 = { 4, 2, 0, 3, 2, 5 };
+        std::vector<int> height_2 = { 0 };
+
+        {
+            _42::Solution<ver1> s{};
+            custom_assert(6 == s.trap(height_0));
+            custom_assert(9 == s.trap(height_1));
+            custom_assert(0 == s.trap(height_2));
+        }
+        {
+            _42::Solution<ver2> s{};
+            custom_assert(6 == s.trap(height_0));
+            custom_assert(9 == s.trap(height_1));
+            custom_assert(0 == s.trap(height_2));
+        }
     }
 #endif
     //////////////////////
@@ -1022,6 +1048,24 @@ int main()
             custom_assert(3 == s.canCompleteCircuit(gas_0, cost_0));
             custom_assert(-1 == s.canCompleteCircuit(gas_1, cost_1));
         }
+    }
+#endif
+    //////////////////////
+    /**
+     * 135. Candy
+     */
+#if 1
+    {
+        std::vector<int> ratings_0 = { 1, 0, 2 };
+        std::vector<int> ratings_1 = { 1, 2, 2 };
+        std::vector<int> ratings_2 = { 1, 3, 2, 2, 1 };
+        std::vector<int> ratings_3 = { 1, 2, 87, 87, 87, 2, 1 };
+
+        _135::Solution s{};
+        custom_assert(5 == s.candy(ratings_0));
+        custom_assert(4 == s.candy(ratings_1));
+        custom_assert(7 == s.candy(ratings_2));
+        custom_assert(13 == s.candy(ratings_3));
     }
 #endif
     //////////////////////
@@ -2309,12 +2353,12 @@ int main()
                     auto crossCar = [=]() { std::cout << "Car " << car << " Has Passed Road " << roadName(road) << " In Direction " << direction << std::endl; };
                     auto turnGreen = [=]() { std::cout << "Traffic Light On Road " << roadName(road) << " Is Green" << std::endl; };
 
-                    trafficLight.carArrived(car, road, direction, turnGreen, crossCar); 
+                    trafficLight.carArrived(car, road, direction, turnGreen, crossCar);
                     }
                 );
             }
 
-            for (auto& t : threads) 
+            for (auto& t : threads)
                 t.join();
         }
         {
@@ -2338,12 +2382,12 @@ int main()
                     auto crossCar = [=]() { std::cout << "Car " << car << " Has Passed Road " << roadName(road) << " In Direction " << direction << std::endl; };
                     auto turnGreen = [=]() { std::cout << "Traffic Light On Road " << roadName(road) << " Is Green" << std::endl; };
 
-                    trafficLight.carArrived(car, road, direction, turnGreen, crossCar); 
+                    trafficLight.carArrived(car, road, direction, turnGreen, crossCar);
                     }
                 );
             }
 
-            for (auto& t : threads) 
+            for (auto& t : threads)
                 t.join();
         }
     }
