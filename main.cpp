@@ -36,6 +36,7 @@
 #include "58_length_of_last_word.h"
 #include "62_unique_paths.h"
 #include "66_plus_one.h"
+#include "68_text_justification.h"
 #include "69_sqrt_x.h"
 #include "71_simplify_path.h"
 #include "74_search_2D_matrix.h"
@@ -543,7 +544,6 @@ int main()
         std::vector<int> height_0 = { 0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1 };
         std::vector<int> height_1 = { 4, 2, 0, 3, 2, 5 };
         std::vector<int> height_2 = { 0 };
-
         {
             _42::Solution<ver1> s{};
             custom_assert(6 == s.trap(height_0));
@@ -722,6 +722,34 @@ int main()
             auto output5 = s.plusOne(nums5);
             custom_assert("{ 1, 0, 0, 0 }" == vector_to_string(output5));
         }
+    }
+#endif
+    //////////////////////
+    /**
+     * 68. Text Justification
+     */
+#if 1
+    {
+        std::vector<std::string> strs_1{ "This", "is", "an", "example", "of", "text", "justification." };
+        std::vector<std::string> output_1{ "This    is    an",
+                                           "example  of text",
+                                           "justification.  " };
+        std::vector<std::string> strs_2{ "What", "must", "be", "acknowledgment", "shall", "be" };
+        std::vector<std::string> output_2{ "What   must   be",
+                                           "acknowledgment  ",
+                                           "shall be        " };
+        std::vector<std::string> strs_3{ "Science","is", "what", "we", "understand", "well", "enough", "to", "explain", "to", "a", "computer.", "Art", "is", "everything", "else", "we", "do" };
+        std::vector<std::string> output_3{ "Science  is  what we",
+                                           "understand      well",
+                                           "enough to explain to",
+                                           "a  computer.  Art is",
+                                           "everything  else  we",
+                                           "do                  " };
+
+        _68::Solution s{};
+        custom_assert(vector_to_string(output_1) == vector_to_string(s.fullJustify(strs_1, 16)));
+        custom_assert(vector_to_string(output_2) == vector_to_string(s.fullJustify(strs_2, 16)));
+        custom_assert(vector_to_string(output_3) == vector_to_string(s.fullJustify(strs_3, 20)));
     }
 #endif
     //////////////////////
