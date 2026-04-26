@@ -38,6 +38,7 @@
 #include "58_length_of_last_word.h"
 #include "62_unique_paths.h"
 #include "66_plus_one.h"
+#include "67_add_binary.h"
 #include "68_text_justification.h"
 #include "69_sqrt_x.h"
 #include "71_simplify_path.h"
@@ -100,8 +101,7 @@
 #include "3531_count_covered_buildings.h"
 
 
-int main()
-{
+int main() {
     //////////////////////
     /**
      * 1. Two Sum
@@ -571,14 +571,14 @@ int main()
                 auto output = s.findSubstring(input, words);
                 std::sort(output.begin(), output.end());
                 custom_assert(expected == vector_to_string(output));
-            };
+                };
 
             assertSortedSubstring(str0_0, str0_1, "{ 0, 9 }");
             assertSortedSubstring(str1_0, str1_1, "{  }");
             assertSortedSubstring(str2_0, str2_1, "{ 6, 9, 12 }");
             assertSortedSubstring(str3_0, str3_1, "{ 0, 3, 6 }");
             assertSortedSubstring(str4_0, str4_1, "{ 0, 1 }");
-        };
+            };
 
         {
             _30::Solution<ver1> s{};
@@ -798,6 +798,29 @@ int main()
             custom_assert("{ 9, 8, 7, 6, 5, 4, 3, 2, 1, 1 }" == vector_to_string(output4));
             auto output5 = s.plusOne(nums5);
             custom_assert("{ 1, 0, 0, 0 }" == vector_to_string(output5));
+        }
+    }
+#endif
+    //////////////////////
+    /**
+     * 67. Add Binary
+     */
+#if 1
+    {
+        {
+            _67::Solution<ver1> s{};
+            custom_assert("100" == s.addBinary("11", "1"));
+            custom_assert("10101" == s.addBinary("1010", "1011"));
+        }
+        {
+            _67::Solution<ver2> s{};
+            custom_assert("100" == s.addBinary("11", "1"));
+            custom_assert("10101" == s.addBinary("1010", "1011"));
+        }
+        {
+            _67::Solution<ver3> s{};
+            custom_assert("100" == s.addBinary("11", "1"));
+            custom_assert("10101" == s.addBinary("1010", "1011"));
         }
     }
 #endif
