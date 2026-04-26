@@ -13,6 +13,7 @@
 
 #include "1_two_sum.h"
 #include "2_add_two_numbers.h"
+#include "3_longest_substring_without_repeating_characters.h"
 #include "6_zigzag_conversion.h"
 #include "9_palindrome_number.h"
 #include "11_container_with_most_water.h"
@@ -27,6 +28,7 @@
 #include "26_remove_duplicates_from_sorted_array.h"
 #include "27_remove_element.h"
 #include "28_find_the_index_of_the_first_occurrence_in_a_string.h"
+#include "30_substring_with_concatenation_of_all_words.h"
 #include "33_search_in_rotated_sorted_array.h"
 #include "42_trapping_rain_water.h"
 #include "45_jump_game_II.h"
@@ -40,6 +42,7 @@
 #include "69_sqrt_x.h"
 #include "71_simplify_path.h"
 #include "74_search_2D_matrix.h"
+#include "76_minimum_window_substring.h"
 #include "80_remove_duplicates_from_sorted_array_II.h"
 #include "81_search_in_rotated_sorted_arrayII.h"
 #include "88_merge_sorted_array.h"
@@ -64,6 +67,7 @@
 #include "200_number_of_islands.h"
 #include "205_isomorphic_strings.h"
 #include "206_reverse_linked_list.h"
+#include "209_minimum_size_subarray_sum.h"
 #include "224_basic_calculator.h"
 #include "238_product_of_array_except_self.h"
 #include "239_sliding_window_maximum.h"
@@ -150,6 +154,34 @@ int main()
         UniqueListNode l3_2(ListNodeHelper::createList({ 9, 9, 9, 9 }));
         UniqueListNode temp3(s.addTwoNumbers(l3_1.get(), l3_2.get()));
         custom_assert("{ 8, 9, 9, 9, 0, 0, 0, 1 }" == ListNodeHelper::convertListNodeToString(temp3.get()));
+    }
+#endif
+    //////////////////////
+    /**
+     * 3. Longest Substring Without Repeating Characters
+     */
+#if 1
+    {
+        {
+            _3::Solution<ver1> s{};
+            custom_assert(1 == s.lengthOfLongestSubstring("aa"));
+            custom_assert(2 == s.lengthOfLongestSubstring("au"));
+            custom_assert(3 == s.lengthOfLongestSubstring("abcabcbb"));
+            custom_assert(1 == s.lengthOfLongestSubstring("bbbbb"));
+            custom_assert(3 == s.lengthOfLongestSubstring("pwwkew"));
+            custom_assert(0 == s.lengthOfLongestSubstring(""));
+            custom_assert(1 == s.lengthOfLongestSubstring(" "));
+        }
+        {
+            _3::Solution<ver2> s{};
+            custom_assert(1 == s.lengthOfLongestSubstring("aa"));
+            custom_assert(2 == s.lengthOfLongestSubstring("au"));
+            custom_assert(3 == s.lengthOfLongestSubstring("abcabcbb"));
+            custom_assert(1 == s.lengthOfLongestSubstring("bbbbb"));
+            custom_assert(3 == s.lengthOfLongestSubstring("pwwkew"));
+            custom_assert(0 == s.lengthOfLongestSubstring(""));
+            custom_assert(1 == s.lengthOfLongestSubstring(" "));
+        }
     }
 #endif
     //////////////////////
@@ -519,6 +551,51 @@ int main()
 #endif
     //////////////////////
     /**
+     * 30. Substring with Concatenation of All Words
+     */
+#if 1
+    {
+        std::string str0_0 = "barfoothefoobarman";
+        std::vector<std::string> str0_1 = { "foo", "bar" };
+        std::string str1_0 = { "wordgoodgoodgoodbestword" };
+        std::vector<std::string> str1_1 = { "word", "good", "best", "word" };
+        std::string str2_0 = { "barfoofoobarthefoobarman" };
+        std::vector<std::string> str2_1 = { "bar", "foo", "the" };
+        std::string str3_0 = { "foobarfoobar" };
+        std::vector<std::string> str3_1 = { "foo", "bar" };
+        std::string str4_0 = { "aaa" };
+        std::vector<std::string> str4_1 = { "a", "a" };
+
+        auto runSubstring30Tests = [&](auto& s) {
+            auto assertSortedSubstring = [&](const std::string& input, std::vector<std::string> words, const std::string& expected) {
+                auto output = s.findSubstring(input, words);
+                std::sort(output.begin(), output.end());
+                custom_assert(expected == vector_to_string(output));
+            };
+
+            assertSortedSubstring(str0_0, str0_1, "{ 0, 9 }");
+            assertSortedSubstring(str1_0, str1_1, "{  }");
+            assertSortedSubstring(str2_0, str2_1, "{ 6, 9, 12 }");
+            assertSortedSubstring(str3_0, str3_1, "{ 0, 3, 6 }");
+            assertSortedSubstring(str4_0, str4_1, "{ 0, 1 }");
+        };
+
+        {
+            _30::Solution<ver1> s{};
+            runSubstring30Tests(s);
+        }
+        {
+            _30::Solution<ver2> s{};
+            runSubstring30Tests(s);
+        }
+        {
+            _30::Solution<ver3> s{};
+            runSubstring30Tests(s);
+        }
+    }
+#endif
+    //////////////////////
+    /**
      * 33. Search in Rotated Sorted Array
      */
 #if 1
@@ -823,6 +900,28 @@ int main()
 #endif
     //////////////////////
     /**
+     * 76. Minimum Window Substring
+     */
+#if 1
+    {
+        std::string str0_0 = "ADOBECODEBANC";
+        std::string str0_1 = "ABC";
+        std::string str1_0 = "a";
+        std::string str1_1 = "a";
+        std::string str2_0 = "a";
+        std::string str2_1 = "aa";
+        std::string str3_0 = "ab";
+        std::string str3_1 = "b";
+
+        _76::Solution s{};
+        custom_assert("BANC" == s.minWindow(str0_0, str0_1));
+        custom_assert("a" == s.minWindow(str1_0, str1_1));
+        custom_assert("" == s.minWindow(str2_0, str2_1));
+        custom_assert("b" == s.minWindow(str3_0, str3_1));
+    }
+#endif
+    //////////////////////
+    /**
      * 80. Remove Duplicates from Sorted Array II
      */
 #if 1
@@ -830,6 +929,7 @@ int main()
         {
             std::vector<int> nums_1{ 1, 1, 1, 2, 2, 3 };
             std::vector<int> nums_2{ 0, 0, 1, 1, 1, 1, 2, 3, 3 };
+
             _80::Solution<ver1> s{};
             custom_assert(5 == s.removeDuplicates(nums_1)); // Output: 5, nums = [1,1,2,2,3,_]
             custom_assert(7 == s.removeDuplicates(nums_2)); // Output: 7, nums = [0,0,1,1,2,3,3,_,_]
@@ -837,6 +937,7 @@ int main()
         {
             std::vector<int> nums_1{ 1, 1, 1, 2, 2, 3 };
             std::vector<int> nums_2{ 0, 0, 1, 1, 1, 1, 2, 3, 3 };
+
             _80::Solution<ver2> s{};
             custom_assert(5 == s.removeDuplicates(nums_1)); // Output: 5, nums = [1,1,2,2,3,_]
             custom_assert(7 == s.removeDuplicates(nums_2)); // Output: 7, nums = [0,0,1,1,2,3,3,_,_]
@@ -1438,6 +1539,33 @@ int main()
         ListNode* result3 = s.reverseList(list3);
         custom_assert("{ }" == ListNodeHelper::convertListNodeToString(result3));
         ListNodeHelper::freeList(result3);
+    }
+#endif
+    //////////////////////
+    /**
+     * 209. Minimum Size Subarray Sum
+     */
+#if 1
+    {
+        std::vector<int> nums0{ 2, 3, 1, 2, 4, 3 };
+        std::vector<int> nums1{ 1, 4, 4 };
+        std::vector<int> nums2{ 1, 1, 1, 1, 1, 1, 1, 1 };
+        std::vector<int> nums3{ 1, 2, 3, 4, 5 };
+
+        {
+            _209::Solution<ver1> s{};
+            custom_assert(2 == s.minSubArrayLen(7, nums0));
+            custom_assert(1 == s.minSubArrayLen(4, nums1));
+            custom_assert(0 == s.minSubArrayLen(11, nums2));
+            custom_assert(3 == s.minSubArrayLen(11, nums3));
+        }
+        {
+            _209::Solution<ver2> s{};
+            custom_assert(2 == s.minSubArrayLen(7, nums0));
+            custom_assert(1 == s.minSubArrayLen(4, nums1));
+            custom_assert(0 == s.minSubArrayLen(11, nums2));
+            custom_assert(3 == s.minSubArrayLen(11, nums3));
+        }
     }
 #endif
     //////////////////////
@@ -2386,8 +2514,9 @@ int main()
                 );
             }
 
-            for (auto& t : threads)
+            for (auto& t : threads) {
                 t.join();
+            }
         }
         {
             std::cout << std::endl;
@@ -2415,8 +2544,9 @@ int main()
                 );
             }
 
-            for (auto& t : threads)
+            for (auto& t : threads) {
                 t.join();
+            }
         }
     }
 #endif

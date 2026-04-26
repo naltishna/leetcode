@@ -8,10 +8,10 @@ namespace _424 {
 
     /*
     * Using a Sliding window algorithm to maintain the longest valid substring where replacements do not exceed k.
-    * 
+    *
     * Time complexity:
     * O(N)
-    * 
+    *
     * Space complexity:
     * O(1)
     */
@@ -38,6 +38,13 @@ namespace _424 {
         return maxlenth;
     }
 
+    /*
+    * Time complexity:
+    * O(N)
+    *
+    * Space complexity:
+    * O(1)
+    */
     template<>
     int Solution<ver2>::characterReplacement(std::string s, int k) {
         std::array<int, 26> freq{};

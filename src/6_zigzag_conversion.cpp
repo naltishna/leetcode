@@ -26,7 +26,9 @@ namespace _6 {
         for (char c : s) {
             rows[currentRow] += c;
 
-            if (currentRow == 0 || currentRow == numRows - 1) goDown = !goDown;
+            if (currentRow == 0 || currentRow == numRows - 1) {
+                goDown = !goDown;
+            }
 
             currentRow += goDown ? 1 : -1; // Move down or up
         }

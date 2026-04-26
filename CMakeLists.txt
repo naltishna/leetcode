@@ -22,6 +22,7 @@ add_executable (leetcode
 "src/list_node_helpers.cpp"
 "src/1_two_sum.cpp"
 "src/2_add_two_numbers.cpp"
+"src/3_longest_substring_without_repeating_characters.cpp"
 "src/6_zigzag_conversion.cpp"
 "src/9_palindrome_number.cpp"
 "src/11_container_with_most_water.cpp"
@@ -36,6 +37,7 @@ add_executable (leetcode
 "src/26_remove_duplicates_from_sorted_array.cpp"
 "src/27_remove_element.cpp"
 "src/28_find_the_index_of_the_first_occurrence_in_a_string.cpp"
+"src/30_substring_with_concatenation_of_all_words.cpp"
 "src/33_search_in_rotated_sorted_array.cpp"
 "src/42_trapping_rain_water.cpp"
 "src/45_jump_game_II.cpp"
@@ -45,9 +47,11 @@ add_executable (leetcode
 "src/58_length_of_last_word.cpp"
 "src/62_unique_paths.cpp"
 "src/66_plus_one.cpp"
+"src/68_text_justification.cpp"
 "src/69_sqrt_x.cpp"
 "src/71_simplify_path.cpp"
 "src/74_search_2D_matrix.cpp"
+"src/76_minimum_window_substring.cpp"
 "src/80_remove_duplicates_from_sorted_array_II.cpp"
 "src/81_search_in_rotated_sorted_arrayII.cpp"
 "src/88_merge_sorted_array.cpp"
@@ -72,6 +76,7 @@ add_executable (leetcode
 "src/200_number_of_islands.cpp"
 "src/205_isomorphic_strings.cpp"
 "src/206_reverse_linked_list.cpp"
+"src/209_minimum_size_subarray_sum.cpp"
 "src/224_basic_calculator.cpp"
 "src/238_product_of_array_except_self.cpp"
 "src/239_sliding_window_maximum.cpp"
@@ -101,7 +106,7 @@ add_executable (leetcode
 "src/1195_fizz_buzz_multithreaded.cpp"
 "src/1226_the_dining_philosophers.cpp"
 "src/1279_traffic_light_controlled_intersection.cpp"
-"src/3531_count_covered_buildings.cpp" "include/68_text_justification.h" "src/68_text_justification.cpp")
+"src/3531_count_covered_buildings.cpp")
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)
   set_property(TARGET leetcode PROPERTY CXX_STANDARD 20)
