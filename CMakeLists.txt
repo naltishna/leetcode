@@ -74,6 +74,7 @@ add_executable (leetcode
 "src/167_two_sumII_input_array_is_sorted.cpp"
 "src/169_majority_element.cpp"
 "src/189_rotate_array.cpp"
+"src/190_reverse_bits.cpp"
 "src/200_number_of_islands.cpp"
 "src/205_isomorphic_strings.cpp"
 "src/206_reverse_linked_list.cpp"

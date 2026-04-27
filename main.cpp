@@ -65,6 +65,7 @@
 #include "167_two_sumII_input_array_is_sorted.h"
 #include "169_majority_element.h"
 #include "189_rotate_array.h"
+#include "190_reverse_bits.h"
 #include "200_number_of_islands.h"
 #include "205_isomorphic_strings.h"
 #include "206_reverse_linked_list.h"
@@ -1462,6 +1463,26 @@ int main() {
             custom_assert("{ 5, 6, 7, 1, 2, 3, 4 }" == vector_to_string(nums1));
             s.rotate(nums2, k2);
             custom_assert("{ 3, 99, -1, -100 }" == vector_to_string(nums2));
+        }
+    }
+#endif
+    //////////////////////
+    /**
+     * 190. Reverse Bits
+     */
+#if 1
+    {
+        {
+            _190::Solution<ver1> s{};
+            // custom_assert(11 == s.reverseBits(13)); - break ver1 
+            custom_assert(964176192 == s.reverseBits(43261596));
+            custom_assert(1073741822 == s.reverseBits(2147483644));
+        }
+        {
+            _190::Solution<ver2> s{};
+            custom_assert(2, 952, 790, 016 == s.reverseBits(13)); // 1101 -> 1011 
+            custom_assert(964176192 == s.reverseBits(43261596));
+            custom_assert(1073741822 == s.reverseBits(2147483644));
         }
     }
 #endif
