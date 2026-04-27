@@ -66,6 +66,7 @@
 #include "169_majority_element.h"
 #include "189_rotate_array.h"
 #include "190_reverse_bits.h"
+#include "191_number_of_1_bits.h"
 #include "200_number_of_islands.h"
 #include "205_isomorphic_strings.h"
 #include "206_reverse_linked_list.h"
@@ -1483,6 +1484,26 @@ int main() {
             custom_assert(2, 952, 790, 016 == s.reverseBits(13)); // 1101 -> 1011 
             custom_assert(964176192 == s.reverseBits(43261596));
             custom_assert(1073741822 == s.reverseBits(2147483644));
+        }
+    }
+#endif
+    //////////////////////
+    /**
+     * 191. Number of 1 Bits
+     */
+#if 1
+    {
+        {
+            _191::Solution<ver1> s{};
+            custom_assert(3 == s.hammingWeight(11));
+            custom_assert(1 == s.hammingWeight(128));
+            custom_assert(30 == s.hammingWeight(2147483645));
+        }
+        {
+            _191::Solution<ver2> s{};
+            custom_assert(3 == s.hammingWeight(11));
+            custom_assert(1 == s.hammingWeight(128));
+            custom_assert(30 == s.hammingWeight(2147483645));
         }
     }
 #endif

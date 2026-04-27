@@ -75,6 +75,7 @@ add_executable (leetcode
 "src/169_majority_element.cpp"
 "src/189_rotate_array.cpp"
 "src/190_reverse_bits.cpp"
+"src/191_number_of_1_bits.cpp"
 "src/200_number_of_islands.cpp"
 "src/205_isomorphic_strings.cpp"
 "src/206_reverse_linked_list.cpp"
