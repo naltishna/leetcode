@@ -57,6 +57,7 @@
 #include "134_gas_station.h"
 #include "135_candy.h"
 #include "136_single_number.h"
+#include "137_single_number_II.h"
 #include "141_linked_list_cycle.h"
 #include "150_evaluate_reverse_polish_notation.h"
 #include "151_reverse_words_in_a_string.h"
@@ -1228,14 +1229,34 @@ int main() {
      */
 #if 1
     {
-        std::vector<int> l1{ 2,2,1 };
-        std::vector<int> l2{ 4,1,2,1,2 };
+        std::vector<int> l1{ 2, 2, 1 };
+        std::vector<int> l2{ 4, 1, 2, 1, 2 };
         std::vector<int> l3{ 1 };
 
         _136::Solution s{};
         custom_assert(1 == s.singleNumber(l1));
         custom_assert(4 == s.singleNumber(l2));
         custom_assert(1 == s.singleNumber(l3));
+    }
+#endif
+    //////////////////////
+    /**
+     * 137. Single Number II
+     */
+#if 1
+    {
+        std::vector<int> v1{ 2, 2, 3, 2 };
+        std::vector<int> v2{ 0, 1, 0, 1, 0, 1, 99 };
+        {
+            _137::Solution<ver1> s{};
+            custom_assert(3 == s.singleNumber(v1));
+            custom_assert(99 == s.singleNumber(v2));
+        }
+        {
+            _137::Solution<ver2> s{};
+            custom_assert(3 == s.singleNumber(v1));
+            custom_assert(99 == s.singleNumber(v2));
+        }
     }
 #endif
     //////////////////////

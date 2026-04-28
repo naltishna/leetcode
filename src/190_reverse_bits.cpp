@@ -1,9 +1,6 @@
 ﻿#include "190_reverse_bits.h"
 
-#include <bitset>
 #include <string>
-#include <bit>
-#include <iostream>
 
 namespace _190 {
 
