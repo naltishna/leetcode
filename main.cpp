@@ -69,6 +69,7 @@
 #include "190_reverse_bits.h"
 #include "191_number_of_1_bits.h"
 #include "200_number_of_islands.h"
+#include "201_bitwise_AND_of_numbers_range.h"
 #include "205_isomorphic_strings.h"
 #include "206_reverse_linked_list.h"
 #include "209_minimum_size_subarray_sum.h"
@@ -1562,6 +1563,26 @@ int main() {
         _200::Solution<ver2> s{};
         custom_assert(1 == s.numIslands(grid1));
         custom_assert(3 == s.numIslands(grid2));
+    }
+#endif
+    //////////////////////
+    /**
+     * 201. Bitwise AND of Numbers Range
+     */
+#if 1
+    {
+        {
+            _201::Solution<ver1> s{};
+            custom_assert(4 == s.rangeBitwiseAnd(5, 7));
+            custom_assert(0 == s.rangeBitwiseAnd(0, 0));
+            custom_assert(0 == s.rangeBitwiseAnd(1, 2147483647));
+        }
+        {
+            _201::Solution<ver2> s{};
+            custom_assert(4 == s.rangeBitwiseAnd(5, 7));
+            custom_assert(0 == s.rangeBitwiseAnd(0, 0));
+            custom_assert(0 == s.rangeBitwiseAnd(1, 2147483647));
+        }
     }
 #endif
     //////////////////////

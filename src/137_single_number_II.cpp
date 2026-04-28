@@ -35,7 +35,7 @@ namespace _137 {
     /*
     * Uses two accumulators (ones, twos) to track bits seen 1 and 2 times respectively.
     * For each number, bits appearing a 3rd time are cleared from both.
-    * After processing, ones holds bits seen exactly once — the unique element.
+    * After processing, ones holds bits seen exactly once - the unique element.
     * 
     * This solution is 32 times faster than the first option in terms of the number of operations.
     * 

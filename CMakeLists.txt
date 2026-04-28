@@ -66,6 +66,7 @@ add_executable (leetcode
 "src/134_gas_station.cpp"
 "src/135_candy.cpp"
 "src/136_single_number.cpp"
+"src/137_single_number_II.cpp"
 "src/141_linked_list_cycle.cpp"
 "src/150_evaluate_reverse_polish_notation.cpp"
 "src/151_reverse_words_in_a_string.cpp"
@@ -77,6 +78,7 @@ add_executable (leetcode
 "src/190_reverse_bits.cpp"
 "src/191_number_of_1_bits.cpp"
 "src/200_number_of_islands.cpp"
+"src/201_bitwise_AND_of_numbers_range.cpp"
 "src/205_isomorphic_strings.cpp"
 "src/206_reverse_linked_list.cpp"
 "src/209_minimum_size_subarray_sum.cpp"
@@ -109,7 +111,7 @@ add_executable (leetcode
 "src/1195_fizz_buzz_multithreaded.cpp"
 "src/1226_the_dining_philosophers.cpp"
 "src/1279_traffic_light_controlled_intersection.cpp"
-"src/3531_count_covered_buildings.cpp" "include/137_single_number_II.h" "src/137_single_number_II.cpp")
+"src/3531_count_covered_buildings.cpp")
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)
   set_property(TARGET leetcode PROPERTY CXX_STANDARD 20)
