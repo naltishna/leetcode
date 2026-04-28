@@ -74,6 +74,7 @@
 #include "206_reverse_linked_list.h"
 #include "209_minimum_size_subarray_sum.h"
 #include "224_basic_calculator.h"
+#include "228_summary_ranges.h"
 #include "238_product_of_array_except_self.h"
 #include "239_sliding_window_maximum.h"
 #include "242_valid_anagram.h"
@@ -1689,11 +1690,25 @@ int main() {
         }
         {
             _224_unary_minus::Solution s{};
-            //custom_assert(-1 == s.calculate("-2 + 1"));
-            //custom_assert(14 == s.calculate("12 + 2"));
-            //custom_assert(3 == s.calculate(" 2-1 + 2 "));
+            custom_assert(-1 == s.calculate("-2 + 1"));
+            custom_assert(14 == s.calculate("12 + 2"));
+            custom_assert(3 == s.calculate(" 2-1 + 2 "));
             custom_assert(23 == s.calculate("(1+(4+5+2)-3)+(6+8)"));
         }
+    }
+#endif
+    //////////////////////
+    /**
+     * 228. Summary Ranges
+     */
+#if 1
+    {
+        std::vector<int> v0{ 0, 1, 2, 4, 5, 7 };
+        std::vector<int> v1{ 0, 2, 3, 4, 6, 8, 9 };
+
+        _228::Solution s{};
+        custom_assert("{ 0->2, 4->5, 7 }" == vector_to_string(s.summaryRanges(v0)));
+        custom_assert("{ 0, 2->4, 6, 8->9 }" == vector_to_string(s.summaryRanges(v1)));
     }
 #endif
     //////////////////////
