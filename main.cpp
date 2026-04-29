@@ -80,6 +80,7 @@
 #include "239_sliding_window_maximum.h"
 #include "242_valid_anagram.h"
 #include "274_h_index.h"
+#include "290_word_pattern.h"
 #include "301_remove_invalid_parentheses.h"
 #include "309_best_time_to_buy_and_sell_stock_with_cooldown.h"
 #include "347_top_k_frequent_elements.h"
@@ -1834,6 +1835,28 @@ int main() {
         _274::Solution s{};
         custom_assert(3 == s.hIndex(citations1));
         custom_assert(1 == s.hIndex(citations2));
+    }
+#endif
+    //////////////////////
+    /**
+     * 290. Word Pattern
+     */
+#if 1
+    {
+        {
+            _290::Solution<ver1> s{};
+            custom_assert(false == s.wordPattern("aba", "cat cat cat dog"));
+            custom_assert(true == s.wordPattern("abba", "dog cat cat dog"));
+            custom_assert(false == s.wordPattern("abba", "dog cat cat fish"));
+            custom_assert(false == s.wordPattern("aaaa", "dog cat cat dog"));
+        }
+        {
+            _290::Solution<ver2> s{};
+            custom_assert(false == s.wordPattern("aba", "cat cat cat dog"));
+            custom_assert(true == s.wordPattern("abba", "dog cat cat dog"));
+            custom_assert(false == s.wordPattern("abba", "dog cat cat fish"));
+            custom_assert(false == s.wordPattern("aaaa", "dog cat cat dog"));
+        }
     }
 #endif
     //////////////////////
