@@ -30,6 +30,7 @@
 #include "28_find_the_index_of_the_first_occurrence_in_a_string.h"
 #include "30_substring_with_concatenation_of_all_words.h"
 #include "33_search_in_rotated_sorted_array.h"
+#include "36_valid_sudoku.h"
 #include "42_trapping_rain_water.h"
 #include "45_jump_game_II.h"
 #include "49_group_anagrams.h"
@@ -615,6 +616,44 @@ int main() {
         custom_assert(-1 == s.search(nums_2, 3));
         custom_assert(-1 == s.search(nums_3, 0));
         custom_assert(-1 == s.search(nums_4, 0));
+    }
+#endif
+    //////////////////////
+    /**
+     * 36. Valid Sudoku
+     */
+#if 1
+    {
+        std::vector<std::vector<char>> board1{ {'5','3','.','.','7','.','.','.','.'},
+                                               {'6','.','.','1','9','5','.','.','.'},
+                                               {'.','9','8','.','.','.','.','6','.'},
+                                               {'8','.','.','.','6','.','.','.','3'},
+                                               {'4','.','.','8','.','3','.','.','1'},
+                                               {'7','.','.','.','2','.','.','.','6'},
+                                               {'.','6','.','.','.','.','2','8','.'},
+                                               {'.','.','.','4','1','9','.','.','5'},
+                                               {'.','.','.','.','8','.','.','7','9'} };
+
+        std::vector<std::vector<char>> board2{ {'8','3','.','.','7','.','.','.','.'},
+                                               {'6','.','.','1','9','5','.','.','.'},
+                                               {'.','9','8','.','.','.','.','6','.'},
+                                               {'8','.','.','.','6','.','.','.','3'},
+                                               {'4','.','.','8','.','3','.','.','1'},
+                                               {'7','.','.','.','2','.','.','.','6'},
+                                               {'.','6','.','.','.','.','2','8','.'},
+                                               {'.','.','.','4','1','9','.','.','5'},
+                                               {'.','.','.','.','8','.','.','7','9'} };
+
+        {
+            _36::Solution<ver1> s{};
+            custom_assert(true == s.isValidSudoku(board1));
+            custom_assert(false == s.isValidSudoku(board2));
+        }
+        {
+            _36::Solution<ver2> s{};
+            custom_assert(true == s.isValidSudoku(board1));
+            custom_assert(false == s.isValidSudoku(board2));
+        }
     }
 #endif
     //////////////////////
