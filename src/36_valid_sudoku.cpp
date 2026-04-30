@@ -9,13 +9,13 @@ namespace _36 {
 
     /*
     * For each digit d, sets bit 1 << d in a mask. If that bit is already set -> duplicate found -> invalid.
-    * 
+    *
     * Three separate passes validate: 3×3 boxes — iterates over 9 sub-grids;
     * Rows + Columns — checked simultaneously in a single pass (using board[i][j] and board[j][i]).
-    * 
+    *
     * Time complexity:
     * O(1) — always exactly 81 cells processed (fixed 9×9 board)
-    * 
+    *
     * Space complexity:
     * O(1) — only a few integer masks, no extra data structures
     */
@@ -82,7 +82,7 @@ namespace _36 {
     /*
     * Time complexity:
     * O(1)
-    * 
+    *
     * Space complexity:
     * O(1)
     */

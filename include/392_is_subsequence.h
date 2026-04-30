@@ -28,7 +28,7 @@ Follow up: Suppose there are lots of incoming s, say s1, s2, ..., sk where k >= 
 #include <string>
 
 namespace _392 {
-    
+
     template<class V>
     class Solution {
     public:

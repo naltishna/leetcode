@@ -57,7 +57,7 @@ namespace _1195 {
         int n;
         int index = 1;
         std::ostringstream output;
-        
+
         void run(std::function<bool()> condition, std::function<void()> action);
 
     public:

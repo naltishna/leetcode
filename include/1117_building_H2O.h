@@ -53,11 +53,11 @@ namespace _1117 {
 
         std::string getOutput();
 
-        private:
-            std::mutex mtx_;
-            std::condition_variable cv_;
-            std::string output_ = "";
-            int count_hydrogen_ = 0;
+    private:
+        std::mutex mtx_;
+        std::condition_variable cv_;
+        std::string output_ = "";
+        int count_hydrogen_ = 0;
     };
 
 }

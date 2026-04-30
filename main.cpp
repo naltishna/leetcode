@@ -33,7 +33,9 @@
 #include "36_valid_sudoku.h"
 #include "42_trapping_rain_water.h"
 #include "45_jump_game_II.h"
+#include "48_rotate_image.h"
 #include "49_group_anagrams.h"
+#include "54_spiral_matrix.h"
 #include "55_jump_game.h"
 #include "56_merge_intervals.h"
 #include "58_length_of_last_word.h"
@@ -43,6 +45,7 @@
 #include "68_text_justification.h"
 #include "69_sqrt_x.h"
 #include "71_simplify_path.h"
+#include "73_set_matrix_zeroes.h"
 #include "74_search_2D_matrix.h"
 #include "76_minimum_window_substring.h"
 #include "80_remove_duplicates_from_sorted_array_II.h"
@@ -71,6 +74,7 @@
 #include "191_number_of_1_bits.h"
 #include "200_number_of_islands.h"
 #include "201_bitwise_AND_of_numbers_range.h"
+#include "202_happy_number.h"
 #include "205_isomorphic_strings.h"
 #include "206_reverse_linked_list.h"
 #include "209_minimum_size_subarray_sum.h"
@@ -712,6 +716,38 @@ int main() {
 #endif
     //////////////////////
     /**
+     * 48. Rotate Image
+     */
+#if 1
+    {
+        {
+            std::vector<std::vector<int>> input_0{ {1, 2, 3}, {4, 5, 6}, {7, 8, 9} };
+            std::vector<std::vector<int>> output_0{ {7, 4, 1}, {8, 5, 2}, {9, 6, 3} };
+            std::vector<std::vector<int>> input_1{ {5, 1, 9, 11}, {2, 4, 8, 10}, {13, 3, 6, 7}, {15, 14, 12, 16} };
+            std::vector<std::vector<int>> output_1{ {15, 13, 2, 5}, {14, 3, 4, 1}, {12, 6, 8, 9}, {16, 7, 10, 11} };
+
+            _48::Solution<ver1> s{};
+            s.rotate(input_0);
+            custom_assert(output_0 == input_0);
+            s.rotate(input_1);
+            custom_assert(output_1 == input_1);
+        }
+        {
+            std::vector<std::vector<int>> input_0{ {1, 2, 3}, {4, 5, 6}, {7, 8, 9} };
+            std::vector<std::vector<int>> output_0{ {7, 4, 1}, {8, 5, 2}, {9, 6, 3} };
+            std::vector<std::vector<int>> input_1{ {5, 1, 9, 11}, {2, 4, 8, 10}, {13, 3, 6, 7}, {15, 14, 12, 16} };
+            std::vector<std::vector<int>> output_1{ {15, 13, 2, 5}, {14, 3, 4, 1}, {12, 6, 8, 9}, {16, 7, 10, 11} };
+
+            _48::Solution<ver2> s{};
+            s.rotate(input_0);
+            custom_assert(output_0 == input_0);
+            s.rotate(input_1);
+            custom_assert(output_1 == input_1);
+        }
+    }
+#endif
+    //////////////////////
+    /**
      * 49. Group Anagrams
      */
 #if 1
@@ -740,6 +776,20 @@ int main() {
             });
         custom_assert("{ {bat}, {nat, tan}, {ate, eat, tea} }" == vectors_to_string(res));
 
+    }
+#endif
+    //////////////////////
+    /**
+     * 54. Spiral Matrix
+     */
+#if 1
+    {
+        std::vector<std::vector<int>> v0{ {1, 2, 3}, {4, 5, 6}, {7, 8, 9} };
+        std::vector<std::vector<int>> v1{ {1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12} };
+
+        _54::Solution s{};
+        custom_assert("{ 1, 2, 3, 6, 9, 8, 7, 4, 5 }" == vector_to_string(s.spiralOrder(v0)));
+        custom_assert("{ 1, 2, 3, 4, 8, 12, 11, 10, 9, 5, 6, 7 }" == vector_to_string(s.spiralOrder(v1)));
     }
 #endif
     //////////////////////
@@ -933,6 +983,28 @@ int main() {
             custom_assert("/" == s.simplifyPath("/../"));
             custom_assert("/.../b/d" == s.simplifyPath("/.../a/../b/c/../d/./"));
         }
+    }
+#endif
+    //////////////////////
+    /**
+     * 73. Set Matrix Zeroes
+     */
+#if 1
+    {
+        std::vector<std::vector<int>> input_0{ {1, 1, 1}, {1, 0, 1}, {1, 1, 1} };
+        std::vector<std::vector<int>> output_0{ {1, 0, 1}, {0, 0, 0}, {1, 0, 1} };
+        std::vector<std::vector<int>> input_1{ {0, 1, 2, 0}, {3, 4, 5, 2}, {1, 3, 1, 5} };
+        std::vector<std::vector<int>> output_1{ {0, 0, 0, 0}, {0, 4, 5, 0}, {0, 3, 1, 0} };
+
+        _73::Solution s{};
+        s.setZeroes(input_0);
+        auto in0 = vectors_to_string(input_0);
+        auto out0 = vectors_to_string(output_0);
+        custom_assert(output_0 == input_0);
+        s.setZeroes(input_1);
+        auto in1 = vectors_to_string(input_1);
+        auto out1 = vectors_to_string(output_1);
+        custom_assert(output_1 == input_1);
     }
 #endif
     //////////////////////
@@ -1624,6 +1696,18 @@ int main() {
             custom_assert(0 == s.rangeBitwiseAnd(0, 0));
             custom_assert(0 == s.rangeBitwiseAnd(1, 2147483647));
         }
+    }
+#endif
+    //////////////////////
+    /**
+     * 202. Happy Number
+     */
+#if 1
+    {
+        _202::Solution s{};
+        custom_assert(true == s.isHappy(1));
+        custom_assert(true == s.isHappy(19));
+        custom_assert(false == s.isHappy(2));
     }
 #endif
     //////////////////////

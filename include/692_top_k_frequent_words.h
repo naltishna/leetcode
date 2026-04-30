@@ -24,7 +24,6 @@ Constraints:
 1 <= words[i].length <= 10
 words[i] consists of lowercase English letters.
 k is in the range [1, The number of unique words[i]]
-
 */
 
 #ifndef _692_HEADER_FILE_h
