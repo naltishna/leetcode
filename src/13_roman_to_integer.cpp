@@ -16,7 +16,7 @@ namespace _13 {
     * O(1)
     */
     int Solution::romanToInt(std::string s) {
-        std::unordered_map<char, int> map {
+        std::unordered_map<char, int> map{
             {'I', 1},
             {'V', 5},
             {'X', 10},

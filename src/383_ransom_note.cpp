@@ -12,11 +12,11 @@ namespace _383 {
             return c >= 'a' && c <= 'z';
             });
     }
-    
+
     /*
     * Time complexity:
     * O(r+m)
-    * 
+    *
     * Space complexity:
     * O(m)
     */
@@ -45,10 +45,10 @@ namespace _383 {
 
     /*
     * Using a fixed-size frequency array to count character occurrences for efficient comparison.
-    * 
+    *
     * Time complexity:
     * O(N+M)
-    * 
+    *
     * Space complexity:
     * O(1)
     */

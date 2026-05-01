@@ -5,10 +5,10 @@ namespace _412 {
     /*
     * Single pass from 1 to n, classifying each number via divisibility checks (% 15, % 3, % 5)
     * in order to handle FizzBuzz case first, then going through to Fizz, Buzz, or number.
-    * 
+    *
     * Time complexity:
     * O(n)
-    * 
+    *
     * Space complexity:
     * O(n)
     */

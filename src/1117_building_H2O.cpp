@@ -4,15 +4,15 @@ namespace _1117 {
 
     /*
     * Use a single mutex, one condition variable, and a shared counter count_hydrogen to synchronize hydrogen and oxygen threads.
-    * 
+    *
     * Hydrogen threads wait until count_hydrogen < 2, then increment the counter, release hydrogen, and notify all waiting threads.
     * Oxygen threads wait until exactly count_hydrogen == 2, then release oxygen, reset the counter to 0, and notify all waiting threads.
-    * 
+    *
     * All state changes happen under the lock, so there are no data races.
-    * 
+    *
     * Time complexity:
     * O(1)
-    * 
+    *
     * Space complexity:
     * O(1)
     */
@@ -49,7 +49,7 @@ namespace _1117 {
         output_ += 'O';
 
         count_hydrogen_ = 0;
- 
+
         cv_.notify_all();
     }
 

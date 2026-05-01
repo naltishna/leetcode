@@ -13,7 +13,7 @@ namespace _1279 {
     * Space complexity:
     * O(1)
     */
-    void TrafficLight::carArrived(int carId, int roadId, int direction, std::function<void()> turnGreen, std::function<void()> crossCar) { 
+    void TrafficLight::carArrived(int carId, int roadId, int direction, std::function<void()> turnGreen, std::function<void()> crossCar) {
         std::lock_guard<std::mutex> lock(mtx);
 
         if (roadId != road) {

@@ -4,14 +4,14 @@ namespace _68 {
 
     /*
     * Greedy Packing: It packs as many words as possible into the current line, ensuring there is at least one space between them (length + 1).
-    * 
+    *
     * Space Distribution (Justification):
     * Normal Lines: It calculates the remaining gaps and distributes spaces evenly using modular arithmetic (total / gaps and total % gaps).
     * Last Line / Single Word: It left-justifies the text (adds only 1 space between words and fills the remainder with trailing spaces).
-    * 
+    *
     * Time complexity:
     * O(N), where N is the total number of characters in the words array.
-    * 
+    *
     * Space complexity:
     * O(N) (excluding the result vector) to store the lineWords temporary buffer.
     */
@@ -29,7 +29,8 @@ namespace _68 {
             int lineWordCount = lineWords.size();
             if ((lineLen - static_cast<int>(lineWordCount)) >= 0) {
                 lineWords.push_back(str);
-            } else {
+            }
+            else {
                 lineLen += static_cast<int>(str.size());
 
                 // A line with N words has N - 1 gaps where spaces can be distributed.
@@ -78,7 +79,7 @@ namespace _68 {
 
             output.push_back(line);
         }
-        
+
         return output;
     }
 

@@ -4,10 +4,10 @@ namespace _121 {
 
     /*
     * A single pass through the entire prices is performed exactly once, making time complexity linear regarding the size of the input vector.
-    * 
+    *
     * Time complexity:
     * O(N)
-    * 
+    *
     * Space complexity:
     * O(1)
     */

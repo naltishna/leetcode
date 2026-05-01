@@ -7,7 +7,7 @@ namespace _48 {
 
     /*
     * This results in a 90-degree clockwise in-place rotation.
-    * 
+    *
     * 1) Transpose the matrix along its main diagonal.
     * 2) Reverse each row.
     *

@@ -4,10 +4,10 @@ namespace _81 {
 
     /*
     * Modified binary search for a rotated sorted array with possible duplicates.
-    * 
+    *
     * Time complexity:
     * O(logN)
-    * 
+    *
     * Space complexity:
     * O(1)
     */

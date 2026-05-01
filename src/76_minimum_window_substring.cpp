@@ -11,10 +11,10 @@ namespace _76 {
     * - Expand right pointer, tracking how many required chars are satisfied;
     * - Once all chars covered (required == 0) — shrink from left to minimize window;
     * - Track minimum valid window throughout.
-    * 
+    *
     * Time complexity:
     * O(n + m), where n = s.size(), m = t.size() — each character visited at most twice (once by right, once by left)
-    * 
+    *
     * Space complexity:
     * O(1) — fixed-size arrays of 128 chars
     */

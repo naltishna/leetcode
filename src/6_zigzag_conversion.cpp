@@ -7,10 +7,10 @@ namespace _6 {
     /*
     * Iterate through the string, distributing characters into rows by moving a pointer up and down.
     * Finally, concatenate all rows to get the result.
-    * 
+    *
     * Time complexity:
     * O(N)
-    * 
+    *
     * Space complexity:
     * O(N)
     */

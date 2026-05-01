@@ -54,12 +54,12 @@ namespace _155_O_1 {
     /*
     * Each node stores its own minVal — the minimum at the time it was pushed.
     * This way getMin() is always O(1) without a separate auxiliary stack.
-    * 
+    *
     * Time complexity:
     * O(1)
-    * 
+    *
     * Space complexity:
-    * O(n) 
+    * O(n)
     */
     MinStack::~MinStack() { // added to avoid Stack Overflow
         clear();

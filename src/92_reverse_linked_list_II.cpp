@@ -6,10 +6,10 @@ namespace _92 {
     * Use a dummy node before head, move a pointer "before" to the node just before position left,
     * then iteratively take the node after current and move it to after "before" (head-insertion)
     * for right−left times to reverse the sublist in-place.
-    * 
+    *
     * Time complexity:
     * O(N)
-    * 
+    *
     * Space complexity:
     * O(1)
     */

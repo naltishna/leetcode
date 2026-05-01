@@ -5,10 +5,10 @@ namespace _1115 {
     /*
     * Use a shared state flag (switcher) to enforce strict foo → bar → foo ordering between two threads.
     * Each thread waits until the flag signals its turn, prints, then flips the flag and signals the other.
-    * 
+    *
     * Time complexity:
     * O(N)
-    * 
+    *
     * Space complexity:
     * O(1)
     */

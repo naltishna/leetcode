@@ -47,13 +47,13 @@ namespace _74 {
 
     /*
     * Binary Search.
-    * 
-    * To achieve O(log(M*N)) complexity,need to treat the 2D matrix as a single, sorted 1D array. 
+    *
+    * To achieve O(log(M*N)) complexity,need to treat the 2D matrix as a single, sorted 1D array.
     * By using the formula index/cols for the row and index%cols for the column, to perform a single binary search across the entire range.
-    * 
+    *
     * Time complexity:
     * O(log(M*N))
-    * 
+    *
     * Space complexity:
     * O(1)
     */

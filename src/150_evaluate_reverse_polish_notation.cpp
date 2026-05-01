@@ -8,10 +8,10 @@ namespace _150 {
     * Tokens are iterated left to right. Numbers are pushed onto the stack.
     * When an operator is encountered, the top two values are popped, the operation is applied, and the result is pushed back.
     * The final answer remains at the top of the stack.
-    * 
+    *
     * Time complexity:
     * O(n)
-    * 
+    *
     * Space complexity:
     * O(n)
     */

@@ -78,6 +78,7 @@
 #include "205_isomorphic_strings.h"
 #include "206_reverse_linked_list.h"
 #include "209_minimum_size_subarray_sum.h"
+#include "219_contains_duplicate_II.h"
 #include "224_basic_calculator.h"
 #include "228_summary_ranges.h"
 #include "238_product_of_array_except_self.h"
@@ -1798,6 +1799,22 @@ int main() {
             custom_assert(0 == s.minSubArrayLen(11, nums2));
             custom_assert(3 == s.minSubArrayLen(11, nums3));
         }
+    }
+#endif
+    //////////////////////
+    /**
+     * 219. Contains Duplicate II
+     */
+#if 1
+    {
+        std::vector<int> nums1{ 1, 2, 3, 1 };
+        std::vector<int> nums2{ 1, 0, 1, 1 };
+        std::vector<int> nums3{ 1, 2, 3, 1, 2, 3 };
+
+        _219::Solution s{};
+        custom_assert(true == s.containsNearbyDuplicate(nums1, 3));
+        custom_assert(true == s.containsNearbyDuplicate(nums2, 1));
+        custom_assert(false == s.containsNearbyDuplicate(nums3, 2));
     }
 #endif
     //////////////////////

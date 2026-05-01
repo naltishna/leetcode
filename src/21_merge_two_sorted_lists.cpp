@@ -7,10 +7,10 @@ namespace _21 {
     * 2. Maintain a tail pointer to the last merged node.
     * 3. At each step, compare heads of both lists — attach the smaller one to tail, advance that list.
     * 4. When one list is exhausted, attach the remaining list directly.
-    * 
+    *
     * Time complexity:
     * O(n + m)
-    * 
+    *
     * Space complexity:
     * O(1)
     */

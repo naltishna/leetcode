@@ -6,10 +6,10 @@ namespace _153 {
 
     /*
     * This approach allows quickly and efficiently finding the minimum in a rotated sorted array by using the binary search.
-    * 
+    *
     * Time complexity:
     * O(log N)
-    * 
+    *
     * Space complexity:
     * O(1)
     */

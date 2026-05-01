@@ -45,13 +45,13 @@ namespace _290 {
 
     /*
     * Two hash maps to enforce a strict one-to-one correspondence between pattern characters and words.
-    * 
+    *
     * charToWord: char -> string — ensures each pattern letter always maps to the same word
     * wordToChar: string -> char — ensures each word always maps to the same letter (prevents a->dog, b->dog)
-    * 
+    *
     * Streams words via stringstream, checks both directions on each step, rejects mismatches immediately.
     * Edge cases handled explicitly: more words than letters, more letters than words.
-    * 
+    *
     * Time complexity:
     * O(n) - single pass over words
     *

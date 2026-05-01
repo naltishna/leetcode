@@ -19,7 +19,7 @@ namespace _134 {
         for (int i = 0; i < n; ++i) {
             if (start == -1) {
                 tank = gas[i] - cost[i];
-                
+
                 if (tank < 0) {
                     continue;
                 }
@@ -49,7 +49,7 @@ namespace _134 {
     * Track two accumulators: total_tank (global sum) and current_tank (local running sum from candidate start).
     * Whenever current_tank drops below 0 — every station up to i is a dead start, so reset and try i+1.
     * At the end: if total_tank >= 0 a solution is guaranteed to exist, and start_index is it.
-    * 
+    *
     * Time complexity:
     * O(N)
     *

@@ -9,16 +9,16 @@ namespace _1226 {
     * A limit mutex acts as a gatekeeper — only one philosopher at a time can attempt to pick up forks.
     * Once both forks are locked, limit is released so the next philosopher can try concurrently.
     * Forks are indexed by philosopher id, preventing circular wait.
-    * 
+    *
     * No deadlock — circular wait broken by limit serializing fork acquisition.
-    * 
+    *
     * Concurrency: up to 2 philosophers eat simultaneously (non-adjacent ones), but fork-grabbing is still sequential.
-    * 
+    *
     * Starvation: possible — limit is not fair, a philosopher could keep losing the race.
-    * 
+    *
     * Time complexity:
     * O(1)
-    * 
+    *
     * Space complexity:
     * O(1)
     */

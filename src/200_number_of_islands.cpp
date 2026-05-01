@@ -11,10 +11,10 @@ namespace _200 {
     /*
     * Use BFS (Breadth-First Search) approach.
     * BFS: (queue) — FIFO
-    * 
+    *
     * Time complexity:
     * O(R*C), where R are rows, C are columns.
-    * 
+    *
     * Space complexity:
     * O(R*C)
     */
@@ -54,7 +54,7 @@ namespace _200 {
                 int new_col = col_ + d.second;
 
                 if (new_row >= 0 && new_row < ROW_S &&
-                    new_col >= 0 && new_col < COL_S && 
+                    new_col >= 0 && new_col < COL_S &&
                     grid[new_row][new_col] == '1') {
                     q.push({ new_row, new_col });
                     grid[new_row][new_col] = '0';

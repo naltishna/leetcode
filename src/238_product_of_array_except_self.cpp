@@ -18,7 +18,7 @@ namespace _238 {
         int ans = 1;
         for (int curr = 0; curr <= n - 1; ++curr) {
             for (int next = n - 1; next >= 0; --next) {
-                if (next == curr) 
+                if (next == curr)
                     continue;
 
                 ans *= nums[next];
@@ -34,7 +34,7 @@ namespace _238 {
     /*
     * First pass (left → right): store in res[i] the product of all elements to the left of i.
     * Second pass (right → left): multiply res[i] by the running product of all elements to the right of i.
-    * 
+    *
     * Time complexity:
     * O(n)
     *

@@ -4,10 +4,10 @@ namespace _167 {
 
     /*
     * Use two pointers to find a sum. If it matches the target, add indices + 1 to the final result or move both pointers further and repeat steps.
-    * 
+    *
     * Time complexity:
     * O(N)
-    * 
+    *
     * Space complexity:
     * O(1)
     */

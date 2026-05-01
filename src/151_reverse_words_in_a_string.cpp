@@ -35,10 +35,10 @@ namespace _151 {
     /*
     * Reverse the entire string, then reverse each word individually to restore word order.
     * Finally, remove extra spaces in-place using a two-pointer technique.
-    * 
+    *
     * Time complexity:
     * O(N)
-    * 
+    *
     * Space complexity:
     * O(1)
     */

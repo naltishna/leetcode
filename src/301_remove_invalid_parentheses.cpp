@@ -19,16 +19,16 @@ namespace _301 {
 
             if (balance < 0) return false;
         }
-        
+
         return balance == 0;
     }
 
     /*
     * BFS (Breadth-First Search) approach.
-    * 
+    *
     * Time complexity:
     * O(N∗2^N)
-    * 
+    *
     * Space complexity:
     * O(2^N)
     */
@@ -71,8 +71,8 @@ namespace _301 {
         return res;
     }
 
-    
-    void dfs(const std::string& s, int index, int left, int right, int balance, 
+
+    void dfs(const std::string& s, int index, int left, int right, int balance,
         std::string path, std::unordered_set<std::string>& res) {
         if (index == s.size()) {
             if (left == 0 && right == 0 && balance == 0) {

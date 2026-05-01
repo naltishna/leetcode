@@ -44,10 +44,10 @@ namespace _15 {
     /*
     * Two-pointer strategy.
     * Sort array then use two pointers to find triplets summing to zero while skipping duplicates.
-    * 
+    *
     * Time complexity:
     * O(N^2)
-    * 
+    *
     * Space complexity:
     * O(logN)
     */

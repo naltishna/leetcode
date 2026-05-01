@@ -4,10 +4,10 @@ namespace _33 {
 
     /*
     * Modified binary search to identify sorted halves in a rotated array for logarithmic time lookup.
-    * 
+    *
     * Time complexity:
     * O(logN)
-    * 
+    *
     * Space complexity:
     * O(1)
     */
@@ -23,7 +23,7 @@ namespace _33 {
             if (nums[mid] == target) {
                 return mid;
             }
-            
+
             if (nums[low] <= nums[mid]) {
                 if (nums[low] <= target && target < nums[mid]) {
                     high = mid - 1;

@@ -8,7 +8,7 @@ namespace _42 {
     /*
     * Time complexity:
     * O(n)
-    * 
+    *
     * Space complexity:
     * O(n)
     */
@@ -43,10 +43,10 @@ namespace _42 {
 
     /*
     * Shrink the window from both sides, always moving the pointer with the lower max wall.
-    * 
+    *
     * Time complexity:
     * O(N)
-    * 
+    *
     * Space complexity:
     * O(1)
     */

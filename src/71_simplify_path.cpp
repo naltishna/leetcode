@@ -64,7 +64,7 @@ namespace _71 {
      * Skip empty tokens and '.', on '..' pop one directory from the stack if present,
      * otherwise push normal directory names onto the stack.
      * Finally, rebuild the canonical path by joining stack entries with '/' (or return "/" if stack is empty).
-     * 
+     *
      * Time complexity:
      * O(N)
      *

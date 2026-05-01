@@ -4,10 +4,10 @@ namespace _1195 {
 
     /*
     * Shared state (index) protected by a mutex, with a condition variable used to block threads until their specific condition is met, then notify all waiting threads after each state change.
-    * 
+    *
     * Time complexity:
     * O(N)
-    * 
+    *
     * Space complexity:
     * O(1)
     */

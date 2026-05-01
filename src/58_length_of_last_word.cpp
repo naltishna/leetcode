@@ -6,12 +6,12 @@
 namespace _58 {
     /*
     * Use stream processing of a string (std::istringstream class).
-    * 
+    *
     * ">>" automatically skips any extra whitespace characters (spaces, tabs, newline and so on).
-    * 
+    *
     * Time complexity:
     * O(n)
-    * 
+    *
     * Space complexity:
     * O(1)
     */

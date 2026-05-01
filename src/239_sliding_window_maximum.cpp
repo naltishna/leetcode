@@ -9,7 +9,7 @@ namespace _239 {
     /*
     * Time complexity:
     * 𝑂(𝑛𝑘)
-    * 
+    *
     * Space complexity:
     * 𝑂(𝑛𝑘)
     */

@@ -6,10 +6,10 @@ namespace _20 {
 
     /*
     * Use the stack approach.
-    * 
+    *
     * Time complexity:
     * O(N)
-    * 
+    *
     * Space complexity:
     * O(N)
     */

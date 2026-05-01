@@ -10,10 +10,10 @@ namespace _49 {
     /*
     * Group anagrams by sorting each string alphabetically.
     * Store groups in a hash map {sortedKey → [words]}, then collect values into the result.
-    * 
+    *
     * Time complexity:
     * O(NKlogK), where n is the number of lines; k is the maximum line length
-    * 
+    *
     * Space complexity:
     * O(NK)
     */

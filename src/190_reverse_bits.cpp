@@ -7,7 +7,7 @@ namespace _190 {
     /*
     * Time complexity:
     * O(N)
-    * 
+    *
     * Space complexity:
     * O(N)
     */
@@ -30,7 +30,7 @@ namespace _190 {
     /*
     * Iterates through all 32 bits: each iteration extracts the LSB (Least Significant Bit)
     * of value (value & 1) and appends it to result by shifting left and OR-ing. Then shifts value right by 1.
-    * 
+    *
     * Time complexity:
     * O(N)
     *

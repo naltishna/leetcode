@@ -27,7 +27,7 @@ namespace _191 {
     * Each iteration clears the lowest set bit of value via value &= (value - 1),
     * and increments the counter. The loop runs exactly as many times as there are 1-bits,
     * making it more efficient than checking all 32 bits.
-    * 
+    *
     * Time complexity:
     * O(N)
     *

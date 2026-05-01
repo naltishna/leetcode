@@ -6,10 +6,10 @@ namespace _141 {
     * Two pointers start at the head — slow moves one step at a time, fast moves two steps.
     * If a cycle exists, the fast pointer will eventually lap the slow one and they'll meet.
     * If there's no cycle, the fast pointer reaches the end (nullptr).
-    * 
+    *
     * Time complexity:
     * O(N)
-    * 
+    *
     * Space complexity:
     * O(1)
     */

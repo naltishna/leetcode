@@ -6,10 +6,10 @@ namespace _438 {
 
     /*
     * Sliding window and compare arrays.
-    * 
+    *
     * Time complexity:
     * O(N)
-    * 
+    *
     * Space complexity:
     * O(1)
     */
@@ -32,7 +32,7 @@ namespace _438 {
         if (p_count == s_count) {
             res.push_back(0);
         }
-        
+
         for (int i = p_size; i < s_size; ++i) {
             s_count[s[i - p_size] - 'a']--;
             s_count[s[i] - 'a']++;

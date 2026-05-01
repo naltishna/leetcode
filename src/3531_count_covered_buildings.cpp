@@ -10,7 +10,7 @@ namespace _3531 {
     /*
     * Time complexity:
     * O(NlogN)
-    * 
+    *
     * Space complexity:
     * O(N)
     */
@@ -65,7 +65,7 @@ namespace _3531 {
     /*
     * For each building, check if it's strictly between the leftmost/rightmost building in its row and strictly between the topmost/bottommost building in its column.
     * Use two hash maps to store per-row and per-column min/max bounds in a single pass, then count matches in a second pass.
-    * 
+    *
     * Time complexity:
     * O(N)
     *

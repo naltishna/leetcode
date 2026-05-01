@@ -5,10 +5,10 @@ namespace _380 {
     /*
     * Store elements in a vector for O(1) random access, and maintain an unordered_map to track each element's index for O(1) lookup/delete.
     * On removal, swap the target element with the last one to avoid shifting — then pop_back.
-    * 
+    *
     * Time complexity:
     * O(1)
-    * 
+    *
     * Space complexity:
     * O(N)
     */

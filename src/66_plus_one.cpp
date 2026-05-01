@@ -21,7 +21,7 @@ namespace _66 {
         }
 
         number += 1;
-        
+
         std::string numStr = std::to_string(number);
         int count = numStr.length();
 
@@ -35,10 +35,10 @@ namespace _66 {
 
     /*
     * Right-to-left approach efficiently handles all cases of incrementing a number.
-    * 
+    *
     * Time complexity:
     * O(N)
-    * 
+    *
     * Space complexity:
     * O(1)
     */

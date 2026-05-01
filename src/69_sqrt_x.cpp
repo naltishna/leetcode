@@ -4,10 +4,10 @@ namespace _69 {
 
     /*
     * Using binary search to find the largest integer whose square is less than or equal to x.
-    * 
+    *
     * Time complexity:
     * O(logN)
-    * 
+    *
     * Space complexity:
     * O(1)
     */

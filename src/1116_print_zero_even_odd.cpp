@@ -9,15 +9,15 @@ namespace _1116 {
     * Three threads coordinate via a shared state variable (0 → zero's turn, 1 → odd's turn, 2 → even's turn).
     * Each thread blocks on cv.wait() until the state matches its role, then prints, updates state, and notifies others.
     * This creates a strict interleaved execution: 0 → odd/even → 0 → odd/even → ...
-    * 
+    *
     * Time complexity:
     * O(N)
-    * 
+    *
     * Space complexity:
     * O(1)
     */
     ZeroEvenOdd::ZeroEvenOdd(int num) : n(num) {}
-    
+
     // printNumber(x) outputs "x", where x is an integer.
     void ZeroEvenOdd::zero(std::function<void(int)> printNumber) {
         for (int i = 0; i < n; ++i) {

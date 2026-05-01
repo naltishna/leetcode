@@ -6,10 +6,10 @@ namespace _224_basic_calculator {
 
     /*
     * The current approach does not parse "-2 + 1" case correctly.
-    * 
+    *
     * Time complexity:
     * O(N)
-    * 
+    *
     * Space complexity:
     * O(N)
     */
@@ -69,10 +69,10 @@ namespace _224_basic_calculator {
 
     int Solution::applyCalc(int a, int b, char op) {
         switch (op) {
-            case '+': return a + b;
-            case '-': return a - b;
-            case '*': return a * b;
-            case '/': return a / b;
+        case '+': return a + b;
+        case '-': return a - b;
+        case '*': return a * b;
+        case '/': return a / b;
         }
 
         return 0;
@@ -93,10 +93,10 @@ namespace _224_unary_minus {
     /*
     * It scans the string from left to right, builds multi-digit numbers, and keeps track of the current sign and partial result.
     * When it sees '(', it saves the current context on the stack, and when it sees ')', it restores that saved context and combines it with the inner expression result.
-    * 
+    *
     * Time complexity:
     * O(N)
-    * 
+    *
     * Space complexity:
     * O(N)
     */

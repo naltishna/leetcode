@@ -10,7 +10,7 @@ namespace _1 {
     /*
     * Time complexity:
     * O(N^2)
-    * 
+    *
     * Space complexity:
     * O(1)
     */
@@ -31,7 +31,7 @@ namespace _1 {
 
     /*
     * One-pass Hash Table approach.
-    * 
+    *
     * Time complexity:
     * O(N)
     *

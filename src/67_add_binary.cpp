@@ -35,14 +35,14 @@ namespace _67 {
         }
 
         std::reverse(result.begin(), result.end());
-        
+
         return result;
     }
 
     /*
     * stoull is limited to 64 bits, so it can handle binary strings up to 64 characters long.
     * For longer strings, this approach would fail.
-    * 
+    *
     * Time complexity:
     * O(n)
     *
@@ -76,10 +76,10 @@ namespace _67 {
     /*
     * Iterates both strings from the least significant bit to the most significant, computing sum = digitA + digitB + carry at each step,
     * extracting the current bit via sum & 1 and the new carry via sum >> 1. The result reverses at the end.
-    * 
+    *
     * Time complexity:
     * O(n)
-    * 
+    *
     * Space complexity:
     * O(n)
     */

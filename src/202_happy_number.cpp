@@ -7,10 +7,10 @@ namespace _202 {
     /*
     * Stores every seen number. Inner loop extracts digits and accumulates sum of squares via % 10 and / 10.
     * If n repeats the cycle detected, it is not happy. If n reaches 1, it is happy.
-    * 
+    *
     * Time complexity:
     * O(log n)
-    * 
+    *
     * Space complexity:
     * O(log n) — entries in the set before a cycle or 1 is reached
     */

@@ -8,10 +8,10 @@ namespace _135 {
     * Initialize all candies to 1, scan left-to-right to enforce increasing ratings (give +1 when right > left),
     * then scan right-to-left to enforce the opposite and use std::max to avoid overwriting a larger value set in pass 1.
     * The result is the sum of candies.
-    * 
+    *
     * Time complexity:
     * O(n)
-    * 
+    *
     * Space complexity:
     * O(n)
     */

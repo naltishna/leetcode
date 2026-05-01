@@ -5,7 +5,7 @@ namespace _45 {
 
     /*
     * Use greedy approach.
-    * 
+    *
     * The algorithm finds the minimum number of “maximum long” jumps to cross over the array.
     *
     * Time complexity:
@@ -42,7 +42,7 @@ namespace _45 {
 
     /*
     * Use greedy approach.
-    * 
+    *
     * The algorithm finds the minimum number of “maximum long” jumps to cross over the array.
     *
     * Time complexity:
@@ -79,7 +79,7 @@ namespace _45 {
 
     /*
     * Use dynamic programming (DP) approach.
-    * 
+    *
     * The algorithm finds the minimum number of jumps to cross over the array.
     *
     * Time complexity:

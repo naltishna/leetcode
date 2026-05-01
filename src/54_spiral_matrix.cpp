@@ -9,9 +9,9 @@ namespace _54 {
     * Top to bottom along right, then right--;
     * Right to left along bottom (only if row still exists), then bottom--;
     * Bottom to top along left (only if column still exists), then left--
-    * 
+    *
     * Guards on steps 3 & 4 prevent double-counting when the remaining region is a single row or column.
-    * 
+    *
     * Time complexity:
     * O(m*n) — every cell visited exactly once
     *
