@@ -58,6 +58,7 @@
 #include "121_best_time_to_buy_and_sell_stock.h"
 #include "122_best_time_to_buy_and_sell_stock_II.h"
 #include "125_valid_palindrome.h"
+#include "128_longest_consecutive_sequence.h"
 #include "134_gas_station.h"
 #include "135_candy.h"
 #include "136_single_number.h"
@@ -1295,6 +1296,22 @@ int main() {
         custom_assert(true == s.isPalindrome(s_1));
         custom_assert(false == s.isPalindrome(s_2));
         custom_assert(true == s.isPalindrome(s_3));
+    }
+#endif
+    //////////////////////
+    /**
+     * 128. Longest Consecutive Sequence
+     */
+#if 1
+    {
+        std::vector<int> nums1{ 100, 4, 200, 1, 3, 2 };
+        std::vector<int> nums2{ 0, 3, 7, 2, 5, 8, 4, 6, 0, 1 };
+        std::vector<int> nums3{ 1, 0, 1, 2 };
+
+        _128::Solution s{};
+        custom_assert(4 == s.longestConsecutive(nums1));
+        custom_assert(9 == s.longestConsecutive(nums2));
+        custom_assert(3 == s.longestConsecutive(nums3));
     }
 #endif
     //////////////////////

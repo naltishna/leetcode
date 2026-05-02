@@ -67,6 +67,7 @@ add_executable (leetcode
 "src/121_best_time_to_buy_and_sell_stock.cpp"
 "src/122_best_time_to_buy_and_sell_stock_II.cpp"
 "src/125_valid_palindrome.cpp"
+"src/128_longest_consecutive_sequence.cpp"
 "src/134_gas_station.cpp"
 "src/135_candy.cpp"
 "src/136_single_number.cpp"
