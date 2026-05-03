@@ -86,6 +86,7 @@
 #include "239_sliding_window_maximum.h"
 #include "242_valid_anagram.h"
 #include "274_h_index.h"
+#include "289_game_of_life.h"
 #include "290_word_pattern.h"
 #include "301_remove_invalid_parentheses.h"
 #include "309_best_time_to_buy_and_sell_stock_with_cooldown.h"
@@ -1953,6 +1954,38 @@ int main() {
         _274::Solution s{};
         custom_assert(3 == s.hIndex(citations1));
         custom_assert(1 == s.hIndex(citations2));
+    }
+#endif
+    //////////////////////
+    /**
+     * 289. Game of Life
+     */
+#if 1
+    {
+        {
+            std::vector<std::vector<int>> in0{ {0, 1, 0}, {0, 0, 1}, {1, 1, 1}, {0, 0, 0 } };
+            std::vector<std::vector<int>> out0{ {0, 0, 0}, {1, 0, 1}, {0, 1, 1}, {0, 1, 0 } };
+            std::vector<std::vector<int>> in1{ {1, 1}, {1, 0} };
+            std::vector<std::vector<int>> out1{ {1, 1}, {1, 1} };
+
+            _289::Solution<ver1> s{};
+            s.gameOfLife(in0);
+            custom_assert(out0 == in0);
+            s.gameOfLife(in1);
+            custom_assert(out1 == in1);
+        }
+        {
+            std::vector<std::vector<int>> in0{ {0, 1, 0}, {0, 0, 1}, {1, 1, 1}, {0, 0, 0 } };
+            std::vector<std::vector<int>> out0{ {0, 0, 0}, {1, 0, 1}, {0, 1, 1}, {0, 1, 0 } };
+            std::vector<std::vector<int>> in1{ {1, 1}, {1, 0} };
+            std::vector<std::vector<int>> out1{ {1, 1}, {1, 1} };
+
+            _289::Solution<ver2> s{};
+            s.gameOfLife(in0);
+            custom_assert(out0 == in0);
+            s.gameOfLife(in1);
+            custom_assert(out1 == in1);
+        }
     }
 #endif
     //////////////////////

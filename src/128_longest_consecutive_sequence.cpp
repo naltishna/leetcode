@@ -1,11 +1,9 @@
 #include "128_longest_consecutive_sequence.h"
 
-#include <algorithm>
 #include <unordered_set>
 
 namespace _128 {
 
-    // Hash set + only extend from sequence starts: average O(n) time, O(n) extra space.
     /*
     * Load all numbers into a hash set. For each number, skip it if value - 1 exists (it's not a sequence start).
     * Only from true starts, walk forward counting consecutive numbers. Track the maximum length found.
