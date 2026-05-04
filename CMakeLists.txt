@@ -110,6 +110,7 @@ add_executable (leetcode
 "src/412_fizz_buzz.cpp"
 "src/424_longest_repeating_character_replacement.cpp"
 "src/438_find_all_anagrams_in_a_string.cpp"
+"src/452_minimum_number_of_arrows_to_burst_balloons.cpp"
 "src/480_sliding_window_median.cpp"
 "src/653_two_sum_IV_input_is_a_BST.cpp"
 "src/692_top_k_frequent_words.cpp"

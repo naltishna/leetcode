@@ -12,7 +12,6 @@ namespace _56 {
     * If yes, it merges them by expanding the boundaries of the current interval.
     * If not, a new interval is added to the resulting list.
     *
-    * Complexity
     * Time complexity:
     * O(NlogN)
     *
@@ -41,6 +40,7 @@ namespace _56 {
                 result.push_back({ intervals[i] });
             }
         }
+
         return result;
     }
 

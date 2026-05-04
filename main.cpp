@@ -101,6 +101,7 @@
 #include "412_fizz_buzz.h"
 #include "424_longest_repeating_character_replacement.h"
 #include "438_find_all_anagrams_in_a_string.h"
+#include "452_minimum_number_of_arrows_to_burst_balloons.h"
 #include "480_sliding_window_median.h"
 #include "653_two_sum_IV_input_is_a_BST.h"
 #include "692_top_k_frequent_words.h"
@@ -2299,6 +2300,33 @@ int main() {
         _438::Solution s{};
         custom_assert("{ 0, 6 }" == vector_to_string(s.findAnagrams(s1_1, s1_2)));
         custom_assert("{ 0, 1, 2 }" == vector_to_string(s.findAnagrams(s2_1, s2_2)));
+    }
+#endif
+    //////////////////////
+    /**
+     * 452. Minimum Number of Arrows to Burst Balloons
+     */
+#if 1
+    {
+        std::vector<std::vector<int>> v0{ {3, 9}, {7, 12}, {3, 8}, {6, 8}, {9, 10}, {2, 9}, {0, 9}, {3, 9}, {0, 6}, {2, 8} };
+        std::vector<std::vector<int>> v1{ {10, 16}, {2, 8}, {1, 6}, {7, 12} };
+        std::vector<std::vector<int>> v2{ {1, 2}, {3, 4}, {5, 6}, {7, 8} };
+        std::vector<std::vector<int>> v3{ {1, 2}, {2, 3}, {3, 4}, {4, 5} };
+
+        //{
+        //    _452::Solution<ver1> s{};
+        //    custom_assert(2 == s.findMinArrowShots(v0));
+        //    custom_assert(2 == s.findMinArrowShots(v1));
+        //    custom_assert(4 == s.findMinArrowShots(v2));
+        //    custom_assert(2 == s.findMinArrowShots(v3));
+        //}
+        {
+            _452::Solution<ver2> s{};
+            custom_assert(2 == s.findMinArrowShots(v0));
+            custom_assert(2 == s.findMinArrowShots(v1));
+            custom_assert(4 == s.findMinArrowShots(v2));
+            custom_assert(2 == s.findMinArrowShots(v3));
+        }
     }
 #endif
     //////////////////////
