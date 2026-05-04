@@ -54,7 +54,7 @@ namespace _289 {
             if (board[row][col] == 0 && live_around_dead == 3) {
                 changed.push_back({ row, col, 1 });
             }
-            };
+        };
 
         for (size_t row = 0; row < rows; ++row) {
             for (size_t col = 0; col < cols; ++col) {
@@ -86,8 +86,9 @@ namespace _289 {
     void Solution<ver2>::gameOfLife(std::vector<std::vector<int>>& board) {
         if (board.empty() || board[0].empty()) return;
 
-        static constexpr std::pair<int, int> directions[] =
-        { {-1, -1}, {-1, 0}, {-1, 1}, {0, -1}, {0, 1}, {1, -1}, {1, 0}, {1, 1} };
+        static constexpr std::pair<int, int> directions[] = {
+            {-1, -1}, {-1, 0}, {-1, 1}, {0, -1}, {0, 1}, {1, -1}, {1, 0}, {1, 1}
+        };
 
         const int rows = static_cast<int>(board.size());
         const int cols = static_cast<int>(board[0].size());

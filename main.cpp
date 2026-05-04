@@ -38,6 +38,7 @@
 #include "54_spiral_matrix.h"
 #include "55_jump_game.h"
 #include "56_merge_intervals.h"
+#include "57_insert_interval.h"
 #include "58_length_of_last_word.h"
 #include "62_unique_paths.h"
 #include "66_plus_one.h"
@@ -830,6 +831,27 @@ int main() {
         custom_assert(1 == case2.size());
         std::vector<std::vector<int>> case3 = s.merge(l2_in); //Output: { {1, 7} }
         custom_assert(1 == case3.size());
+    }
+#endif
+    //////////////////////
+    /**
+     * 57. Insert Interval
+     */
+#if 1
+    {
+        std::vector<std::vector<int>> v1_in0{ {1, 3}, {6, 9} };
+        std::vector<int> v1_in1{ {2, 5} };
+        std::vector<std::vector<int>> v1_out{ {1, 5}, {6, 9} };
+
+        std::vector<std::vector<int>> v2_in0{ {1, 2}, {3, 5}, {6, 7}, {8, 10}, {12, 16} };
+        std::vector<int> v2_in1{ {4, 8} };
+        std::vector<std::vector<int>> v2_out{ {1, 2}, {3, 10}, {12, 16} };
+
+        _57::Solution s{};
+        std::vector<std::vector<int>> case1 = s.insert(v1_in0, v1_in1);
+        custom_assert(vectors_to_string(v1_out) == vectors_to_string(case1));
+        std::vector<std::vector<int>> case2 = s.insert(v2_in0, v2_in1);
+        custom_assert(vectors_to_string(v2_out) == vectors_to_string(case2));
     }
 #endif
     //////////////////////
