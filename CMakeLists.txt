@@ -73,6 +73,7 @@ add_executable (leetcode
 "src/135_candy.cpp"
 "src/136_single_number.cpp"
 "src/137_single_number_II.cpp"
+"src/138_copy_list_with_random_pointer.cpp"
 "src/141_linked_list_cycle.cpp"
 "src/150_evaluate_reverse_polish_notation.cpp"
 "src/151_reverse_words_in_a_string.cpp"

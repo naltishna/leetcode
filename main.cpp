@@ -4,7 +4,9 @@
 #include <array>
 #include <iostream>
 #include <memory>
+#include <optional>
 #include <thread>
+#include <vector>
 
 #include "data.h"
 #include "list_node_helpers.h"
@@ -64,6 +66,7 @@
 #include "135_candy.h"
 #include "136_single_number.h"
 #include "137_single_number_II.h"
+#include "138_copy_list_with_random_pointer.h"
 #include "141_linked_list_cycle.h"
 #include "150_evaluate_reverse_polish_notation.h"
 #include "151_reverse_words_in_a_string.h"
@@ -1190,6 +1193,7 @@ int main() {
                 2,
                 nullptr,
                 std::make_unique<SmartPointer::TreeNode>(3)));
+
         // root = [1,2,2,2,null,2]
         auto tn3 = std::make_unique<SmartPointer::TreeNode>(
             1,
@@ -1412,6 +1416,203 @@ int main() {
             _137::Solution<ver2> s{};
             custom_assert(3 == s.singleNumber(v1));
             custom_assert(99 == s.singleNumber(v2));
+        }
+    }
+#endif
+    //////////////////////
+    /**
+     * 138. Copy List with Random Pointer
+     */
+#if 1
+    {
+        using RandomListInput = std::vector<std::pair<int, std::optional<int>>>;
+
+        auto buildRandomList = [](const RandomListInput& data) -> Node* {
+            if (data.empty()) {
+                return nullptr;
+            }
+
+            std::vector<Node*> nodes;
+            nodes.reserve(data.size());
+
+            for (const auto& [val, _] : data) {
+                nodes.push_back(new Node(val));
+            }
+
+            for (int i = 0; i < static_cast<int>(nodes.size()); ++i) {
+                // Set next (for all but the last one).
+                if (i + 1 < static_cast<int>(nodes.size())) {
+                    nodes[i]->next = nodes[i + 1];
+                }
+
+                // Set random by index from input data.
+                const auto& rnd = data[i].second;
+                nodes[i]->random = rnd.has_value() ? nodes[*rnd] : nullptr;
+            }
+
+            return nodes[0];
+        };
+
+        auto freeRandomList = [](Node* head) {
+            while (head) {
+                Node* temp = head;
+                head = head->next;
+                delete temp;
+            }
+        };
+
+        auto assertDeepCopyEqual = [](Node* orig, Node* copy) {
+            if (!orig) {
+                custom_assert(copy == nullptr);
+                return;
+            }
+
+            custom_assert(copy != nullptr);
+            custom_assert(orig != copy);
+
+            std::vector<Node*> o;
+            std::vector<Node*> c;
+            for (Node* p = orig; p; p = p->next) {
+                o.push_back(p);
+            }
+
+            for (Node* p = copy; p; p = p->next) {
+                c.push_back(p);
+            }
+
+            custom_assert(o.size() == c.size());
+
+            for (size_t i = 0; i < o.size(); ++i) {
+                custom_assert(o[i]->val == c[i]->val);
+
+                if (!o[i]->random) {
+                    custom_assert(c[i]->random == nullptr);
+                } else {
+                    auto it = std::find(o.begin(), o.end(), o[i]->random);
+                    custom_assert(it != o.end());
+
+                    const size_t j = static_cast<size_t>(it - o.begin());
+                    custom_assert(c[i]->random == c[j]);
+                }
+            }
+        };
+
+        std::vector<RandomListInput> tests = {
+            { {7, std::nullopt}, {13, 0}, {11, 4}, {10, 2}, {1, 0} },
+            { {1, 1}, {2, 1} },
+            { {3, std::nullopt}, {3, 0}, {3, std::nullopt} }
+        };
+
+        {
+            _138_raw::Solution<ver1> s{};
+            for (const auto& test : tests) {
+                Node* head = buildRandomList(test);
+                Node* res = s.copyRandomList(head);
+
+                assertDeepCopyEqual(head, res);
+
+                freeRandomList(head);
+                freeRandomList(res);
+            }
+        }
+        {
+            _138_raw::Solution<ver2> s{};
+            for (const auto& test : tests) {
+                Node* head = buildRandomList(test);
+                Node* res = s.copyRandomList(head);
+
+                assertDeepCopyEqual(head, res);
+
+                freeRandomList(head);
+                freeRandomList(res);
+            }
+        }
+        {
+            auto buildSmartRandomList = [](const RandomListInput& data) -> std::shared_ptr<SmartNode> {
+                if (data.empty()) {
+                    return nullptr;
+                }
+
+                std::vector<std::shared_ptr<SmartNode>> nodes;
+                nodes.reserve(data.size());
+
+                for (const auto& [val, _] : data) {
+                    nodes.push_back(std::make_shared<SmartNode>(val));
+                }
+
+                for (int i = 0; i < static_cast<int>(nodes.size()); ++i) {
+                    if (i + 1 < static_cast<int>(nodes.size())) {
+                        nodes[i]->next = nodes[i + 1];
+                    }
+
+                    const auto& rnd = data[i].second;
+                    if (rnd.has_value()) {
+                        nodes[i]->random = nodes[*rnd];
+                    } else {
+                        nodes[i]->random.reset();
+                    }
+                }
+
+                return nodes[0];
+            };
+
+            auto assertSmartDeepCopyEqual = [](const std::shared_ptr<SmartNode>& orig, const std::shared_ptr<SmartNode>& copy) {
+                if (!orig) {
+                    custom_assert(copy == nullptr);
+                    return;
+                }
+
+                custom_assert(copy != nullptr);
+                custom_assert(orig.get() != copy.get());
+
+                std::vector<std::shared_ptr<SmartNode>> o;
+                std::vector<std::shared_ptr<SmartNode>> c;
+                for (std::shared_ptr<SmartNode> p = orig; p; p = p->next) {
+                    o.push_back(p);
+                }
+                for (std::shared_ptr<SmartNode> p = copy; p; p = p->next) {
+                    c.push_back(p);
+                }
+
+                custom_assert(o.size() == c.size());
+
+                for (size_t i = 0; i < o.size(); ++i) {
+                    custom_assert(o[i]->val == c[i]->val);
+
+                    std::shared_ptr<SmartNode> oRandom = o[i]->random.lock();
+                    std::shared_ptr<SmartNode> cRandom = c[i]->random.lock();
+                    if (!oRandom) {
+                        custom_assert(cRandom == nullptr);
+                    } else {
+                        auto it = std::find_if(o.begin(), o.end(), [&oRandom](const std::shared_ptr<SmartNode>& node) {
+                            return node.get() == oRandom.get();
+                        });
+                        custom_assert(it != o.end());
+
+                        const size_t j = static_cast<size_t>(it - o.begin());
+                        custom_assert(cRandom.get() == c[j].get());
+                    }
+                }
+            };
+
+            {
+                _138_smart_ptr::Solution<ver1> s{};
+                for (const auto& test : tests) {
+                    std::shared_ptr<SmartNode> head = buildSmartRandomList(test);
+                    std::shared_ptr<SmartNode> res = s.copyRandomList(head);
+
+                    assertSmartDeepCopyEqual(head, res);
+                }
+            }
+            {
+                _138_smart_ptr::Solution<ver2> s{};
+                for (const auto& test : tests) {
+                    std::shared_ptr<SmartNode> head = buildSmartRandomList(test);
+                    std::shared_ptr<SmartNode> res = s.copyRandomList(head);
+
+                    assertSmartDeepCopyEqual(head, res);
+                }
+            }
         }
     }
 #endif
@@ -2313,13 +2514,13 @@ int main() {
         std::vector<std::vector<int>> v2{ {1, 2}, {3, 4}, {5, 6}, {7, 8} };
         std::vector<std::vector<int>> v3{ {1, 2}, {2, 3}, {3, 4}, {4, 5} };
 
-        //{
-        //    _452::Solution<ver1> s{};
-        //    custom_assert(2 == s.findMinArrowShots(v0));
-        //    custom_assert(2 == s.findMinArrowShots(v1));
-        //    custom_assert(4 == s.findMinArrowShots(v2));
-        //    custom_assert(2 == s.findMinArrowShots(v3));
-        //}
+        {
+            _452::Solution<ver1> s{};
+            custom_assert(2 == s.findMinArrowShots(v0));
+            custom_assert(2 == s.findMinArrowShots(v1));
+            custom_assert(4 == s.findMinArrowShots(v2));
+            custom_assert(2 == s.findMinArrowShots(v3));
+        }
         {
             _452::Solution<ver2> s{};
             custom_assert(2 == s.findMinArrowShots(v0));
