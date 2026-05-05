@@ -2,6 +2,7 @@
 
 #include <algorithm>
 #include <array>
+#include <cmath>
 #include <iostream>
 #include <memory>
 #include <optional>
@@ -37,6 +38,7 @@
 #include "45_jump_game_II.h"
 #include "48_rotate_image.h"
 #include "49_group_anagrams.h"
+#include "50_pow_x_n_times.h"
 #include "54_spiral_matrix.h"
 #include "55_jump_game.h"
 #include "56_merge_intervals.h"
@@ -784,6 +786,30 @@ int main() {
             });
         custom_assert("{ {bat}, {nat, tan}, {ate, eat, tea} }" == vectors_to_string(res));
 
+    }
+#endif
+    //////////////////////
+    /**
+     * 50. Pow(x, n)
+     */
+#if 1
+    {
+        auto assertAlmostEqual5 = [](double expected, double actual) {
+            custom_assert(std::abs(expected - actual) < 1e-5);
+        };
+
+        {
+            _50::Solution<ver1> s{};
+            assertAlmostEqual5(1024.00000, s.myPow(2.00000, 10));
+            assertAlmostEqual5(9.26100, s.myPow(2.10000, 3));
+            assertAlmostEqual5(0.25000, s.myPow(2.00000, -2));
+        }
+        {
+            _50::Solution<ver2> s{};
+            assertAlmostEqual5(1024.00000, s.myPow(2.00000, 10));
+            assertAlmostEqual5(9.26100, s.myPow(2.10000, 3));
+            assertAlmostEqual5(0.25000, s.myPow(2.00000, -2));
+        }
     }
 #endif
     //////////////////////
