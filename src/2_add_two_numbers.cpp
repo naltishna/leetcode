@@ -8,11 +8,11 @@ namespace _2 {
     * The current digit from l2 (if l2 is not nullptr).
     * The current value of num, which represented the carry from the previous step.
     *
-    Time complexity:
-        O(max(N,M)) - The program must visit every node in the longer list once.
-
-    Space complexity:
-        O(max(N,M)) - The program creates a new result list whose length is proportional to the longer input list.
+    * Time complexity:
+    * O(max(N,M)) - The program must visit every node in the longer list once.
+    *
+    * Space complexity:
+    * O(max(N,M)) - The program creates a new result list whose length is proportional to the longer input list.
     */
     ListNode* Solution::addTwoNumbers(ListNode* l1, ListNode* l2) {
         ListNode temp;
@@ -30,6 +30,7 @@ namespace _2 {
             if (l1) l1 = l1->next;
             if (l2) l2 = l2->next;
         }
+
         return temp.next;
     }
 

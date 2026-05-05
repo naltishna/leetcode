@@ -1,6 +1,5 @@
 /*
-* https://leetcode.com/problems/add-two-numbers/solutions/7319535/2-add-two-numbers-by-user7787l-8j9e/
-*
+https://leetcode.com/problems/add-two-numbers/solutions/7319535/2-add-two-numbers-by-user7787l-8j9e/
 
 2. Add Two Numbers
 

@@ -125,7 +125,7 @@ add_executable (leetcode
 "src/1195_fizz_buzz_multithreaded.cpp"
 "src/1226_the_dining_philosophers.cpp"
 "src/1279_traffic_light_controlled_intersection.cpp"
-"src/3531_count_covered_buildings.cpp")
+"src/3531_count_covered_buildings.cpp" "include/19_remove_nth_node_from_end_of_list.h" "src/19_remove_nth_node_from_end_of_list.cpp")
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)
   set_property(TARGET leetcode PROPERTY CXX_STANDARD 20)

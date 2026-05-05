@@ -25,6 +25,7 @@
 #include "14_longest_common_prefix.h"
 #include "15_3sum.h"
 #include "18_4sum.h"
+#include "19_remove_nth_node_from_end_of_list.h"
 #include "20_valid_parentheses.h"
 #include "21_merge_two_sorted_lists.h"
 #include "23_merge_k_sorted_lists.h"
@@ -350,6 +351,50 @@ int main() {
         custom_assert(8 == s.fourSum(l3, 0).size());
         custom_assert(0 == s.fourSum(l4, 0).size());
         custom_assert(2 == s.fourSum(l5, 0).size());
+    }
+#endif
+    //////////////////////
+    /**
+     * 19. Remove Nth Node From End of List
+     */
+#if 1
+    {
+        {
+            _19::Solution<ver1> s{};
+            UniqueListNode list0(ListNodeHelper::createList({ 1, 2, 3, 4, 5 }));
+            UniqueListNode result0(s.removeNthFromEnd(list0.release(), 2));
+            custom_assert("{ 1, 2, 3, 5 }" == ListNodeHelper::convertListNodeToString(result0.get()));
+
+            UniqueListNode list1(ListNodeHelper::createList({ 1 }));
+            UniqueListNode result1(s.removeNthFromEnd(list1.release(), 1));
+            custom_assert("{ }" == ListNodeHelper::convertListNodeToString(result1.get()));
+
+            UniqueListNode list2(ListNodeHelper::createList({ 1, 2 }));
+            UniqueListNode result2(s.removeNthFromEnd(list2.release(), 1));
+            custom_assert("{ 1 }" == ListNodeHelper::convertListNodeToString(result2.get()));
+
+            UniqueListNode list3(ListNodeHelper::createList({ 1, 2, 3 }));
+            UniqueListNode result3(s.removeNthFromEnd(list3.release(), 3));
+            custom_assert("{ 2, 3 }" == ListNodeHelper::convertListNodeToString(result3.get()));
+        }
+        {
+            _19::Solution<ver2> s{};
+            UniqueListNode list0(ListNodeHelper::createList({ 1, 2, 3, 4, 5 }));
+            UniqueListNode result0(s.removeNthFromEnd(list0.release(), 2));
+            custom_assert("{ 1, 2, 3, 5 }" == ListNodeHelper::convertListNodeToString(result0.get()));
+
+            UniqueListNode list1(ListNodeHelper::createList({ 1 }));
+            UniqueListNode result1(s.removeNthFromEnd(list1.release(), 1));
+            custom_assert("{ }" == ListNodeHelper::convertListNodeToString(result1.get()));
+
+            UniqueListNode list2(ListNodeHelper::createList({ 1, 2 }));
+            UniqueListNode result2(s.removeNthFromEnd(list2.release(), 1));
+            custom_assert("{ 1 }" == ListNodeHelper::convertListNodeToString(result2.get()));
+
+            UniqueListNode list3(ListNodeHelper::createList({ 1, 2, 3 }));
+            UniqueListNode result3(s.removeNthFromEnd(list3.release(), 3));
+            custom_assert("{ 2, 3 }" == ListNodeHelper::convertListNodeToString(result3.get()));
+        }
     }
 #endif
     //////////////////////
