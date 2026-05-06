@@ -56,6 +56,7 @@
 #include "76_minimum_window_substring.h"
 #include "80_remove_duplicates_from_sorted_array_II.h"
 #include "81_search_in_rotated_sorted_arrayII.h"
+#include "82_remove_duplicates_from_sorted_list_II.h"
 #include "88_merge_sorted_array.h"
 #include "92_reverse_linked_list_II.h"
 #include "101_symmetric_tree.h"
@@ -359,40 +360,71 @@ int main() {
      */
 #if 1
     {
+        // Memory (solution does not delete): snapshot all node pointers before removeNthFromEnd,
+        // then ListNodeHelper::deleteNodesAbsentFromChain frees the detached node(s).
+        // UniqueListNode(result) still frees the surviving chain.
         {
             _19::Solution<ver1> s{};
+
+
+            auto remove_nth = [&](ListNode* head, int n) -> ListNode* {
+                std::vector<ListNode*> pool;
+
+                for (ListNode* p = head; p; p = p->next) {
+                    pool.push_back(p);
+                }
+
+                ListNode* out = s.removeNthFromEnd(head, n);
+                ListNodeHelper::deleteNodesAbsentFromChain(out, pool);
+
+                return out;
+            };
+
             UniqueListNode list0(ListNodeHelper::createList({ 1, 2, 3, 4, 5 }));
-            UniqueListNode result0(s.removeNthFromEnd(list0.release(), 2));
+            UniqueListNode result0(remove_nth(list0.release(), 2));
             custom_assert("{ 1, 2, 3, 5 }" == ListNodeHelper::convertListNodeToString(result0.get()));
 
             UniqueListNode list1(ListNodeHelper::createList({ 1 }));
-            UniqueListNode result1(s.removeNthFromEnd(list1.release(), 1));
+            UniqueListNode result1(remove_nth(list1.release(), 1));
             custom_assert("{ }" == ListNodeHelper::convertListNodeToString(result1.get()));
 
             UniqueListNode list2(ListNodeHelper::createList({ 1, 2 }));
-            UniqueListNode result2(s.removeNthFromEnd(list2.release(), 1));
+            UniqueListNode result2(remove_nth(list2.release(), 1));
             custom_assert("{ 1 }" == ListNodeHelper::convertListNodeToString(result2.get()));
 
             UniqueListNode list3(ListNodeHelper::createList({ 1, 2, 3 }));
-            UniqueListNode result3(s.removeNthFromEnd(list3.release(), 3));
+            UniqueListNode result3(remove_nth(list3.release(), 3));
             custom_assert("{ 2, 3 }" == ListNodeHelper::convertListNodeToString(result3.get()));
         }
         {
             _19::Solution<ver2> s{};
+            auto remove_nth = [&](ListNode* head, int n) -> ListNode* {
+                std::vector<ListNode*> pool;
+
+                for (ListNode* p = head; p; p = p->next) {
+                    pool.push_back(p);
+                }
+
+                ListNode* out = s.removeNthFromEnd(head, n);
+                ListNodeHelper::deleteNodesAbsentFromChain(out, pool);
+
+                return out;
+            };
+
             UniqueListNode list0(ListNodeHelper::createList({ 1, 2, 3, 4, 5 }));
-            UniqueListNode result0(s.removeNthFromEnd(list0.release(), 2));
+            UniqueListNode result0(remove_nth(list0.release(), 2));
             custom_assert("{ 1, 2, 3, 5 }" == ListNodeHelper::convertListNodeToString(result0.get()));
 
             UniqueListNode list1(ListNodeHelper::createList({ 1 }));
-            UniqueListNode result1(s.removeNthFromEnd(list1.release(), 1));
+            UniqueListNode result1(remove_nth(list1.release(), 1));
             custom_assert("{ }" == ListNodeHelper::convertListNodeToString(result1.get()));
 
             UniqueListNode list2(ListNodeHelper::createList({ 1, 2 }));
-            UniqueListNode result2(s.removeNthFromEnd(list2.release(), 1));
+            UniqueListNode result2(remove_nth(list2.release(), 1));
             custom_assert("{ 1 }" == ListNodeHelper::convertListNodeToString(result2.get()));
 
             UniqueListNode list3(ListNodeHelper::createList({ 1, 2, 3 }));
-            UniqueListNode result3(s.removeNthFromEnd(list3.release(), 3));
+            UniqueListNode result3(remove_nth(list3.release(), 3));
             custom_assert("{ 2, 3 }" == ListNodeHelper::convertListNodeToString(result3.get()));
         }
     }
@@ -1198,6 +1230,23 @@ int main() {
         custom_assert(true == s.search(nums_1, 0));
         custom_assert(false == s.search(nums_2, 3));
         custom_assert(false == s.search(nums_3, 0));
+    }
+#endif
+    //////////////////////
+    /**
+     * 82. Remove Duplicates from Sorted List II
+     */
+#if 1
+    {
+        _82::Solution s{};
+
+        UniqueListNode list0(ListNodeHelper::createList({ 1, 2, 3, 3, 4, 4, 5 }));
+        UniqueListNode result0(s.deleteDuplicates(list0.release()));
+        custom_assert("{ 1, 2, 5 }" == ListNodeHelper::convertListNodeToString(result0.get()));
+
+        UniqueListNode list1(ListNodeHelper::createList({ 1, 1, 1, 2, 3 }));
+        UniqueListNode result1(s.deleteDuplicates(list1.release()));
+        custom_assert("{ 2, 3 }" == ListNodeHelper::convertListNodeToString(result1.get()));
     }
 #endif
     //////////////////////

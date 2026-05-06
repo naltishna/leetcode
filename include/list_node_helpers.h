@@ -11,6 +11,7 @@ class ListNodeHelper {
 public:
     static ListNode* createList(const std::vector<int>& vals);
     static void freeList(ListNode* head);
+    static void deleteNodesAbsentFromChain(ListNode* chain_head, const std::vector<ListNode*>& pool);
     static std::string convertListNodeToString(ListNode* head);
     static void printList(ListNode* head);
 };
