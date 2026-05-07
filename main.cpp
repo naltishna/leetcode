@@ -41,6 +41,7 @@
 #include "48_rotate_image.h"
 #include "49_group_anagrams.h"
 #include "50_pow_x_n_times.h"
+#include "53_maximum_subarray.h"
 #include "54_spiral_matrix.h"
 #include "55_jump_game.h"
 #include "56_merge_intervals.h"
@@ -905,6 +906,22 @@ int main() {
             assertAlmostEqual5(9.26100, s.myPow(2.10000, 3));
             assertAlmostEqual5(0.25000, s.myPow(2.00000, -2));
         }
+    }
+#endif
+    //////////////////////
+    /**
+     * 53. Maximum Subarray
+     */
+#if 1
+    {
+        std::vector<int> nums_1{ -2, 1, -3, 4, -1, 2, 1, -5, 4 };
+        std::vector<int> nums_2{ 1 };
+        std::vector<int> nums_3{ 5, 4, -1, 7, 8 };
+
+        _53::Solution s{};
+        custom_assert(6 == s.maxSubArray(nums_1));
+        custom_assert(1 == s.maxSubArray(nums_2));
+        custom_assert(23 == s.maxSubArray(nums_3));
     }
 #endif
     //////////////////////
