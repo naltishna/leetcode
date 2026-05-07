@@ -29,6 +29,7 @@
 #include "20_valid_parentheses.h"
 #include "21_merge_two_sorted_lists.h"
 #include "23_merge_k_sorted_lists.h"
+#include "25_reverse_nodes_in_k_group.h"
 #include "26_remove_duplicates_from_sorted_array.h"
 #include "27_remove_element.h"
 #include "28_find_the_index_of_the_first_occurrence_in_a_string.h"
@@ -541,6 +542,23 @@ int main() {
             result = s.mergeKLists(single_empty_list);
             ListNodeHelper::freeList(result);
         }
+    }
+#endif
+    //////////////////////
+    /**
+     * 25. Reverse Nodes in k-Group
+     */
+#if 1
+    {
+        _25::Solution s{};
+
+        UniqueListNode l0(ListNodeHelper::createList({ 1, 2, 3, 4, 5 }));
+        UniqueListNode res0(s.reverseKGroup(l0.release(), 2));
+        custom_assert("{ 2, 1, 4, 3, 5 }" == ListNodeHelper::convertListNodeToString(res0.get()));
+
+        UniqueListNode l1(ListNodeHelper::createList({ 1, 2, 3, 4, 5 }));
+        UniqueListNode res1(s.reverseKGroup(l1.release(), 3));
+        custom_assert("{ 3, 2, 1, 4, 5 }" == ListNodeHelper::convertListNodeToString(res1.get()));
     }
 #endif
     //////////////////////

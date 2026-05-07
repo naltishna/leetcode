@@ -31,9 +31,11 @@ add_executable (leetcode
 "src/14_longest_common_prefix.cpp"
 "src/15_3sum.cpp"
 "src/18_4sum.cpp"
+"src/19_remove_nth_node_from_end_of_list.cpp"
 "src/20_valid_parentheses.cpp"
 "src/21_merge_two_sorted_lists.cpp"
 "src/23_merge_k_sorted_lists.cpp"
+"src/25_reverse_nodes_in_k_group.cpp"
 "src/26_remove_duplicates_from_sorted_array.cpp"
 "src/27_remove_element.cpp"
 "src/28_find_the_index_of_the_first_occurrence_in_a_string.cpp"
@@ -61,6 +63,7 @@ add_executable (leetcode
 "src/76_minimum_window_substring.cpp"
 "src/80_remove_duplicates_from_sorted_array_II.cpp"
 "src/81_search_in_rotated_sorted_arrayII.cpp"
+"src/82_remove_duplicates_from_sorted_list_II.cpp"
 "src/88_merge_sorted_array.cpp"
 "src/92_reverse_linked_list_II.cpp"
 "src/101_symmetric_tree.cpp"
@@ -125,7 +128,7 @@ add_executable (leetcode
 "src/1195_fizz_buzz_multithreaded.cpp"
 "src/1226_the_dining_philosophers.cpp"
 "src/1279_traffic_light_controlled_intersection.cpp"
-"src/3531_count_covered_buildings.cpp" "include/19_remove_nth_node_from_end_of_list.h" "src/19_remove_nth_node_from_end_of_list.cpp" "include/82_remove_duplicates_from_sorted_list_II.h" "src/82_remove_duplicates_from_sorted_list_II.cpp")
+"src/3531_count_covered_buildings.cpp")
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)
   set_property(TARGET leetcode PROPERTY CXX_STANDARD 20)
