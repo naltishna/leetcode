@@ -84,6 +84,7 @@
 #include "189_rotate_array.h"
 #include "190_reverse_bits.h"
 #include "191_number_of_1_bits.h"
+#include "198_house_robber.h"
 #include "200_number_of_islands.h"
 #include "201_bitwise_AND_of_numbers_range.h"
 #include "202_happy_number.h"
@@ -381,7 +382,7 @@ int main() {
                 ListNodeHelper::deleteNodesAbsentFromChain(out, pool);
 
                 return out;
-            };
+                };
 
             UniqueListNode list0(ListNodeHelper::createList({ 1, 2, 3, 4, 5 }));
             UniqueListNode result0(remove_nth(list0.release(), 2));
@@ -412,7 +413,7 @@ int main() {
                 ListNodeHelper::deleteNodesAbsentFromChain(out, pool);
 
                 return out;
-            };
+                };
 
             UniqueListNode list0(ListNodeHelper::createList({ 1, 2, 3, 4, 5 }));
             UniqueListNode result0(remove_nth(list0.release(), 2));
@@ -893,7 +894,7 @@ int main() {
     {
         auto assertAlmostEqual5 = [](double expected, double actual) {
             custom_assert(std::abs(expected - actual) < 1e-5);
-        };
+            };
 
         {
             _50::Solution<ver1> s{};
@@ -1619,7 +1620,7 @@ int main() {
             }
 
             return nodes[0];
-        };
+            };
 
         auto freeRandomList = [](Node* head) {
             while (head) {
@@ -1627,7 +1628,7 @@ int main() {
                 head = head->next;
                 delete temp;
             }
-        };
+            };
 
         auto assertDeepCopyEqual = [](Node* orig, Node* copy) {
             if (!orig) {
@@ -1655,7 +1656,8 @@ int main() {
 
                 if (!o[i]->random) {
                     custom_assert(c[i]->random == nullptr);
-                } else {
+                }
+                else {
                     auto it = std::find(o.begin(), o.end(), o[i]->random);
                     custom_assert(it != o.end());
 
@@ -1663,7 +1665,7 @@ int main() {
                     custom_assert(c[i]->random == c[j]);
                 }
             }
-        };
+            };
 
         std::vector<RandomListInput> tests = {
             { {7, std::nullopt}, {13, 0}, {11, 4}, {10, 2}, {1, 0} },
@@ -1716,13 +1718,14 @@ int main() {
                     const auto& rnd = data[i].second;
                     if (rnd.has_value()) {
                         nodes[i]->random = nodes[*rnd];
-                    } else {
+                    }
+                    else {
                         nodes[i]->random.reset();
                     }
                 }
 
                 return nodes[0];
-            };
+                };
 
             auto assertSmartDeepCopyEqual = [](const std::shared_ptr<SmartNode>& orig, const std::shared_ptr<SmartNode>& copy) {
                 if (!orig) {
@@ -1751,17 +1754,18 @@ int main() {
                     std::shared_ptr<SmartNode> cRandom = c[i]->random.lock();
                     if (!oRandom) {
                         custom_assert(cRandom == nullptr);
-                    } else {
+                    }
+                    else {
                         auto it = std::find_if(o.begin(), o.end(), [&oRandom](const std::shared_ptr<SmartNode>& node) {
                             return node.get() == oRandom.get();
-                        });
+                            });
                         custom_assert(it != o.end());
 
                         const size_t j = static_cast<size_t>(it - o.begin());
                         custom_assert(cRandom.get() == c[j].get());
                     }
                 }
-            };
+                };
 
             {
                 _138_smart_ptr::Solution<ver1> s{};
@@ -2051,6 +2055,20 @@ int main() {
             custom_assert(1 == s.hammingWeight(128));
             custom_assert(30 == s.hammingWeight(2147483645));
         }
+    }
+#endif
+    //////////////////////
+    /**
+     * 198. House Robber
+     */
+#if 1
+    {
+        std::vector<int> nums_1{ 1, 2, 3, 1 };
+        std::vector<int> nums_2{ 2, 7, 9, 3, 1 };
+
+        _198::Solution s{};
+        custom_assert(4 == s.rob(nums_1));
+        custom_assert(12 == s.rob(nums_2));
     }
 #endif
     //////////////////////
