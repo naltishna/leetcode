@@ -58,6 +58,7 @@ add_executable (leetcode
 "src/67_add_binary.cpp"
 "src/68_text_justification.cpp"
 "src/69_sqrt_x.cpp"
+"src/70_climbing_stairs.cpp"
 "src/71_simplify_path.cpp"
 "src/73_set_matrix_zeroes.cpp"
 "src/74_search_2D_matrix.cpp"

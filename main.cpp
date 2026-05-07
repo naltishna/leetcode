@@ -52,6 +52,7 @@
 #include "67_add_binary.h"
 #include "68_text_justification.h"
 #include "69_sqrt_x.h"
+#include "70_climbing_stairs.h"
 #include "71_simplify_path.h"
 #include "73_set_matrix_zeroes.h"
 #include "74_search_2D_matrix.h"
@@ -1126,6 +1127,18 @@ int main() {
         _69::Solution s{};
         custom_assert(2 == s.mySqrt(x1));
         custom_assert(2 == s.mySqrt(x2));
+    }
+#endif
+    //////////////////////
+    /**
+     * 70. Climbing Stairs
+     */
+#if 1
+    {
+        _70::Solution s{};
+        custom_assert(2 == s.climbStairs(2));
+        custom_assert(3 == s.climbStairs(3));
+        custom_assert(5 == s.climbStairs(4));
     }
 #endif
     //////////////////////
