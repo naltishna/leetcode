@@ -13,7 +13,7 @@ namespace _198 {
     * dp[i] = max(dp[i-1], dp[i-2] + nums[i]) - skip house i, rob house i.
     *
     * Either you skip the current house (take the previous best) or you rob it (add its value to
-    * the best result two steps back — since adjacent houses can't both be robbed).
+    * the best result two steps back - since adjacent houses can't both be robbed).
     * The answer accumulates to nums[n-1].
     *
     * Time complexity:

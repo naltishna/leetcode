@@ -81,6 +81,7 @@
 #include "155_min_stack.h"
 #include "167_two_sumII_input_array_is_sorted.h"
 #include "169_majority_element.h"
+#include "172_factorial_trailing_zeroes.h"
 #include "189_rotate_array.h"
 #include "190_reverse_bits.h"
 #include "191_number_of_1_bits.h"
@@ -1947,6 +1948,19 @@ int main() {
             custom_assert(2 == s.majorityElement(nums2));
             custom_assert(3 == s.majorityElement(nums3));
         }
+    }
+#endif
+    //////////////////////
+    /**
+     * 172. Factorial Trailing Zeroes
+     */
+#if 1
+    {
+        _172::Solution s{};
+        custom_assert(2 == s.trailingZeroes(10));
+        custom_assert(0 == s.trailingZeroes(3));
+        custom_assert(1 == s.trailingZeroes(5));
+        custom_assert(0 == s.trailingZeroes(0));
     }
 #endif
     //////////////////////

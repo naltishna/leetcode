@@ -87,6 +87,7 @@ add_executable (leetcode
 "src/155_min_stack.cpp"
 "src/167_two_sumII_input_array_is_sorted.cpp"
 "src/169_majority_element.cpp"
+"src/172_factorial_trailing_zeroes.cpp"
 "src/189_rotate_array.cpp"
 "src/190_reverse_bits.cpp"
 "src/191_number_of_1_bits.cpp"
