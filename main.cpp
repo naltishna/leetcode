@@ -75,6 +75,7 @@
 #include "137_single_number_II.h"
 #include "138_copy_list_with_random_pointer.h"
 #include "141_linked_list_cycle.h"
+#include "149_max_points_on_a_line.h"
 #include "150_evaluate_reverse_polish_notation.h"
 #include "151_reverse_words_in_a_string.h"
 #include "153_find_minimum_in_rotated_sorted_array.h"
@@ -1824,6 +1825,27 @@ int main() {
             _141::Solution s{};
             custom_assert(false == s.hasCycle(node_1));
             ListNodeHelper::freeList(node_1);
+        }
+    }
+#endif
+    //////////////////////
+    /**
+     * 149. Max Points on a Line
+     */
+#if 1
+    {
+        std::vector<std::vector<int>> points_0{ {1, 1}, {2, 2}, {3, 3} };
+        std::vector<std::vector<int>> points_1{ {1, 1}, {3, 2}, {5, 3}, {4, 1}, {2, 3}, {1, 4} };
+
+        {
+            _149::Solution<ver1> s{};
+            custom_assert(3 == s.maxPoints(points_0));
+            custom_assert(4 == s.maxPoints(points_1));
+        }
+        {
+            _149::Solution<ver2> s{};
+            custom_assert(3 == s.maxPoints(points_0));
+            custom_assert(4 == s.maxPoints(points_1));
         }
     }
 #endif

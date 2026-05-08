@@ -17,12 +17,14 @@ namespace _438 {
         std::vector<int> res = {};
         int s_size = s.size();
         int p_size = p.size();
+
         if (s_size < p_size) return res;
 
         // The English alphabet consists of 26 letters
         constexpr int TOTAL_LETTERS = 26;
         std::array<int, TOTAL_LETTERS> p_count = { 0 };
         std::array<int, TOTAL_LETTERS> s_count = { 0 };
+
         for (int i = 0; i < p_size; ++i) {
             p_count[p[i] - 'a']++;
             s_count[s[i] - 'a']++; // 1st window init

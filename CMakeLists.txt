@@ -81,6 +81,7 @@ add_executable (leetcode
 "src/137_single_number_II.cpp"
 "src/138_copy_list_with_random_pointer.cpp"
 "src/141_linked_list_cycle.cpp"
+"src/149_max_points_on_a_line.cpp"
 "src/150_evaluate_reverse_polish_notation.cpp"
 "src/151_reverse_words_in_a_string.cpp"
 "src/153_find_minimum_in_rotated_sorted_array.cpp"

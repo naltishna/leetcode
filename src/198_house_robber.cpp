@@ -5,7 +5,7 @@
 namespace _198 {
 
     /*
-    * In-place Dynamic programming.
+    * In-place dynamic programming.
     *
     * The array is reused in-place as a DP table where nums[i] stores the maximum loot achievable up to house i.
     *
