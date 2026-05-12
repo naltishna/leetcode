@@ -74,6 +74,7 @@
 #include "136_single_number.h"
 #include "137_single_number_II.h"
 #include "138_copy_list_with_random_pointer.h"
+#include "139_word_break.h"
 #include "141_linked_list_cycle.h"
 #include "149_max_points_on_a_line.h"
 #include "150_evaluate_reverse_polish_notation.h"
@@ -1787,6 +1788,30 @@ int main() {
                     assertSmartDeepCopyEqual(head, res);
                 }
             }
+        }
+    }
+#endif
+    //////////////////////
+    /**
+     * 139. Word Break
+     */
+#if 1
+    {
+        std::vector<std::string> v1{ "leet", "code" };
+        std::vector<std::string> v2{ "apple", "pen" };
+        std::vector<std::string> v3{ "cats", "dog", "sand", "and", "cat" };
+
+        {
+            _139::Solution<ver1> s{};
+            custom_assert(true == s.wordBreak("leetcode", v1));
+            custom_assert(true == s.wordBreak("applepenapple", v2));
+            custom_assert(false == s.wordBreak("catsandog", v3));
+        }
+        {
+            _139::Solution<ver2> s{};
+            custom_assert(true == s.wordBreak("leetcode", v1));
+            custom_assert(true == s.wordBreak("applepenapple", v2));
+            custom_assert(false == s.wordBreak("catsandog", v3));
         }
     }
 #endif
