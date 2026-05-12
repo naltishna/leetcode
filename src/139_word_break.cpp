@@ -1,9 +1,7 @@
 #include "139_word_break.h"
 #include "class_version.h"
 
-#include <algorithm>
 #include <unordered_set>
-#include <vector>
 
 namespace _139 {
 
@@ -42,10 +40,10 @@ namespace _139 {
     *
     * For each position i, check all substrings ending at i (starting from i - maxWordLen) - if dp[j] is true
     * and s[j..i-1] is in the dict, then dp[i] = true.
-    * 
+    *
     * Time complexity:
     * O(n * m * k) - n positions × m = maxWordLen × k = substr
-    * 
+    *
     * Space complexity:
     * O(n + W) - dp vector + dict set
     */

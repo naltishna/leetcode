@@ -105,6 +105,7 @@
 #include "290_word_pattern.h"
 #include "301_remove_invalid_parentheses.h"
 #include "309_best_time_to_buy_and_sell_stock_with_cooldown.h"
+#include "322_coin_change.h"
 #include "347_top_k_frequent_elements.h"
 #include "349_intersection_of_two_arrays.h"
 #include "373_find_k_pairs_with_smallest_sums.h"
@@ -2524,6 +2525,22 @@ int main() {
         custom_assert(0 == s.maxProfit(prices_2));
         custom_assert(19 == s.maxProfit(prices_3));
         custom_assert(6 == s.maxProfit(prices_4));
+    }
+#endif
+    //////////////////////
+    /**
+     * 322. Coin Change
+     */
+#if 1
+    {
+        std::vector<int> coins_1{ 1, 2, 5 };
+        std::vector<int> coins_2{ 2 };
+        std::vector<int> coins_3{ 1 };
+
+        _322::Solution s{};
+        custom_assert(3 == s.coinChange(coins_1, 11));
+        custom_assert(-1 == s.coinChange(coins_2, 3));
+        custom_assert(0 == s.coinChange(coins_3, 0));
     }
 #endif
     //////////////////////
