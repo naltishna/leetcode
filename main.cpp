@@ -47,6 +47,7 @@
 #include "56_merge_intervals.h"
 #include "57_insert_interval.h"
 #include "58_length_of_last_word.h"
+#include "61_rotate_list.h"
 #include "62_unique_paths.h"
 #include "66_plus_one.h"
 #include "67_add_binary.h"
@@ -1017,6 +1018,22 @@ int main() {
         custom_assert(5 == s.lengthOfLastWord(s_1));
         custom_assert(4 == s.lengthOfLastWord(s_2));
         custom_assert(6 == s.lengthOfLastWord(s_3));
+    }
+#endif
+    //////////////////////
+    /**
+     * 61. Rotate List
+     */
+#if 1
+    {
+        _61::Solution s{};
+        UniqueListNode l1(ListNodeHelper::createList({ 1, 2, 3, 4, 5 }));
+        UniqueListNode res1(s.rotateRight(l1.release(), 2));
+        custom_assert("{ 4, 5, 1, 2, 3 }" == ListNodeHelper::convertListNodeToString(res1.get()));
+
+        UniqueListNode l2(ListNodeHelper::createList({ 0, 1, 2 }));
+        UniqueListNode res2(s.rotateRight(l2.release(), 4));
+        custom_assert("{ 2, 0, 1 }" == ListNodeHelper::convertListNodeToString(res2.get()));
     }
 #endif
     //////////////////////
