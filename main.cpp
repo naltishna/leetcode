@@ -103,6 +103,7 @@
 #include "274_h_index.h"
 #include "289_game_of_life.h"
 #include "290_word_pattern.h"
+#include "300_longest_increasing_subsequence.h"
 #include "301_remove_invalid_parentheses.h"
 #include "309_best_time_to_buy_and_sell_stock_with_cooldown.h"
 #include "322_coin_change.h"
@@ -2484,6 +2485,30 @@ int main() {
 #endif
     //////////////////////
     /**
+     * 300. Longest Increasing Subsequence
+     */
+#if 1
+    {
+        std::vector<int> nums_1{ 10, 9, 2, 5, 3, 7, 101, 18 };
+        std::vector<int> nums_2{ 0, 1, 0, 3, 2, 3 };
+        std::vector<int> nums_3{ 7, 7, 7, 7, 7, 7, 7 };
+
+        {
+            _300::Solution<ver1> s{};
+            custom_assert(4 == s.lengthOfLIS(nums_1));
+            custom_assert(4 == s.lengthOfLIS(nums_2));
+            custom_assert(1 == s.lengthOfLIS(nums_3));
+        }
+        {
+            _300::Solution<ver2> s{};
+            custom_assert(4 == s.lengthOfLIS(nums_1));
+            custom_assert(4 == s.lengthOfLIS(nums_2));
+            custom_assert(1 == s.lengthOfLIS(nums_3));
+        }
+    }
+#endif
+    //////////////////////
+    /**
      * 301. Remove Invalid Parentheses
      */
 #if 1
@@ -2537,10 +2562,18 @@ int main() {
         std::vector<int> coins_2{ 2 };
         std::vector<int> coins_3{ 1 };
 
-        _322::Solution s{};
-        custom_assert(3 == s.coinChange(coins_1, 11));
-        custom_assert(-1 == s.coinChange(coins_2, 3));
-        custom_assert(0 == s.coinChange(coins_3, 0));
+        {
+            _322::Solution<ver1> s{};
+            custom_assert(3 == s.coinChange(coins_1, 11));
+            custom_assert(-1 == s.coinChange(coins_2, 3));
+            custom_assert(0 == s.coinChange(coins_3, 0));
+        }
+        {
+            _322::Solution<ver2> s{};
+            custom_assert(3 == s.coinChange(coins_1, 11));
+            custom_assert(-1 == s.coinChange(coins_2, 3));
+            custom_assert(0 == s.coinChange(coins_3, 0));
+        }
     }
 #endif
     //////////////////////

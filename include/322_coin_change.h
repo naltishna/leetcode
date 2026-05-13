@@ -35,6 +35,7 @@ Constraints:
 
 namespace _322 {
 
+    template <class V>
     class Solution {
     public:
         int coinChange(std::vector<int>& coins, int amount);
