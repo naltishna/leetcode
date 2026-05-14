@@ -83,6 +83,7 @@
 #include "151_reverse_words_in_a_string.h"
 #include "153_find_minimum_in_rotated_sorted_array.h"
 #include "155_min_stack.h"
+#include "162_find_peak_element.h"
 #include "167_two_sumII_input_array_is_sorted.h"
 #include "169_majority_element.h"
 #include "172_factorial_trailing_zeroes.h"
@@ -1987,6 +1988,20 @@ int main() {
             custom_assert(0 == minStack.top());
             custom_assert(-2 == minStack.getMin());
         }
+    }
+#endif
+    //////////////////////
+    /**
+     * 162. Find Peak Element
+     */
+#if 1
+    {
+        std::vector<int> nums1{ 1, 2, 3, 1 };
+        std::vector<int> nums2{ 1, 2, 1, 3, 5, 6, 4 };
+
+        _162::Solution s{};
+        custom_assert(2 == s.findPeakElement(nums1));
+        custom_assert(5 == s.findPeakElement(nums2));
     }
 #endif
     //////////////////////

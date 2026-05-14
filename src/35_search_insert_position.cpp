@@ -6,9 +6,7 @@ namespace _35 {
      * Binary search.
      *
      * Divide and Conquer: It repeatedly halves the search space by comparing the target with the middle element.
-     *
      * Exact Match: If the target is found (nums[middle] == target), it immediately returns its index.
-     *
      * Insertion Index: If the target is missing, the loop terminates when left > right.
      * At this exact moment, left points to the correct sorted insertion position.
      *

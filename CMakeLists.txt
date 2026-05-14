@@ -41,6 +41,7 @@ add_executable (leetcode
 "src/28_find_the_index_of_the_first_occurrence_in_a_string.cpp"
 "src/30_substring_with_concatenation_of_all_words.cpp"
 "src/33_search_in_rotated_sorted_array.cpp"
+"src/35_search_insert_position.cpp"
 "src/36_valid_sudoku.cpp"
 "src/42_trapping_rain_water.cpp"
 "src/45_jump_game_II.cpp"
@@ -88,6 +89,7 @@ add_executable (leetcode
 "src/151_reverse_words_in_a_string.cpp"
 "src/153_find_minimum_in_rotated_sorted_array.cpp"
 "src/155_min_stack.cpp"
+"src/162_find_peak_element.cpp"
 "src/167_two_sumII_input_array_is_sorted.cpp"
 "src/169_majority_element.cpp"
 "src/172_factorial_trailing_zeroes.cpp"
@@ -138,7 +140,7 @@ add_executable (leetcode
 "src/1195_fizz_buzz_multithreaded.cpp"
 "src/1226_the_dining_philosophers.cpp"
 "src/1279_traffic_light_controlled_intersection.cpp"
-"src/3531_count_covered_buildings.cpp" "include/35_search_insert_position.h" "src/35_search_insert_position.cpp")
+"src/3531_count_covered_buildings.cpp")
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)
   set_property(TARGET leetcode PROPERTY CXX_STANDARD 20)
