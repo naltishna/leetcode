@@ -21,7 +21,9 @@ namespace _53 {
         int currentSum = nums[0];
 
         for (int i = 1; i < nums.size(); i++) {
-            currentSum = std::max(currentSum + nums[i], nums[i]);
+            const int num = nums[i];
+
+            currentSum = std::max(num, currentSum + num);
             result = std::max(result, currentSum);
         }
 

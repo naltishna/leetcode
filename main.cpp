@@ -124,6 +124,7 @@
 #include "692_top_k_frequent_words.h"
 #include "704_binary_search.h"
 #include "763_partition_labels.h"
+#include "918_maximum_sum_circular_subarray.h"
 #include "1114_print_in_order.h"
 #include "1115_print_foobar_alternately.h"
 #include "1116_print_zero_even_odd.h"
@@ -3056,6 +3057,27 @@ int main() {
         custom_assert(8 == (s.partitionLabels(s_4)).size());
         custom_assert(1 == (s.partitionLabels(s_5)).size());
         custom_assert(2 == (s.partitionLabels(s_6)).size());
+    }
+#endif
+    //////////////////////
+    /**
+     * 918. Maximum Sum Circular Subarray
+     */
+#if 1
+    {
+        std::vector<int> nums_1{ 1, -2, 3, -2 };
+        std::vector<int> nums_2{ 5, -3, 5 };
+        std::vector<int> nums_3{ -3, -2, -3 };
+
+        _918::Solution<ver1> s1{};
+        custom_assert(3 == s1.maxSubarraySumCircular(nums_1));
+        custom_assert(10 == s1.maxSubarraySumCircular(nums_2));
+        custom_assert(-2 == s1.maxSubarraySumCircular(nums_3));
+
+        _918::Solution<ver2> s2{};
+        //custom_assert(3 == s2.maxSubarraySumCircular(nums_1));
+        custom_assert(10 == s2.maxSubarraySumCircular(nums_2));
+        custom_assert(-2 == s2.maxSubarraySumCircular(nums_3));
     }
 #endif
     //////////////////////
