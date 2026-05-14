@@ -35,6 +35,7 @@
 #include "28_find_the_index_of_the_first_occurrence_in_a_string.h"
 #include "30_substring_with_concatenation_of_all_words.h"
 #include "33_search_in_rotated_sorted_array.h"
+#include "35_search_insert_position.h"
 #include "36_valid_sudoku.h"
 #include "42_trapping_rain_water.h"
 #include "45_jump_game_II.h"
@@ -736,6 +737,20 @@ int main() {
         custom_assert(-1 == s.search(nums_2, 3));
         custom_assert(-1 == s.search(nums_3, 0));
         custom_assert(-1 == s.search(nums_4, 0));
+    }
+#endif
+    //////////////////////
+    /**
+     * 35. Search Insert Position
+     */
+#if 1
+    {
+        std::vector<int> nums{ 1,3,5,6 };
+
+        _35::Solution s{};
+        custom_assert(2 == s.searchInsert(nums, 5));
+        custom_assert(1 == s.searchInsert(nums, 2));
+        custom_assert(4 == s.searchInsert(nums, 7));
     }
 #endif
     //////////////////////

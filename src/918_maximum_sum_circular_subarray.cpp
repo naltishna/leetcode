@@ -7,10 +7,14 @@
 namespace _918 {
 
     /*
-    * Kadane for max normal subarray (maxSum) and min subarray (minSum) in one pass.
-    * Best circular wrap uses the complement: totalSum - minSum, unless all elements
-    * are negative (then minSum == totalSum and the wrap would be empty — use maxSum).
-    *
+    * This code uses the Optimized Kadane's Algorithm for Circular Arrays (also known as the Total Sum minus Minimum Subarray approach).
+    * 
+    * Max subarray — standard Kadane's to find the max non-wrapping subarray (maxSum).
+    * Min subarray — inverted Kadane's to find the min subarray (minSum), then the best wrapping subarray is totalSum - minSum.
+    * Answer = max(maxSum, totalSum - minSum).
+    * 
+    * Edge case: if all numbers are negative, minSum == totalSum (the "wrap" would be empty), so return maxSum.
+    * 
     * Time complexity:
     * O(n)
     *
