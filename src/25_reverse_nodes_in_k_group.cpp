@@ -26,6 +26,7 @@ namespace _25 {
         ListNode* prev_group_end = &temp;
         ListNode* curr = head;
 
+        // Only full groups of k are reversed.
         for (int i = 0; i < size / k; ++i) {
             ListNode* group_start = curr;
             ListNode* prev = nullptr;

@@ -55,6 +55,7 @@ namespace _138_raw {
 
         Node* copyHead = temp->next;
         delete temp;
+
         return copyHead;
     }
 
@@ -78,6 +79,7 @@ namespace _138_raw {
             oldToNew.emplace(curr, new Node(curr->val));
         }
 
+        // Each clone already exists in the map; connect next/random to other clones.
         for (Node* curr = head; curr; curr = curr->next) {
             Node* copy = oldToNew[curr];
             copy->next = curr->next ? oldToNew[curr->next] : nullptr;

@@ -68,6 +68,7 @@ add_executable (leetcode
 "src/80_remove_duplicates_from_sorted_array_II.cpp"
 "src/81_search_in_rotated_sorted_arrayII.cpp"
 "src/82_remove_duplicates_from_sorted_list_II.cpp"
+"src/86_partition_list.cpp"
 "src/88_merge_sorted_array.cpp"
 "src/92_reverse_linked_list_II.cpp"
 "src/101_symmetric_tree.cpp"

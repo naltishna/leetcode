@@ -62,6 +62,7 @@
 #include "80_remove_duplicates_from_sorted_array_II.h"
 #include "81_search_in_rotated_sorted_arrayII.h"
 #include "82_remove_duplicates_from_sorted_list_II.h"
+#include "86_partition_list.h"
 #include "88_merge_sorted_array.h"
 #include "92_reverse_linked_list_II.h"
 #include "101_symmetric_tree.h"
@@ -1335,6 +1336,34 @@ int main() {
         UniqueListNode list1(ListNodeHelper::createList({ 1, 1, 1, 2, 3 }));
         UniqueListNode result1(s.deleteDuplicates(list1.release()));
         custom_assert("{ 2, 3 }" == ListNodeHelper::convertListNodeToString(result1.get()));
+    }
+#endif
+    //////////////////////
+    /**
+     * 86. Partition List
+     */
+#if 1
+    {
+        {
+            _86::Solution<ver1> s{};
+            UniqueListNode list0(ListNodeHelper::createList({ 1, 4, 3, 2, 5, 2 }));
+            UniqueListNode result0(s.partition(list0.release(), 3));
+            custom_assert("{ 1, 2, 2, 4, 3, 5 }" == ListNodeHelper::convertListNodeToString(result0.get()));
+
+            UniqueListNode list1(ListNodeHelper::createList({ 2, 1 }));
+            UniqueListNode result1(s.partition(list1.release(), 2));
+            custom_assert("{ 1, 2 }" == ListNodeHelper::convertListNodeToString(result1.get()));
+        }
+        {
+            _86::Solution<ver2> s{};
+            UniqueListNode list0(ListNodeHelper::createList({ 1, 4, 3, 2, 5, 2 }));
+            UniqueListNode result0(s.partition(list0.release(), 3));
+            custom_assert("{ 1, 2, 2, 4, 3, 5 }" == ListNodeHelper::convertListNodeToString(result0.get()));
+
+            UniqueListNode list1(ListNodeHelper::createList({ 2, 1 }));
+            UniqueListNode result1(s.partition(list1.release(), 2));
+            custom_assert("{ 1, 2 }" == ListNodeHelper::convertListNodeToString(result1.get()));
+        }
     }
 #endif
     //////////////////////
