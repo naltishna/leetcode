@@ -34,7 +34,9 @@ namespace _86 {
 
         for (ListNode* curr = head; curr;) {
             if (curr->val < x) {
+                // Line is needed to connect the nodes into a chain.
                 lessTail->next = curr;
+                // Line is needed to avoid losing the tail for the next iteration.
                 lessTail = curr;
             }
             else {

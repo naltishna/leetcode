@@ -79,6 +79,7 @@
 #include "138_copy_list_with_random_pointer.h"
 #include "139_word_break.h"
 #include "141_linked_list_cycle.h"
+#include "146_LRU_cache.h"
 #include "149_max_points_on_a_line.h"
 #include "150_evaluate_reverse_polish_notation.h"
 #include "151_reverse_words_in_a_string.h"
@@ -1916,6 +1917,24 @@ int main() {
             custom_assert(false == s.hasCycle(node_1));
             ListNodeHelper::freeList(node_1);
         }
+    }
+#endif
+    //////////////////////
+    /**
+     * 146. LRU Cache
+     */
+#if 1
+    {
+        _146::LRUCache lRUCache(2);
+        lRUCache.put(1, 1);
+        lRUCache.put(2, 2);
+        custom_assert(1 == lRUCache.get(1));
+        lRUCache.put(3, 3);
+        custom_assert(-1 == lRUCache.get(2));
+        lRUCache.put(4, 4);
+        custom_assert(-1 == lRUCache.get(1));
+        custom_assert(3 == lRUCache.get(3));
+        custom_assert(4 == lRUCache.get(4));
     }
 #endif
     //////////////////////
