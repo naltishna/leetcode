@@ -103,6 +103,7 @@
 #include "209_minimum_size_subarray_sum.h"
 #include "219_contains_duplicate_II.h"
 #include "224_basic_calculator.h"
+#include "226_invert_binary_tree.h"
 #include "228_summary_ranges.h"
 #include "238_product_of_array_except_self.h"
 #include "239_sliding_window_maximum.h"
@@ -2502,6 +2503,75 @@ int main() {
             custom_assert(3 == s.calculate(" 2-1 + 2 "));
             custom_assert(23 == s.calculate("(1+(4+5+2)-3)+(6+8)"));
         }
+    }
+#endif
+    //////////////////////
+    /**
+     * 226. Invert Binary Tree
+     */
+#if 1
+    {
+        // root = [4,2,7,1,3,6,9]
+        auto root1 = std::make_unique<SmartPointer::TreeNode>(
+            4,
+            std::make_unique<SmartPointer::TreeNode>(
+                2,
+                std::make_unique<SmartPointer::TreeNode>(1),
+                std::make_unique<SmartPointer::TreeNode>(3)),
+            std::make_unique<SmartPointer::TreeNode>(
+                7,
+                std::make_unique<SmartPointer::TreeNode>(6),
+                std::make_unique<SmartPointer::TreeNode>(9)));
+        // output = [4,7,2,9,6,3,1]
+        auto output1 = std::make_unique<SmartPointer::TreeNode>(
+            4,
+            std::make_unique<SmartPointer::TreeNode>(
+                7,
+                std::make_unique<SmartPointer::TreeNode>(9),
+                std::make_unique<SmartPointer::TreeNode>(6)),
+            std::make_unique<SmartPointer::TreeNode>(
+                2,
+                std::make_unique<SmartPointer::TreeNode>(3),
+                std::make_unique<SmartPointer::TreeNode>(1)));
+
+        // root = [2,1,3]
+        auto root2_iter = std::make_unique<SmartPointer::TreeNode>(
+            2,
+            std::make_unique<SmartPointer::TreeNode>(1),
+            std::make_unique<SmartPointer::TreeNode>(3));
+        auto root2_rec = std::make_unique<SmartPointer::TreeNode>(
+            2,
+            std::make_unique<SmartPointer::TreeNode>(1),
+            std::make_unique<SmartPointer::TreeNode>(3));
+        // output = [2,3,1]
+        auto output2 = std::make_unique<SmartPointer::TreeNode>(
+            2,
+            std::make_unique<SmartPointer::TreeNode>(3),
+            std::make_unique<SmartPointer::TreeNode>(1));
+
+        auto root1_rec = std::make_unique<SmartPointer::TreeNode>(
+            4,
+            std::make_unique<SmartPointer::TreeNode>(
+                2,
+                std::make_unique<SmartPointer::TreeNode>(1),
+                std::make_unique<SmartPointer::TreeNode>(3)),
+            std::make_unique<SmartPointer::TreeNode>(
+                7,
+                std::make_unique<SmartPointer::TreeNode>(6),
+                std::make_unique<SmartPointer::TreeNode>(9)));
+
+        _226::Solution<ver1> dfs{};
+        _226::Solution<ver2> recursive{};
+        _100::Solution<ver1> same{};
+
+        custom_assert(same.isSameTree(output1.get(), dfs.invertTree(root1.get())));
+        custom_assert(same.isSameTree(output1.get(), recursive.invertTree(root1_rec.get())));
+
+        custom_assert(same.isSameTree(output2.get(), dfs.invertTree(root2_iter.get())));
+        custom_assert(same.isSameTree(output2.get(), recursive.invertTree(root2_rec.get())));
+
+        custom_assert(nullptr == dfs.invertTree(nullptr));
+        custom_assert(nullptr == recursive.invertTree(nullptr));
     }
 #endif
     //////////////////////
