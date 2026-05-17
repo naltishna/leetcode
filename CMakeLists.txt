@@ -71,7 +71,9 @@ add_executable (leetcode
 "src/86_partition_list.cpp"
 "src/88_merge_sorted_array.cpp"
 "src/92_reverse_linked_list_II.cpp"
+"src/100_same_tree.cpp"
 "src/101_symmetric_tree.cpp"
+"src/104_maximum_depth_of_binary_tree.cpp"
 "src/110_balanced_binary_tree.cpp"
 "src/120_triangle.cpp"
 "src/121_best_time_to_buy_and_sell_stock.cpp"
@@ -85,6 +87,7 @@ add_executable (leetcode
 "src/138_copy_list_with_random_pointer.cpp"
 "src/139_word_break.cpp"
 "src/141_linked_list_cycle.cpp"
+"src/146_LRU_cache.cpp"
 "src/149_max_points_on_a_line.cpp"
 "src/150_evaluate_reverse_polish_notation.cpp"
 "src/151_reverse_words_in_a_string.cpp"
@@ -141,7 +144,7 @@ add_executable (leetcode
 "src/1195_fizz_buzz_multithreaded.cpp"
 "src/1226_the_dining_philosophers.cpp"
 "src/1279_traffic_light_controlled_intersection.cpp"
-"src/3531_count_covered_buildings.cpp" "include/146_LRU_cache.h" "src/146_LRU_cache.cpp")
+"src/3531_count_covered_buildings.cpp")
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)
   set_property(TARGET leetcode PROPERTY CXX_STANDARD 20)

@@ -65,7 +65,9 @@
 #include "86_partition_list.h"
 #include "88_merge_sorted_array.h"
 #include "92_reverse_linked_list_II.h"
+#include "100_same_tree.h"
 #include "101_symmetric_tree.h"
+#include "104_maximum_depth_of_binary_tree.h"
 #include "110_balanced_binary_tree.h"
 #include "120_triangle.h"
 #include "121_best_time_to_buy_and_sell_stock.h"
@@ -1404,6 +1406,53 @@ int main() {
 #endif
     //////////////////////
     /**
+     * 100. Same Tree
+     */
+#if 1
+    {
+        // p = [1,2,3], q = [1,2,3]
+        auto p_1 = std::make_unique<SmartPointer::TreeNode>(
+            1,
+            std::make_unique<SmartPointer::TreeNode>(2),
+            std::make_unique<SmartPointer::TreeNode>(3));
+        auto q_1 = std::make_unique<SmartPointer::TreeNode>(
+            1,
+            std::make_unique<SmartPointer::TreeNode>(2),
+            std::make_unique<SmartPointer::TreeNode>(3));
+
+        // p = [1,2], q = [1,null,2]
+        auto p_2 = std::make_unique<SmartPointer::TreeNode>(
+            1,
+            std::make_unique<SmartPointer::TreeNode>(2),
+            nullptr);
+        auto q_2 = std::make_unique<SmartPointer::TreeNode>(
+            1,
+            nullptr,
+            std::make_unique<SmartPointer::TreeNode>(2));
+
+        // p = [1,2,1], q = [1,1,2]
+        auto p_3 = std::make_unique<SmartPointer::TreeNode>(
+            1,
+            std::make_unique<SmartPointer::TreeNode>(2),
+            std::make_unique<SmartPointer::TreeNode>(1));
+        auto q_3 = std::make_unique<SmartPointer::TreeNode>(
+            1,
+            std::make_unique<SmartPointer::TreeNode>(1),
+            std::make_unique<SmartPointer::TreeNode>(2));
+
+        _100::Solution<ver1> s1{};
+        custom_assert(true == s1.isSameTree(p_1.get(), q_1.get()));
+        custom_assert(false == s1.isSameTree(p_2.get(), q_2.get()));
+        custom_assert(false == s1.isSameTree(p_3.get(), q_3.get()));
+
+        _100::Solution<ver2> s2{};
+        custom_assert(true == s2.isSameTree(p_1.get(), q_1.get()));
+        custom_assert(false == s2.isSameTree(p_2.get(), q_2.get()));
+        custom_assert(false == s2.isSameTree(p_3.get(), q_3.get()));
+    }
+#endif
+    //////////////////////
+    /**
      * 101. Symmetric Tree
      */
 #if 1
@@ -1456,6 +1505,36 @@ int main() {
             custom_assert(false == s.isSymmetric(tn2.get()));
             custom_assert(false == s.isSymmetric(tn3.get()));
         }
+    }
+#endif
+    //////////////////////
+    /**
+     * 104. Maximum Depth of Binary Tree
+     */
+#if 1
+    {
+        //root = [3,9,20,null,null,15,7]
+        auto root1 = std::make_unique<SmartPointer::TreeNode>(
+            3,
+            std::make_unique<SmartPointer::TreeNode>(9),
+            std::make_unique<SmartPointer::TreeNode>(
+                20,
+                std::make_unique<SmartPointer::TreeNode>(15),
+                std::make_unique<SmartPointer::TreeNode>(7)));
+
+        // root = [1,null,2]
+        auto root2 = std::make_unique<SmartPointer::TreeNode>(
+            3,
+            nullptr,
+            std::make_unique<SmartPointer::TreeNode>(2));
+
+        _104::Solution<ver1> s1{};
+        custom_assert(3 == s1.maxDepth(root1.get()));
+        custom_assert(2 == s1.maxDepth(root2.get()));
+
+        _104::Solution<ver2> s2{};
+        custom_assert(3 == s2.maxDepth(root1.get()));
+        custom_assert(2 == s2.maxDepth(root2.get()));
     }
 #endif
     //////////////////////

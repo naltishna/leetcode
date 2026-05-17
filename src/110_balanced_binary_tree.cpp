@@ -35,6 +35,7 @@ namespace _110 {
         if (leftHeight == -1) {
             return -1;
         }
+
         int rightHeight = checkBalance(node->right);
         if (rightHeight == -1 || std::abs(leftHeight - rightHeight) > 1) {
             return -1;
