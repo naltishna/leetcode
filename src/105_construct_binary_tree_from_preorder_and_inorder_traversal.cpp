@@ -3,7 +3,7 @@
 namespace _105 {
 
     /*
-    * Iterative DFS (depth-first traversal) approach.
+    * Recursive DFS (depth-first traversal) approach.
     *
     * Uses the fact that preorder traversal always gives the root first,
     * and inorder splits into left/right subtrees around the root.
@@ -13,7 +13,7 @@ namespace _105 {
     * then left subtree is everything to its left, right - to its right.
     *
     * Time complexity:
-    * O(n)
+    * O(n) — each node visited once, O(1) lookup via hashmap
     *
     * Space complexity:
     * O(n) — hashmap + O(h) recursion stack, where h is tree height (O(log n) balanced, O(n) worst)

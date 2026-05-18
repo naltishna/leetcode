@@ -70,6 +70,7 @@
 #include "101_symmetric_tree.h"
 #include "104_maximum_depth_of_binary_tree.h"
 #include "105_construct_binary_tree_from_preorder_and_inorder_traversal.h"
+#include "106_construct_binary_tree_from_inorder_and_postorder_traversal.h"
 #include "110_balanced_binary_tree.h"
 #include "120_triangle.h"
 #include "121_best_time_to_buy_and_sell_stock.h"
@@ -1594,6 +1595,69 @@ int main() {
 
         RawPointer::TreeNode* built1 = s.buildTree(preorder1, inorder1);
         RawPointer::TreeNode* built2 = s.buildTree(preorder2, inorder2);
+        custom_assert(isSameRaw(output1, built1));
+        custom_assert(isSameRaw(output2, built2));
+
+        destroy(output1);
+        destroy(output2);
+        destroy(built1);
+        destroy(built2);
+    }
+#endif
+    //////////////////////
+    /**
+     * 106. Construct Binary Tree from Inorder and Postorder Traversal
+     */
+#if 1
+    {
+        // inorder = [9,3,15,20,7], postorder = [9,15,7,20,3]
+        std::vector<int> inorder1{ 9, 3, 15, 20, 7 };
+        std::vector<int> postorder1{ 9, 15, 7, 20, 3 };
+        // output = [3,9,20,null,null,15,7]
+        RawPointer::TreeNode* output1 = new RawPointer::TreeNode(
+            3,
+            new RawPointer::TreeNode(9),
+            new RawPointer::TreeNode(
+                20,
+                new RawPointer::TreeNode(15),
+                new RawPointer::TreeNode(7)));
+
+        // inorder = [-1], postorder = [-1]
+        std::vector<int> inorder2{ -1 };
+        std::vector<int> postorder2{ -1 };
+        // output = [-1]
+        RawPointer::TreeNode* output2 = new RawPointer::TreeNode(-1);
+
+        std::function<bool(RawPointer::TreeNode*, RawPointer::TreeNode*)> isSameRaw;
+        isSameRaw = [&isSameRaw](RawPointer::TreeNode* a, RawPointer::TreeNode* b) -> bool {
+            if (a == b) {
+                return true;
+            }
+
+            if (!a || !b) {
+                return false;
+            }
+
+            return a->val == b->val
+                && isSameRaw(a->left, b->left)
+                && isSameRaw(a->right, b->right);
+            };
+
+        std::function<void(RawPointer::TreeNode*)> destroy;
+        destroy = [&destroy](RawPointer::TreeNode* node) {
+            if (!node) {
+                return;
+            }
+
+            destroy(node->left);
+            destroy(node->right);
+            delete node;
+            };
+
+        _106::Solution s{};
+
+        RawPointer::TreeNode* built1 = s.buildTree(inorder1, postorder1);
+        RawPointer::TreeNode* built2 = s.buildTree(inorder2, postorder2);
         custom_assert(isSameRaw(output1, built1));
         custom_assert(isSameRaw(output2, built2));
 
