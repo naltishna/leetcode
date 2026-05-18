@@ -7,7 +7,7 @@
 namespace _100 {
 
     /*
-    * Recursive DFS.
+    * Recursive DFS (depth-first traversal).
     *
     * Compare nodes top-down: if both null -> equal, one null -> not equal,
     * values differ -> not equal, else recurse on both subtrees.
@@ -34,7 +34,9 @@ namespace _100 {
     }
 
     /*
-    * Iterative BFS: queue pairs (p-node, q-node); enqueue matching children left-left and right-right.
+    * Iterative BFS (breadth-first traversal) with a queue.
+    *
+    * Queue pairs (p-node, q-node); enqueue matching children left-left and right-right.
     *
     * Time complexity:
     * O(n)

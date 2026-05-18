@@ -74,6 +74,7 @@ add_executable (leetcode
 "src/100_same_tree.cpp"
 "src/101_symmetric_tree.cpp"
 "src/104_maximum_depth_of_binary_tree.cpp"
+"src/105_construct_binary_tree_from_preorder_and_inorder_traversal.cpp"
 "src/110_balanced_binary_tree.cpp"
 "src/120_triangle.cpp"
 "src/121_best_time_to_buy_and_sell_stock.cpp"
@@ -109,6 +110,7 @@ add_executable (leetcode
 "src/209_minimum_size_subarray_sum.cpp"
 "src/219_contains_duplicate_II.cpp"
 "src/224_basic_calculator.cpp"
+"src/226_invert_binary_tree.cpp"
 "src/228_summary_ranges.cpp"
 "src/238_product_of_array_except_self.cpp"
 "src/239_sliding_window_maximum.cpp"
@@ -144,7 +146,7 @@ add_executable (leetcode
 "src/1195_fizz_buzz_multithreaded.cpp"
 "src/1226_the_dining_philosophers.cpp"
 "src/1279_traffic_light_controlled_intersection.cpp"
-"src/3531_count_covered_buildings.cpp" "include/226_invert_binary_tree.h" "src/226_invert_binary_tree.cpp")
+"src/3531_count_covered_buildings.cpp")
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)
   set_property(TARGET leetcode PROPERTY CXX_STANDARD 20)

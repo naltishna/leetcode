@@ -36,6 +36,7 @@ namespace _226 {
             if (node->left) {
                 nodes.emplace(node->left.get());
             }
+
             if (node->right) {
                 nodes.emplace(node->right.get());
             }

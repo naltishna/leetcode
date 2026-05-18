@@ -3,6 +3,7 @@
 #include <algorithm>
 #include <array>
 #include <cmath>
+#include <functional>
 #include <iostream>
 #include <memory>
 #include <optional>
@@ -68,6 +69,7 @@
 #include "100_same_tree.h"
 #include "101_symmetric_tree.h"
 #include "104_maximum_depth_of_binary_tree.h"
+#include "105_construct_binary_tree_from_preorder_and_inorder_traversal.h"
 #include "110_balanced_binary_tree.h"
 #include "120_triangle.h"
 #include "121_best_time_to_buy_and_sell_stock.h"
@@ -1540,6 +1542,69 @@ int main() {
 #endif
     //////////////////////
     /**
+     * 105. Construct Binary Tree from Preorder and Inorder Traversal
+     */
+#if 1
+    {
+        // preorder = [3,9,20,15,7], inorder = [9,3,15,20,7]
+        std::vector<int> preorder1{ 3, 9, 20, 15, 7 };
+        std::vector<int> inorder1{ 9, 3, 15, 20, 7 };
+        // output = [3,9,20,null,null,15,7]
+        RawPointer::TreeNode* output1 = new RawPointer::TreeNode(
+            3,
+            new RawPointer::TreeNode(9),
+            new RawPointer::TreeNode(
+                20,
+                new RawPointer::TreeNode(15),
+                new RawPointer::TreeNode(7)));
+
+        // preorder = [-1], inorder = [-1]
+        std::vector<int> preorder2{ -1 };
+        std::vector<int> inorder2{ -1 };
+        // output = [-1]
+        RawPointer::TreeNode* output2 = new RawPointer::TreeNode(-1);
+
+        std::function<bool(RawPointer::TreeNode*, RawPointer::TreeNode*)> isSameRaw;
+        isSameRaw = [&isSameRaw](RawPointer::TreeNode* a, RawPointer::TreeNode* b) -> bool {
+            if (a == b) {
+                return true;
+            }
+
+            if (!a || !b) {
+                return false;
+            }
+
+            return a->val == b->val
+                && isSameRaw(a->left, b->left)
+                && isSameRaw(a->right, b->right);
+        };
+
+        std::function<void(RawPointer::TreeNode*)> destroy;
+        destroy = [&destroy](RawPointer::TreeNode* node) {
+            if (!node) {
+                return;
+            }
+
+            destroy(node->left);
+            destroy(node->right);
+            delete node;
+        };
+
+        _105::Solution s{};
+
+        RawPointer::TreeNode* built1 = s.buildTree(preorder1, inorder1);
+        RawPointer::TreeNode* built2 = s.buildTree(preorder2, inorder2);
+        custom_assert(isSameRaw(output1, built1));
+        custom_assert(isSameRaw(output2, built2));
+
+        destroy(output1);
+        destroy(output2);
+        destroy(built1);
+        destroy(built2);
+    }
+#endif
+    //////////////////////
+    /**
      * 110. Balanced Binary Tree
      */
 #if 1
@@ -2512,7 +2577,17 @@ int main() {
 #if 1
     {
         // root = [4,2,7,1,3,6,9]
-        auto root1 = std::make_unique<SmartPointer::TreeNode>(
+        auto root1_iter = std::make_unique<SmartPointer::TreeNode>(
+            4,
+            std::make_unique<SmartPointer::TreeNode>(
+                2,
+                std::make_unique<SmartPointer::TreeNode>(1),
+                std::make_unique<SmartPointer::TreeNode>(3)),
+            std::make_unique<SmartPointer::TreeNode>(
+                7,
+                std::make_unique<SmartPointer::TreeNode>(6),
+                std::make_unique<SmartPointer::TreeNode>(9)));
+        auto root1_rec = std::make_unique<SmartPointer::TreeNode>(
             4,
             std::make_unique<SmartPointer::TreeNode>(
                 2,
@@ -2549,26 +2624,15 @@ int main() {
             std::make_unique<SmartPointer::TreeNode>(3),
             std::make_unique<SmartPointer::TreeNode>(1));
 
-        auto root1_rec = std::make_unique<SmartPointer::TreeNode>(
-            4,
-            std::make_unique<SmartPointer::TreeNode>(
-                2,
-                std::make_unique<SmartPointer::TreeNode>(1),
-                std::make_unique<SmartPointer::TreeNode>(3)),
-            std::make_unique<SmartPointer::TreeNode>(
-                7,
-                std::make_unique<SmartPointer::TreeNode>(6),
-                std::make_unique<SmartPointer::TreeNode>(9)));
-
         _226::Solution<ver1> dfs{};
         _226::Solution<ver2> recursive{};
         _100::Solution<ver1> same{};
 
-        custom_assert(same.isSameTree(output1.get(), dfs.invertTree(root1.get())));
-        custom_assert(same.isSameTree(output1.get(), recursive.invertTree(root1_rec.get())));
+        custom_assert(true == same.isSameTree(output1.get(), dfs.invertTree(root1_iter.get())));
+        custom_assert(true == same.isSameTree(output1.get(), recursive.invertTree(root1_rec.get())));
 
-        custom_assert(same.isSameTree(output2.get(), dfs.invertTree(root2_iter.get())));
-        custom_assert(same.isSameTree(output2.get(), recursive.invertTree(root2_rec.get())));
+        custom_assert(true == same.isSameTree(output2.get(), dfs.invertTree(root2_iter.get())));
+        custom_assert(true == same.isSameTree(output2.get(), recursive.invertTree(root2_rec.get())));
 
         custom_assert(nullptr == dfs.invertTree(nullptr));
         custom_assert(nullptr == recursive.invertTree(nullptr));
