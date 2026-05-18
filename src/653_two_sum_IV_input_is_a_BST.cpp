@@ -55,7 +55,8 @@ namespace _653 {
         }
 
         std::stack<SmartPointer::TreeNode*> leftStack, rightStack;
-        SmartPointer::TreeNode* left = root, * right = root;
+        SmartPointer::TreeNode* left = root;
+        SmartPointer::TreeNode* right = root;
 
         while (left) {
             leftStack.push(left);
@@ -96,6 +97,7 @@ namespace _653 {
                     rightStack.push(node);
                     node = node->right.get();
                 }
+
                 if (!rightStack.empty()) {
                     right = rightStack.top();
                 }
@@ -124,6 +126,7 @@ namespace _653_two_ptr {
             if (sum == k) {
                 return true;
             }
+
             if (sum < k) {
                 left++;
             }

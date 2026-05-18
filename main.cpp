@@ -72,6 +72,7 @@
 #include "105_construct_binary_tree_from_preorder_and_inorder_traversal.h"
 #include "106_construct_binary_tree_from_inorder_and_postorder_traversal.h"
 #include "110_balanced_binary_tree.h"
+#include "112_path_sum.h"
 #include "120_triangle.h"
 #include "121_best_time_to_buy_and_sell_stock.h"
 #include "122_best_time_to_buy_and_sell_stock_II.h"
@@ -1578,7 +1579,7 @@ int main() {
             return a->val == b->val
                 && isSameRaw(a->left, b->left)
                 && isSameRaw(a->right, b->right);
-        };
+            };
 
         std::function<void(RawPointer::TreeNode*)> destroy;
         destroy = [&destroy](RawPointer::TreeNode* node) {
@@ -1589,7 +1590,7 @@ int main() {
             destroy(node->left);
             destroy(node->right);
             delete node;
-        };
+            };
 
         _105::Solution s{};
 
@@ -1651,6 +1652,7 @@ int main() {
 
             destroy(node->left);
             destroy(node->right);
+
             delete node;
             };
 
@@ -1692,6 +1694,75 @@ int main() {
         s.destroy(tn2);
         custom_assert(true == s.isBalanced(tn3));
         s.destroy(tn3);
+    }
+#endif
+    //////////////////////
+    /**
+     * 112. Path Sum
+     */
+#if 1
+    {
+        // root = [5,4,8,11,null,13,4,7,2,null,null,null,1]
+        //        5
+        //       / \
+        //      4   8
+        //     /   / \
+        //   11  13   4
+        //  / \        \
+        // 7   2        1   path 5+4+11+2 = 22
+        auto root1 = std::make_unique<SmartPointer::TreeNode>(
+            5,
+            std::make_unique<SmartPointer::TreeNode>(
+                4,
+                std::make_unique<SmartPointer::TreeNode>(
+                    11,
+                    std::make_unique<SmartPointer::TreeNode>(7),
+                    std::make_unique<SmartPointer::TreeNode>(2)),
+                nullptr),
+            std::make_unique<SmartPointer::TreeNode>(
+                8,
+                std::make_unique<SmartPointer::TreeNode>(13),
+                std::make_unique<SmartPointer::TreeNode>(
+                    4,
+                    nullptr,
+                    std::make_unique<SmartPointer::TreeNode>(1))));
+
+        // root = [1,2,3]
+        auto root2 = std::make_unique<SmartPointer::TreeNode>(
+            1,
+            std::make_unique<SmartPointer::TreeNode>(2),
+            std::make_unique<SmartPointer::TreeNode>(3));
+
+
+        std::function<std::unique_ptr<SmartPointer::TreeNode>(SmartPointer::TreeNode*)> cloneTree;
+        cloneTree = [&cloneTree](SmartPointer::TreeNode* node) -> std::unique_ptr<SmartPointer::TreeNode> {
+            if (!node) {
+                return nullptr;
+            }
+
+            auto copy = std::make_unique<SmartPointer::TreeNode>(node->val);
+            copy->left = cloneTree(node->left.get());
+            copy->right = cloneTree(node->right.get());
+
+            return copy;
+            };
+
+        // root3 = invert(root1)
+        //       5
+        //      / \
+        //     8   4
+        //    / \    \
+        //   4  13   11
+        //  /        / \
+        // 1        2   7
+        auto root3 = cloneTree(root1.get());
+        _226::Solution<ver1> invert{};
+        invert.invertTree(root3.get());
+
+        _112::Solution s{};
+        custom_assert(true == s.hasPathSum(root1.get(), 22));
+        custom_assert(false == s.hasPathSum(root2.get(), 5));
+        custom_assert(true == s.hasPathSum(root3.get(), 22));
     }
 #endif
     //////////////////////

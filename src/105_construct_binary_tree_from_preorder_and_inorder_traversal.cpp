@@ -13,10 +13,10 @@ namespace _105 {
     * then left subtree is everything to its left, right - to its right.
     *
     * Time complexity:
-    * O(n) — each node visited once, O(1) lookup via hashmap
+    * O(n) - each node visited once, O(1) lookup via hashmap
     *
     * Space complexity:
-    * O(n) — hashmap + O(h) recursion stack, where h is tree height (O(log n) balanced, O(n) worst)
+    * O(n) - hashmap + O(h) recursion stack, where h is tree height (O(log n) balanced, O(n) worst)
     */
     RawPointer::TreeNode* Solution::buildTree(std::vector<int>& preorder, std::vector<int>& inorder) {
         const int n = static_cast<int>(inorder.size());

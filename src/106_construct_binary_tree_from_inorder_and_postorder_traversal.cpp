@@ -13,10 +13,10 @@ namespace _106 {
     * then right subtree first, then left (order matters - mirrors postorder's R -> L traversal).
     *
     * Time complexity:
-    * O(n) — each node visited once, O(1) lookup via hashmap
+    * O(n) - each node visited once, O(1) lookup via hashmap
     *
     * Space complexity:
-    * O(n) — hashmap + O(h) recursion stack, where h is tree height
+    * O(n) - hashmap + O(h) recursion stack, where h is tree height
     */
     RawPointer::TreeNode* Solution::buildTree(std::vector<int>& inorder, std::vector<int>& postorder) {
         const int n = static_cast<int>(inorder.size());
