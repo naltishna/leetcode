@@ -73,6 +73,7 @@
 #include "106_construct_binary_tree_from_inorder_and_postorder_traversal.h"
 #include "110_balanced_binary_tree.h"
 #include "112_path_sum.h"
+#include "114_flatten_binary_tree_to_linked_list.h"
 #include "120_triangle.h"
 #include "121_best_time_to_buy_and_sell_stock.h"
 #include "122_best_time_to_buy_and_sell_stock_II.h"
@@ -1763,6 +1764,98 @@ int main() {
         custom_assert(true == s.hasPathSum(root1.get(), 22));
         custom_assert(false == s.hasPathSum(root2.get(), 5));
         custom_assert(true == s.hasPathSum(root3.get(), 22));
+    }
+#endif
+    //////////////////////
+    /**
+     * 114. Flatten Binary Tree to Linked List
+     */
+#if 1
+    {
+        // root = [1, 2, 5, 3, 4, null, 6]
+        // output = [1,null,2,null,3,null,4,null,5,null,6]
+        auto makeTree1 = []() {
+            return new RawPointer::TreeNode(1,
+                new RawPointer::TreeNode(2,
+                    new RawPointer::TreeNode(3), new RawPointer::TreeNode(4)),
+                new RawPointer::TreeNode(5,
+                    nullptr, new RawPointer::TreeNode(6)));
+        };
+
+        RawPointer::TreeNode* root1 = makeTree1();
+        RawPointer::TreeNode* root1_v2 = makeTree1();
+        RawPointer::TreeNode* output1 = new RawPointer::TreeNode(1, nullptr,
+            new RawPointer::TreeNode(2, nullptr,
+                new RawPointer::TreeNode(3, nullptr,
+                    new RawPointer::TreeNode(4, nullptr,
+                        new RawPointer::TreeNode(5,
+                            nullptr, new RawPointer::TreeNode(6))))));
+
+        // root = []
+        // output = []
+        RawPointer::TreeNode* root2 = nullptr;
+        RawPointer::TreeNode* root2_v2 = nullptr;
+        RawPointer::TreeNode* output2 = nullptr;
+
+        // root = [0]
+        // output = [0]
+        RawPointer::TreeNode* root3 = new RawPointer::TreeNode(0);
+        RawPointer::TreeNode* root3_v2 = new RawPointer::TreeNode(0);
+        RawPointer::TreeNode* output3 = new RawPointer::TreeNode(0);
+
+        std::function<bool(RawPointer::TreeNode*, RawPointer::TreeNode*)> isSameRaw;
+        isSameRaw = [&isSameRaw](RawPointer::TreeNode* a, RawPointer::TreeNode* b) -> bool {
+            if (a == b) {
+                return true;
+            }
+
+            if (!a || !b) {
+                return false;
+            }
+
+            return a->val == b->val
+                && isSameRaw(a->left, b->left)
+                && isSameRaw(a->right, b->right);
+            };
+
+        std::function<void(RawPointer::TreeNode*)> destroy;
+        destroy = [&destroy](RawPointer::TreeNode* node) {
+            if (!node) {
+                return;
+            }
+
+            destroy(node->left);
+            destroy(node->right);
+
+            delete node;
+            };
+
+        _114::Solution<ver1> recursive{};
+        _114::Solution<ver2> iterative{};
+
+        recursive.flatten(root1);
+        iterative.flatten(root1_v2);
+        recursive.flatten(root2);
+        iterative.flatten(root2_v2);
+        recursive.flatten(root3);
+        iterative.flatten(root3_v2);
+
+        custom_assert(isSameRaw(output1, root1));
+        custom_assert(isSameRaw(output1, root1_v2));
+        custom_assert(isSameRaw(output2, root2));
+        custom_assert(isSameRaw(output2, root2_v2));
+        custom_assert(isSameRaw(output3, root3));
+        custom_assert(isSameRaw(output3, root3_v2));
+
+        destroy(root1);
+        destroy(root1_v2);
+        destroy(root2);
+        destroy(root2_v2);
+        destroy(root3);
+        destroy(root3_v2);
+        destroy(output1);
+        destroy(output2);
+        destroy(output3);
     }
 #endif
     //////////////////////
