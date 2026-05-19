@@ -36,6 +36,7 @@
 #include "28_find_the_index_of_the_first_occurrence_in_a_string.h"
 #include "30_substring_with_concatenation_of_all_words.h"
 #include "33_search_in_rotated_sorted_array.h"
+#include "34_find_first_and_last_position_of_element_in_sorted_array.h"
 #include "35_search_insert_position.h"
 #include "36_valid_sudoku.h"
 #include "42_trapping_rain_water.h"
@@ -748,6 +749,24 @@ int main() {
         custom_assert(-1 == s.search(nums_2, 3));
         custom_assert(-1 == s.search(nums_3, 0));
         custom_assert(-1 == s.search(nums_4, 0));
+    }
+#endif
+    //////////////////////
+    /**
+     * 34. Find First and Last Position of Element in Sorted Array
+     */
+#if 1
+    {
+        std::vector<int> nums_1{ 5, 7, 7, 8, 8, 10 };
+        std::vector<int> nums_2{ 5, 7, 7, 8, 8, 10 };
+        std::vector<int> nums_3{ };
+        std::vector<int> nums_4{ 1 };
+
+        _34::Solution s{};
+        custom_assert((std::vector<int>{ 3, 4 } == s.searchRange(nums_1, 8)));
+        custom_assert((std::vector<int>{ -1, -1 } == s.searchRange(nums_2, 6)));
+        custom_assert((std::vector<int>{ -1, -1 } == s.searchRange(nums_3, 0)));
+        custom_assert((std::vector<int>{ 0, 0 } == s.searchRange(nums_4, 1)));
     }
 #endif
     //////////////////////
@@ -1782,7 +1801,7 @@ int main() {
                     nullptr, new RawPointer::TreeNode(6)));
         };
 
-        RawPointer::TreeNode* root1 = makeTree1();
+        RawPointer::TreeNode* root1_v1 = makeTree1();
         RawPointer::TreeNode* root1_v2 = makeTree1();
         RawPointer::TreeNode* output1 = new RawPointer::TreeNode(1, nullptr,
             new RawPointer::TreeNode(2, nullptr,
@@ -1833,21 +1852,21 @@ int main() {
         _114::Solution<ver1> recursive{};
         _114::Solution<ver2> iterative{};
 
-        recursive.flatten(root1);
+        recursive.flatten(root1_v1);
         iterative.flatten(root1_v2);
         recursive.flatten(root2);
         iterative.flatten(root2_v2);
         recursive.flatten(root3);
         iterative.flatten(root3_v2);
 
-        custom_assert(isSameRaw(output1, root1));
+        custom_assert(isSameRaw(output1, root1_v1));
         custom_assert(isSameRaw(output1, root1_v2));
         custom_assert(isSameRaw(output2, root2));
         custom_assert(isSameRaw(output2, root2_v2));
         custom_assert(isSameRaw(output3, root3));
         custom_assert(isSameRaw(output3, root3_v2));
 
-        destroy(root1);
+        destroy(root1_v1);
         destroy(root1_v2);
         destroy(root2);
         destroy(root2_v2);
