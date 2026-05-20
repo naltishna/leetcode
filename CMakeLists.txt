@@ -113,6 +113,7 @@ add_executable (leetcode
 "src/206_reverse_linked_list.cpp"
 "src/209_minimum_size_subarray_sum.cpp"
 "src/219_contains_duplicate_II.cpp"
+"src/222_count_complete_tree_nodes.cpp"
 "src/224_basic_calculator.cpp"
 "src/226_invert_binary_tree.cpp"
 "src/228_summary_ranges.cpp"

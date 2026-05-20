@@ -108,6 +108,7 @@
 #include "206_reverse_linked_list.h"
 #include "209_minimum_size_subarray_sum.h"
 #include "219_contains_duplicate_II.h"
+#include "222_count_complete_tree_nodes.h"
 #include "224_basic_calculator.h"
 #include "226_invert_binary_tree.h"
 #include "228_summary_ranges.h"
@@ -2794,6 +2795,45 @@ int main() {
         custom_assert(true == s.containsNearbyDuplicate(nums1, 3));
         custom_assert(true == s.containsNearbyDuplicate(nums2, 1));
         custom_assert(false == s.containsNearbyDuplicate(nums3, 2));
+    }
+#endif
+    //////////////////////
+    /**
+     * 222. Count Complete Tree Nodes
+     */
+#if 1
+    {
+        //root = [1,2,3,4,5,6]
+        auto root1 = std::make_unique<SmartPointer::TreeNode>(
+            1,
+            std::make_unique<SmartPointer::TreeNode>(
+                2,
+                std::make_unique<SmartPointer::TreeNode>(4),
+                std::make_unique<SmartPointer::TreeNode>(5)),
+            std::make_unique<SmartPointer::TreeNode>(
+                3,
+                std::make_unique<SmartPointer::TreeNode>(6),
+                nullptr
+            ));
+
+        // root = []
+        auto root2 = nullptr;
+
+        // root = [1]
+        auto root3 = std::make_unique<SmartPointer::TreeNode>(1);
+
+        {
+            _222::Solution<ver1> s{};
+            custom_assert(6 == s.countNodes(root1.get()));
+            custom_assert(0 == s.countNodes(root2));
+            custom_assert(1 == s.countNodes(root3.get()));
+        }
+        {
+            _222::Solution<ver2> s{};
+            custom_assert(6 == s.countNodes(root1.get()));
+            custom_assert(0 == s.countNodes(root2));
+            custom_assert(1 == s.countNodes(root3.get()));
+        }
     }
 #endif
     //////////////////////
