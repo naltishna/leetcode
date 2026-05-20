@@ -11,10 +11,10 @@ namespace _222 {
     * Uses an explicit stack to traverse every node exactly once.
     *
     * Time complexity:
-    * O(n) — visits every node once
+    * O(n) - visits every node once
     *
     * Space complexity:
-    * O(h) — stack holds at most one path from root to leaf, where h is tree height
+    * O(h) - stack holds at most one path from root to leaf, where h is tree height
     */
     template<>
     int Solution<ver1>::countNodes(SmartPointer::TreeNode* root) {
@@ -60,4 +60,5 @@ namespace _222 {
 
         return 1 + countNodes(root->left.get()) + countNodes(root->right.get());
     }
+
 }

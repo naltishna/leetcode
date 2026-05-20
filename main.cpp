@@ -80,6 +80,7 @@
 #include "122_best_time_to_buy_and_sell_stock_II.h"
 #include "125_valid_palindrome.h"
 #include "128_longest_consecutive_sequence.h"
+#include "129_sum_root_to_leaf_numbers.h"
 #include "134_gas_station.h"
 #include "135_candy.h"
 #include "136_single_number.h"
@@ -1800,7 +1801,7 @@ int main() {
                     new RawPointer::TreeNode(3), new RawPointer::TreeNode(4)),
                 new RawPointer::TreeNode(5,
                     nullptr, new RawPointer::TreeNode(6)));
-        };
+            };
 
         RawPointer::TreeNode* root1_v1 = makeTree1();
         RawPointer::TreeNode* root1_v2 = makeTree1();
@@ -1971,6 +1972,32 @@ int main() {
         custom_assert(4 == s.longestConsecutive(nums1));
         custom_assert(9 == s.longestConsecutive(nums2));
         custom_assert(3 == s.longestConsecutive(nums3));
+    }
+#endif
+    //////////////////////
+    /**
+     * 129. Sum Root to Leaf Numbers
+     */
+#if 1
+    {
+        //root = [1,2,3]
+        auto root1 = std::make_unique<SmartPointer::TreeNode>(
+            1,
+            std::make_unique<SmartPointer::TreeNode>(2),
+            std::make_unique<SmartPointer::TreeNode>(3));
+
+        // root = [4,9,0,5,1]
+        auto root2 = std::make_unique<SmartPointer::TreeNode>(
+            4,
+            std::make_unique<SmartPointer::TreeNode>(
+                9,
+                std::make_unique<SmartPointer::TreeNode>(5),
+                std::make_unique<SmartPointer::TreeNode>(1)),
+            std::make_unique<SmartPointer::TreeNode>(0));
+
+        _129::Solution s{};
+        custom_assert(25 == s.sumNumbers(root1.get()));
+        custom_assert(1026 == s.sumNumbers(root2.get()));
     }
 #endif
     //////////////////////
