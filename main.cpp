@@ -78,6 +78,7 @@
 #include "120_triangle.h"
 #include "121_best_time_to_buy_and_sell_stock.h"
 #include "122_best_time_to_buy_and_sell_stock_II.h"
+#include "124_binary_tree_maximum_path_sum.h"
 #include "125_valid_palindrome.h"
 #include "128_longest_consecutive_sequence.h"
 #include "129_sum_root_to_leaf_numbers.h"
@@ -1940,6 +1941,37 @@ int main() {
         custom_assert(7 == s.maxProfit(prices_1));
         custom_assert(4 == s.maxProfit(prices_2));
         custom_assert(0 == s.maxProfit(prices_3));
+    }
+#endif
+    //////////////////////
+    /**
+     * 124. Binary Tree Maximum Path Sum
+     */
+#if 1
+    {
+        //root = [1,2,3]
+        auto root1 = std::make_unique<SmartPointer::TreeNode>(
+            1,
+            std::make_unique<SmartPointer::TreeNode>(2),
+            std::make_unique<SmartPointer::TreeNode>(3));
+
+        // root = [-10,9,20,null,null,15,7]
+        auto root2 = std::make_unique<SmartPointer::TreeNode>(
+            -10,
+            std::make_unique<SmartPointer::TreeNode>(9),
+            std::make_unique<SmartPointer::TreeNode>(
+                20,
+                std::make_unique<SmartPointer::TreeNode>(15),
+                std::make_unique<SmartPointer::TreeNode>(7)));
+
+        _124::Solution<ver1> iterative{};
+        _124::Solution<ver2> recursive{};
+
+        custom_assert(6 == iterative.maxPathSum(root1.get()));
+        custom_assert(42 == iterative.maxPathSum(root2.get()));
+
+        custom_assert(6 == recursive.maxPathSum(root1.get()));
+        custom_assert(42 == recursive.maxPathSum(root2.get()));
     }
 #endif
     //////////////////////

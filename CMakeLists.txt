@@ -83,8 +83,10 @@ add_executable (leetcode
 "src/120_triangle.cpp"
 "src/121_best_time_to_buy_and_sell_stock.cpp"
 "src/122_best_time_to_buy_and_sell_stock_II.cpp"
+"src/124_binary_tree_maximum_path_sum.cpp"
 "src/125_valid_palindrome.cpp"
 "src/128_longest_consecutive_sequence.cpp"
+"src/129_sum_root_to_leaf_numbers.cpp"
 "src/134_gas_station.cpp"
 "src/135_candy.cpp"
 "src/136_single_number.cpp"
@@ -151,7 +153,7 @@ add_executable (leetcode
 "src/1195_fizz_buzz_multithreaded.cpp"
 "src/1226_the_dining_philosophers.cpp"
 "src/1279_traffic_light_controlled_intersection.cpp"
-"src/3531_count_covered_buildings.cpp" "include/129_sum_root_to_leaf_numbers.h" "src/129_sum_root_to_leaf_numbers.cpp")
+"src/3531_count_covered_buildings.cpp")
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)
   set_property(TARGET leetcode PROPERTY CXX_STANDARD 20)
