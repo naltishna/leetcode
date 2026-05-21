@@ -72,6 +72,7 @@
 #include "104_maximum_depth_of_binary_tree.h"
 #include "105_construct_binary_tree_from_preorder_and_inorder_traversal.h"
 #include "106_construct_binary_tree_from_inorder_and_postorder_traversal.h"
+#include "108_convert_sorted_array_to_binary_search_tree.h"
 #include "110_balanced_binary_tree.h"
 #include "112_path_sum.h"
 #include "114_flatten_binary_tree_to_linked_list.h"
@@ -109,6 +110,7 @@
 #include "205_isomorphic_strings.h"
 #include "206_reverse_linked_list.h"
 #include "209_minimum_size_subarray_sum.h"
+#include "215_Kth_largest_element_in_an_array.h"
 #include "219_contains_duplicate_II.h"
 #include "222_count_complete_tree_nodes.h"
 #include "224_basic_calculator.h"
@@ -1694,6 +1696,78 @@ int main() {
 #endif
     //////////////////////
     /**
+     * 108. Convert Sorted Array to Binary Search Tree
+     */
+#if 1
+    {
+        // nums = [-10,-3,0,5,9]
+        // mid = left + (right - left) / 2 gives:
+        //        0
+        //       / \
+        //    -10   5
+        //      \     \
+        //      -3     9
+        std::vector<int> nums1{ -10, -3, 0, 5, 9 };
+        RawPointer::TreeNode* expected1 = new RawPointer::TreeNode(
+            0,
+            new RawPointer::TreeNode(
+                -10,
+                nullptr,
+                new RawPointer::TreeNode(-3)),
+            new RawPointer::TreeNode(
+                5,
+                nullptr,
+                new RawPointer::TreeNode(9)));
+
+        // nums = [1,3]
+        // output = [1,null,3]
+        std::vector<int> nums2{ 1, 3 };
+        RawPointer::TreeNode* expected2 = new RawPointer::TreeNode(
+            1,
+            nullptr,
+            new RawPointer::TreeNode(3));
+
+        std::function<bool(RawPointer::TreeNode*, RawPointer::TreeNode*)> isSameRaw;
+        isSameRaw = [&isSameRaw](RawPointer::TreeNode* a, RawPointer::TreeNode* b) -> bool {
+            if (a == b) {
+                return true;
+            }
+
+            if (!a || !b) {
+                return false;
+            }
+
+            return a->val == b->val
+                && isSameRaw(a->left, b->left)
+                && isSameRaw(a->right, b->right);
+            };
+
+        std::function<void(RawPointer::TreeNode*)> destroy;
+        destroy = [&destroy](RawPointer::TreeNode* node) {
+            if (!node) {
+                return;
+            }
+
+            destroy(node->left);
+            destroy(node->right);
+            delete node;
+            };
+
+        _108::Solution s{};
+
+        RawPointer::TreeNode* built1 = s.sortedArrayToBST(nums1);
+        RawPointer::TreeNode* built2 = s.sortedArrayToBST(nums2);
+        custom_assert(isSameRaw(expected1, built1));
+        custom_assert(isSameRaw(expected2, built2));
+
+        destroy(expected1);
+        destroy(expected2);
+        destroy(built1);
+        destroy(built2);
+    }
+#endif
+    //////////////////////
+    /**
      * 110. Balanced Binary Tree
      */
 #if 1
@@ -2838,6 +2912,24 @@ int main() {
             custom_assert(0 == s.minSubArrayLen(11, nums2));
             custom_assert(3 == s.minSubArrayLen(11, nums3));
         }
+    }
+#endif
+    //////////////////////
+    /**
+     * 215. Kth Largest Element in an Array
+     */
+#if 1
+    {
+        std::vector<int> nums1{ 3, 2, 1, 5, 6, 4 };
+        std::vector<int> nums2{ 3, 2, 3, 1, 2, 4, 5, 5, 6 };
+
+        _215::Solution<ver1> s1{};
+        custom_assert(5 == s1.findKthLargest(nums1, 2));
+        custom_assert(4 == s1.findKthLargest(nums2, 4));
+
+        _215::Solution<ver2> s2{};
+        custom_assert(5 == s2.findKthLargest(nums1, 2));
+        custom_assert(4 == s2.findKthLargest(nums2, 4));
     }
 #endif
     //////////////////////
