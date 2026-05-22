@@ -70,6 +70,7 @@
 #include "86_partition_list.h"
 #include "88_merge_sorted_array.h"
 #include "92_reverse_linked_list_II.h"
+#include "97_interleaving_string.h"
 #include "100_same_tree.h"
 #include "101_symmetric_tree.h"
 #include "104_maximum_depth_of_binary_tree.h"
@@ -1486,6 +1487,18 @@ int main() {
         UniqueListNode l1(ListNodeHelper::createList({ 1, 2, 3, 4, 5 }));
         UniqueListNode temp(s.reverseBetween(l1.release(), 2, 4));
         custom_assert("{ 1, 4, 3, 2, 5 }" == ListNodeHelper::convertListNodeToString(temp.get()));
+    }
+#endif
+    //////////////////////
+    /**
+     * 97. Interleaving String
+     */
+#if 1
+    {
+        _97::Solution s{};
+        custom_assert(true == s.isInterleave("aabcc", "dbbca", "aadbbcbcac"));
+        custom_assert(false == s.isInterleave("aabcc", "dbbca", "aadbbbaccc"));
+        custom_assert(true == s.isInterleave("", "", ""));
     }
 #endif
     //////////////////////
