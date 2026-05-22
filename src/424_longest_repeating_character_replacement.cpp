@@ -39,7 +39,14 @@ namespace _424 {
     }
 
     /*
-    * Time complexity:
+    * The sliding window algorithm is used to find the longest substring with the same letter after performing the above operations.
+    *
+    * The window is expanded by moving the right pointer to the right and the left pointer to the right when the number of replacements exceeds k.
+    * The window is shrunk by moving the left pointer to the right when the number of replacements exceeds k.
+    * The window is expanded by moving the right pointer to the right when the number of replacements exceeds k.
+    * The window is shrunk by moving the left pointer to the right when the number of replacements exceeds k.
+    *
+    *
     * O(N)
     *
     * Space complexity:

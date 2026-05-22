@@ -18,6 +18,7 @@
 #include "1_two_sum.h"
 #include "2_add_two_numbers.h"
 #include "3_longest_substring_without_repeating_characters.h"
+#include "5_longest_palindromic_substring.h"
 #include "6_zigzag_conversion.h"
 #include "9_palindrome_number.h"
 #include "11_container_with_most_water.h"
@@ -235,6 +236,29 @@ int main() {
             custom_assert(3 == s.lengthOfLongestSubstring("pwwkew"));
             custom_assert(0 == s.lengthOfLongestSubstring(""));
             custom_assert(1 == s.lengthOfLongestSubstring(" "));
+        }
+    }
+#endif
+    //////////////////////
+    /**
+     * 5. Longest Palindromic Substring
+     */
+#if 1
+    {
+        auto runTests = [](auto& s) {
+            const std::string r1 = s.longestPalindrome("babad");
+            custom_assert(r1 == "bab" || r1 == "aba");
+            custom_assert("bb" == s.longestPalindrome("cbbd"));
+            custom_assert("a" == s.longestPalindrome("a"));
+        };
+
+        {
+            _5::Solution<ver1> s{};
+            runTests(s);
+        }
+        {
+            _5::Solution<ver2> s{};
+            runTests(s);
         }
     }
 #endif
