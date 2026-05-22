@@ -61,6 +61,7 @@
 #include "69_sqrt_x.h"
 #include "70_climbing_stairs.h"
 #include "71_simplify_path.h"
+#include "72_edit_distance.h"
 #include "73_set_matrix_zeroes.h"
 #include "74_search_2D_matrix.h"
 #include "76_minimum_window_substring.h"
@@ -1292,6 +1293,18 @@ int main() {
             custom_assert("/" == s.simplifyPath("/../"));
             custom_assert("/.../b/d" == s.simplifyPath("/.../a/../b/c/../d/./"));
         }
+    }
+#endif
+    //////////////////////
+    /**
+     * 72. Edit Distance
+     */
+#if 1
+    {
+        _72::Solution s{};
+        custom_assert(3 == s.minDistance("horse", "ros"));
+        custom_assert(5 == s.minDistance("intention", "execution"));
+        custom_assert(0 == s.minDistance("", ""));
     }
 #endif
     //////////////////////

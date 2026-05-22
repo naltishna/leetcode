@@ -66,6 +66,7 @@ add_executable (leetcode
 "src/69_sqrt_x.cpp"
 "src/70_climbing_stairs.cpp"
 "src/71_simplify_path.cpp"
+"src/72_edit_distance.cpp"
 "src/73_set_matrix_zeroes.cpp"
 "src/74_search_2D_matrix.cpp"
 "src/76_minimum_window_substring.cpp"
