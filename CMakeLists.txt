@@ -57,6 +57,7 @@ add_executable (leetcode
 "src/58_length_of_last_word.cpp"
 "src/61_rotate_list.cpp"
 "src/62_unique_paths.cpp"
+"src/63_unique_paths_ii.cpp"
 "src/64_minimum_path_sum.cpp"
 "src/66_plus_one.cpp"
 "src/67_add_binary.cpp"

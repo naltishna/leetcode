@@ -10,10 +10,10 @@ namespace _64 {
     * First row and column seeded independently as they have only one path.
     *
     * Time complexity:
-    * O(m·n) - every cell visited once
+    * O(m * n) - every cell visited once
     *
     * Space complexity:
-    * O(m·n) - full dp table
+    * O(m * n) - full dp table
     */
     int Solution::minPathSum(std::vector<std::vector<int>>& grid) {
         if (grid.empty() || grid[0].empty()) return 0;
