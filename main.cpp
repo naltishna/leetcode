@@ -52,6 +52,7 @@
 #include "58_length_of_last_word.h"
 #include "61_rotate_list.h"
 #include "62_unique_paths.h"
+#include "64_minimum_path_sum.h"
 #include "66_plus_one.h"
 #include "67_add_binary.h"
 #include "68_text_justification.h"
@@ -1096,6 +1097,20 @@ int main() {
         _62::Solution s{};
         custom_assert(28 == s.uniquePaths(3, 7));
         custom_assert(3 == s.uniquePaths(3, 2));
+    }
+#endif
+    //////////////////////
+    /**
+     * 64. Minimum Path Sum
+     */
+#if 1
+    {
+        std::vector<std::vector<int>> v0{ {1, 3, 1}, {1, 5, 1}, {4, 2, 1 } };
+        std::vector<std::vector<int>> v1{ {1, 2, 3}, {4, 5, 6} };
+
+        _64::Solution s{};
+        custom_assert(7 == s.minPathSum(v0));
+        custom_assert(12 == s.minPathSum(v1));
     }
 #endif
     //////////////////////

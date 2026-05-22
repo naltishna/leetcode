@@ -4,7 +4,7 @@
 namespace {
 
     struct Cell {
-        int row, col, cell;
+        int row_, col_, cell_;
     };
 
 } // namespace
@@ -63,7 +63,7 @@ namespace _289 {
         }
 
         for (const auto& cell : changed) {
-            board[cell.row][cell.col] = cell.cell;
+            board[cell.row_][cell.col_] = cell.cell_;
         }
     }
 
