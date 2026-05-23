@@ -89,6 +89,7 @@ add_executable (leetcode
 "src/120_triangle.cpp"
 "src/121_best_time_to_buy_and_sell_stock.cpp"
 "src/122_best_time_to_buy_and_sell_stock_II.cpp"
+"src/123_best_time_to_buy_and_sell_stock_III.cpp"
 "src/124_binary_tree_maximum_path_sum.cpp"
 "src/125_valid_palindrome.cpp"
 "src/128_longest_consecutive_sequence.cpp"

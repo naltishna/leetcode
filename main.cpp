@@ -84,6 +84,7 @@
 #include "120_triangle.h"
 #include "121_best_time_to_buy_and_sell_stock.h"
 #include "122_best_time_to_buy_and_sell_stock_II.h"
+#include "123_best_time_to_buy_and_sell_stock_III.h"
 #include "124_binary_tree_maximum_path_sum.h"
 #include "125_valid_palindrome.h"
 #include "128_longest_consecutive_sequence.h"
@@ -2100,6 +2101,22 @@ int main() {
 #endif
     //////////////////////
     /**
+     * 123. Best Time to Buy and Sell Stock III
+     */
+#if 1
+    {
+        std::vector<int> prices1{ 3, 3, 5, 0, 0, 3, 1, 4 };
+        std::vector<int> prices2{ 1, 2, 3, 4, 5 };
+        std::vector<int> prices3{ 7, 6, 4, 3, 1 };
+
+        _123::Solution s{};
+        custom_assert(6 == s.maxProfit(prices1));
+        custom_assert(4 == s.maxProfit(prices2));
+        custom_assert(0 == s.maxProfit(prices3));
+    }
+#endif
+    //////////////////////
+    /**
      * 124. Binary Tree Maximum Path Sum
      */
 #if 1
@@ -3858,7 +3875,7 @@ int main() {
 
         _714::Solution s{};
         custom_assert(8 == s.maxProfit(prices1, 2));
-        custom_assert(6 == s.maxProfit(prices2, 3));
+        custom_assert(8 == s.maxProfit(prices2, 3));
     }
 #endif
     //////////////////////
