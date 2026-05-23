@@ -151,6 +151,7 @@ add_executable (leetcode
 "src/653_two_sum_IV_input_is_a_BST.cpp"
 "src/692_top_k_frequent_words.cpp"
 "src/704_binary_search.cpp"
+"src/714_best_time_to_buy_and_sell_stock_with_transaction_fee.cpp"
 "src/763_partition_labels.cpp"
 "src/918_maximum_sum_circular_subarray.cpp"
 "src/1114_print_in_order.cpp"

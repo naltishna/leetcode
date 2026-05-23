@@ -146,6 +146,7 @@
 #include "653_two_sum_IV_input_is_a_BST.h"
 #include "692_top_k_frequent_words.h"
 #include "704_binary_search.h"
+#include "714_best_time_to_buy_and_sell_stock_with_transaction_fee.h"
 #include "763_partition_labels.h"
 #include "918_maximum_sum_circular_subarray.h"
 #include "1114_print_in_order.h"
@@ -3844,6 +3845,20 @@ int main() {
             auto end_time = get_current_time();
             print_elapsed_time(start_time, end_time, "_704_linear_search_ver");
         }
+    }
+#endif
+    //////////////////////
+    /**
+     * 714. Best Time to Buy and Sell Stock with Transaction Fee
+     */
+#if 1
+    {
+        std::vector<int> prices1{ 1, 3, 2, 8, 4, 9 };
+        std::vector<int> prices2{ 1, 3, 7, 5, 10, 12 };
+
+        _714::Solution s{};
+        custom_assert(8 == s.maxProfit(prices1, 2));
+        custom_assert(6 == s.maxProfit(prices2, 3));
     }
 #endif
     //////////////////////
