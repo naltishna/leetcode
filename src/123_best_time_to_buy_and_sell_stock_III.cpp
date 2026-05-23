@@ -6,7 +6,7 @@
 namespace _123 {
 
     /*
-    * Approach: Greedy — 4 State Variables.
+    * Approach: Greedy - 4 State Variables.
     *
     * Simulates two transactions in a single pass using four variables.
     * firstBuy/firstSell track the best first transaction, secondBuy offsets its cost against the first profit,
@@ -25,9 +25,16 @@ namespace _123 {
         int secondSell = 0;
 
         for (int price : prices) {
+            // First transaction.
+            // Buy the stock at the lowest price.
             firstBuy = std::min(firstBuy, price);
+            // Sell the stock at the highest price.
             firstSell = std::max(firstSell, price - firstBuy);
+
+            // Second transaction.
+            // Buy the stock at the lowest price.
             secondBuy = std::min(secondBuy, price - firstSell);
+            // Sell the stock at the highest price.
             secondSell = std::max(secondSell, price - secondBuy);
         }
 

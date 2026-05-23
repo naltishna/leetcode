@@ -85,6 +85,7 @@
 #include "121_best_time_to_buy_and_sell_stock.h"
 #include "122_best_time_to_buy_and_sell_stock_II.h"
 #include "123_best_time_to_buy_and_sell_stock_III.h"
+#include "188_best_time_to_buy_and_sell_stock_IV.h"
 #include "124_binary_tree_maximum_path_sum.h"
 #include "125_valid_palindrome.h"
 #include "128_longest_consecutive_sequence.h"
@@ -2113,6 +2114,22 @@ int main() {
         custom_assert(6 == s.maxProfit(prices1));
         custom_assert(4 == s.maxProfit(prices2));
         custom_assert(0 == s.maxProfit(prices3));
+    }
+#endif
+    //////////////////////
+    /**
+     * 188. Best Time to Buy and Sell Stock IV
+     */
+#if 1
+    {
+        std::vector<int> prices1{ 2, 4, 1 };
+        std::vector<int> prices2{ 3, 2, 6, 5, 0, 3 };
+        std::vector<int> prices3{ 1 };
+
+        _188::Solution s{};
+        custom_assert(2 == s.maxProfit(2, prices1));
+        custom_assert(7 == s.maxProfit(2, prices2));
+        custom_assert(0 == s.maxProfit(1, prices3));
     }
 #endif
     //////////////////////
