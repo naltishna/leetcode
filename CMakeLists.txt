@@ -124,6 +124,7 @@ add_executable (leetcode
 "src/209_minimum_size_subarray_sum.cpp"
 "src/215_Kth_largest_element_in_an_array.cpp"
 "src/219_contains_duplicate_II.cpp"
+"src/221_maximal_square.cpp"
 "src/222_count_complete_tree_nodes.cpp"
 "src/224_basic_calculator.cpp"
 "src/226_invert_binary_tree.cpp"

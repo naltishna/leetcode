@@ -119,6 +119,7 @@
 #include "209_minimum_size_subarray_sum.h"
 #include "215_Kth_largest_element_in_an_array.h"
 #include "219_contains_duplicate_II.h"
+#include "221_maximal_square.h"
 #include "222_count_complete_tree_nodes.h"
 #include "224_basic_calculator.h"
 #include "226_invert_binary_tree.h"
@@ -3061,6 +3062,30 @@ int main() {
         custom_assert(true == s.containsNearbyDuplicate(nums1, 3));
         custom_assert(true == s.containsNearbyDuplicate(nums2, 1));
         custom_assert(false == s.containsNearbyDuplicate(nums3, 2));
+    }
+#endif
+    //////////////////////
+    /**
+     * 221. Maximal Square
+     */
+#if 1
+    {
+        std::vector<std::vector<char>> matrix1{
+            { '1', '0', '1', '0', '0' },
+            { '1', '0', '1', '1', '1' },
+            { '1', '1', '1', '1', '1' },
+            { '1', '0', '0', '1', '0' }
+        };
+        std::vector<std::vector<char>> matrix2{
+            { '0', '1' },
+            { '1', '0' }
+        };
+        std::vector<std::vector<char>> matrix3{ { '0' } };
+
+        _221::Solution s{};
+        custom_assert(4 == s.maximalSquare(matrix1));
+        custom_assert(1 == s.maximalSquare(matrix2));
+        custom_assert(0 == s.maximalSquare(matrix3));
     }
 #endif
     //////////////////////
