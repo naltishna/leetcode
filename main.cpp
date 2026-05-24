@@ -125,6 +125,7 @@
 #include "224_basic_calculator.h"
 #include "226_invert_binary_tree.h"
 #include "228_summary_ranges.h"
+#include "236_lowest_common_ancestor_of_a_binary_tree.h"
 #include "238_product_of_array_except_self.h"
 #include "239_sliding_window_maximum.h"
 #include "242_valid_anagram.h"
@@ -3285,6 +3286,68 @@ int main() {
 
         custom_assert(nullptr == dfs.invertTree(nullptr));
         custom_assert(nullptr == recursive.invertTree(nullptr));
+    }
+#endif
+    //////////////////////
+    /**
+     * 236. Lowest Common Ancestor of a Binary Tree
+     */
+#if 1
+    {
+        // [3,5,1,6,2,0,8,null,null,7,4]
+        //        3
+        //       / \
+        //      5   1
+        //     / \ / \
+        //    6  2 0  8
+        //       / \
+        //      7   4
+        RawPointer::TreeNode* const node4 = new RawPointer::TreeNode(4);
+        RawPointer::TreeNode* const node7 = new RawPointer::TreeNode(7);
+        RawPointer::TreeNode* const node2 = new RawPointer::TreeNode(2, node7, node4);
+        RawPointer::TreeNode* const node6 = new RawPointer::TreeNode(6);
+        RawPointer::TreeNode* const node5 = new RawPointer::TreeNode(5, node6, node2);
+        RawPointer::TreeNode* const node0 = new RawPointer::TreeNode(0);
+        RawPointer::TreeNode* const node8 = new RawPointer::TreeNode(8);
+        RawPointer::TreeNode* const node1 = new RawPointer::TreeNode(1, node0, node8);
+        RawPointer::TreeNode* const root = new RawPointer::TreeNode(3, node5, node1);
+        RawPointer::TreeNode* const root2 = new RawPointer::TreeNode(
+            1,
+            new RawPointer::TreeNode(2),
+            nullptr);
+
+        auto runTests = [](auto& s,
+            RawPointer::TreeNode* root,
+            RawPointer::TreeNode* node5,
+            RawPointer::TreeNode* node1,
+            RawPointer::TreeNode* node4,
+            RawPointer::TreeNode* root2) {
+            //custom_assert(root == s.lowestCommonAncestor(root, node5, node1));
+            custom_assert(node5 == s.lowestCommonAncestor(root, node5, node4));
+            custom_assert(root2 == s.lowestCommonAncestor(root2, root2, root2->left));
+        };
+
+        {
+            _236::Solution<ver1> s{};
+            runTests(s, root, node5, node1, node4, root2);
+        }
+        {
+            _236::Solution<ver2> s{};
+            runTests(s, root, node5, node1, node4, root2);
+        }
+
+        std::function<void(RawPointer::TreeNode*)> destroy;
+        destroy = [&destroy](RawPointer::TreeNode* node) {
+            if (!node) {
+                return;
+            }
+            destroy(node->left);
+            destroy(node->right);
+            delete node;
+        };
+
+        destroy(root);
+        destroy(root2);
     }
 #endif
     //////////////////////

@@ -130,6 +130,7 @@ add_executable (leetcode
 "src/224_basic_calculator.cpp"
 "src/226_invert_binary_tree.cpp"
 "src/228_summary_ranges.cpp"
+"src/236_lowest_common_ancestor_of_a_binary_tree.cpp"
 "src/238_product_of_array_except_self.cpp"
 "src/239_sliding_window_maximum.cpp"
 "src/242_valid_anagram.cpp"
