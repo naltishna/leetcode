@@ -107,6 +107,7 @@
 #include "167_two_sumII_input_array_is_sorted.h"
 #include "169_majority_element.h"
 #include "172_factorial_trailing_zeroes.h"
+#include "173_binary_search_tree_iterator.h"
 #include "189_rotate_array.h"
 #include "190_reverse_bits.h"
 #include "191_number_of_1_bits.h"
@@ -256,7 +257,7 @@ int main() {
             custom_assert(r1 == "bab" || r1 == "aba");
             custom_assert("bb" == s.longestPalindrome("cbbd"));
             custom_assert("a" == s.longestPalindrome("a"));
-        };
+            };
 
         {
             _5::Solution<ver1> s{};
@@ -2748,6 +2749,76 @@ int main() {
         custom_assert(0 == s.trailingZeroes(3));
         custom_assert(1 == s.trailingZeroes(5));
         custom_assert(0 == s.trailingZeroes(0));
+    }
+#endif
+    //////////////////////
+    /**
+     * 173. Binary Search Tree Iterator
+     */
+#if 1
+    {
+        // [7, 3, 15, null, null, 9, 20]
+        //        7
+        //       / \
+        //      3   15
+        //         /  \
+        //        9   20
+        RawPointer::TreeNode* root1 = new RawPointer::TreeNode(
+            7,
+            new RawPointer::TreeNode(3),
+            new RawPointer::TreeNode(
+                15,
+                new RawPointer::TreeNode(9),
+                new RawPointer::TreeNode(20)));
+
+        // [7, 15, 3, 20, 9, null, null]
+        //        7
+        //       / \
+        //     15   3
+        //    /  \
+        //   20   9
+        RawPointer::TreeNode* root2 = new RawPointer::TreeNode(
+            7,
+            new RawPointer::TreeNode(
+                15,
+                new RawPointer::TreeNode(20),
+                new RawPointer::TreeNode(9)),
+            new RawPointer::TreeNode(3));
+
+        _173::BSTIterator it(root1);
+        custom_assert(3 == it.next());
+        custom_assert(7 == it.next());
+        custom_assert(true == it.hasNext());
+        custom_assert(9 == it.next());
+        custom_assert(true == it.hasNext());
+        custom_assert(15 == it.next());
+        custom_assert(true == it.hasNext());
+        custom_assert(20 == it.next());
+        custom_assert(false == it.hasNext());
+
+        _173::BSTIterator it2(root2);
+        custom_assert(20 == it2.next());
+        custom_assert(15 == it2.next());
+        custom_assert(9 == it2.next());
+        custom_assert(true == it2.hasNext());
+        custom_assert(7 == it2.next());
+        custom_assert(true == it2.hasNext());
+        custom_assert(3 == it2.next());
+        custom_assert(false == it2.hasNext());
+
+        std::function<void(RawPointer::TreeNode*)> destroy;
+        destroy = [&destroy](RawPointer::TreeNode* node) {
+            if (!node) {
+                return;
+            }
+
+            destroy(node->left);
+            destroy(node->right);
+            delete node;
+            };
+
+        destroy(root1);
+        destroy(root2);
     }
 #endif
     //////////////////////
