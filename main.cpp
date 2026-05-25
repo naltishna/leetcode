@@ -75,6 +75,7 @@
 #include "100_same_tree.h"
 #include "101_symmetric_tree.h"
 #include "102_binary_tree_level_order_traversal.h"
+#include "103_binary_tree_zigzag_level_order_traversal.h"
 #include "104_maximum_depth_of_binary_tree.h"
 #include "105_construct_binary_tree_from_preorder_and_inorder_traversal.h"
 #include "106_construct_binary_tree_from_inorder_and_postorder_traversal.h"
@@ -1652,6 +1653,33 @@ int main() {
         custom_assert(expected1 == s.levelOrder(root1.get()));
         custom_assert(expected2 == s.levelOrder(root2.get()));
         custom_assert(s.levelOrder(nullptr).empty());
+    }
+#endif
+    //////////////////////
+    /**
+     * 103. Binary Tree Zigzag Level Order Traversal
+     */
+#if 1
+    {
+        // root = [3,9,20,null,null,15,7]
+        auto root1 = std::make_unique<SmartPointer::TreeNode>(
+            3,
+            std::make_unique<SmartPointer::TreeNode>(9),
+            std::make_unique<SmartPointer::TreeNode>(
+                20,
+                std::make_unique<SmartPointer::TreeNode>(15),
+                std::make_unique<SmartPointer::TreeNode>(7)));
+
+        // root = [1]
+        auto root2 = std::make_unique<SmartPointer::TreeNode>(1);
+
+        const std::vector<std::vector<int>> expected1{ {3}, {20, 9}, {15, 7} };
+        const std::vector<std::vector<int>> expected2{ {1} };
+
+        _103::Solution s{};
+        custom_assert(expected1 == s.zigzagLevelOrder(root1.get()));
+        custom_assert(expected2 == s.zigzagLevelOrder(root2.get()));
+        custom_assert(s.zigzagLevelOrder(nullptr).empty());
     }
 #endif
     //////////////////////
