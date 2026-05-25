@@ -113,6 +113,7 @@
 #include "190_reverse_bits.h"
 #include "191_number_of_1_bits.h"
 #include "198_house_robber.h"
+#include "199_binary_tree_right_side_view.h"
 #include "200_number_of_islands.h"
 #include "201_bitwise_AND_of_numbers_range.h"
 #include "202_happy_number.h"
@@ -3014,6 +3015,49 @@ int main() {
         _198::Solution s{};
         custom_assert(4 == s.rob(nums_1));
         custom_assert(12 == s.rob(nums_2));
+    }
+#endif
+    //////////////////////
+    /**
+     * 199. Binary Tree Right Side View
+     */
+#if 1
+    {
+        // root = [1,2,3,null,5,null,4]
+        auto root1 = std::make_unique<SmartPointer::TreeNode>(
+            1,
+            std::make_unique<SmartPointer::TreeNode>(
+                2,
+                nullptr,
+                std::make_unique<SmartPointer::TreeNode>(5)),
+            std::make_unique<SmartPointer::TreeNode>(
+                3,
+                nullptr,
+                std::make_unique<SmartPointer::TreeNode>(4)));
+
+        // root = [1,2,3,4,null,null,null,5]
+        auto root2 = std::make_unique<SmartPointer::TreeNode>(
+            1,
+            std::make_unique<SmartPointer::TreeNode>(
+                2,
+                std::make_unique<SmartPointer::TreeNode>(
+                    4,
+                    std::make_unique<SmartPointer::TreeNode>(5),
+                    nullptr),
+                nullptr),
+            std::make_unique<SmartPointer::TreeNode>(3));
+
+        // root = [1,null,3]
+        auto root3 = std::make_unique<SmartPointer::TreeNode>(
+            1,
+            nullptr,
+            std::make_unique<SmartPointer::TreeNode>(3));
+
+        _199::Solution s{};
+        custom_assert((std::vector<int>{ 1, 3, 4 } == s.rightSideView(root1.get())));
+        custom_assert((std::vector<int>{ 1, 3, 4, 5 } == s.rightSideView(root2.get())));
+        custom_assert((std::vector<int>{ 1, 3 } == s.rightSideView(root3.get())));
+        custom_assert(s.rightSideView(nullptr).empty());
     }
 #endif
     //////////////////////

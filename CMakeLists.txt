@@ -118,6 +118,7 @@ add_executable (leetcode
 "src/190_reverse_bits.cpp"
 "src/191_number_of_1_bits.cpp"
 "src/198_house_robber.cpp"
+"src/199_binary_tree_right_side_view.cpp"
 "src/200_number_of_islands.cpp"
 "src/201_bitwise_AND_of_numbers_range.cpp"
 "src/202_happy_number.cpp"
