@@ -81,6 +81,7 @@
 #include "110_balanced_binary_tree.h"
 #include "112_path_sum.h"
 #include "114_flatten_binary_tree_to_linked_list.h"
+#include "117_populating_next_right_pointers_in_each_node_II.h"
 #include "120_triangle.h"
 #include "121_best_time_to_buy_and_sell_stock.h"
 #include "122_best_time_to_buy_and_sell_stock_II.h"
@@ -547,7 +548,7 @@ int main() {
      */
 #if 1
     {
-        { // recursion ver
+        {   // recursion ver
             ListNode* l1_1 = new ListNode(1, new ListNode(4, new ListNode(5)));
             ListNode* l1_2 = new ListNode(1, new ListNode(3, new ListNode(4)));
             ListNode* l1_3 = new ListNode(2, new ListNode(6));
@@ -574,7 +575,7 @@ int main() {
             ListNodeHelper::freeList(result);
         }
 
-        { // priority_queue ver
+        {   // priority_queue ver
             std::vector<int> data1{ 1, 4, 5 };
             std::vector<int> data2{ 1, 3, 4 };
             std::vector<int> data3 = { 2, 6 };
@@ -2298,6 +2299,76 @@ int main() {
             _137::Solution<ver2> s{};
             custom_assert(3 == s.singleNumber(v1));
             custom_assert(99 == s.singleNumber(v2));
+        }
+    }
+#endif
+    //////////////////////
+    /**
+     * 117. Populating Next Right Pointers in Each Node II
+     */
+#if 1
+    {
+        auto assertLevelNext = [](_117::Node* start, const std::vector<int>& vals) {
+            _117::Node* node = start;
+            for (int val : vals) {
+                custom_assert(node != nullptr);
+                custom_assert(val == node->val);
+                node = node->next;
+            }
+
+            custom_assert(node == nullptr);
+        };
+
+        std::function<void(_117::Node*)> destroyTree;
+        destroyTree = [&destroyTree](_117::Node* node) {
+            if (node == nullptr) {
+                return;
+            }
+
+            destroyTree(node->left);
+            destroyTree(node->right);
+            delete node;
+        };
+
+        auto buildTree1 = []() {
+            _117::Node* const node7 = new _117::Node(7);
+            _117::Node* const node5 = new _117::Node(5);
+            _117::Node* const node4 = new _117::Node(4);
+            _117::Node* const node2 = new _117::Node(2);
+            node2->left = node4;
+            node2->right = node5;
+            _117::Node* const node3 = new _117::Node(3);
+            node3->right = node7;
+            _117::Node* const root = new _117::Node(1);
+            root->left = node2;
+            root->right = node3;
+
+            return root;
+        };
+
+        auto runTests = [&](auto& s) {
+            _117::Node* const root1 = buildTree1();
+            custom_assert(root1 == s.connect(root1));
+            custom_assert(root1->next == nullptr);
+            assertLevelNext(root1->left, { 2, 3 });
+            assertLevelNext(root1->left->left, { 4, 5, 7 });
+            destroyTree(root1);
+
+            _117::Node* const root2 = new _117::Node(1);
+            custom_assert(root2 == s.connect(root2));
+            custom_assert(root2->next == nullptr);
+            destroyTree(root2);
+
+            custom_assert(nullptr == s.connect(nullptr));
+        };
+
+        {
+            _117::Solution<ver1> s{};
+            runTests(s);
+        }
+        {
+            _117::Solution<ver2> s{};
+            runTests(s);
         }
     }
 #endif
