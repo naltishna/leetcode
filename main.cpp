@@ -150,6 +150,7 @@
 #include "452_minimum_number_of_arrows_to_burst_balloons.h"
 #include "480_sliding_window_median.h"
 #include "653_two_sum_IV_input_is_a_BST.h"
+#include "637_average_of_levels_in_binary_tree.h"
 #include "692_top_k_frequent_words.h"
 #include "704_binary_search.h"
 #include "714_best_time_to_buy_and_sell_stock_with_transaction_fee.h"
@@ -3977,6 +3978,45 @@ int main() {
             auto end_time = get_current_time();
             print_elapsed_time(start_time, end_time, "_480_v3");
         }
+    }
+#endif
+    //////////////////////
+    /**
+     * 637. Average of Levels in Binary Tree
+     */
+#if 1
+    {
+        auto assertAverage = [](const std::vector<double>& result, const std::vector<double>& expected) {
+            custom_assert(result.size() == expected.size());
+
+            for (size_t i = 0; i < expected.size(); ++i) {
+                custom_assert(std::abs(result[i] - expected[i]) < 1e-5);
+            }
+            };
+
+        // root = [3,9,20,null,null,15,7]
+        auto root1 = std::make_unique<SmartPointer::TreeNode>(
+            3,
+            std::make_unique<SmartPointer::TreeNode>(9),
+            std::make_unique<SmartPointer::TreeNode>(
+                20,
+                std::make_unique<SmartPointer::TreeNode>(15),
+                std::make_unique<SmartPointer::TreeNode>(7)));
+
+        // root = [3,9,20,15,7,null,null]
+        auto root2 = std::make_unique<SmartPointer::TreeNode>(
+            3,
+            std::make_unique<SmartPointer::TreeNode>(
+                9,
+                std::make_unique<SmartPointer::TreeNode>(15),
+                std::make_unique<SmartPointer::TreeNode>(7)),
+            std::make_unique<SmartPointer::TreeNode>(20));
+
+        const std::vector<double> expected{ 3.0, 14.5, 11.0 };
+
+        _637::Solution s{};
+        assertAverage(s.averageOfLevels(root1.get()), expected);
+        assertAverage(s.averageOfLevels(root2.get()), expected);
     }
 #endif
     //////////////////////

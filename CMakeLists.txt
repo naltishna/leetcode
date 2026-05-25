@@ -155,6 +155,7 @@ add_executable (leetcode
 "src/452_minimum_number_of_arrows_to_burst_balloons.cpp"
 "src/480_sliding_window_median.cpp"
 "src/653_two_sum_IV_input_is_a_BST.cpp"
+"src/637_average_of_levels_in_binary_tree.cpp"
 "src/692_top_k_frequent_words.cpp"
 "src/704_binary_search.cpp"
 "src/714_best_time_to_buy_and_sell_stock_with_transaction_fee.cpp"

@@ -53,7 +53,7 @@ namespace _117 {
     * O(N) - every node visited once
     *
     * Space complexity:
-    * O(W) — queue holds at most one full level, where W is max width
+    * O(W) - queue holds at most one full level, where W is max width
     */
     template <>
     Node* Solution<ver2>::connect(Node* root) {
