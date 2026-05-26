@@ -18,6 +18,7 @@
 #include "1_two_sum.h"
 #include "2_add_two_numbers.h"
 #include "3_longest_substring_without_repeating_characters.h"
+#include "4_median_of_two_sorted_arrays.h"
 #include "5_longest_palindromic_substring.h"
 #include "6_zigzag_conversion.h"
 #include "9_palindrome_number.h"
@@ -250,6 +251,47 @@ int main() {
             custom_assert(3 == s.lengthOfLongestSubstring("pwwkew"));
             custom_assert(0 == s.lengthOfLongestSubstring(""));
             custom_assert(1 == s.lengthOfLongestSubstring(" "));
+        }
+    }
+#endif
+    //////////////////////
+    /**
+     * 4. Median of Two Sorted Arrays
+     */
+#if 1
+    {
+        auto assertAlmostEqual = [](double expected, double actual) {
+            custom_assert(std::abs(expected - actual) < 1e-5);
+        };
+
+        std::vector<int> nums1_1{ 1, 3 };
+        std::vector<int> nums2_1{ 2 };
+
+        std::vector<int> nums1_2{ 1, 2 };
+        std::vector<int> nums2_2{ 3, 4 };
+
+        auto runTests = [&](auto& s) {
+            assertAlmostEqual(2.0, s.findMedianSortedArrays(nums1_1, nums2_1));
+            assertAlmostEqual(2.5, s.findMedianSortedArrays(nums1_2, nums2_2));
+        };
+
+        {
+            _4::Solution<ver1> s{};
+            runTests(s);
+        }
+        {
+            _4::Solution<ver2> s{};
+            runTests(s);
+        }
+        {
+            _4::Solution<ver3> s{};
+            std::vector<int> nums1_1{ 1, 3 };
+            std::vector<int> nums2_1{ 2 };
+            assertAlmostEqual(2.0, s.findMedianSortedArrays(nums1_1, nums2_1));
+
+            std::vector<int> nums1_2{ 1, 2 };
+            std::vector<int> nums2_2{ 3, 4 };
+            assertAlmostEqual(2.5, s.findMedianSortedArrays(nums1_2, nums2_2));
         }
     }
 #endif

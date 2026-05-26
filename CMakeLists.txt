@@ -23,6 +23,7 @@ add_executable (leetcode
 "src/1_two_sum.cpp"
 "src/2_add_two_numbers.cpp"
 "src/3_longest_substring_without_repeating_characters.cpp"
+"src/4_median_of_two_sorted_arrays.cpp"
 "src/5_longest_palindromic_substring.cpp"
 "src/6_zigzag_conversion.cpp"
 "src/9_palindrome_number.cpp"
