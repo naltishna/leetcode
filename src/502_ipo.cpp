@@ -8,16 +8,16 @@
 namespace _502 {
 
     /*
-    * Approach: Greedy + max-heap.
+    * Approach: Greedy and max-heap.
     *
     * Sort projects by required capital. Repeatedly add all affordable projects
     * to a max-heap of profits and pick the most profitable one.
     *
     * Time complexity:
-    * O(n log n) — sorting + each project pushed/popped from heap once
+    * O(n log n) - sorting + each project pushed/popped from heap once
     *
     * Space complexity:
-    * O(n) — projects array + heap
+    * O(n) - projects array + heap
     */
     int Solution::findMaximizedCapital(int k, int w, std::vector<int>& profits, std::vector<int>& capital) {
         const int n = static_cast<int>(profits.size());

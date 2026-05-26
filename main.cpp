@@ -137,6 +137,7 @@
 #include "274_h_index.h"
 #include "289_game_of_life.h"
 #include "290_word_pattern.h"
+#include "295_find_median_from_data_stream.h"
 #include "300_longest_increasing_subsequence.h"
 #include "301_remove_invalid_parentheses.h"
 #include "309_best_time_to_buy_and_sell_stock_with_cooldown.h"
@@ -3717,6 +3718,49 @@ int main() {
             custom_assert(true == s.wordPattern("abba", "dog cat cat dog"));
             custom_assert(false == s.wordPattern("abba", "dog cat cat fish"));
             custom_assert(false == s.wordPattern("aaaa", "dog cat cat dog"));
+        }
+    }
+#endif
+    //////////////////////
+    /**
+     * 295. Find Median from Data Stream
+     */
+#if 1
+    {
+        auto assertAlmostEqual = [](double expected, double actual) {
+            custom_assert(std::abs(expected - actual) < 1e-5);
+        };
+
+        _295::MedianFinder medianFinder{};
+        medianFinder.addNum(1);
+        medianFinder.addNum(2);
+        assertAlmostEqual(1.5, medianFinder.findMedian());
+        medianFinder.addNum(3);
+        assertAlmostEqual(2.0, medianFinder.findMedian());
+
+        // Insertion order is not sorted: forces moves between lowerHalf and upperHalf.
+        // Sorted stream so far -> expected median after each step:
+        // [6] -> 6
+        // [6,10] -> 8
+        // [2,6,10] -> 6
+        // [2,6,8,10] -> 7
+        // [2,4,6,8,10] -> 6
+        // [2,4,6,8,10,12] -> 7
+        // [1,2,4,6,8,10,12] -> 6
+        // [1,2,4,6,8,9,10,12] -> 7
+        // [1,2,3,4,6,8,9,10,12] -> 6
+        // [1,2,3,4,6,7,8,9,10,12] -> 6.5
+        // [1,2,3,4,5,6,7,8,9,10,12] -> 6
+        // [1,2,3,4,5,6,7,8,9,10,11,12] -> 6.5
+        _295::MedianFinder medianFinder2{};
+        const std::vector<int> stream{ 6, 10, 2, 8, 4, 12, 1, 9, 3, 7, 5, 11 };
+        const std::vector<double> expectedMedians{
+            6.0, 8.0, 6.0, 7.0, 6.0, 7.0, 6.0, 7.0, 6.0, 6.5, 6.0, 6.5
+        };
+
+        for (size_t i = 0; i < stream.size(); ++i) {
+            medianFinder2.addNum(stream[i]);
+            assertAlmostEqual(expectedMedians[i], medianFinder2.findMedian());
         }
     }
 #endif

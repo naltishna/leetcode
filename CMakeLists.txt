@@ -142,6 +142,7 @@ add_executable (leetcode
 "src/274_h_index.cpp"
 "src/289_game_of_life.cpp"
 "src/290_word_pattern.cpp"
+"src/295_find_median_from_data_stream.cpp"
 "src/300_longest_increasing_subsequence.cpp"
 "src/301_remove_invalid_parentheses.cpp"
 "src/309_best_time_to_buy_and_sell_stock_with_cooldown.cpp"
