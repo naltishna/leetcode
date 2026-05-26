@@ -152,6 +152,7 @@
 #include "438_find_all_anagrams_in_a_string.h"
 #include "452_minimum_number_of_arrows_to_burst_balloons.h"
 #include "480_sliding_window_median.h"
+#include "530_minimum_absolute_difference_in_bst.h"
 #include "653_two_sum_IV_input_is_a_BST.h"
 #include "637_average_of_levels_in_binary_tree.h"
 #include "692_top_k_frequent_words.h"
@@ -4117,6 +4118,35 @@ int main() {
         _637::Solution s{};
         assertAverage(s.averageOfLevels(root1.get()), expected);
         assertAverage(s.averageOfLevels(root2.get()), expected);
+    }
+#endif
+    //////////////////////
+    /**
+     * 530. Minimum Absolute Difference in BST
+     */
+#if 1
+    {
+        // root = [4,2,6,1,3]
+        auto root1 = std::make_unique<SmartPointer::TreeNode>(
+            4,
+            std::make_unique<SmartPointer::TreeNode>(
+                2,
+                std::make_unique<SmartPointer::TreeNode>(1),
+                std::make_unique<SmartPointer::TreeNode>(3)),
+            std::make_unique<SmartPointer::TreeNode>(6));
+
+        // root = [1,0,48,null,null,12,49]
+        auto root2 = std::make_unique<SmartPointer::TreeNode>(
+            1,
+            std::make_unique<SmartPointer::TreeNode>(0),
+            std::make_unique<SmartPointer::TreeNode>(
+                48,
+                std::make_unique<SmartPointer::TreeNode>(12),
+                std::make_unique<SmartPointer::TreeNode>(49)));
+
+        _530::Solution s{};
+        custom_assert(1 == s.getMinimumDifference(root1.get()));
+        custom_assert(1 == s.getMinimumDifference(root2.get()));
     }
 #endif
     //////////////////////
