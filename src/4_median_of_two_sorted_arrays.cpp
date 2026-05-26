@@ -105,10 +105,10 @@ namespace _4 {
     * insert it - keeping nums1 sorted throughout. Then compute median directly by index.
     *
     * Time complexity:
-    * O(n·m) — n insertions, each shifting up to m elements
+    * O(n*m) - n insertions, each shifting up to m elements
     *
     * Space complexity:
-    * O(1) extra — merges in-place into nums1 (reserve avoids realloc)
+    * O(1) - merges in-place into nums1 (reserve avoids realloc)
     */
     template<>
     double Solution<ver3>::findMedianSortedArrays(std::vector<int>& nums1, std::vector<int>& nums2) {

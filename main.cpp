@@ -153,6 +153,7 @@
 #include "438_find_all_anagrams_in_a_string.h"
 #include "452_minimum_number_of_arrows_to_burst_balloons.h"
 #include "480_sliding_window_median.h"
+#include "502_ipo.h"
 #include "530_minimum_absolute_difference_in_bst.h"
 #include "653_two_sum_IV_input_is_a_BST.h"
 #include "637_average_of_levels_in_binary_tree.h"
@@ -4160,6 +4161,23 @@ int main() {
         _637::Solution s{};
         assertAverage(s.averageOfLevels(root1.get()), expected);
         assertAverage(s.averageOfLevels(root2.get()), expected);
+    }
+#endif
+    //////////////////////
+    /**
+     * 502. IPO
+     */
+#if 1
+    {
+        std::vector<int> profits1{ 1, 2, 3 };
+        std::vector<int> capital1{ 0, 1, 1 };
+
+        std::vector<int> profits2{ 1, 2, 3 };
+        std::vector<int> capital2{ 0, 1, 2 };
+
+        _502::Solution s{};
+        custom_assert(4 == s.findMaximizedCapital(2, 0, profits1, capital1));
+        custom_assert(6 == s.findMaximizedCapital(3, 0, profits2, capital2));
     }
 #endif
     //////////////////////

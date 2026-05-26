@@ -158,6 +158,7 @@ add_executable (leetcode
 "src/438_find_all_anagrams_in_a_string.cpp"
 "src/452_minimum_number_of_arrows_to_burst_balloons.cpp"
 "src/480_sliding_window_median.cpp"
+"src/502_ipo.cpp"
 "src/530_minimum_absolute_difference_in_bst.cpp"
 "src/653_two_sum_IV_input_is_a_BST.cpp"
 "src/637_average_of_levels_in_binary_tree.cpp"

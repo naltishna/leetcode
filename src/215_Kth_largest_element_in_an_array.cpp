@@ -44,6 +44,7 @@ namespace _215 {
     */
     template <>
     int Solution<ver2>::findKthLargest(std::vector<int>& nums, int k) {
+        // The index of the kth largest element in the sorted array.
         const int idx = static_cast<int>(nums.size()) - k;
 
         std::nth_element(nums.begin(), nums.begin() + idx, nums.end());
