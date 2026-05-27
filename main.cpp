@@ -154,6 +154,7 @@
 #include "392_is_subsequence.h"
 #include "412_fizz_buzz.h"
 #include "424_longest_repeating_character_replacement.h"
+#include "427_construct_quad_tree.h"
 #include "438_find_all_anagrams_in_a_string.h"
 #include "452_minimum_number_of_arrows_to_burst_balloons.h"
 #include "480_sliding_window_median.h"
@@ -3665,6 +3666,7 @@ int main() {
             if (!node) {
                 return;
             }
+
             destroy(node->left);
             destroy(node->right);
             delete node;
@@ -4170,6 +4172,69 @@ int main() {
             custom_assert(4 == s.characterReplacement(s_1, 2));
             custom_assert(4 == s.characterReplacement(s_2, 1));
         }
+    }
+#endif
+    //////////////////////
+    /**
+     * 427. Construct Quad Tree
+     */
+#if 1
+    {
+        std::function<void(_427::Node*)> destroyQuadTree;
+        destroyQuadTree = [&destroyQuadTree](_427::Node* node) {
+            if (node == nullptr) {
+                return;
+            }
+
+            destroyQuadTree(node->topLeft);
+            destroyQuadTree(node->topRight);
+            destroyQuadTree(node->bottomLeft);
+            destroyQuadTree(node->bottomRight);
+
+            delete node;
+        };
+
+        auto assertLeaf = [](_427::Node* node, bool val) {
+            custom_assert(node != nullptr);
+            custom_assert(node->isLeaf);
+            custom_assert(val == node->val);
+        };
+
+        _427::Solution s{};
+
+        // grid = [[0,1],[1,0]]
+        std::vector<std::vector<int>> grid1{ {0, 1}, {1, 0} };
+        // output1 = [[0,1],[1,0],[1,1],[1,1],[1,0]]
+        _427::Node* output1 = s.construct(grid1);
+        custom_assert(false == output1->isLeaf);
+        assertLeaf(output1->topLeft, false);
+        assertLeaf(output1->topRight, true);
+        assertLeaf(output1->bottomLeft, true);
+        assertLeaf(output1->bottomRight, false);
+        destroyQuadTree(output1);
+
+        // grid = [[1,1,1,1],[1,1,1,1],[1,1,1,1],[1,1,1,1]]
+        std::vector<std::vector<int>> grid2(4, std::vector<int>(4, 1));
+        // root2 = [[1,1],[1,1]]
+        _427::Node* output2 = s.construct(grid2);
+        assertLeaf(output2, true);
+        destroyQuadTree(output2);
+
+        // grid = [[1,1,0,0],[1,1,0,0],[0,0,1,1],[0,0,1,1]]
+        std::vector<std::vector<int>> grid3{
+            {1, 1, 0, 0},
+            {1, 1, 0, 0},
+            {0, 0, 1, 1},
+            {0, 0, 1, 1}
+        };
+        // output3 = [[0,1],[1,1],[1,0],[0,1],[1,0],[1,0],[1,1],[0,1],[1,0]]
+        _427::Node* output3 = s.construct(grid3);
+        custom_assert(false == output3->isLeaf);
+        assertLeaf(output3->topLeft, true);
+        assertLeaf(output3->topRight, false);
+        assertLeaf(output3->bottomLeft, false);
+        assertLeaf(output3->bottomRight, true);
+        destroyQuadTree(output3);
     }
 #endif
     //////////////////////
