@@ -125,6 +125,7 @@
 #include "209_minimum_size_subarray_sum.h"
 #include "215_Kth_largest_element_in_an_array.h"
 #include "219_contains_duplicate_II.h"
+#include "230_kth_smallest_element_in_a_bst.h"
 #include "221_maximal_square.h"
 #include "222_count_complete_tree_nodes.h"
 #include "224_basic_calculator.h"
@@ -3503,6 +3504,55 @@ int main() {
 
         custom_assert(nullptr == dfs.invertTree(nullptr));
         custom_assert(nullptr == recursive.invertTree(nullptr));
+    }
+#endif
+    //////////////////////
+    /**
+     * 230. Kth Smallest Element in a BST
+     */
+#if 1
+    {
+        // root = [3,1,4,null,2]
+        auto root1 = std::make_unique<SmartPointer::TreeNode>(
+            3,
+            std::make_unique<SmartPointer::TreeNode>(
+                1,
+                nullptr,
+                std::make_unique<SmartPointer::TreeNode>(2)),
+            std::make_unique<SmartPointer::TreeNode>(4));
+
+        // root = [5,3,6,2,4,null,null,1]
+        auto root2 = std::make_unique<SmartPointer::TreeNode>(
+            5,
+            std::make_unique<SmartPointer::TreeNode>(
+                3,
+                std::make_unique<SmartPointer::TreeNode>(
+                    2,
+                    std::make_unique<SmartPointer::TreeNode>(1),
+                    nullptr),
+                std::make_unique<SmartPointer::TreeNode>(4)),
+            std::make_unique<SmartPointer::TreeNode>(6));
+
+        // root = [10,9,18,null,null,12,20,11]
+        // left subtree: single node 9
+        // in-order: 9, 10, 11, 12, 18, 20
+        // minimum in right subtree: 11
+        auto root3 = std::make_unique<SmartPointer::TreeNode>(
+            10,
+            std::make_unique<SmartPointer::TreeNode>(9),
+            std::make_unique<SmartPointer::TreeNode>(
+                18,
+                std::make_unique<SmartPointer::TreeNode>(
+                    12,
+                    std::make_unique<SmartPointer::TreeNode>(11),
+                    nullptr),
+                std::make_unique<SmartPointer::TreeNode>(20)));
+
+        _230::Solution s{};
+        //custom_assert(1 == s.kthSmallest(root1.get(), 1));
+        //custom_assert(3 == s.kthSmallest(root2.get(), 3));
+        //custom_assert(9 == s.kthSmallest(root3.get(), 1));
+        custom_assert(11 == s.kthSmallest(root3.get(), 3));
     }
 #endif
     //////////////////////
