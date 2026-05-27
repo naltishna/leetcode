@@ -13,9 +13,19 @@ ListNode* ListNodeHelper::createList(const std::vector<int>& vals) {
         current->next = new ListNode(vals[i]);
         current = current->next;
     }
+    
     return head;
 }
 
+/*
+* Approach: Iterative traversal with a set to detect cycles.
+*
+* Time complexity:
+* O(N)
+*
+* Space complexity:
+* O(N)
+*/
 void ListNodeHelper::freeList(ListNode* head) {
     std::unordered_set<ListNode*> visited;
 

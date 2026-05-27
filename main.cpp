@@ -103,6 +103,7 @@
 #include "139_word_break.h"
 #include "141_linked_list_cycle.h"
 #include "146_LRU_cache.h"
+#include "148_sort_list.h"
 #include "149_max_points_on_a_line.h"
 #include "150_evaluate_reverse_polish_notation.h"
 #include "151_reverse_words_in_a_string.h"
@@ -2789,6 +2790,27 @@ int main() {
         custom_assert(-1 == lRUCache.get(1));
         custom_assert(3 == lRUCache.get(3));
         custom_assert(4 == lRUCache.get(4));
+    }
+#endif
+    //////////////////////
+    /**
+     * 148. Sort List
+     */
+#if 1
+    {
+        _148::Solution s{};
+
+        ListNode* list1 = ListNodeHelper::createList({ 4, 2, 1, 3 });
+        ListNode* result1 = s.sortList(list1);
+        custom_assert("{ 1, 2, 3, 4 }" == ListNodeHelper::convertListNodeToString(result1));
+        ListNodeHelper::freeList(result1);
+
+        ListNode* list2 = ListNodeHelper::createList({ -1, 5, 3, 4, 0 });
+        ListNode* result2 = s.sortList(list2);
+        custom_assert("{ -1, 0, 3, 4, 5 }" == ListNodeHelper::convertListNodeToString(result2));
+        ListNodeHelper::freeList(result2);
+
+        custom_assert(nullptr == s.sortList(nullptr));
     }
 #endif
     //////////////////////

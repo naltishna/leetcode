@@ -108,6 +108,7 @@ add_executable (leetcode
 "src/139_word_break.cpp"
 "src/141_linked_list_cycle.cpp"
 "src/146_LRU_cache.cpp"
+"src/148_sort_list.cpp"
 "src/149_max_points_on_a_line.cpp"
 "src/150_evaluate_reverse_polish_notation.cpp"
 "src/151_reverse_words_in_a_string.cpp"
