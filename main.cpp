@@ -73,6 +73,7 @@
 #include "88_merge_sorted_array.h"
 #include "92_reverse_linked_list_II.h"
 #include "97_interleaving_string.h"
+#include "98_validate_binary_search_tree.h"
 #include "100_same_tree.h"
 #include "101_symmetric_tree.h"
 #include "102_binary_tree_level_order_traversal.h"
@@ -1569,6 +1570,40 @@ int main() {
         custom_assert(true == s.isInterleave("aabcc", "dbbca", "aadbbcbcac"));
         custom_assert(false == s.isInterleave("aabcc", "dbbca", "aadbbbaccc"));
         custom_assert(true == s.isInterleave("", "", ""));
+    }
+#endif
+    //////////////////////
+    /**
+     * 98. Validate Binary Search Tree
+     */
+#if 1
+    {
+        // root = [2,1,3]
+        auto root1 = std::make_unique<SmartPointer::TreeNode>(
+            2,
+            std::make_unique<SmartPointer::TreeNode>(1),
+            std::make_unique<SmartPointer::TreeNode>(3));
+        // root = [5,1,4,null,null,3,6]
+        auto root2 = std::make_unique<SmartPointer::TreeNode>(
+            5,
+            std::make_unique<SmartPointer::TreeNode>(1),
+            std::make_unique<SmartPointer::TreeNode>(
+                4,
+                std::make_unique<SmartPointer::TreeNode>(3),
+                std::make_unique<SmartPointer::TreeNode>(6)));
+        // root = [5,4,6,null,null,3,7]
+        auto root3 = std::make_unique<SmartPointer::TreeNode>(
+            5,
+            std::make_unique<SmartPointer::TreeNode>(4),
+            std::make_unique<SmartPointer::TreeNode>(
+                6,
+                std::make_unique<SmartPointer::TreeNode>(3),
+                std::make_unique<SmartPointer::TreeNode>(7)));
+
+        _98::Solution s{};
+        custom_assert(true == s.isValidBST(root1.get()));
+        custom_assert(false == s.isValidBST(root2.get()));
+        custom_assert(false == s.isValidBST(root3.get()));
     }
 #endif
     //////////////////////
@@ -3549,9 +3584,9 @@ int main() {
                 std::make_unique<SmartPointer::TreeNode>(20)));
 
         _230::Solution s{};
-        //custom_assert(1 == s.kthSmallest(root1.get(), 1));
-        //custom_assert(3 == s.kthSmallest(root2.get(), 3));
-        //custom_assert(9 == s.kthSmallest(root3.get(), 1));
+        custom_assert(1 == s.kthSmallest(root1.get(), 1));
+        custom_assert(3 == s.kthSmallest(root2.get(), 3));
+        custom_assert(9 == s.kthSmallest(root3.get(), 1));
         custom_assert(11 == s.kthSmallest(root3.get(), 3));
     }
 #endif
