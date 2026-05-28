@@ -42,7 +42,7 @@ namespace _17 {
                 backtrack(index + 1);
                 current.pop_back();
             }
-            };
+        };
 
         backtrack(0);
 

@@ -67,6 +67,7 @@
 #include "73_set_matrix_zeroes.h"
 #include "74_search_2D_matrix.h"
 #include "76_minimum_window_substring.h"
+#include "77_combinations.h"
 #include "80_remove_duplicates_from_sorted_array_II.h"
 #include "81_search_in_rotated_sorted_arrayII.h"
 #include "82_remove_duplicates_from_sorted_list_II.h"
@@ -1473,6 +1474,32 @@ int main() {
         custom_assert("a" == s.minWindow(str1_0, str1_1));
         custom_assert("" == s.minWindow(str2_0, str2_1));
         custom_assert("b" == s.minWindow(str3_0, str3_1));
+    }
+#endif
+    //////////////////////
+    /**
+     * 77. Combinations
+     */
+#if 1
+    {
+        auto runTests = [&](auto& s) {
+            const std::vector<std::vector<int>> expected1{
+                {1, 2}, {1, 3}, {1, 4}, {2, 3}, {2, 4}, {3, 4}
+            };
+            custom_assert(vectors_to_string(expected1) == vectors_to_string(s.combine(4, 2)));
+
+            const std::vector<std::vector<int>> expected2{ {1} };
+            custom_assert(vectors_to_string(expected2) == vectors_to_string(s.combine(1, 1)));
+        };
+
+        {
+            _77::Solution<ver1> s{};
+            runTests(s);
+        }
+        {
+            _77::Solution<ver2> s{};
+            runTests(s);
+        }
     }
 #endif
     //////////////////////
