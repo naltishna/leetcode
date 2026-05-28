@@ -27,6 +27,7 @@
 #include "13_roman_to_integer.h"
 #include "14_longest_common_prefix.h"
 #include "15_3sum.h"
+#include "17_letter_combinations_of_a_phone_number.h"
 #include "18_4sum.h"
 #include "19_remove_nth_node_from_end_of_list.h"
 #include "20_valid_parentheses.h"
@@ -446,6 +447,38 @@ int main() {
             custom_assert(0 == s.threeSum(l1).size());
             custom_assert(1 == s.threeSum(l2).size());
             custom_assert(0 == s.threeSum(l3).size());
+        }
+    }
+#endif
+    //////////////////////
+    /**
+     * 17. Letter Combinations of a Phone Number
+     */
+#if 1
+    {
+        auto sortStrings = [](std::vector<std::string>& values) {
+            std::sort(values.begin(), values.end());
+        };
+
+        auto runTests = [&](auto& s) {
+            std::vector<std::string> result1 = s.letterCombinations("23");
+            sortStrings(result1);
+            custom_assert("{ ad, ae, af, bd, be, bf, cd, ce, cf }" == vector_to_string(result1));
+
+            custom_assert(s.letterCombinations("").empty());
+
+            std::vector<std::string> result2 = s.letterCombinations("2");
+            sortStrings(result2);
+            custom_assert("{ a, b, c }" == vector_to_string(result2));
+        };
+
+        {
+            _17::Solution<ver1> s{};
+            runTests(s);
+        }
+        {
+            _17::Solution<ver2> s{};
+            runTests(s);
         }
     }
 #endif

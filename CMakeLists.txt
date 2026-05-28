@@ -32,6 +32,7 @@ add_executable (leetcode
 "src/13_roman_to_integer.cpp"
 "src/14_longest_common_prefix.cpp"
 "src/15_3sum.cpp"
+"src/17_letter_combinations_of_a_phone_number.cpp"
 "src/18_4sum.cpp"
 "src/19_remove_nth_node_from_end_of_list.cpp"
 "src/20_valid_parentheses.cpp"
