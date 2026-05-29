@@ -32,6 +32,7 @@
 #include "19_remove_nth_node_from_end_of_list.h"
 #include "20_valid_parentheses.h"
 #include "21_merge_two_sorted_lists.h"
+#include "22_generate_parentheses.h"
 #include "23_merge_k_sorted_lists.h"
 #include "25_reverse_nodes_in_k_group.h"
 #include "26_remove_duplicates_from_sorted_array.h"
@@ -635,6 +636,39 @@ int main() {
 #endif
     //////////////////////
     /**
+     * 22. Generate Parentheses
+     */
+#if 1
+    {
+        auto runTests = [&](auto& s) {
+            auto sortStrings = [](std::vector<std::string>& values) {
+                std::sort(values.begin(), values.end());
+            };
+
+            std::vector<std::string> result1 = s.generateParenthesis(3);
+            sortStrings(result1);
+            custom_assert("{ ((())), (()()), (())(), ()(()), ()()() }" == vector_to_string(result1));
+
+            std::vector<std::string> result2 = s.generateParenthesis(1);
+            custom_assert("{ () }" == vector_to_string(result2));
+
+            std::vector<std::string> result3 = s.generateParenthesis(2);
+            sortStrings(result3);
+            custom_assert("{ (()), ()() }" == vector_to_string(result3));
+        };
+
+        {
+            _22::Solution<ver1> s{};
+            runTests(s);
+        }
+        {
+            _22::Solution<ver2> s{};
+            runTests(s);
+        }
+    }
+#endif
+    //////////////////////
+    /**
      * 23. Merge k Sorted Lists algorithm
      */
 #if 1
@@ -1157,6 +1191,10 @@ int main() {
         }
         {
             _52::Solution<ver2> s{};
+            runTests(s);
+        }
+        {
+            _52::Solution<ver3> s{};
             runTests(s);
         }
     }

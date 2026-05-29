@@ -37,6 +37,7 @@ add_executable (leetcode
 "src/19_remove_nth_node_from_end_of_list.cpp"
 "src/20_valid_parentheses.cpp"
 "src/21_merge_two_sorted_lists.cpp"
+"src/22_generate_parentheses.cpp"
 "src/23_merge_k_sorted_lists.cpp"
 "src/25_reverse_nodes_in_k_group.cpp"
 "src/26_remove_duplicates_from_sorted_array.cpp"

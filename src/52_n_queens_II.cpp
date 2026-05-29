@@ -2,6 +2,8 @@
 #include "class_version.h"
 
 #include <functional>
+#include <sstream>
+#include <unordered_map>
 #include <unordered_set>
 #include <vector>
 
@@ -47,7 +49,7 @@ namespace _52 {
                 diag1.erase(d1);
                 diag2.erase(d2);
             }
-            };
+        };
 
         backtrack(0);
 
@@ -113,6 +115,87 @@ namespace _52 {
         }
 
         return count;
+    }
+
+    /*
+    * Approach: Dynamic programming with memoization.
+    *
+    * Same row-by-row placement as backtracking, but results for states
+    * (row, cols, diag1, diag2) are cached in a memo table.
+    *
+    * Time complexity:
+    * O(number of distinct states * n)
+    *
+    * Space complexity:
+    * O(number of distinct states) - memo table
+    */
+    template<>
+    int Solution<ver3>::totalNQueens(int n) {
+        std::unordered_map<std::string, int> memo;
+
+        auto makeKey = [](int row,
+                          const std::unordered_set<int>& cols,
+                          const std::unordered_set<int>& diag1,
+                          const std::unordered_set<int>& diag2) {
+            std::ostringstream ss;
+            ss << row << '|';
+
+            for (int value : cols) {
+                ss << value << ',';
+            }
+            ss << '|';
+
+            for (int value : diag1) {
+                ss << value << ',';
+            }
+            ss << '|';
+
+            for (int value : diag2) {
+                ss << value << ',';
+            }
+
+            return ss.str();
+        };
+
+        std::function<int(int, std::unordered_set<int>, std::unordered_set<int>, std::unordered_set<int>)> dp =
+            [&](int row,
+                std::unordered_set<int> cols,
+                std::unordered_set<int> diag1,
+                std::unordered_set<int> diag2) -> int {
+            if (row == n) {
+                return 1;
+            }
+
+            const std::string key = makeKey(row, cols, diag1, diag2);
+            if (const auto it = memo.find(key); it != memo.end()) {
+                return it->second;
+            }
+
+            int count = 0;
+
+            for (int col = 0; col < n; ++col) {
+                const int d1 = row - col;
+                const int d2 = row + col;
+
+                if (cols.count(col) || diag1.count(d1) || diag2.count(d2)) {
+                    continue;
+                }
+
+                cols.insert(col);
+                diag1.insert(d1);
+                diag2.insert(d2);
+                count += dp(row + 1, cols, diag1, diag2);
+                cols.erase(col);
+                diag1.erase(d1);
+                diag2.erase(d2);
+            }
+
+            memo[key] = count;
+
+            return count;
+        };
+
+        return dp(0, {}, {}, {});
     }
 
 }
