@@ -67,6 +67,7 @@
 #include "72_edit_distance.h"
 #include "73_set_matrix_zeroes.h"
 #include "74_search_2D_matrix.h"
+#include "39_combination_sum.h"
 #include "76_minimum_window_substring.h"
 #include "77_combinations.h"
 #include "80_remove_duplicates_from_sorted_array_II.h"
@@ -1499,6 +1500,36 @@ int main() {
             custom_assert(true == s.searchMatrix(matrix2, 3));
             custom_assert(true == s.searchMatrix(matrix2, 1));
             custom_assert(false == s.searchMatrix(matrix2, 0));
+        }
+    }
+#endif
+    //////////////////////
+    /**
+     * 39. Combination Sum
+     */
+#if 1
+    {
+        auto runTests = [&](auto& s) {
+            std::vector<int> candidates1{ 2, 3, 6, 7 };
+            const std::vector<std::vector<int>> expected1{ {2, 2, 3}, {7} };
+            custom_assert(vectors_to_string(expected1) == vectors_to_string(s.combinationSum(candidates1, 7)));
+
+            std::vector<int> candidates2{ 2, 3, 5 };
+            const std::vector<std::vector<int>> expected2{ {2, 2, 2, 2}, {2, 3, 3}, {3, 5} };
+            custom_assert(vectors_to_string(expected2) == vectors_to_string(s.combinationSum(candidates2, 8)));
+
+            std::vector<int> candidates3{ 2 };
+            const std::vector<std::vector<int>> expected3{};
+            custom_assert(vectors_to_string(expected3) == vectors_to_string(s.combinationSum(candidates3, 1)));
+        };
+
+        {
+            _39::Solution<ver1> s{};
+            runTests(s);
+        }
+        {
+            _39::Solution<ver2> s{};
+            runTests(s);
         }
     }
 #endif

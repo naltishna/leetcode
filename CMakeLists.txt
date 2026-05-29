@@ -72,6 +72,7 @@ add_executable (leetcode
 "src/72_edit_distance.cpp"
 "src/73_set_matrix_zeroes.cpp"
 "src/74_search_2D_matrix.cpp"
+"src/39_combination_sum.cpp"
 "src/76_minimum_window_substring.cpp"
 "src/77_combinations.cpp"
 "src/80_remove_duplicates_from_sorted_array_II.cpp"
