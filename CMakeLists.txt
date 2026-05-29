@@ -53,6 +53,7 @@ add_executable (leetcode
 "src/48_rotate_image.cpp"
 "src/49_group_anagrams.cpp"
 "src/50_pow_x_n_times.cpp"
+"src/52_n_queens_II.cpp"
 "src/53_maximum_subarray.cpp"
 "src/54_spiral_matrix.cpp"
 "src/55_jump_game.cpp"

@@ -48,6 +48,7 @@
 #include "48_rotate_image.h"
 #include "49_group_anagrams.h"
 #include "50_pow_x_n_times.h"
+#include "52_n_queens_II.h"
 #include "53_maximum_subarray.h"
 #include "54_spiral_matrix.h"
 #include "55_jump_game.h"
@@ -1135,6 +1136,28 @@ int main() {
             assertAlmostEqual5(1024.00000, s.myPow(2.00000, 10));
             assertAlmostEqual5(9.26100, s.myPow(2.10000, 3));
             assertAlmostEqual5(0.25000, s.myPow(2.00000, -2));
+        }
+    }
+#endif
+    //////////////////////
+    /**
+     * 52. N-Queens II
+     */
+#if 1
+    {
+        auto runTests = [&](auto& s) {
+            custom_assert(2 == s.totalNQueens(4));
+            custom_assert(1 == s.totalNQueens(1));
+            custom_assert(92 == s.totalNQueens(8));
+        };
+
+        {
+            _52::Solution<ver1> s{};
+            runTests(s);
+        }
+        {
+            _52::Solution<ver2> s{};
+            runTests(s);
         }
     }
 #endif
