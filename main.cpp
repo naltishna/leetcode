@@ -44,6 +44,7 @@
 #include "36_valid_sudoku.h"
 #include "42_trapping_rain_water.h"
 #include "45_jump_game_II.h"
+#include "46_permutations.h"
 #include "48_rotate_image.h"
 #include "49_group_anagrams.h"
 #include "50_pow_x_n_times.h"
@@ -126,6 +127,7 @@
 #include "202_happy_number.h"
 #include "205_isomorphic_strings.h"
 #include "206_reverse_linked_list.h"
+#include "208_implement_trie_prefix_tree.h"
 #include "209_minimum_size_subarray_sum.h"
 #include "215_Kth_largest_element_in_an_array.h"
 #include "219_contains_duplicate_II.h"
@@ -998,6 +1000,52 @@ int main() {
             custom_assert(2 == s.jump(nums_1));
             custom_assert(2 == s.jump(nums_2));
             custom_assert(0 == s.jump(nums_3));
+        }
+    }
+#endif
+    //////////////////////
+    /**
+     * 46. Permutations
+     */
+#if 1
+    {
+        auto runTests = [&](auto& s) {
+            auto permute_sorted = [&](std::vector<int> nums) {
+                auto result = s.permute(nums);
+                std::sort(result.begin(), result.end());
+                return result;
+            };
+
+            std::vector<int> nums1{ 1, 2, 3 };
+            const std::vector<std::vector<int>> expected1{
+                {1, 2, 3}, {1, 3, 2}, {2, 1, 3}, {2, 3, 1}, {3, 1, 2}, {3, 2, 1}
+            };
+            custom_assert(vectors_to_string(expected1) == vectors_to_string(permute_sorted(nums1)));
+
+            std::vector<int> nums2{ 0, 1 };
+            const std::vector<std::vector<int>> expected2{ {0, 1}, {1, 0} };
+            custom_assert(vectors_to_string(expected2) == vectors_to_string(permute_sorted(nums2)));
+
+            std::vector<int> nums3{ 1 };
+            const std::vector<std::vector<int>> expected3{ {1} };
+            custom_assert(vectors_to_string(expected3) == vectors_to_string(permute_sorted(nums3)));
+        };
+
+        {
+            _46::Solution<ver1> s{};
+            runTests(s);
+        }
+        {
+            _46::Solution<ver2> s{};
+            runTests(s);
+        }
+        {
+            _46::Solution<ver3> s{};
+            runTests(s);
+        }
+        {
+            _46::Solution<ver4> s{};
+            runTests(s);
         }
     }
 #endif
@@ -3409,6 +3457,29 @@ int main() {
         ListNode* result3 = s.reverseList(list3);
         custom_assert("{ }" == ListNodeHelper::convertListNodeToString(result3));
         ListNodeHelper::freeList(result3);
+    }
+#endif
+    //////////////////////
+    /**
+     * 208. Implement Trie (Prefix Tree)
+     */
+#if 1
+    {
+        _208::Trie trie{};
+
+        trie.insert("apple");
+        trie.insert("pear");
+        custom_assert(trie.search("pear"));
+        custom_assert(trie.search("apple"));
+        custom_assert(!trie.search("app"));
+        custom_assert(trie.startsWith("app"));
+
+        trie.insert("app");
+        custom_assert(trie.search("app"));
+        custom_assert(trie.startsWith("ap"));
+        custom_assert(!trie.search("appl"));
+        custom_assert(!trie.search("banana"));
+        custom_assert(!trie.startsWith("ban"));
     }
 #endif
     //////////////////////
