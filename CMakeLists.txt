@@ -77,6 +77,7 @@ add_executable (leetcode
 "src/39_combination_sum.cpp"
 "src/76_minimum_window_substring.cpp"
 "src/77_combinations.cpp"
+"src/79_word_search.cpp"
 "src/80_remove_duplicates_from_sorted_array_II.cpp"
 "src/81_search_in_rotated_sorted_arrayII.cpp"
 "src/82_remove_duplicates_from_sorted_list_II.cpp"

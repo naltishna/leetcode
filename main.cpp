@@ -72,6 +72,7 @@
 #include "39_combination_sum.h"
 #include "76_minimum_window_substring.h"
 #include "77_combinations.h"
+#include "79_word_search.h"
 #include "80_remove_duplicates_from_sorted_array_II.h"
 #include "81_search_in_rotated_sorted_arrayII.h"
 #include "82_remove_duplicates_from_sorted_list_II.h"
@@ -988,6 +989,36 @@ int main() {
 #endif
     //////////////////////
     /**
+     * 39. Combination Sum
+     */
+#if 1
+    {
+        auto runTests = [&](auto& s) {
+            std::vector<int> candidates1{ 2, 3, 6, 7 };
+            const std::vector<std::vector<int>> expected1{ {2, 2, 3}, {7} };
+            custom_assert(vectors_to_string(expected1) == vectors_to_string(s.combinationSum(candidates1, 7)));
+
+            std::vector<int> candidates2{ 2, 3, 5 };
+            const std::vector<std::vector<int>> expected2{ {2, 2, 2, 2}, {2, 3, 3}, {3, 5} };
+            custom_assert(vectors_to_string(expected2) == vectors_to_string(s.combinationSum(candidates2, 8)));
+
+            std::vector<int> candidates3{ 2 };
+            const std::vector<std::vector<int>> expected3{};
+            custom_assert(vectors_to_string(expected3) == vectors_to_string(s.combinationSum(candidates3, 1)));
+            };
+
+        {
+            _39::Solution<ver1> s{};
+            runTests(s);
+        }
+        {
+            _39::Solution<ver2> s{};
+            runTests(s);
+        }
+    }
+#endif
+    //////////////////////
+    /**
      * 42. Trapping Rain Water
      */
 #if 1
@@ -1566,36 +1597,6 @@ int main() {
 #endif
     //////////////////////
     /**
-     * 39. Combination Sum
-     */
-#if 1
-    {
-        auto runTests = [&](auto& s) {
-            std::vector<int> candidates1{ 2, 3, 6, 7 };
-            const std::vector<std::vector<int>> expected1{ {2, 2, 3}, {7} };
-            custom_assert(vectors_to_string(expected1) == vectors_to_string(s.combinationSum(candidates1, 7)));
-
-            std::vector<int> candidates2{ 2, 3, 5 };
-            const std::vector<std::vector<int>> expected2{ {2, 2, 2, 2}, {2, 3, 3}, {3, 5} };
-            custom_assert(vectors_to_string(expected2) == vectors_to_string(s.combinationSum(candidates2, 8)));
-
-            std::vector<int> candidates3{ 2 };
-            const std::vector<std::vector<int>> expected3{};
-            custom_assert(vectors_to_string(expected3) == vectors_to_string(s.combinationSum(candidates3, 1)));
-        };
-
-        {
-            _39::Solution<ver1> s{};
-            runTests(s);
-        }
-        {
-            _39::Solution<ver2> s{};
-            runTests(s);
-        }
-    }
-#endif
-    //////////////////////
-    /**
      * 76. Minimum Window Substring
      */
 #if 1
@@ -1638,6 +1639,42 @@ int main() {
         }
         {
             _77::Solution<ver2> s{};
+            runTests(s);
+        }
+    }
+#endif
+    //////////////////////
+    /**
+     * 79. Word Search
+     */
+#if 1
+    {
+        std::vector<std::vector<char>> board{
+            {'A', 'B', 'C', 'E'},
+            {'S', 'F', 'C', 'S'},
+            {'A', 'D', 'E', 'E'}
+        };
+
+        auto runTests = [&](auto& s) {
+            custom_assert(s.exist(board, "ABCCED"));
+            custom_assert(s.exist(board, "SEE"));
+            custom_assert(!s.exist(board, "ABCB"));
+            };
+
+        {
+            _79::Solution<ver1> s{};
+            runTests(s);
+        }
+        {
+            _79::Solution<ver2> s{};
+            runTests(s);
+        }
+        {
+            _79::Solution<ver3> s{};
+            runTests(s);
+        }
+        {
+            _79::Solution<ver4> s{};
             runTests(s);
         }
     }
