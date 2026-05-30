@@ -102,6 +102,7 @@
 #include "125_valid_palindrome.h"
 #include "128_longest_consecutive_sequence.h"
 #include "129_sum_root_to_leaf_numbers.h"
+#include "130_surrounded_regions.h"
 #include "134_gas_station.h"
 #include "135_candy.h"
 #include "136_single_number.h"
@@ -2601,6 +2602,37 @@ int main() {
         _129::Solution s{};
         custom_assert(25 == s.sumNumbers(root1.get()));
         custom_assert(1026 == s.sumNumbers(root2.get()));
+    }
+#endif
+    //////////////////////
+    /**
+     * 130. Surrounded Regions
+     */
+#if 1
+    {
+        _130::Solution s{};
+
+        std::vector<std::vector<char>> board1{
+            {'X', 'X', 'X', 'X'},
+            {'X', 'O', 'O', 'X'},
+            {'X', 'X', 'O', 'X'},
+            {'X', 'O', 'X', 'X'}
+        };
+        const std::vector<std::vector<char>> expected1{
+            {'X', 'X', 'X', 'X'},
+            {'X', 'X', 'X', 'X'},
+            {'X', 'X', 'X', 'X'},
+            {'X', 'O', 'X', 'X'}
+        };
+
+        s.solve(board1);
+        custom_assert(expected1 == board1);
+
+        std::vector<std::vector<char>> board2{ {'X'} };
+        const std::vector<std::vector<char>> expected2{ {'X'} };
+
+        s.solve(board2);
+        custom_assert(expected2 == board2);
     }
 #endif
     //////////////////////

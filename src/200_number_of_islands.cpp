@@ -6,8 +6,6 @@
 
 namespace _200 {
 
-    static constexpr std::pair<int, int> DIRECTIONS[] = { {0, 1}, {0, -1}, {1, 0}, {-1, 0} };
-
     /*
     * Use BFS (Breadth-First Search) approach.
     * BFS: (queue) — FIFO
@@ -35,6 +33,8 @@ namespace _200 {
         }
         return lands;
     }
+
+    static constexpr std::pair<int, int> DIRECTIONS[] = { {0, 1}, {0, -1}, {1, 0}, {-1, 0} };
 
     template<>
     void Solution<ver1>::bfs(std::vector<std::vector<char>>& grid, int row, int col) {

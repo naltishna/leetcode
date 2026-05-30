@@ -294,8 +294,7 @@ namespace _79 {
         const int rows = static_cast<int>(board.size());
         const int cols = static_cast<int>(board[0].size());
 
-        std::function<bool(std::vector<std::vector<char>>&, const std::string&, int, int, int)> dfs = 
-            [&](std::vector<std::vector<char>>& board, const std::string& word, int row, int col, int index) -> bool {
+        std::function<bool(int, int, int)> dfs = [&](int row, int col, int index) -> bool {
             if (index == static_cast<int>(word.size())) {
                 return true;
             }
@@ -313,20 +312,20 @@ namespace _79 {
             board[row][col] = '#';
 
             bool found =
-                dfs(board, word, row + 1, col, index + 1) || // Down
-                dfs(board, word, row - 1, col, index + 1) || // Up
-                dfs(board, word, row, col + 1, index + 1) || // Right
-                dfs(board, word, row, col - 1, index + 1);   // Left
+                dfs(row + 1, col, index + 1) || // Down
+                dfs(row - 1, col, index + 1) || // Up
+                dfs(row, col + 1, index + 1) || // Right
+                dfs(row, col - 1, index + 1);   // Left
 
             // restore the cell
             board[row][col] = saved;
 
             return found;
-            };
+        };
 
         for (int row = 0; row < rows; ++row) {
             for (int col = 0; col < cols; ++col) {
-                if (dfs(board, word, row, col, 0)) {
+                if (dfs(row, col, 0)) {
                     return true;
                 }
             }

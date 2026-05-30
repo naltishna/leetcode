@@ -107,6 +107,7 @@ add_executable (leetcode
 "src/125_valid_palindrome.cpp"
 "src/128_longest_consecutive_sequence.cpp"
 "src/129_sum_root_to_leaf_numbers.cpp"
+"src/130_surrounded_regions.cpp"
 "src/134_gas_station.cpp"
 "src/135_candy.cpp"
 "src/136_single_number.cpp"
