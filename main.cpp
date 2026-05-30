@@ -134,6 +134,7 @@
 #include "206_reverse_linked_list.h"
 #include "208_implement_trie_prefix_tree.h"
 #include "209_minimum_size_subarray_sum.h"
+#include "211_design_add_and_search_words_data_structure.h"
 #include "215_Kth_largest_element_in_an_array.h"
 #include "219_contains_duplicate_II.h"
 #include "230_kth_smallest_element_in_a_bst.h"
@@ -3495,34 +3496,33 @@ int main() {
      */
 #if 1
     {
-        std::vector<std::vector<char>> grid1{ {'1', '1', '1', '1', '0'},
-                                              {'1', '1', '0', '1', '0'},
-                                              {'1', '1', '0', '0', '0'},
-                                              {'0', '0', '0', '0', '0'} };
+        auto runTests = [&](auto& s) {
+            std::vector<std::vector<char>> grid1{ {'1', '1', '1', '1', '0'},
+                                                  {'1', '1', '0', '1', '0'},
+                                                  {'1', '1', '0', '0', '0'},
+                                                  {'0', '0', '0', '0', '0'} };
 
-        std::vector<std::vector<char>> grid2{ {'1', '1', '0', '0', '0'},
-                                              {'1', '1', '0', '0', '0'},
-                                              {'0', '0', '1', '0', '0'},
-                                              {'0', '0', '0', '1', '1'} };
+            std::vector<std::vector<char>> grid2{ {'1', '1', '0', '0', '0'},
+                                                  {'1', '1', '0', '0', '0'},
+                                                  {'0', '0', '1', '0', '0'},
+                                                  {'0', '0', '0', '1', '1'} };
 
-        _200::Solution<ver1> s{};
-        custom_assert(1 == s.numIslands(grid1));
-        custom_assert(3 == s.numIslands(grid2));
-    }
-    {
-        std::vector<std::vector<char>> grid1{ {'1', '1', '1', '1', '0'},
-                                              {'1', '1', '0', '1', '0'},
-                                              {'1', '1', '0', '0', '0'},
-                                              {'0', '0', '0', '0', '0'} };
+            custom_assert(1 == s.numIslands(grid1));
+            custom_assert(3 == s.numIslands(grid2));
+        };
 
-        std::vector<std::vector<char>> grid2{ {'1', '1', '0', '0', '0'},
-                                              {'1', '1', '0', '0', '0'},
-                                              {'0', '0', '1', '0', '0'},
-                                              {'0', '0', '0', '1', '1'} };
-
-        _200::Solution<ver2> s{};
-        custom_assert(1 == s.numIslands(grid1));
-        custom_assert(3 == s.numIslands(grid2));
+        {
+            _200::Solution<ver1> s{};
+            runTests(s);
+        }
+        {
+            _200::Solution<ver2> s{};
+            runTests(s);
+        }
+        {
+            _200::Solution<ver3> s{};
+            runTests(s);
+        }
     }
 #endif
     //////////////////////
@@ -3667,6 +3667,33 @@ int main() {
             custom_assert(1 == s.minSubArrayLen(4, nums1));
             custom_assert(0 == s.minSubArrayLen(11, nums2));
             custom_assert(3 == s.minSubArrayLen(11, nums3));
+        }
+    }
+#endif
+    //////////////////////
+    /**
+     * 211. Design Add and Search Words Data Structure
+     */
+#if 1
+    {
+        auto runTests = [&](auto& wordDictionary) {
+            wordDictionary.addWord("bad");
+            wordDictionary.addWord("dad");
+            wordDictionary.addWord("mad");
+
+            custom_assert(!wordDictionary.search("pad"));
+            custom_assert(wordDictionary.search("bad"));
+            custom_assert(wordDictionary.search(".ad"));
+            custom_assert(wordDictionary.search("b.."));
+        };
+
+        {
+            _211::WordDictionary<ver1> wordDictionary{};
+            runTests(wordDictionary);
+        }
+        {
+            _211::WordDictionary<ver2> wordDictionary{};
+            runTests(wordDictionary);
         }
     }
 #endif

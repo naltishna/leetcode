@@ -3,12 +3,13 @@
 
 #include <vector>
 #include <queue>
+#include <stack>
 
 namespace _200 {
 
     /*
     * Use BFS (Breadth-First Search) approach.
-    * BFS: (queue) — FIFO
+    * BFS: (queue) - FIFO
     *
     * Time complexity:
     * O(R*C), where R are rows, C are columns.
@@ -104,6 +105,61 @@ namespace _200 {
         dfs(grid, row + 1, col);    // Down
         dfs(grid, row, col - 1);    // Left
         dfs(grid, row, col + 1);    // Right
+    }
+
+    /*
+    * Use iterative DFS with explicit stack.
+    *
+    * Same flood-fill as ver2, but avoids recursion depth limits on large grids.
+    *
+    * Time complexity:
+    * O(R * C)
+    *
+    * Space complexity:
+    * O(R * C)
+    */
+    int Solution<ver3>::numIslands(std::vector<std::vector<char>>& grid) {
+        if (grid.empty() || grid[0].empty()) {
+            return 0;
+        }
+
+        const int rows = static_cast<int>(grid.size());
+        const int cols = static_cast<int>(grid[0].size());
+
+        auto dfsStack = [&](int startRow, int startCol) {
+            std::stack<std::pair<int, int>> stack;
+            stack.push({ startRow, startCol });
+            grid[startRow][startCol] = '0';
+
+            while (!stack.empty()) {
+                const auto [row, col] = stack.top();
+                stack.pop();
+
+                for (const auto& [dRow, dCol] : DIRECTIONS) {
+                    const int newRow = row + dRow;
+                    const int newCol = col + dCol;
+
+                    if (newRow >= 0 && newRow < rows &&
+                        newCol >= 0 && newCol < cols &&
+                        grid[newRow][newCol] == '1') {
+                        grid[newRow][newCol] = '0';
+                        stack.push({ newRow, newCol });
+                    }
+                }
+            }
+        };
+
+        int lands = 0;
+        for (int row = 0; row < rows; ++row) {
+            for (int col = 0; col < cols; ++col) {
+                if (grid[row][col] == '1') {
+                    ++lands;
+                    dfsStack(row, col);
+                }
+            }
+        }
+
+        return lands;
     }
 
 }
