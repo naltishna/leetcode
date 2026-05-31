@@ -140,6 +140,7 @@ add_executable (leetcode
 "src/208_implement_trie_prefix_tree.cpp"
 "src/209_minimum_size_subarray_sum.cpp"
 "src/211_design_add_and_search_words_data_structure.cpp"
+"src/212_word_search_II.cpp"
 "src/215_Kth_largest_element_in_an_array.cpp"
 "src/219_contains_duplicate_II.cpp"
 "src/230_kth_smallest_element_in_a_bst.cpp"

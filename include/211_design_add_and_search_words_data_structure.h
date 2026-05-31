@@ -39,10 +39,13 @@ namespace _211 {
     template <class V>
     class WordDictionary {
         struct Node {
+            // 26 children for each small letter of the alphabet
             std::array<std::unique_ptr<Node>, 26> children{};
+            // flag to mark the end of a word
             bool isEnd = false;
         };
 
+        // root node of the trie
         std::unique_ptr<Node> root;
 
     public:

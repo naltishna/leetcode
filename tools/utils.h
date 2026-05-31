@@ -36,6 +36,10 @@ void print_elapsed_time(const auto start_time, const auto end_time, const std::s
  */
 template <typename T>
 std::string vectors_to_string(std::vector<std::vector<T>> vecs) {
+    if (vecs.empty()) {
+        return "{ }";
+    }
+
     std::ostringstream ss;
     ss << "{ ";
 
@@ -66,6 +70,10 @@ std::string vectors_to_string(std::vector<std::vector<T>> vecs) {
  */
 template <typename T>
 std::string vector_to_string(const std::vector<T>& vec) {
+    if (vec.empty()) {
+        return "{ }";
+    }
+
     std::ostringstream ss;
     ss << "{ ";
 

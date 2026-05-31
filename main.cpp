@@ -135,6 +135,7 @@
 #include "208_implement_trie_prefix_tree.h"
 #include "209_minimum_size_subarray_sum.h"
 #include "211_design_add_and_search_words_data_structure.h"
+#include "212_word_search_II.h"
 #include "215_Kth_largest_element_in_an_array.h"
 #include "219_contains_duplicate_II.h"
 #include "230_kth_smallest_element_in_a_bst.h"
@@ -881,7 +882,7 @@ int main() {
                 };
 
             assertSortedSubstring(str0_0, str0_1, "{ 0, 9 }");
-            assertSortedSubstring(str1_0, str1_1, "{  }");
+            assertSortedSubstring(str1_0, str1_1, "{ }");
             assertSortedSubstring(str2_0, str2_1, "{ 6, 9, 12 }");
             assertSortedSubstring(str3_0, str3_1, "{ 0, 3, 6 }");
             assertSortedSubstring(str4_0, str4_1, "{ 0, 1 }");
@@ -3694,6 +3695,49 @@ int main() {
         {
             _211::WordDictionary<ver2> wordDictionary{};
             runTests(wordDictionary);
+        }
+    }
+#endif
+    //////////////////////
+    /**
+     * 212. Word Search II
+     */
+#if 1
+    {
+        auto runTests = [&](auto& s) {
+            auto sortStrings = [](std::vector<std::string>& values) {
+                std::sort(values.begin(), values.end());
+            };
+
+            std::vector<std::vector<char>> board1{
+                {'o', 'a', 'a', 'n'},
+                {'e', 't', 'a', 'e'},
+                {'i', 'h', 'k', 'r'},
+                {'i', 'f', 'l', 'v'}
+            };
+            std::vector<std::string> words1{ "oath", "pea", "eat", "rain" };
+
+            std::vector<std::string> result1 = s.findWords(board1, words1);
+            sortStrings(result1);
+            custom_assert("{ eat, oath }" == vector_to_string(result1));
+
+            std::vector<std::vector<char>> board2{
+                {'a', 'b'},
+                {'c', 'd'}
+            };
+            std::vector<std::string> words2{ "abcb" };
+
+            std::vector<std::string> result2 = s.findWords(board2, words2);
+            custom_assert("{ }" == vector_to_string(result2));
+        };
+
+        {
+            _212::Solution<ver1> s{};
+            runTests(s);
+        }
+        {
+            _212::Solution<ver2> s{};
+            runTests(s);
         }
     }
 #endif
