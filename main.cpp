@@ -103,6 +103,7 @@
 #include "128_longest_consecutive_sequence.h"
 #include "129_sum_root_to_leaf_numbers.h"
 #include "130_surrounded_regions.h"
+#include "133_clone_graph.h"
 #include "134_gas_station.h"
 #include "135_candy.h"
 #include "136_single_number.h"
@@ -279,7 +280,7 @@ int main() {
     {
         auto assertAlmostEqual = [](double expected, double actual) {
             custom_assert(std::abs(expected - actual) < 1e-5);
-        };
+            };
 
         std::vector<int> nums1_1{ 1, 3 };
         std::vector<int> nums2_1{ 2 };
@@ -290,7 +291,7 @@ int main() {
         auto runTests = [&](auto& s) {
             assertAlmostEqual(2.0, s.findMedianSortedArrays(nums1_1, nums2_1));
             assertAlmostEqual(2.5, s.findMedianSortedArrays(nums1_2, nums2_2));
-        };
+            };
 
         {
             _4::Solution<ver1> s{};
@@ -468,7 +469,7 @@ int main() {
     {
         auto sortStrings = [](std::vector<std::string>& values) {
             std::sort(values.begin(), values.end());
-        };
+            };
 
         auto runTests = [&](auto& s) {
             std::vector<std::string> result1 = s.letterCombinations("23");
@@ -480,7 +481,7 @@ int main() {
             std::vector<std::string> result2 = s.letterCombinations("2");
             sortStrings(result2);
             custom_assert("{ a, b, c }" == vector_to_string(result2));
-        };
+            };
 
         {
             _17::Solution<ver1> s{};
@@ -647,7 +648,7 @@ int main() {
         auto runTests = [&](auto& s) {
             auto sortStrings = [](std::vector<std::string>& values) {
                 std::sort(values.begin(), values.end());
-            };
+                };
 
             std::vector<std::string> result1 = s.generateParenthesis(3);
             sortStrings(result1);
@@ -659,7 +660,7 @@ int main() {
             std::vector<std::string> result3 = s.generateParenthesis(2);
             sortStrings(result3);
             custom_assert("{ (()), ()() }" == vector_to_string(result3));
-        };
+            };
 
         {
             _22::Solution<ver1> s{};
@@ -1084,7 +1085,7 @@ int main() {
                 auto result = s.permute(nums);
                 std::sort(result.begin(), result.end());
                 return result;
-            };
+                };
 
             std::vector<int> nums1{ 1, 2, 3 };
             const std::vector<std::vector<int>> expected1{
@@ -1099,7 +1100,7 @@ int main() {
             std::vector<int> nums3{ 1 };
             const std::vector<std::vector<int>> expected3{ {1} };
             custom_assert(vectors_to_string(expected3) == vectors_to_string(permute_sorted(nums3)));
-        };
+            };
 
         {
             _46::Solution<ver1> s{};
@@ -1217,7 +1218,7 @@ int main() {
             custom_assert(2 == s.totalNQueens(4));
             custom_assert(1 == s.totalNQueens(1));
             custom_assert(92 == s.totalNQueens(8));
-        };
+            };
 
         {
             _52::Solution<ver1> s{};
@@ -1634,7 +1635,7 @@ int main() {
 
             const std::vector<std::vector<int>> expected2{ {1} };
             custom_assert(vectors_to_string(expected2) == vectors_to_string(s.combine(1, 1)));
-        };
+            };
 
         {
             _77::Solution<ver1> s{};
@@ -2424,6 +2425,76 @@ int main() {
 #endif
     //////////////////////
     /**
+     * 117. Populating Next Right Pointers in Each Node II
+     */
+#if 1
+    {
+        auto assertLevelNext = [](_117::Node* start, const std::vector<int>& vals) {
+            _117::Node* node = start;
+            for (int val : vals) {
+                custom_assert(node != nullptr);
+                custom_assert(val == node->val);
+                node = node->next;
+            }
+
+            custom_assert(node == nullptr);
+            };
+
+        std::function<void(_117::Node*)> destroyTree;
+        destroyTree = [&destroyTree](_117::Node* node) {
+            if (node == nullptr) {
+                return;
+            }
+
+            destroyTree(node->left);
+            destroyTree(node->right);
+            delete node;
+            };
+
+        auto buildTree1 = []() {
+            _117::Node* const node7 = new _117::Node(7);
+            _117::Node* const node5 = new _117::Node(5);
+            _117::Node* const node4 = new _117::Node(4);
+            _117::Node* const node2 = new _117::Node(2);
+            node2->left = node4;
+            node2->right = node5;
+            _117::Node* const node3 = new _117::Node(3);
+            node3->right = node7;
+            _117::Node* const root = new _117::Node(1);
+            root->left = node2;
+            root->right = node3;
+
+            return root;
+            };
+
+        auto runTests = [&](auto& s) {
+            _117::Node* const root1 = buildTree1();
+            custom_assert(root1 == s.connect(root1));
+            custom_assert(root1->next == nullptr);
+            assertLevelNext(root1->left, { 2, 3 });
+            assertLevelNext(root1->left->left, { 4, 5, 7 });
+            destroyTree(root1);
+
+            _117::Node* const root2 = new _117::Node(1);
+            custom_assert(root2 == s.connect(root2));
+            custom_assert(root2->next == nullptr);
+            destroyTree(root2);
+
+            custom_assert(nullptr == s.connect(nullptr));
+            };
+
+        {
+            _117::Solution<ver1> s{};
+            runTests(s);
+        }
+        {
+            _117::Solution<ver2> s{};
+            runTests(s);
+        }
+    }
+#endif
+    //////////////////////
+    /**
      * 120. Triangle
      */
 #if 1
@@ -2499,22 +2570,6 @@ int main() {
         custom_assert(6 == s.maxProfit(prices1));
         custom_assert(4 == s.maxProfit(prices2));
         custom_assert(0 == s.maxProfit(prices3));
-    }
-#endif
-    //////////////////////
-    /**
-     * 188. Best Time to Buy and Sell Stock IV
-     */
-#if 1
-    {
-        std::vector<int> prices1{ 2, 4, 1 };
-        std::vector<int> prices2{ 3, 2, 6, 5, 0, 3 };
-        std::vector<int> prices3{ 1 };
-
-        _188::Solution s{};
-        custom_assert(2 == s.maxProfit(2, prices1));
-        custom_assert(7 == s.maxProfit(2, prices2));
-        custom_assert(0 == s.maxProfit(1, prices3));
     }
 #endif
     //////////////////////
@@ -2639,6 +2694,142 @@ int main() {
 #endif
     //////////////////////
     /**
+     * 133. Clone Graph
+     */
+#if 1
+    {
+        using AdjList = std::vector<std::vector<int>>;
+
+        // build graph from adjacency list
+        auto buildGraph = [](const AdjList& adjList) -> GraphNode* {
+            if (adjList.empty()) {
+                return nullptr;
+            }
+
+            const int n = static_cast<int>(adjList.size());
+            std::vector<GraphNode*> nodes;
+            nodes.reserve(n);
+
+            // create nodes
+            for (int i = 0; i < n; ++i) {
+                nodes.push_back(new GraphNode(i + 1));
+            }
+
+            // add neighbors
+            for (int i = 0; i < n; ++i) {
+                for (int neighborVal : adjList[i]) {
+                    nodes[i]->neighbors.push_back(nodes[neighborVal - 1]);
+                }
+            }
+
+            return nodes[0];
+            };
+
+        // collect all nodes in the vector
+        auto collectNodes = [](GraphNode* start) -> std::vector<GraphNode*> {
+            if (!start) {
+                return {};
+            }
+
+            std::vector<GraphNode*> nodes;
+            std::vector<GraphNode*> queue{ start };
+            size_t head = 0;
+
+            while (head < queue.size()) {
+                GraphNode* node = queue[head++];
+
+                if (std::find(nodes.begin(), nodes.end(), node) != nodes.end()) {
+                    continue;
+                }
+
+                nodes.push_back(node);
+
+                for (GraphNode* neighbor : node->neighbors) {
+                    if (std::find(nodes.begin(), nodes.end(), neighbor) == nodes.end()) {
+                        queue.push_back(neighbor);
+                    }
+                }
+            }
+
+            std::sort(nodes.begin(), nodes.end(),
+                [](GraphNode* lhs, GraphNode* rhs) { return lhs->val < rhs->val; });
+
+            return nodes;
+            };
+
+        // convert graph to adjacency list
+        auto toAdjList = [&](std::vector<GraphNode*> nodes) -> AdjList {
+            AdjList adjList(nodes.size());
+
+            for (GraphNode* node : nodes) {
+                for (GraphNode* neighbor : node->neighbors) {
+                    adjList[node->val - 1].push_back(neighbor->val);
+                }
+            }
+
+            return adjList;
+            };
+
+        auto freeGraph = [&](GraphNode* start) {
+            for (GraphNode* node : collectNodes(start)) {
+                delete node;
+            }
+            };
+
+        auto assertDeepCopyEqual = [&](GraphNode* orig, GraphNode* copy) {
+            if (!orig) {
+                custom_assert(copy == nullptr);
+                return;
+            }
+
+            custom_assert(copy != nullptr);
+            custom_assert(orig != copy);
+
+            const std::vector<GraphNode*> origNodes = collectNodes(orig);
+            const std::vector<GraphNode*> copyNodes = collectNodes(copy);
+
+            custom_assert(origNodes.size() == copyNodes.size());
+            custom_assert(toAdjList(origNodes) == toAdjList(copyNodes));
+
+            for (GraphNode* copyNode : copyNodes) {
+                custom_assert(std::find(origNodes.begin(), origNodes.end(), copyNode) == origNodes.end());
+            }
+            };
+
+        const std::vector<AdjList> tests = {
+            { {2, 4}, {1, 3}, {2, 4}, {1, 3} },
+            { {} },
+            {}
+        };
+
+        auto runTests = [&](auto& s) {
+            for (const AdjList& test : tests) {
+                GraphNode* head = buildGraph(test);
+                GraphNode* res = s.cloneGraph(head);
+
+                assertDeepCopyEqual(head, res);
+
+                freeGraph(head);
+                freeGraph(res);
+            }
+            };
+
+        {
+            _133::Solution<ver1> s{};
+            runTests(s);
+        }
+        {
+            _133::Solution<ver2> s{};
+            runTests(s);
+        }
+        {
+            _133::Solution<ver3> s{};
+            runTests(s);
+        }
+    }
+#endif
+    //////////////////////
+    /**
      * 134. Gas Station
      */
 #if 1
@@ -2711,76 +2902,6 @@ int main() {
             _137::Solution<ver2> s{};
             custom_assert(3 == s.singleNumber(v1));
             custom_assert(99 == s.singleNumber(v2));
-        }
-    }
-#endif
-    //////////////////////
-    /**
-     * 117. Populating Next Right Pointers in Each Node II
-     */
-#if 1
-    {
-        auto assertLevelNext = [](_117::Node* start, const std::vector<int>& vals) {
-            _117::Node* node = start;
-            for (int val : vals) {
-                custom_assert(node != nullptr);
-                custom_assert(val == node->val);
-                node = node->next;
-            }
-
-            custom_assert(node == nullptr);
-        };
-
-        std::function<void(_117::Node*)> destroyTree;
-        destroyTree = [&destroyTree](_117::Node* node) {
-            if (node == nullptr) {
-                return;
-            }
-
-            destroyTree(node->left);
-            destroyTree(node->right);
-            delete node;
-        };
-
-        auto buildTree1 = []() {
-            _117::Node* const node7 = new _117::Node(7);
-            _117::Node* const node5 = new _117::Node(5);
-            _117::Node* const node4 = new _117::Node(4);
-            _117::Node* const node2 = new _117::Node(2);
-            node2->left = node4;
-            node2->right = node5;
-            _117::Node* const node3 = new _117::Node(3);
-            node3->right = node7;
-            _117::Node* const root = new _117::Node(1);
-            root->left = node2;
-            root->right = node3;
-
-            return root;
-        };
-
-        auto runTests = [&](auto& s) {
-            _117::Node* const root1 = buildTree1();
-            custom_assert(root1 == s.connect(root1));
-            custom_assert(root1->next == nullptr);
-            assertLevelNext(root1->left, { 2, 3 });
-            assertLevelNext(root1->left->left, { 4, 5, 7 });
-            destroyTree(root1);
-
-            _117::Node* const root2 = new _117::Node(1);
-            custom_assert(root2 == s.connect(root2));
-            custom_assert(root2->next == nullptr);
-            destroyTree(root2);
-
-            custom_assert(nullptr == s.connect(nullptr));
-        };
-
-        {
-            _117::Solution<ver1> s{};
-            runTests(s);
-        }
-        {
-            _117::Solution<ver2> s{};
-            runTests(s);
         }
     }
 #endif
@@ -2893,93 +3014,93 @@ int main() {
                 freeRandomList(res);
             }
         }
-        {
-            auto buildSmartRandomList = [](const RandomListInput& data) -> std::shared_ptr<SmartNode> {
-                if (data.empty()) {
-                    return nullptr;
+
+        // SmartPointer
+        auto buildSmartRandomList = [](const RandomListInput& data) -> std::shared_ptr<SmartNode> {
+            if (data.empty()) {
+                return nullptr;
+            }
+
+            std::vector<std::shared_ptr<SmartNode>> nodes;
+            nodes.reserve(data.size());
+
+            for (const auto& [val, _] : data) {
+                nodes.push_back(std::make_shared<SmartNode>(val));
+            }
+
+            for (int i = 0; i < static_cast<int>(nodes.size()); ++i) {
+                if (i + 1 < static_cast<int>(nodes.size())) {
+                    nodes[i]->next = nodes[i + 1];
                 }
 
-                std::vector<std::shared_ptr<SmartNode>> nodes;
-                nodes.reserve(data.size());
-
-                for (const auto& [val, _] : data) {
-                    nodes.push_back(std::make_shared<SmartNode>(val));
+                const auto& rnd = data[i].second;
+                if (rnd.has_value()) {
+                    nodes[i]->random = nodes[*rnd];
                 }
-
-                for (int i = 0; i < static_cast<int>(nodes.size()); ++i) {
-                    if (i + 1 < static_cast<int>(nodes.size())) {
-                        nodes[i]->next = nodes[i + 1];
-                    }
-
-                    const auto& rnd = data[i].second;
-                    if (rnd.has_value()) {
-                        nodes[i]->random = nodes[*rnd];
-                    }
-                    else {
-                        nodes[i]->random.reset();
-                    }
-                }
-
-                return nodes[0];
-                };
-
-            auto assertSmartDeepCopyEqual = [](const std::shared_ptr<SmartNode>& orig, const std::shared_ptr<SmartNode>& copy) {
-                if (!orig) {
-                    custom_assert(copy == nullptr);
-                    return;
-                }
-
-                custom_assert(copy != nullptr);
-                custom_assert(orig.get() != copy.get());
-
-                std::vector<std::shared_ptr<SmartNode>> o;
-                std::vector<std::shared_ptr<SmartNode>> c;
-                for (std::shared_ptr<SmartNode> p = orig; p; p = p->next) {
-                    o.push_back(p);
-                }
-                for (std::shared_ptr<SmartNode> p = copy; p; p = p->next) {
-                    c.push_back(p);
-                }
-
-                custom_assert(o.size() == c.size());
-
-                for (size_t i = 0; i < o.size(); ++i) {
-                    custom_assert(o[i]->val == c[i]->val);
-
-                    std::shared_ptr<SmartNode> oRandom = o[i]->random.lock();
-                    std::shared_ptr<SmartNode> cRandom = c[i]->random.lock();
-                    if (!oRandom) {
-                        custom_assert(cRandom == nullptr);
-                    }
-                    else {
-                        auto it = std::find_if(o.begin(), o.end(), [&oRandom](const std::shared_ptr<SmartNode>& node) {
-                            return node.get() == oRandom.get();
-                            });
-                        custom_assert(it != o.end());
-
-                        const size_t j = static_cast<size_t>(it - o.begin());
-                        custom_assert(cRandom.get() == c[j].get());
-                    }
-                }
-                };
-
-            {
-                _138_smart_ptr::Solution<ver1> s{};
-                for (const auto& test : tests) {
-                    std::shared_ptr<SmartNode> head = buildSmartRandomList(test);
-                    std::shared_ptr<SmartNode> res = s.copyRandomList(head);
-
-                    assertSmartDeepCopyEqual(head, res);
+                else {
+                    nodes[i]->random.reset();
                 }
             }
-            {
-                _138_smart_ptr::Solution<ver2> s{};
-                for (const auto& test : tests) {
-                    std::shared_ptr<SmartNode> head = buildSmartRandomList(test);
-                    std::shared_ptr<SmartNode> res = s.copyRandomList(head);
 
-                    assertSmartDeepCopyEqual(head, res);
+            return nodes[0];
+            };
+
+        auto assertSmartDeepCopyEqual = [](const std::shared_ptr<SmartNode>& orig, const std::shared_ptr<SmartNode>& copy) {
+            if (!orig) {
+                custom_assert(copy == nullptr);
+                return;
+            }
+
+            custom_assert(copy != nullptr);
+            custom_assert(orig.get() != copy.get());
+
+            std::vector<std::shared_ptr<SmartNode>> o;
+            std::vector<std::shared_ptr<SmartNode>> c;
+            for (std::shared_ptr<SmartNode> p = orig; p; p = p->next) {
+                o.push_back(p);
+            }
+            for (std::shared_ptr<SmartNode> p = copy; p; p = p->next) {
+                c.push_back(p);
+            }
+
+            custom_assert(o.size() == c.size());
+
+            for (size_t i = 0; i < o.size(); ++i) {
+                custom_assert(o[i]->val == c[i]->val);
+
+                std::shared_ptr<SmartNode> oRandom = o[i]->random.lock();
+                std::shared_ptr<SmartNode> cRandom = c[i]->random.lock();
+                if (!oRandom) {
+                    custom_assert(cRandom == nullptr);
                 }
+                else {
+                    auto it = std::find_if(o.begin(), o.end(), [&oRandom](const std::shared_ptr<SmartNode>& node) {
+                        return node.get() == oRandom.get();
+                        });
+                    custom_assert(it != o.end());
+
+                    const size_t j = static_cast<size_t>(it - o.begin());
+                    custom_assert(cRandom.get() == c[j].get());
+                }
+            }
+            };
+
+        {
+            _138_smart_ptr::Solution<ver1> s{};
+            for (const auto& test : tests) {
+                std::shared_ptr<SmartNode> head = buildSmartRandomList(test);
+                std::shared_ptr<SmartNode> res = s.copyRandomList(head);
+
+                assertSmartDeepCopyEqual(head, res);
+            }
+        }
+        {
+            _138_smart_ptr::Solution<ver2> s{};
+            for (const auto& test : tests) {
+                std::shared_ptr<SmartNode> head = buildSmartRandomList(test);
+                std::shared_ptr<SmartNode> res = s.copyRandomList(head);
+
+                assertSmartDeepCopyEqual(head, res);
             }
         }
     }
@@ -3328,6 +3449,22 @@ int main() {
 #endif
     //////////////////////
     /**
+     * 188. Best Time to Buy and Sell Stock IV
+     */
+#if 1
+    {
+        std::vector<int> prices1{ 2, 4, 1 };
+        std::vector<int> prices2{ 3, 2, 6, 5, 0, 3 };
+        std::vector<int> prices3{ 1 };
+
+        _188::Solution s{};
+        custom_assert(2 == s.maxProfit(2, prices1));
+        custom_assert(7 == s.maxProfit(2, prices2));
+        custom_assert(0 == s.maxProfit(1, prices3));
+    }
+#endif
+    //////////////////////
+    /**
      * 189. Rotate Array
      */
 #if 1
@@ -3510,7 +3647,7 @@ int main() {
 
             custom_assert(1 == s.numIslands(grid1));
             custom_assert(3 == s.numIslands(grid2));
-        };
+            };
 
         {
             _200::Solution<ver1> s{};
@@ -3686,7 +3823,7 @@ int main() {
             custom_assert(wordDictionary.search("bad"));
             custom_assert(wordDictionary.search(".ad"));
             custom_assert(wordDictionary.search("b.."));
-        };
+            };
 
         {
             _211::WordDictionary<ver1> wordDictionary{};
@@ -3707,7 +3844,7 @@ int main() {
         auto runTests = [&](auto& s) {
             auto sortStrings = [](std::vector<std::string>& values) {
                 std::sort(values.begin(), values.end());
-            };
+                };
 
             std::vector<std::vector<char>> board1{
                 {'o', 'a', 'a', 'n'},
@@ -3729,7 +3866,7 @@ int main() {
 
             std::vector<std::string> result2 = s.findWords(board2, words2);
             custom_assert("{ }" == vector_to_string(result2));
-        };
+            };
 
         {
             _212::Solution<ver1> s{};
@@ -4010,10 +4147,10 @@ int main() {
             RawPointer::TreeNode* node1,
             RawPointer::TreeNode* node4,
             RawPointer::TreeNode* root2) {
-            //custom_assert(root == s.lowestCommonAncestor(root, node5, node1));
-            custom_assert(node5 == s.lowestCommonAncestor(root, node5, node4));
-            custom_assert(root2 == s.lowestCommonAncestor(root2, root2, root2->left));
-        };
+                custom_assert(root == s.lowestCommonAncestor(root, node5, node1));
+                custom_assert(node5 == s.lowestCommonAncestor(root, node5, node4));
+                custom_assert(root2 == s.lowestCommonAncestor(root2, root2, root2->left));
+            };
 
         {
             _236::Solution<ver1> s{};
@@ -4033,7 +4170,7 @@ int main() {
             destroy(node->left);
             destroy(node->right);
             delete node;
-        };
+            };
 
         destroy(root);
         destroy(root2);
@@ -4201,7 +4338,7 @@ int main() {
     {
         auto assertAlmostEqual = [](double expected, double actual) {
             custom_assert(std::abs(expected - actual) < 1e-5);
-        };
+            };
 
         _295::MedianFinder medianFinder{};
         medianFinder.addNum(1);
@@ -4448,6 +4585,28 @@ int main() {
 #endif
     //////////////////////
     /**
+     * 383. Ransom Note
+     */
+#if 1
+    {
+        {
+            _383::Solution <ver1> s{};
+            custom_assert(true == s.canConstruct("aa", "aab"));
+            custom_assert(true == s.canConstruct("aa", "aba"));
+            custom_assert(false == s.canConstruct("a", "b"));
+            custom_assert(false == s.canConstruct("aa", "ab"));
+        }
+        {
+            _383::Solution <ver2> s{};
+            custom_assert(true == s.canConstruct("aa", "aab"));
+            custom_assert(true == s.canConstruct("aa", "aba"));
+            custom_assert(false == s.canConstruct("a", "b"));
+            custom_assert(false == s.canConstruct("aa", "ab"));
+        }
+    }
+#endif
+    //////////////////////
+    /**
      * 392. Is Subsequence
      */
 #if 1
@@ -4478,28 +4637,6 @@ int main() {
             custom_assert(false == s.isSubsequence(s3_1, t3_2));
             custom_assert(false == s.isSubsequence(s4_1, t4_2));
             custom_assert(false == s.isSubsequence(s5_1, t5_2));
-        }
-    }
-#endif
-    //////////////////////
-    /**
-     * 383. Ransom Note
-     */
-#if 1
-    {
-        {
-            _383::Solution <ver1> s{};
-            custom_assert(true == s.canConstruct("aa", "aab"));
-            custom_assert(true == s.canConstruct("aa", "aba"));
-            custom_assert(false == s.canConstruct("a", "b"));
-            custom_assert(false == s.canConstruct("aa", "ab"));
-        }
-        {
-            _383::Solution <ver2> s{};
-            custom_assert(true == s.canConstruct("aa", "aab"));
-            custom_assert(true == s.canConstruct("aa", "aba"));
-            custom_assert(false == s.canConstruct("a", "b"));
-            custom_assert(false == s.canConstruct("aa", "ab"));
         }
     }
 #endif
@@ -4555,13 +4692,13 @@ int main() {
             destroyQuadTree(node->bottomRight);
 
             delete node;
-        };
+            };
 
         auto assertLeaf = [](_427::Node* node, bool val) {
             custom_assert(node != nullptr);
             custom_assert(node->isLeaf);
             custom_assert(val == node->val);
-        };
+            };
 
         _427::Solution s{};
 
@@ -4705,45 +4842,6 @@ int main() {
 #endif
     //////////////////////
     /**
-     * 637. Average of Levels in Binary Tree
-     */
-#if 1
-    {
-        auto assertAverage = [](const std::vector<double>& result, const std::vector<double>& expected) {
-            custom_assert(result.size() == expected.size());
-
-            for (size_t i = 0; i < expected.size(); ++i) {
-                custom_assert(std::abs(result[i] - expected[i]) < 1e-5);
-            }
-            };
-
-        // root = [3,9,20,null,null,15,7]
-        auto root1 = std::make_unique<SmartPointer::TreeNode>(
-            3,
-            std::make_unique<SmartPointer::TreeNode>(9),
-            std::make_unique<SmartPointer::TreeNode>(
-                20,
-                std::make_unique<SmartPointer::TreeNode>(15),
-                std::make_unique<SmartPointer::TreeNode>(7)));
-
-        // root = [3,9,20,15,7,null,null]
-        auto root2 = std::make_unique<SmartPointer::TreeNode>(
-            3,
-            std::make_unique<SmartPointer::TreeNode>(
-                9,
-                std::make_unique<SmartPointer::TreeNode>(15),
-                std::make_unique<SmartPointer::TreeNode>(7)),
-            std::make_unique<SmartPointer::TreeNode>(20));
-
-        const std::vector<double> expected{ 3.0, 14.5, 11.0 };
-
-        _637::Solution s{};
-        assertAverage(s.averageOfLevels(root1.get()), expected);
-        assertAverage(s.averageOfLevels(root2.get()), expected);
-    }
-#endif
-    //////////////////////
-    /**
      * 502. IPO
      */
 #if 1
@@ -4786,6 +4884,45 @@ int main() {
         _530::Solution s{};
         custom_assert(1 == s.getMinimumDifference(root1.get()));
         custom_assert(1 == s.getMinimumDifference(root2.get()));
+    }
+#endif
+    //////////////////////
+    /**
+     * 637. Average of Levels in Binary Tree
+     */
+#if 1
+    {
+        auto assertAverage = [](const std::vector<double>& result, const std::vector<double>& expected) {
+            custom_assert(result.size() == expected.size());
+
+            for (size_t i = 0; i < expected.size(); ++i) {
+                custom_assert(std::abs(result[i] - expected[i]) < 1e-5);
+            }
+            };
+
+        // root = [3,9,20,null,null,15,7]
+        auto root1 = std::make_unique<SmartPointer::TreeNode>(
+            3,
+            std::make_unique<SmartPointer::TreeNode>(9),
+            std::make_unique<SmartPointer::TreeNode>(
+                20,
+                std::make_unique<SmartPointer::TreeNode>(15),
+                std::make_unique<SmartPointer::TreeNode>(7)));
+
+        // root = [3,9,20,15,7,null,null]
+        auto root2 = std::make_unique<SmartPointer::TreeNode>(
+            3,
+            std::make_unique<SmartPointer::TreeNode>(
+                9,
+                std::make_unique<SmartPointer::TreeNode>(15),
+                std::make_unique<SmartPointer::TreeNode>(7)),
+            std::make_unique<SmartPointer::TreeNode>(20));
+
+        const std::vector<double> expected{ 3.0, 14.5, 11.0 };
+
+        _637::Solution s{};
+        assertAverage(s.averageOfLevels(root1.get()), expected);
+        assertAverage(s.averageOfLevels(root2.get()), expected);
     }
 #endif
     //////////////////////
