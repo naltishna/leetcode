@@ -169,6 +169,7 @@ add_executable (leetcode
 "src/380_insert_delete_get_random_O_1.cpp"
 "src/383_ransom_note.cpp"
 "src/392_is_subsequence.cpp"
+"src/399_evaluate_division.cpp"
 "src/412_fizz_buzz.cpp"
 "src/424_longest_repeating_character_replacement.cpp"
 "src/427_construct_quad_tree.cpp"

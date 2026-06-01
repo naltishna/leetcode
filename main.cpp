@@ -164,6 +164,7 @@
 #include "380_insert_delete_get_random_O_1.h"
 #include "383_ransom_note.h"
 #include "392_is_subsequence.h"
+#include "399_evaluate_division.h"
 #include "412_fizz_buzz.h"
 #include "424_longest_repeating_character_replacement.h"
 #include "427_construct_quad_tree.h"
@@ -4637,6 +4638,65 @@ int main() {
             custom_assert(false == s.isSubsequence(s3_1, t3_2));
             custom_assert(false == s.isSubsequence(s4_1, t4_2));
             custom_assert(false == s.isSubsequence(s5_1, t5_2));
+        }
+    }
+#endif
+    //////////////////////
+    /**
+     * 399. Evaluate Division
+     */
+#if 1
+    {
+        struct TestCase {
+            std::vector<std::vector<std::string>> equations;
+            std::vector<double> values;
+            std::vector<std::vector<std::string>> queries;
+            std::vector<double> expected;
+        };
+
+        auto assertAlmostEqual = [](const std::vector<double>& expected, const std::vector<double>& actual) {
+            custom_assert(expected.size() == actual.size());
+
+            for (size_t i = 0; i < expected.size(); ++i) {
+                custom_assert(std::abs(expected[i] - actual[i]) < 1e-5);
+            }
+            };
+
+        const std::vector<TestCase> tests = {
+            {
+                { {"a", "b"}, {"b", "c"} },
+                { 2.0, 3.0 },
+                { {"a", "c"}, {"b", "a"}, {"a", "e"}, {"a", "a"}, {"x", "x"} },
+                { 6.0, 0.5, -1.0, 1.0, -1.0 }
+            },
+            {
+                { {"a", "b"}, {"b", "c"}, {"bc", "cd"} },
+                { 1.5, 2.5, 5.0 },
+                { {"a", "c"}, {"c", "b"}, {"bc", "cd"}, {"cd", "bc"} },
+                { 3.75, 0.4, 5.0, 0.2 }
+            },
+            {
+                { {"a", "b"} },
+                { 0.5 },
+                { {"a", "b"}, {"b", "a"}, {"a", "c"}, {"x", "y"} },
+                { 0.5, 2.0, -1.0, -1.0 }
+            }
+        };
+
+        auto runTests = [&](auto& s) {
+            for (const auto& test : tests) {
+                const std::vector<double> actual = s.calcEquation(test.equations, test.values, test.queries);
+                assertAlmostEqual(test.expected, actual);
+            }
+            };
+
+        {
+            _399::Solution<ver1> s{};
+            runTests(s);
+        }
+        {
+            _399::Solution<ver2> s{};
+            runTests(s);
         }
     }
 #endif
