@@ -133,6 +133,7 @@
 #include "202_happy_number.h"
 #include "205_isomorphic_strings.h"
 #include "206_reverse_linked_list.h"
+#include "207_course_schedule.h"
 #include "208_implement_trie_prefix_tree.h"
 #include "209_minimum_size_subarray_sum.h"
 #include "211_design_add_and_search_words_data_structure.h"
@@ -3757,6 +3758,43 @@ int main() {
         ListNode* result3 = s.reverseList(list3);
         custom_assert("{ }" == ListNodeHelper::convertListNodeToString(result3));
         ListNodeHelper::freeList(result3);
+    }
+#endif
+    //////////////////////
+    /**
+     * 207. Course Schedule
+     */
+#if 1
+    {
+        struct TestCase {
+            int numCourses;
+            std::vector<std::vector<int>> prerequisites;
+            bool expected;
+        };
+
+        const std::vector<TestCase> tests = {
+            { 2, { {1, 0} }, true },
+            { 2, { {1, 0}, {0, 1} }, false },
+            { 1, {}, true },
+            { 3, { {0, 1}, {1, 2} }, true },
+            { 3, { {0, 1}, {1, 2}, {2, 0} }, false },
+            { 4, { {1, 0}, {2, 0}, {3, 1}, {3, 2} }, true }
+        };
+
+        auto runTests = [&](auto& s) {
+            for (const auto& test : tests) {
+                custom_assert(test.expected == s.canFinish(test.numCourses, test.prerequisites));
+            }
+            };
+
+        {
+            _207::Solution<ver1> s{};
+            runTests(s);
+        }
+        {
+            _207::Solution<ver2> s{};
+            runTests(s);
+        }
     }
 #endif
     //////////////////////

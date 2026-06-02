@@ -138,6 +138,7 @@ add_executable (leetcode
 "src/202_happy_number.cpp"
 "src/205_isomorphic_strings.cpp"
 "src/206_reverse_linked_list.cpp"
+"src/207_course_schedule.cpp"
 "src/208_implement_trie_prefix_tree.cpp"
 "src/209_minimum_size_subarray_sum.cpp"
 "src/211_design_add_and_search_words_data_structure.cpp"
