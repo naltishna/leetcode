@@ -182,6 +182,7 @@
 #include "704_binary_search.h"
 #include "714_best_time_to_buy_and_sell_stock_with_transaction_fee.h"
 #include "763_partition_labels.h"
+#include "909_snakes_and_ladders.h"
 #include "918_maximum_sum_circular_subarray.h"
 #include "1114_print_in_order.h"
 #include "1115_print_foobar_alternately.h"
@@ -5277,6 +5278,44 @@ int main() {
         custom_assert(8 == (s.partitionLabels(s_4)).size());
         custom_assert(1 == (s.partitionLabels(s_5)).size());
         custom_assert(2 == (s.partitionLabels(s_6)).size());
+    }
+#endif
+    //////////////////////
+    /**
+     * 909. Snakes and Ladders
+     */
+#if 1
+    {
+        const std::vector<std::vector<int>> board1{
+            { -1, -1, -1, -1, -1, -1 },
+            { -1, -1, -1, -1, -1, -1 },
+            { -1, -1, -1, -1, -1, -1 },
+            { -1, 35, -1, -1, 13, -1 },
+            { -1, -1, -1, -1, -1, -1 },
+            { -1, 15, -1, -1, -1, -1 }
+        };
+
+        std::vector<std::vector<int>> board2{
+            { -1, -1 },
+            { -1, 3 }
+        };
+
+        auto runTests = [&](auto& s) {
+            std::vector<std::vector<int>> testBoard1 = board1;
+            custom_assert(4 == s.snakesAndLadders(testBoard1));
+
+            std::vector<std::vector<int>> testBoard2 = board2;
+            custom_assert(1 == s.snakesAndLadders(testBoard2));
+            };
+
+        {
+            _909::Solution<ver1> s{};
+            runTests(s);
+        }
+        {
+            _909::Solution<ver2> s{};
+            runTests(s);
+        }
     }
 #endif
     //////////////////////

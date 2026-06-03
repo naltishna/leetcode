@@ -187,6 +187,7 @@ add_executable (leetcode
 "src/704_binary_search.cpp"
 "src/714_best_time_to_buy_and_sell_stock_with_transaction_fee.cpp"
 "src/763_partition_labels.cpp"
+"src/909_snakes_and_ladders.cpp"
 "src/918_maximum_sum_circular_subarray.cpp"
 "src/1114_print_in_order.cpp"
 "src/1115_print_foobar_alternately.cpp"
