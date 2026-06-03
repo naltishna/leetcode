@@ -134,6 +134,7 @@
 #include "205_isomorphic_strings.h"
 #include "206_reverse_linked_list.h"
 #include "207_course_schedule.h"
+#include "210_course_schedule_II.h"
 #include "208_implement_trie_prefix_tree.h"
 #include "209_minimum_size_subarray_sum.h"
 #include "211_design_add_and_search_words_data_structure.h"
@@ -160,6 +161,7 @@
 #include "322_coin_change.h"
 #include "347_top_k_frequent_elements.h"
 #include "349_intersection_of_two_arrays.h"
+#include "354_russian_doll_envelopes.h"
 #include "373_find_k_pairs_with_smallest_sums.h"
 #include "374_guess_number_higher_or_lower.h"
 #include "380_insert_delete_get_random_O_1.h"
@@ -3849,6 +3851,59 @@ int main() {
 #endif
     //////////////////////
     /**
+     * 210. Course Schedule II
+     */
+#if 1
+    {
+        struct TestCase {
+            int numCourses;
+            std::vector<std::vector<int>> prerequisites;
+            bool hasOrder;
+            std::vector<int> expected;
+        };
+
+        auto assertSameCourses = [](const std::vector<int>& expected, const std::vector<int>& actual) {
+            std::vector<int> sortedExpected = expected;
+            std::vector<int> sortedActual = actual;
+            std::sort(sortedExpected.begin(), sortedExpected.end());
+            std::sort(sortedActual.begin(), sortedActual.end());
+            custom_assert(sortedExpected == sortedActual);
+            };
+
+        const std::vector<TestCase> tests = {
+            { 2, { {1, 0} }, true, { 0, 1 } },
+            { 4, { {1, 0}, {2, 0}, {3, 1}, {3, 2} }, true, { 0, 1, 2, 3 } },
+            { 1, {}, true, { 0 } },
+            { 2, { {1, 0}, {0, 1} }, false, {} },
+            { 3, { {0, 1}, {1, 2} }, true, { 2, 1, 0 } },
+            { 3, { {0, 1}, {1, 2}, {2, 0} }, false, {} }
+        };
+
+        auto runTests = [&](auto& s) {
+            for (const auto& test : tests) {
+                const std::vector<int> actual = s.findOrder(test.numCourses, test.prerequisites);
+
+                if (!test.hasOrder) {
+                    custom_assert(actual.empty());
+                    continue;
+                }
+
+                assertSameCourses(test.expected, actual);
+            }
+            };
+
+        {
+            _210::Solution<ver1> s{};
+            runTests(s);
+        }
+        {
+            _210::Solution<ver2> s{};
+            runTests(s);
+        }
+    }
+#endif
+    //////////////////////
+    /**
      * 211. Design Add and Search Words Data Structure
      */
 #if 1
@@ -4540,6 +4595,39 @@ int main() {
         custom_assert("{ 2 }" == vector_to_string(output1));
         auto output2 = s.intersection(nums1_1, nums1_2);
         custom_assert("{ 4, 9 }" == vector_to_string(output2));
+    }
+#endif
+    //////////////////////
+    /**
+     * 354. Russian Doll Envelopes
+     */
+#if 1
+    {
+        struct TestCase {
+            std::vector<std::vector<int>> envelopes;
+            int expected;
+        };
+
+        std::vector<TestCase> tests = {
+            { { {5, 4}, {6, 4}, {6, 7}, {2, 3} }, 3 },
+            { { {1, 1}, {1, 1}, {1, 1} }, 1 },
+            { { {4, 5}, {6, 7}, {2, 3} }, 3 }
+        };
+
+        auto runTests = [&](auto& s) {
+            for (auto& test : tests) {
+                custom_assert(test.expected == s.maxEnvelopes(test.envelopes));
+            }
+            };
+
+        {
+            _354::Solution<ver1> s{};
+            runTests(s);
+        }
+        {
+            _354::Solution<ver2> s{};
+            runTests(s);
+        }
     }
 #endif
     //////////////////////
