@@ -171,6 +171,7 @@
 #include "412_fizz_buzz.h"
 #include "424_longest_repeating_character_replacement.h"
 #include "427_construct_quad_tree.h"
+#include "433_minimum_genetic_mutation.h"
 #include "438_find_all_anagrams_in_a_string.h"
 #include "452_minimum_number_of_arrows_to_burst_balloons.h"
 #include "480_sliding_window_median.h"
@@ -4922,6 +4923,43 @@ int main() {
         assertLeaf(output3->bottomLeft, false);
         assertLeaf(output3->bottomRight, true);
         destroyQuadTree(output3);
+    }
+#endif
+    //////////////////////
+    /**
+     * 433. Minimum Genetic Mutation
+     */
+#if 1
+    {
+        struct TestCase {
+            std::string startGene;
+            std::string endGene;
+            std::vector<std::string> bank;
+            int expected;
+        };
+
+        const std::vector<TestCase> tests = {
+            { "AACCGGTT", "AACCGGTA", { "AACCGGTA" }, 1 },
+            { "AACCGGTT", "AAACGGTA", { "AACCGGTA", "AACCGCTA", "AAACGGTA" }, 2 },
+            { "AAAAACCC", "AACCCCCC", { "AAAACCCC", "AAACCCCC", "AACCCCCC" }, 3 },
+            { "AACCGGTT", "AACCGGTT", { "AACCGGTA" }, 0 },
+            { "AACCGGTT", "AAACGGTA", { "AACCGGTA" }, -1 }
+        };
+
+        auto runTests = [&](auto& s) {
+            for (auto& test : tests) {
+                custom_assert(test.expected == s.minMutation(test.startGene, test.endGene, test.bank));
+            }
+            };
+
+        {
+            _433::Solution<ver1> s{};
+            runTests(s);
+        }
+        {
+            _433::Solution<ver2> s{};
+            runTests(s);
+        }
     }
 #endif
     //////////////////////

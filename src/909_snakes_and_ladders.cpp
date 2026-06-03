@@ -105,6 +105,7 @@ namespace _909 {
                 // Resolve the square number to the actual square number.
                 next = resolveSquare(next, board);
 
+                //
                 if (dist[next] != -1) {
                     continue;
                 }
