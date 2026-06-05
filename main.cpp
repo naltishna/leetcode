@@ -100,6 +100,7 @@
 #include "188_best_time_to_buy_and_sell_stock_IV.h"
 #include "124_binary_tree_maximum_path_sum.h"
 #include "125_valid_palindrome.h"
+#include "127_word_ladder.h"
 #include "128_longest_consecutive_sequence.h"
 #include "129_sum_root_to_leaf_numbers.h"
 #include "130_surrounded_regions.h"
@@ -2623,6 +2624,41 @@ int main() {
         custom_assert(true == s.isPalindrome(s_1));
         custom_assert(false == s.isPalindrome(s_2));
         custom_assert(true == s.isPalindrome(s_3));
+    }
+#endif
+    //////////////////////
+    /**
+     * 127. Word Ladder
+     */
+#if 1
+    {
+        struct TestCase {
+            std::string beginWord;
+            std::string endWord;
+            std::vector<std::string> wordList;
+            int expected;
+        };
+
+        const std::vector<TestCase> tests = {
+            { "hit", "cog", { "hot", "dot", "dog", "lot", "log", "cog" }, 5 },
+            { "hit", "cog", { "hot", "dot", "dog", "lot", "log" }, 0 },
+            { "a", "c", { "a", "b", "c" }, 2 }
+        };
+
+        auto runTests = [&](auto& s) {
+            for (auto& test : tests) {
+                custom_assert(test.expected == s.ladderLength(test.beginWord, test.endWord, test.wordList));
+            }
+            };
+
+        {
+            _127::Solution<ver1> s{};
+            runTests(s);
+        }
+        {
+            _127::Solution<ver2> s{};
+            runTests(s);
+        }
     }
 #endif
     //////////////////////

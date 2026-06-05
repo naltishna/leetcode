@@ -105,7 +105,7 @@ namespace _909 {
                 // Resolve the square number to the actual square number.
                 next = resolveSquare(next, board);
 
-                //
+                // If the next square has already been visited, skip it.
                 if (dist[next] != -1) {
                     continue;
                 }
@@ -165,6 +165,7 @@ namespace _909 {
 
                 nextSquare = destination[nextSquare];
 
+                // If the next square has already been visited, skip it.
                 if (dist[nextSquare] != -1) {
                     continue;
                 }

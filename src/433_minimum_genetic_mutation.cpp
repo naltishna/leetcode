@@ -30,8 +30,7 @@ namespace _433 {
     /*
     * Check if the start gene is the same as the end gene or if the end gene is not in the bank.
     */
-    static int impossibleIfNeeded(const std::string& startGene,
-        const std::string& endGene,
+    static int impossibleIfNeeded(const std::string& startGene, const std::string& endGene,
         const std::unordered_set<std::string>& bankSet) {
         // If the start gene is the same as the end gene, no mutations are needed.
         if (startGene == endGene) {
@@ -65,6 +64,7 @@ namespace _433 {
         const std::vector<std::string>& bank) {
         std::unordered_set<std::string> bankSet(bank.begin(), bank.end());
 
+        // Check if the start gene is the same as the end gene or if the end gene is not in the bank.
         const int ready = impossibleIfNeeded(startGene, endGene, bankSet);
         if (ready != -2) {
             return ready;
@@ -115,6 +115,8 @@ namespace _433 {
         const std::string& endGene,
         const std::vector<std::string>& bank) {
         std::unordered_set<std::string> bankSet(bank.begin(), bank.end());
+
+        // Check if the start gene is the same as the end gene or if the end gene is not in the bank.
         const int ready = impossibleIfNeeded(startGene, endGene, bankSet);
         if (ready != -2) {
             return ready;

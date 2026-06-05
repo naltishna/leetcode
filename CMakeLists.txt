@@ -105,6 +105,7 @@ add_executable (leetcode
 "src/188_best_time_to_buy_and_sell_stock_IV.cpp"
 "src/124_binary_tree_maximum_path_sum.cpp"
 "src/125_valid_palindrome.cpp"
+"src/127_word_ladder.cpp"
 "src/128_longest_consecutive_sequence.cpp"
 "src/129_sum_root_to_leaf_numbers.cpp"
 "src/130_surrounded_regions.cpp"
